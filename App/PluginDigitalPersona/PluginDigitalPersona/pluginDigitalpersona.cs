@@ -7,6 +7,7 @@ using System.Text;
 namespace PluginDigitalPersona
 
 {
+
     public class pluginDigitalpersona: DPFP.Capture.EventHandler
     {
         private DPFP.Capture.Capture Capturer;

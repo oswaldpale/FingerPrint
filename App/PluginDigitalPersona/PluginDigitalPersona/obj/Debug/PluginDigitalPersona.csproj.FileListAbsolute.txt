@@ -1,0 +1,5 @@
+C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\App\PluginDigitalPersona\PluginDigitalPersona\obj\Debug\PluginDigitalPersona.csprojResolveAssemblyReference.cache
+C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\App\PluginDigitalPersona\PluginDigitalPersona\bin\Debug\PluginDigitalPersona.dll
+C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\App\PluginDigitalPersona\PluginDigitalPersona\bin\Debug\PluginDigitalPersona.pdb
+C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\App\PluginDigitalPersona\PluginDigitalPersona\obj\Debug\PluginDigitalPersona.dll
+C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\App\PluginDigitalPersona\PluginDigitalPersona\obj\Debug\PluginDigitalPersona.pdb

@@ -1,0 +1,6 @@
+C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\App\PluginDigitalPersona\PluginDigitalPersona\bin\Debug\PluginDigitalPersona.dll
+C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\App\PluginDigitalPersona\PluginDigitalPersona\bin\Debug\PluginDigitalPersona.pdb
+C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\App\PluginDigitalPersona\PluginDigitalPersona\obj\Debug\PluginDigitalPersona.Properties.Resources.resources
+C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\App\PluginDigitalPersona\PluginDigitalPersona\obj\Debug\DigitalPersona.csproj.GenerateResource.Cache
+C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\App\PluginDigitalPersona\PluginDigitalPersona\obj\Debug\PluginDigitalPersona.dll
+C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\App\PluginDigitalPersona\PluginDigitalPersona\obj\Debug\PluginDigitalPersona.pdb

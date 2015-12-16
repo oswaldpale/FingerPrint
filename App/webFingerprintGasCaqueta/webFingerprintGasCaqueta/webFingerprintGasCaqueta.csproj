@@ -105,6 +105,8 @@
     <Content Include="App_Readme\Transformer.NET\LICENSE.txt" />
     <Content Include="App_Readme\Transformer.NET\README.txt" />
     <Content Include="Content\images\SinFoto.jpg" />
+    <Content Include="Content\js\BiometricDevice.js" />
+    <Content Include="Content\js\Concurrent.Thread.js" />
     <Content Include="Ext.NET.Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="View\Private\Parametrizacion\CamaraWeb\CapturarFoto.aspx" />
@@ -140,7 +142,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\css\" />
-    <Folder Include="Content\js\" />
     <Folder Include="Controller\" />
     <Folder Include="Model\" />
     <Folder Include="View\Public\" />

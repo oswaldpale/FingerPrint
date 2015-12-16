@@ -47,5 +47,14 @@ namespace webFingerprintGasCaqueta.View.Private {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Image Image1;
+        
+        /// <summary>
+        /// Control TBIOMETRICOESTADO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextArea TBIOMETRICOESTADO;
     }
 }

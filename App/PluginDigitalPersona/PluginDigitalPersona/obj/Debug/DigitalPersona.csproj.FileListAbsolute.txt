@@ -4,3 +4,9 @@ C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\App\PluginDigitalPersona\Plu
 C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\App\PluginDigitalPersona\PluginDigitalPersona\obj\Debug\DigitalPersona.csproj.GenerateResource.Cache
 C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\App\PluginDigitalPersona\PluginDigitalPersona\obj\Debug\PluginDigitalPersona.dll
 C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\App\PluginDigitalPersona\PluginDigitalPersona\obj\Debug\PluginDigitalPersona.pdb
+C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\TestDll\PluginDigitalPersona.dll
+C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\TestDll\PluginDigitalPersona.pdb
+C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\App\PluginDigitalPersona\PluginDigitalPersona\obj\Debug\PluginDigitalPersona.Properties.Resources.resources
+C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\App\PluginDigitalPersona\PluginDigitalPersona\obj\Debug\DigitalPersona.csproj.GenerateResource.Cache
+C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\App\PluginDigitalPersona\PluginDigitalPersona\obj\Debug\PluginDigitalPersona.dll
+C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\App\PluginDigitalPersona\PluginDigitalPersona\obj\Debug\PluginDigitalPersona.pdb

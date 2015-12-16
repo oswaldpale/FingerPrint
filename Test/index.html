@@ -1,19 +1,97 @@
+
+
 <!DOCTYPE html>
+
 <html>
- <script type="text/javascript">
-        try {
-            var obj = new ActiveXObject("DigitalPersona.pluginDigitalpersona");
-            
-        }
-        catch (e) {
-            console.log('Incompatibilidad con ActiveX');
-        }
- </script>
+
 <head>
-	<title>Prueba De Active X control de Mensajes</title>
+
+    <style>
+
+        video {width: 300px; height: 300px;}
+
+    </style>
+
+ 
+
 </head>
 
 <body>
 
+    <video autoplay></video>
+
+    <input type="button" value="snaphsot!" id="snap" />
+
+    <canvas></canvas>
+
+ 
+
+    <script>
+
+        navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+
+        // Definición de variables globales
+
+        var localUserMedia = null;
+
+        var canvas = document.querySelector('canvas');
+
+        var video = document.querySelector('video');
+
+        var ctx = canvas.getContext('2d');
+
+        // Cuando cargamos el vídeo guardamos la relación
+
+        // de aspecto y ajustamos el tamaño del canvas
+
+        // para que se mantenga
+
+        video.addEventListener('loadedmetadata', function (e) {
+
+            var relation =  e.target.videoWidth/e.target.videoHeight;
+
+            canvas.width = 300;
+
+            canvas.height = 300/relation;
+
+        }, false);
+
+        // Capturamos el frame actual del video
+
+        document.getElementById('snap').addEventListener('click', function (e) {
+
+            if (localUserMedia) {
+
+                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            }
+
+        }, false);
+
+        // Callback de error de getUserMedia
+
+        var onErrorCallback = function (e) {
+
+            console.log('Error!', e);
+
+        };
+
+        // Capturamos el video con getUserMedia y lo
+
+        // mandamos a un vídeo
+
+        navigator.getUserMedia({ video: true }, function (localMediaStream) {
+
+            var video = document.querySelector('video');
+
+            video.src = window.URL.createObjectURL(localMediaStream);
+
+            localUserMedia = localMediaStream;
+
+        }, onErrorCallback);
+
+    </script>
+
 </body>
+
 </html>

@@ -19,7 +19,7 @@ namespace webFingerprintGasCaqueta.Model
 
             private string getConnectionString()
             {
-                return ConfigurationManager.ConnectionStrings["GasCaqueta"].ConnectionString;
+                return ConfigurationManager.ConnectionStrings["ControlPersonal"].ConnectionString;
             }
 
             public DataSet getDataMariaDB(string sql)

@@ -4,13 +4,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title></title>
-  <%--  <script src="../../../../Content/js/Concurrent.Thread.js"></script>--%>
+   <%-- <script src="../../../../Content/js/Concurrent.Thread.js"></script>--%>
     <script type="text/javascript">
         try {
             var obj = new ActiveXObject("PluginDigitalPersona.pluginDigitalpersona");
-            obj.messageBiometricDevice;
+            alert(obj.MessageBiometricDevice());
+            //Concurrent.Thread.create(proceso);
         }
         catch (e) {
         }
@@ -18,12 +17,12 @@
         //function proceso() {
         //    var messageBiometricDevice = null;
         //    while (true) {
-        //        if (typeof (obj.MessageBiometricDevice()) != 'undefined' || user != null) {
+        //        if (typeof (obj.MessageBiometricDevice()) != 'undefined') {
         //            console.log("EVENTOS DEL LECTOR FUNCIONANDO"); // ESCRIBE UN MENSAJE
         //            /*MAIN DEL CODIGO*/
         //            var notifyBiometricDevice = '' + obj.messageBiometricDevice; // OBTENGO EL ESTADO DEL LECTOR
-                   
-        //            /*FIN DEL MANIN DEL CODIGO*/
+                    
+        //            /*FIN DEL MAIN DEL CODIGO*/
         //            obj.messageBiometricDevice = null;// REINICIA EL ESTADO DEL LECTOR
         //            Concurrent.Thread.sleep(1000); // TIEMPO EN CHEQUEAR LOS ESTADO.
         //        }
@@ -31,14 +30,25 @@
         //            console.log("EVENTOS DEL LECTOR ERROR INESPERADO"); // ERROR OCURRIDO DE IMPREVISTO
         //        }
         //    }
+        ////}
+        //function proceso() {
+        //    var NotifyBiometric = obj.MessageBiometricDevice();
+        //    while (1) {
+        //        Ext.net.Notification.show({
+        //            html: ' entro ' + NotifyBiometric,
+        //            title: 'Notificación'
+        //        });
+        //        Concurrent.Thread.sleep(2000);
+        //    }
+           
         //}
-        //Concurrent.Thread.create(proceso);
+        
        
        
 	 </script>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" >
         <ext:ResourceManager ID="ResourceManager2" Theme="Gray" runat="server" />
         <ext:Viewport runat="server" >
             <LayoutConfig>
@@ -81,6 +91,7 @@
                             </Items>
                         </ext:Toolbar>
                     </BottomBar>
+                 
                 </ext:FormPanel>
             </Items>
         </ext:Viewport>

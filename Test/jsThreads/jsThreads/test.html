@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<script type="text/javascript" src="Concurrent.Thread.js"></script>
+<script type="text/javascript" src="jquery.js" charset="utf-8"></script>
+<script type="text/javascript">
+    var limDivTrab_left=700;
+	var limDivTrab_top=600;
+	
+	var limDivTrab_leftMIN=10;
+	var limDivTrab_topMIN=10;
+	
+	
+	function rebotar_cuadro (id, left_inicial, top_inicial, color, _direccion){
+		var incLeft=left_inicial;
+		var incTop=top_inicial;
+		var direccion=_direccion; //1: incLeft+ , incTop -
+						          //2: incLeft+ , incTop +
+						          //3: incLeft- , incTop +
+						          //4: incLeft- , incTop -		
+		$('body').append("<div style='cursor:pointer' id='cuadro"+id+"'></div>");
+				
+	    var cuadro= $('#cuadro'+id);
+		
+		cuadro.addClass("class_cuadro").css({
+			position: "absolute",
+			left: left_inicial + "px",
+			top: top_inicial + "px",
+			backgroundColor: color			
+		});
+						
+		cuadro.html("<strong><span class='texto_inf_pos' id='CuadroLeftTop" + id + "'></strong></span><span class=\"cuadro\">Cuadro" + id + "</span>");
+		var CuadroLeftTop= $('#CuadroLeftTop'+id);
+
+		while ( 1 ) {
+			var position = cuadro.position();
+			CuadroLeftTop.html("Left : " + position.left + "px, top : " + position.top + "px<br>");	
+			
+			//Definir el incremento de la direccion			
+			if(direccion==1){
+				incLeft++;
+				incTop--;			
+				
+				if(position.top<limDivTrab_topMIN){
+					direccion=2;
+				}else if(position.left>=limDivTrab_left){
+					direccion=4;
+				}					
+			}else if(direccion==2){
+				incLeft++;
+				incTop ++;
+				
+				if(position.left>=limDivTrab_left){
+					direccion=3;					
+				}else if(position.top>=limDivTrab_top){
+					direccion=1;
+				}					
+			}else if(direccion==3){
+				incLeft--;
+				incTop ++;
+											
+				if(position.top>=limDivTrab_top){
+					direccion=4;
+				}else if(position.left<limDivTrab_leftMIN){
+					direccion=2;
+				}					
+			}else if(direccion==4){
+				incLeft--;
+				incTop --;
+								
+				if(position.left<limDivTrab_leftMIN){
+					direccion=1;
+				}else if(position.top<limDivTrab_topMIN){
+					direccion=3;
+				}
+			}			
+			
+			cuadro.css({left: incLeft + "px",top: incTop + "px"});				  
+		    Concurrent.Thread.sleep(30);			
+		}  
+    }
+	
+    Concurrent.Thread.create(rebotar_cuadro, "1",1,4,"#009",1);	
+	Concurrent.Thread.create(rebotar_cuadro, "2",200,200,"#F00",2);
+	Concurrent.Thread.create(rebotar_cuadro, "3",100,100,"#0C0",1);
+	Concurrent.Thread.create(rebotar_cuadro, "4",335,334,"#999",4);
+	Concurrent.Thread.create(rebotar_cuadro, "5",55,444,"#44F",3);
+    Concurrent.Thread.create(rebotar_cuadro, "6",86,554,"#23C",2);
+   
+</script>
+<style type="text/css">
+.cuadro {	
+	height: 100px;
+	width: 100px;
+	color:#FFF;
+}
+
+.texto_inf_pos {
+	color:#FFF;
+	font-style:italic;	
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:9px;
+}
+
+
+.divF{
+border:2px solid #0099FF;
+	color:#000000;
+	width:815px;
+	height:624px;
+}
+</style>
+</head>
+
+<body>
+<div class="divF"></div>
+</body>
+</html>

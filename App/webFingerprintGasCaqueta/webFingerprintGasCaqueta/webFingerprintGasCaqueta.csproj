@@ -105,6 +105,7 @@
     <Content Include="App_Readme\Transformer.NET\LICENSE.txt" />
     <Content Include="App_Readme\Transformer.NET\README.txt" />
     <Content Include="Content\images\SinFoto.jpg" />
+    <Content Include="Content\images\SinHuella.png" />
     <Content Include="Content\js\BiometricDevice.js" />
     <Content Include="Content\js\Concurrent.Thread.js" />
     <Content Include="Ext.NET.Default.aspx" />

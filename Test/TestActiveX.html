@@ -5,14 +5,17 @@
 	<script type="text/javascript">
 	 try {
             var obj = new ActiveXObject("PluginDigitalPersona.pluginDigitalpersona");
-            obj.prueba();
+            alert(obj.MessageBiometricDevice());
         }
         catch (e) {
             alert('Incompatibilidad con ActiveX');
         }
+        function mensaje(){
+        		 alert(obj.MessageBiometricDevice());
+        }
 	</script>
 </head>
 <body>
-
+<button type="button" onclick="mensaje();">Presioname</button>
 </body>
 </html>

@@ -146,7 +146,7 @@ namespace PluginDigitalPersona
 
         public void OnReaderDisconnect(object Capture, string ReaderSerialNumber)
         {
-            this.messageBiometricDevice = " Dispositivo" + ReaderSerialNumber + " Desconectado";
+            this.messageBiometricDevice = "Dispositivo Desconectado";
 
 
         }
@@ -162,6 +162,7 @@ namespace PluginDigitalPersona
 
         #endregion
         #region METODOS DE VARIABLES
+        [ComVisible(true)]
         public string MessageBiometricDevice
         {
             get

@@ -15,7 +15,11 @@ namespace PluginDigitalPersona
     [ProgId("PluginDigitalPersona.pluginDigitalpersona")]
     public class pluginDigitalpersona: DPFP.Capture.EventHandler
     {
-        public string messageBiometricDevice = null; 
+        public string messageBiometricDevice = null;
+        public Bitmap BitmapDactilar = null;
+        public event OnTemplateEventHandler OnTemplate;
+        public delegate void OnTemplateEventHandler(DPFP.Template template);
+        private DPFP.Processing.Enrollment Enroller;
         private DPFP.Capture.Capture Capturer;
         public pluginDigitalpersona() {
             Init();
@@ -36,6 +40,7 @@ namespace PluginDigitalPersona
         {
             try
             {
+                Enroller = new DPFP.Processing.Enrollment();			// Create an enrollment.
                 Capturer = new DPFP.Capture.Capture();				// Create a capture operation.
 
                 if (null != Capturer)
@@ -75,6 +80,45 @@ namespace PluginDigitalPersona
                 }
             }
 		}
+        protected void Process(DPFP.Sample Sample)
+        {
+            ConvertSampleToBitmap(Sample);
+
+            //// Process the sample and create a feature set for the enrollment purpose.
+            //DPFP.FeatureSet features = ExtractFeatures(Sample, DPFP.Processing.DataPurpose.Enrollment);
+
+            //// Check quality of the sample and add to enroller if it's good
+            //if (features != null) try
+            //    {
+                  
+            //        Enroller.AddFeatures(features);     // Add feature set to template.
+            //    }
+            //    finally
+            //    {
+
+            //        // Check if template has been created.
+            //        switch (Enroller.TemplateStatus)
+            //        {
+            //            case DPFP.Processing.Enrollment.Status.Ready:   // report success and stop capturing
+            //                OnTemplate(Enroller.Template);
+            //                Stop();
+            //                break;
+
+            //            case DPFP.Processing.Enrollment.Status.Failed:  // report failure and restart capturing
+            //                Enroller.Clear();
+            //                Stop();
+            //                OnTemplate(null);
+            //                Start();
+            //                break;
+            //        }
+            //    }
+        }
+
+        public void ConverBitmap(DPFP.Sample Sample)
+        {
+            // Draw fingerprint sample image.
+            //DrawPicture(ConvertSampleToBitmap(Sample));
+        }
         #endregion
         #region METODOS DE CONVERSION DE IMAGEN
         protected Bitmap ConvertSampleToBitmap(DPFP.Sample Sample)
@@ -124,8 +168,8 @@ namespace PluginDigitalPersona
         /// <param name="Sample"></param>
         public void OnComplete(object Capture, string ReaderSerialNumber, DPFP.Sample Sample)
         {
-           
-          
+            Process(Sample);
+
         }
         [ComVisible(true)]
         public void OnFingerGone(object Capture, string ReaderSerialNumber)
@@ -141,7 +185,7 @@ namespace PluginDigitalPersona
 
         public void OnReaderConnect(object Capture, string ReaderSerialNumber)
         {
-            this.messageBiometricDevice = "Dispositivo " + ReaderSerialNumber + "Conectado";
+            this.messageBiometricDevice = "Dispositivo Conectado";
         }
 
         public void OnReaderDisconnect(object Capture, string ReaderSerialNumber)

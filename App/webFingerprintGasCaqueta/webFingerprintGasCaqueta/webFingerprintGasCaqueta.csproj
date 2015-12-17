@@ -111,6 +111,7 @@
     <Content Include="Ext.NET.Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="View\Private\Parametrizacion\CamaraWeb\CapturarFoto.aspx" />
+    <Content Include="View\Private\Parametrizacion\LectorBiometrico\Captura.aspx" />
     <Content Include="View\Private\Parametrizacion\LectorBiometrico\Inscripcion.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -132,6 +133,13 @@
     </Compile>
     <Compile Include="View\Private\Parametrizacion\CamaraWeb\CapturarFoto.aspx.designer.cs">
       <DependentUpon>CapturarFoto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\Parametrizacion\LectorBiometrico\Captura.aspx.cs">
+      <DependentUpon>Captura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\Parametrizacion\LectorBiometrico\Captura.aspx.designer.cs">
+      <DependentUpon>Captura.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\Parametrizacion\LectorBiometrico\Inscripcion.aspx.cs">
       <DependentUpon>Inscripcion.aspx</DependentUpon>

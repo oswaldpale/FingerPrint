@@ -1,32 +1,43 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Inscripcion.aspx.cs" Inherits="webFingerprintGasCaqueta.View.Private.CapturarHuella" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Captura.aspx.cs" Inherits="webFingerprintGasCaqueta.View.Private.Parametrizacion.LectorBiometrico.Captura" %>
 
-<html>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title></title>
-    <script src="../../Content/js/Concurrent.Thread.js"></script>
+    <script src="../../../../Content/js/Concurrent.Thread.js"></script>
 	<script type="text/javascript">
 	 try {
 	     var obj = new ActiveXObject("PluginDigitalPersona.pluginDigitalpersona");
-	     if (obj != 'undefined') {   
-	        Concurrent.Thread.create(proceso);
-	     }
-	 }catch (e) {
-            alert('Incompatibilidad con ActiveX');
-     }
-        function mensaje(){
-        		 alert(obj.MessageBiometricDevice());
+	         
         }
+        catch (e) {
+            alert('Incompatibilidad con ActiveX');
+        }
+	    function DeviceConnected(){
+            Concurrent.Thread.create(proceso);
+        }
+
         function proceso() {
-           
+            var NotifyBiometricDevice = null;
             while (true) {
-                Ext.net.Notification.show({
-                    html: ' entro ',
-                    title: 'Notificación'
-                });
+               
+                if (typeof (NotifyBiometricDevice) != "undefined" || NotifyBiometricDevice != null) {
+                    if (NotifyBiometricDevice != obj.MessageBiometricDevice()) {
+                        NotifyBiometricDevice = obj.MessageBiometricDevice();
+                        App.TBIOMETRICOESTADO.clear();
+                        App.TBIOMETRICOESTADO.appendLine(NotifyBiometricDevice);
+                    }
+                } else {
+                    NotifyBiometricDevice = obj.MessageBiometricDevice();
+                    App.TBIOMETRICOESTADO.clear();
+                    App.TBIOMETRICOESTADO.appendLine(NotifyBiometricDevice);
+                }
+                
                 Concurrent.Thread.sleep(1000);
             }
-
         }
+        
 	</script>
 </head>
 <body>
@@ -37,6 +48,7 @@
                 <ext:VBoxLayoutConfig Align="Center" Pack="Center" />
             </LayoutConfig>
             <Items>
+
                 <ext:FormPanel runat="server" BodyPadding="8" AutoScroll="true" Title="INSCRIPCÍON DE HUELLA." Weight="600">
                     <FieldDefaults LabelAlign="Right" LabelWidth="115" MsgTarget="Side" />
                     <Items>
@@ -68,7 +80,7 @@
                                 <ext:ToolbarFill />
                                 <ext:Button runat="server" Text="CAPTURA">
                                     <Listeners>
-                                       
+                                       <Click Handler="mensaje()" />
                                     </Listeners>
                                 </ext:Button>
                                 <ext:Button runat="server" Text="GUARDAR">
@@ -76,7 +88,10 @@
                             </Items>
                         </ext:Toolbar>
                     </BottomBar>
-                 
+                 <Listeners>
+                     <AfterRender Handler="DeviceConnected();">
+                     </AfterRender>
+                 </Listeners>
                 </ext:FormPanel>
             </Items>
         </ext:Viewport>

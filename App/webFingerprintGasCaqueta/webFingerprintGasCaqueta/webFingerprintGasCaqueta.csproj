@@ -112,7 +112,9 @@
     <Content Include="Global.asax" />
     <Content Include="View\Private\Parametrizacion\CamaraWeb\CapturarFoto.aspx" />
     <Content Include="View\Private\Parametrizacion\LectorBiometrico\Captura.aspx" />
+    <Content Include="View\Private\Parametrizacion\LectorBiometrico\Imagen.aspx" />
     <Content Include="View\Private\Parametrizacion\LectorBiometrico\Inscripcion.aspx" />
+    <Content Include="View\Private\Parametrizacion\LectorBiometrico\Prueba.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -141,6 +143,13 @@
     <Compile Include="View\Private\Parametrizacion\LectorBiometrico\Captura.aspx.designer.cs">
       <DependentUpon>Captura.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Private\Parametrizacion\LectorBiometrico\Imagen.aspx.cs">
+      <DependentUpon>Imagen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\Parametrizacion\LectorBiometrico\Imagen.aspx.designer.cs">
+      <DependentUpon>Imagen.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Private\Parametrizacion\LectorBiometrico\Inscripcion.aspx.cs">
       <DependentUpon>Inscripcion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -148,11 +157,19 @@
     <Compile Include="View\Private\Parametrizacion\LectorBiometrico\Inscripcion.aspx.designer.cs">
       <DependentUpon>Inscripcion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Private\Parametrizacion\LectorBiometrico\Prueba.aspx.cs">
+      <DependentUpon>Prueba.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\Parametrizacion\LectorBiometrico\Prueba.aspx.designer.cs">
+      <DependentUpon>Prueba.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\css\" />
     <Folder Include="Controller\" />
     <Folder Include="Model\" />
+    <Folder Include="View\Private\Parametrizacion\Imagen\" />
     <Folder Include="View\Public\" />
   </ItemGroup>
   <ItemGroup>

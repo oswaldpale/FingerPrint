@@ -25,6 +25,11 @@
             <param name="ReaderSerialNumber"></param>
             <param name="Sample"></param>
         </member>
+        <member name="P:PluginDigitalPersona.pluginDigitalpersona.MessageBiometricDevice">
+            <summary>
+            METODOS DE VARIABLES ACCESIBLES DESDE JAVASCRIPT.
+            </summary>
+        </member>
         <member name="T:PluginDigitalPersona.Properties.Resources">
             <summary>
               Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.

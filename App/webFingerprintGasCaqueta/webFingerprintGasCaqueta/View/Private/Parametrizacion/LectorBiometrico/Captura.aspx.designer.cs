@@ -40,13 +40,13 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion.LectorBiometrico
         protected global::Ext.Net.Image IMPERFIL;
         
         /// <summary>
-        /// Control Image1.
+        /// Control IMDACTILAR.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Image Image1;
+        protected global::Ext.Net.Image IMDACTILAR;
         
         /// <summary>
         /// Control TBIOMETRICOESTADO.
@@ -56,5 +56,14 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion.LectorBiometrico
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.TextArea TBIOMETRICOESTADO;
+        
+        /// <summary>
+        /// Control LFINGERPRINTNEED.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Label LFINGERPRINTNEED;
     }
 }

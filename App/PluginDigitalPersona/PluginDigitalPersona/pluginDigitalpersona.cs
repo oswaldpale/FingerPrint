@@ -16,7 +16,10 @@ namespace PluginDigitalPersona
     public class pluginDigitalpersona: DPFP.Capture.EventHandler
     {
         public string messageBiometricDevice = null;
-        public Bitmap BitmapDactilar = null;
+        public string checkFingerprint = null;
+        public string bitmapDactilar = null;
+        public int stateEnrroller = 0;
+        
         public event OnTemplateEventHandler OnTemplate;
         public delegate void OnTemplateEventHandler(DPFP.Template template);
         private DPFP.Processing.Enrollment Enroller;
@@ -42,7 +45,7 @@ namespace PluginDigitalPersona
             {
                 Enroller = new DPFP.Processing.Enrollment();			// Create an enrollment.
                 Capturer = new DPFP.Capture.Capture();				// Create a capture operation.
-
+                UpdateStatus();
                 if (null != Capturer)
                     Capturer.EventHandler = this;					// Subscribe for capturing events.
             }
@@ -51,6 +54,12 @@ namespace PluginDigitalPersona
                
             }
         }
+
+        private void UpdateStatus()
+        {
+            this.stateEnrroller =(int) Enroller.FeaturesNeeded;
+        }
+
         protected void Start()
 		{
             if (null != Capturer)
@@ -82,36 +91,32 @@ namespace PluginDigitalPersona
 		}
         protected void Process(DPFP.Sample Sample)
         {
-            ConvertSampleToBitmap(Sample);
+            BitMapToString(ConvertSampleToBitmap(Sample)); // CREO LA IMAGEN DE LA HUELLA.
+            DPFP.FeatureSet features = ExtractFeatures(Sample, DPFP.Processing.DataPurpose.Enrollment);
+            // Check quality of the sample and add to enroller if it's good
+            if (features != null) try
+                {
+                    Enroller.AddFeatures(features);     // Add feature set to template.
+                }
+                finally
+                {
+                    UpdateStatus();
+                    // Check if template has been created.
+                    switch (Enroller.TemplateStatus)
+                    {
+                        case DPFP.Processing.Enrollment.Status.Ready:   // report success and stop capturing
+                            OnTemplate(Enroller.Template);
+                            Stop();
+                            break;
 
-            //// Process the sample and create a feature set for the enrollment purpose.
-            //DPFP.FeatureSet features = ExtractFeatures(Sample, DPFP.Processing.DataPurpose.Enrollment);
-
-            //// Check quality of the sample and add to enroller if it's good
-            //if (features != null) try
-            //    {
-                  
-            //        Enroller.AddFeatures(features);     // Add feature set to template.
-            //    }
-            //    finally
-            //    {
-
-            //        // Check if template has been created.
-            //        switch (Enroller.TemplateStatus)
-            //        {
-            //            case DPFP.Processing.Enrollment.Status.Ready:   // report success and stop capturing
-            //                OnTemplate(Enroller.Template);
-            //                Stop();
-            //                break;
-
-            //            case DPFP.Processing.Enrollment.Status.Failed:  // report failure and restart capturing
-            //                Enroller.Clear();
-            //                Stop();
-            //                OnTemplate(null);
-            //                Start();
-            //                break;
-            //        }
-            //    }
+                        case DPFP.Processing.Enrollment.Status.Failed:  // report failure and restart capturing
+                            Enroller.Clear();
+                            Stop();
+                            OnTemplate(null);
+                            Start();
+                            break;
+                    }
+                }
         }
 
         public void ConverBitmap(DPFP.Sample Sample)
@@ -119,6 +124,7 @@ namespace PluginDigitalPersona
             // Draw fingerprint sample image.
             //DrawPicture(ConvertSampleToBitmap(Sample));
         }
+        
         #endregion
         #region METODOS DE CONVERSION DE IMAGEN
         protected Bitmap ConvertSampleToBitmap(DPFP.Sample Sample)
@@ -127,6 +133,15 @@ namespace PluginDigitalPersona
             Bitmap bitmap = null;                                                           // TODO: the size doesn't matter
             Convertor.ConvertToPicture(Sample, ref bitmap);                                 // TODO: return bitmap as a result
             return bitmap;
+        }
+        public void BitMapToString(Bitmap bitmap)
+        {
+            Bitmap bImage = bitmap;  //Your Bitmap Image
+            System.IO.MemoryStream ms = new System.IO.MemoryStream();
+            bImage.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+            byte[] byteImage = ms.ToArray();
+            bitmapDactilar = Convert.ToBase64String(byteImage);
+
         }
         protected DPFP.FeatureSet ExtractFeatures(DPFP.Sample Sample, DPFP.Processing.DataPurpose Purpose)
         {
@@ -168,6 +183,7 @@ namespace PluginDigitalPersona
         /// <param name="Sample"></param>
         public void OnComplete(object Capture, string ReaderSerialNumber, DPFP.Sample Sample)
         {
+            checkFingerprint = "true";
             Process(Sample);
 
         }
@@ -180,7 +196,7 @@ namespace PluginDigitalPersona
 
         public void OnFingerTouch(object Capture, string ReaderSerialNumber)
         {
-            MessageBox.Show("Prueba pulso de la huella");
+          
         }
 
         public void OnReaderConnect(object Capture, string ReaderSerialNumber)
@@ -206,6 +222,9 @@ namespace PluginDigitalPersona
 
         #endregion
         #region METODOS DE VARIABLES
+        /// <summary>
+        /// METODOS DE VARIABLES ACCESIBLES DESDE JAVASCRIPT.
+        /// </summary>
         [ComVisible(true)]
         public string MessageBiometricDevice
         {
@@ -216,6 +235,42 @@ namespace PluginDigitalPersona
             set
             {
                 messageBiometricDevice = value;
+            }
+        }
+        [ComVisible(true)]
+        public string CheckFingerprint
+        {
+            get
+            {
+                return checkFingerprint;
+            }
+            set
+            {
+                checkFingerprint = value;
+            }
+        }
+        [ComVisible(true)]
+        public string BitmapDactilar
+        {
+            get
+            {
+                return bitmapDactilar;
+            }
+            set
+            {
+                bitmapDactilar = value;
+            }
+        }
+        [ComVisible(true)]
+        public int StateEnrroller
+        { 
+            get
+            {
+                return stateEnrroller;
+            }
+            set
+            {
+                stateEnrroller = value;
             }
         }
         #endregion

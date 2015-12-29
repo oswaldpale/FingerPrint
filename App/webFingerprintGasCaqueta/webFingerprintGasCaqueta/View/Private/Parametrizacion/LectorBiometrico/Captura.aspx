@@ -5,6 +5,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title></title>
+      <script runat="server">
+          public const string OPERA_PATH = "";
+
+     </script>
+
     <script src="../../../../Content/js/Concurrent.Thread.js"></script>
 	<script type="text/javascript">
 	 try {
@@ -20,13 +25,35 @@
 
         function proceso() {
             var NotifyBiometricDevice = null;
+            var StateFingerPrintNeed = null;
+            var CheckFingerPrint = null;
+            var BitmapDactilar = null;
             while (true) {
-               
+                if (typeof (StateFingerPrintNeed) != "undefined" || StateFingerPrintNeed != null) {
+                    if (StateFingerPrintNeed != obj.StateEnrroller()) {
+                        StateFingerPrintNeed = obj.StateEnrroller();
+                        App.LFINGERPRINTNEED.append('Muestra de Huella Necesaria: ' + StateFingerPrintNeed );
+                    }
+                }
                 if (typeof (NotifyBiometricDevice) != "undefined" || NotifyBiometricDevice != null) {
+                   
                     if (NotifyBiometricDevice != obj.MessageBiometricDevice()) {
                         NotifyBiometricDevice = obj.MessageBiometricDevice();
                         App.TBIOMETRICOESTADO.clear();
+                        StateFingerPrintNeed = obj.StateEnrroller();
+                        console.log(StateFingerPrintNeed);
                         App.TBIOMETRICOESTADO.appendLine(NotifyBiometricDevice);
+                        App.LFINGERPRINTNEED.append('Muestra de Huella Necesaria: ' + StateFingerPrintNeed);
+                    }
+                    CheckFingerPrint = obj.CheckFingerprint();
+                    if (typeof (CheckFingerPrint) != "undefined" || CheckFingerPrint != null) {
+                        if (CheckFingerPrint == 'true') {
+                            obj.checkFingerprint = 'false';
+                            BitmapDactilar = obj.BitmapDactilar();
+                            App.direct.CreateSessionImage(BitmapDactilar);
+                        } else {
+                           
+                        }
                     }
                 } else {
                     NotifyBiometricDevice = obj.MessageBiometricDevice();
@@ -62,7 +89,7 @@
                                 </ext:Panel>
                                 <ext:Panel runat="server" Border="false" AutoScroll="true" Region="West" Height="200" BodyPadding="20">
                                     <Items>
-                                        <ext:Image ID="Image1" runat="server" ImageUrl="../../../../Content/images/SinHuella.png" Width="160px" Height="160px">
+                                        <ext:Image ID="IMDACTILAR" runat="server" ImageUrl="../../../../Content/images/SinHuella.png" Width="160px" Height="160px">
                                         </ext:Image>
                                     </Items>
                                 </ext:Panel>
@@ -77,10 +104,11 @@
                     <BottomBar>
                         <ext:Toolbar runat="server">
                             <Items>
+                                <ext:Label runat="server" ID="LFINGERPRINTNEED" Html="<font face='Comic Sans MS,arial,verdana' color='red'></font>" Width="150" />
                                 <ext:ToolbarFill />
-                                <ext:Button runat="server" Text="CAPTURA">
+                                <ext:Button runat="server" Text="CANCELAR">
                                     <Listeners>
-                                       <Click Handler="mensaje()" />
+                                        <%--<Click Handler ="" />--%>
                                     </Listeners>
                                 </ext:Button>
                                 <ext:Button runat="server" Text="GUARDAR">
@@ -95,6 +123,8 @@
                 </ext:FormPanel>
             </Items>
         </ext:Viewport>
+     
     </form>
 </body>
 </html>
+

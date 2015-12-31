@@ -5,11 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title></title>
-      <script runat="server">
-          public const string OPERA_PATH = "";
-
-     </script>
-
+    
     <script src="../../../../Content/js/Concurrent.Thread.js"></script>
 	<script type="text/javascript">
 	 try {
@@ -23,49 +19,62 @@
             Concurrent.Thread.create(proceso);
         }
 
-        function proceso() {
-            var NotifyBiometricDevice = null;
-            var StateFingerPrintNeed = null;
-            var CheckFingerPrint = null;
-            var BitmapDactilar = null;
-            while (true) {
-                if (typeof (StateFingerPrintNeed) != "undefined" || StateFingerPrintNeed != null) {
-                    if (StateFingerPrintNeed != obj.StateEnrroller()) {
-                        StateFingerPrintNeed = obj.StateEnrroller();
-                        App.LFINGERPRINTNEED.append('Muestra de Huella Necesaria: ' + StateFingerPrintNeed );
-                    }
-                }
-                if (typeof (NotifyBiometricDevice) != "undefined" || NotifyBiometricDevice != null) {
-                   
-                    if (NotifyBiometricDevice != obj.MessageBiometricDevice()) {
-                        NotifyBiometricDevice = obj.MessageBiometricDevice();
-                        App.TBIOMETRICOESTADO.clear();
-                        StateFingerPrintNeed = obj.StateEnrroller();
-                        console.log(StateFingerPrintNeed);
-                        App.TBIOMETRICOESTADO.appendLine(NotifyBiometricDevice);
-                        App.LFINGERPRINTNEED.append('Muestra de Huella Necesaria: ' + StateFingerPrintNeed);
-                    }
-                    CheckFingerPrint = obj.CheckFingerprint();
-                    if (typeof (CheckFingerPrint) != "undefined" || CheckFingerPrint != null) {
-                        if (CheckFingerPrint == 'true') {
-                            obj.checkFingerprint = 'false';
-                            BitmapDactilar = obj.BitmapDactilar();
-                            App.direct.CreateSessionImage(BitmapDactilar);
-                        } else {
-                           
-                        }
-                    }
-                } else {
-                    NotifyBiometricDevice = obj.MessageBiometricDevice();
-                    App.TBIOMETRICOESTADO.clear();
-                    App.TBIOMETRICOESTADO.appendLine(NotifyBiometricDevice);
-                }
-                
-                Concurrent.Thread.sleep(1000);
-            }
-        }
+	    function proceso() {
+	        var NotifyBiometricDevice = null;
+	        var StateFingerPrintNeed = null;
+	        var CheckFingerPrint = null;
+	        var BitmapDactilar = null;
+	        while (true) {
+	            if (typeof (StateFingerPrintNeed) != "undefined" || StateFingerPrintNeed != null) {
+	                if (StateFingerPrintNeed != obj.StateEnrroller()) {
+	                    StateFingerPrintNeed = obj.StateEnrroller();
+	                    App.LFINGERPRINTNEED.setHtml('<font face="Comic Sans MS,arial,verdana" color="red">Muestra de Huella Necesaria: ' + StateFingerPrintNeed + '</font>');
+	                }
+	            }
+	            if (typeof (NotifyBiometricDevice) != "undefined" || NotifyBiometricDevice != null) {
+
+	                if (NotifyBiometricDevice != obj.MessageBiometricDevice()) {
+	                    NotifyBiometricDevice = obj.MessageBiometricDevice();
+	                    App.TBIOMETRICOESTADO.clear();
+	                    App.TBIOMETRICOESTADO.appendLine(NotifyBiometricDevice);
+
+	                }
+	                CheckFingerPrint = obj.CheckFingerprint();
+	                if (typeof (CheckFingerPrint) != "undefined" || CheckFingerPrint != null) {
+	                    if (CheckFingerPrint == 'true') {
+	                        StateFingerPrintNeed = obj.StateEnrroller();
+	                        BitmapDactilar = obj.BitmapDactilar();
+	                        App.direct.CreateSessionImage(BitmapDactilar, StateFingerPrintNeed);
+	                        obj.checkFingerprint = 'false';
+	                        obj.bitmapDactilar = null;
+	                        App.LFINGERPRINTNEED.setHtml('<font face="Comic Sans MS,arial,verdana" color="red">Muestra de Huella Necesaria: ' + StateFingerPrintNeed + '</font>');
+	                    } else {
+
+	                        if (StateFingerPrintNeed == 0) {
+	                            parametro.registrarHuella(obj.Footprint(), '112345', {
+	                                success: function (result) {
+	                                    App.TBIOMETRICOESTADO.appendLine('Finalizado Incripción de la Huella!');
+	                                    App.TBIOMETRICOESTADO.appendLine('Guardado Exitosamente!');
+	                                }, failure: function (errorMsg) {
+	                                    App.TBIOMETRICOESTADO.appendLine('Ha ocurrido un error!');
+	                                }
+	                            });
+	                            obj.stateEnrroller = -1;
+	                        }
+	                    }
+	                }
+	            } else {
+	                NotifyBiometricDevice = obj.MessageBiometricDevice();
+	                App.TBIOMETRICOESTADO.clear();
+	                App.TBIOMETRICOESTADO.appendLine(NotifyBiometricDevice);
+	               
+
+	            }
+	            Concurrent.Thread.sleep(800);
+	        }
+	    }
         
-	</script>
+    </script>
 </head>
 <body>
     <form id="form1" runat="server" >
@@ -104,7 +113,7 @@
                     <BottomBar>
                         <ext:Toolbar runat="server">
                             <Items>
-                                <ext:Label runat="server" ID="LFINGERPRINTNEED" Html="<font face='Comic Sans MS,arial,verdana' color='red'></font>" Width="150" />
+                                <ext:Label runat="server" ID="LFINGERPRINTNEED"  Width="250" />
                                 <ext:ToolbarFill />
                                 <ext:Button runat="server" Text="CANCELAR">
                                     <Listeners>

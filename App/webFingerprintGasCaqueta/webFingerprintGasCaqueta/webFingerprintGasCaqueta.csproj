@@ -114,7 +114,6 @@
     <Content Include="View\Private\Parametrizacion\LectorBiometrico\Captura.aspx" />
     <Content Include="View\Private\Parametrizacion\LectorBiometrico\Imagen.aspx" />
     <Content Include="View\Private\Parametrizacion\LectorBiometrico\Inscripcion.aspx" />
-    <Content Include="View\Private\Parametrizacion\LectorBiometrico\Prueba.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -124,10 +123,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\ControllersCOD.cs" />
+    <Compile Include="Model\General.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Connections\Conexion.cs" />
+    <Compile Include="Model\HuellaOAD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\Private\Parametrizacion\CamaraWeb\CapturarFoto.aspx.cs">
       <DependentUpon>CapturarFoto.aspx</DependentUpon>
@@ -157,18 +159,9 @@
     <Compile Include="View\Private\Parametrizacion\LectorBiometrico\Inscripcion.aspx.designer.cs">
       <DependentUpon>Inscripcion.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\Private\Parametrizacion\LectorBiometrico\Prueba.aspx.cs">
-      <DependentUpon>Prueba.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="View\Private\Parametrizacion\LectorBiometrico\Prueba.aspx.designer.cs">
-      <DependentUpon>Prueba.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\css\" />
-    <Folder Include="Controller\" />
-    <Folder Include="Model\" />
     <Folder Include="View\Private\Parametrizacion\Imagen\" />
     <Folder Include="View\Public\" />
   </ItemGroup>

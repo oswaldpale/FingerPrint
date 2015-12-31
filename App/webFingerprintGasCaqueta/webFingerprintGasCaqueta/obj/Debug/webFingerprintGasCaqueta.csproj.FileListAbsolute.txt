@@ -29,3 +29,4 @@ C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\App\webFingerpri
 C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\Transformer.NET.xml
 C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\obj\Debug\webFingerprintGasCaqueta.dll
 C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\obj\Debug\webFingerprintGasCaqueta.pdb
+C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\obj\Debug\webFingerprintGasCaqueta.csprojResolveAssemblyReference.cache

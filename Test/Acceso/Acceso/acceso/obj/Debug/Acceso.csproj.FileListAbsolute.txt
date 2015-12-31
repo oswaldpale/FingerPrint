@@ -1,0 +1,16 @@
+c:\users\pc01\documents\visual studio 2012\Projects\Acceso\Acceso\bin\Debug\Acceso.exe
+c:\users\pc01\documents\visual studio 2012\Projects\Acceso\Acceso\bin\Debug\Acceso.pdb
+c:\users\pc01\documents\visual studio 2012\Projects\Acceso\Acceso\obj\Debug\Acceso.csprojResolveAssemblyReference.cache
+c:\users\pc01\documents\visual studio 2012\Projects\Acceso\Acceso\obj\Debug\Acceso.Form1.resources
+c:\users\pc01\documents\visual studio 2012\Projects\Acceso\Acceso\obj\Debug\Acceso.Presentacion.AccesoSistema.frmAccesoSistema.resources
+c:\users\pc01\documents\visual studio 2012\Projects\Acceso\Acceso\obj\Debug\Acceso.Properties.Resources.resources
+c:\users\pc01\documents\visual studio 2012\Projects\Acceso\Acceso\obj\Debug\Acceso.csproj.GenerateResource.Cache
+c:\users\pc01\documents\visual studio 2012\Projects\Acceso\Acceso\obj\Debug\Acceso.exe
+c:\users\pc01\documents\visual studio 2012\Projects\Acceso\Acceso\obj\Debug\Acceso.pdb
+C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\Test\Acceso\Acceso\Acceso\obj\Debug\Acceso.exe
+C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\Test\Acceso\Acceso\Acceso\obj\Debug\Acceso.pdb
+C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\Test\Acceso\Acceso\Acceso\obj\Debug\Acceso.csprojResolveAssemblyReference.cache
+C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\Test\Acceso\Acceso\Acceso\obj\Debug\Acceso.Form1.resources
+C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\Test\Acceso\Acceso\Acceso\obj\Debug\Acceso.Presentacion.AccesoSistema.frmAccesoSistema.resources
+C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\Test\Acceso\Acceso\Acceso\obj\Debug\Acceso.Properties.Resources.resources
+C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\Test\Acceso\Acceso\Acceso\obj\Debug\Acceso.csproj.GenerateResource.Cache

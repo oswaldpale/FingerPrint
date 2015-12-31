@@ -15,10 +15,11 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion.LectorBiometrico
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.QueryString["id"] == null) return;
             if (Session["ConvertImagen"] != null)
-            {
-                string BitmapString = (string)Session["ConvertImagen"];
-                this.CargarImagen(StringToBitMap(BitmapString));
+                {
+                    string BitmapString = (string)Session["ConvertImagen"]; // obtengo la imagen de la huella en string.
+                    this.CargarImagen(StringToBitMap(BitmapString));
             }
            
         }
@@ -28,6 +29,11 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion.LectorBiometrico
             bit.Save(Response.OutputStream, ImageFormat.Png);
         }
 
+        /// <summary>
+        /// Convierte de string a Bitmap
+        /// </summary>
+        /// <param name="encodedString"></param>
+        /// <returns></returns>
         public Bitmap StringToBitMap(string encodedString)
         {
             try
@@ -43,7 +49,7 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion.LectorBiometrico
                 return null;
             }
         }
-        //convert bytearray to image
+        //Convierte de bytearray a image
         public System.Drawing.Image byteArrayToImage(byte[] byteArrayIn)
         {
             using (MemoryStream mStream = new MemoryStream(byteArrayIn))

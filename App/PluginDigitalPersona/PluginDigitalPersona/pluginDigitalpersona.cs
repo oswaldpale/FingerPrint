@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -13,17 +14,15 @@ namespace PluginDigitalPersona
     [ComVisibleAttribute(true)]
     [Guid("7D30B571-D821-4F7D-B3A6-FD8728EF06F4")]
     [ProgId("PluginDigitalPersona.pluginDigitalpersona")]
-    public class pluginDigitalpersona: DPFP.Capture.EventHandler
+    public class pluginDigitalpersona: Form,DPFP.Capture.EventHandler
     {
-        public string messageBiometricDevice = null;
-        public string checkFingerprint = null;
-        public string bitmapDactilar = null;
-        public int stateEnrroller = 0;
-        
-        public event OnTemplateEventHandler OnTemplate;
-        public delegate void OnTemplateEventHandler(DPFP.Template template);
-        private DPFP.Processing.Enrollment Enroller;
-        private DPFP.Capture.Capture Capturer;
+        public string messageBiometricDevice = null; // Controla mensajes y alertas del dispositivo cuando (Conectado/Desconecta).
+        public string checkFingerprint = null;  // chequea el estado de la huella cuando el dedo del usuario esta en el lector.
+        public string bitmapDactilar = null;  // almacena la imagen de la huella en string.
+        public string footprint = null;     // almacena huella en cadena string.
+        public int stateEnrroller = 0;     // controla estado del proceso incripción.
+        public DPFP.Processing.Enrollment Enroller;  // incripcion de huella.
+        public DPFP.Capture.Capture Capturer;    // controla la captura de la huella.
         public pluginDigitalpersona() {
             Init();
             Start();
@@ -75,7 +74,8 @@ namespace PluginDigitalPersona
                 }
             }
 		}
-		protected void Stop()
+
+		public void Stop()
 		{
             if (null != Capturer)
             {
@@ -89,7 +89,7 @@ namespace PluginDigitalPersona
                 }
             }
 		}
-        protected void Process(DPFP.Sample Sample)
+        private void Process(DPFP.Sample Sample)
         {
             BitMapToString(ConvertSampleToBitmap(Sample)); // CREO LA IMAGEN DE LA HUELLA.
             DPFP.FeatureSet features = ExtractFeatures(Sample, DPFP.Processing.DataPurpose.Enrollment);
@@ -105,14 +105,17 @@ namespace PluginDigitalPersona
                     switch (Enroller.TemplateStatus)
                     {
                         case DPFP.Processing.Enrollment.Status.Ready:   // report success and stop capturing
-                            OnTemplate(Enroller.Template);
-                            Stop();
+                            DPFP.Template template = Enroller.Template;
+                            MemoryStream memoryFootprint = new MemoryStream();
+                            template.Serialize(memoryFootprint);
+                            byte[] footprintByte = memoryFootprint.ToArray();
+                            this.footprint = StringToByte(footprintByte);
+                            this.Stop();
                             break;
 
                         case DPFP.Processing.Enrollment.Status.Failed:  // report failure and restart capturing
                             Enroller.Clear();
-                            Stop();
-                            OnTemplate(null);
+                            this.Stop();
                             Start();
                             break;
                     }
@@ -140,8 +143,12 @@ namespace PluginDigitalPersona
             System.IO.MemoryStream ms = new System.IO.MemoryStream();
             bImage.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
             byte[] byteImage = ms.ToArray();
-            bitmapDactilar = Convert.ToBase64String(byteImage);
+            bitmapDactilar = StringToByte(byteImage);
+             
 
+        }
+        public string StringToByte(byte[] footprintByte) {
+            return Convert.ToBase64String(footprintByte);
         }
         protected DPFP.FeatureSet ExtractFeatures(DPFP.Sample Sample, DPFP.Processing.DataPurpose Purpose)
         {
@@ -166,7 +173,8 @@ namespace PluginDigitalPersona
 			Init();
 			Start();												// Start capture operation.
 		}
-        public void cerrarConexion() {
+        [ComVisible(true)]
+        public void StopDevice() {
             Stop();
         }
 
@@ -271,6 +279,18 @@ namespace PluginDigitalPersona
             set
             {
                 stateEnrroller = value;
+            }
+        }
+        [ComVisible(true)]
+        public string Footprint
+        {
+            get
+            {
+                return footprint;
+            }
+            set
+            {
+                footprint = value;
             }
         }
         #endregion

@@ -23,8 +23,8 @@ namespace webFingerprintGasCaqueta.Controller
         {
             return huella.eliminarHuella(identificacion);
         }
-        public bool registrarHuella(string Dactilar, string usuario) {
-            return huella.registrarHuella(Dactilar, usuario);
+        public bool registrarHuella(string Dactilar, string empleado,string dedo) {
+            return huella.registrarHuella(general.nextPrimaryKey("huella", "huell_id"), Dactilar, empleado,dedo);
         }
         #endregion
     }

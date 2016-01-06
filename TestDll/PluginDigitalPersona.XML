@@ -10,6 +10,26 @@
             </summary>
             
         </member>
+        <member name="M:PluginDigitalPersona.pluginDigitalpersona.Process(DPFP.Sample)">
+            <summary>
+            Ejecuta el proceso de incripcion de la huella
+            </summary>
+            <param name="Sample"></param>
+        </member>
+        <member name="M:PluginDigitalPersona.pluginDigitalpersona.StringToByte(System.Byte[])">
+            <summary>
+            Conversión de Byte[] a formato string.
+            </summary>
+            <param name="footprintByte"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PluginDigitalPersona.pluginDigitalpersona.ByteToString(System.String)">
+            <summary>
+            Conversor de String a Byte[]
+            </summary>
+            <param name="finger"></param>
+            <returns></returns>
+        </member>
         <member name="M:PluginDigitalPersona.pluginDigitalpersona.CaptureForm_Load(System.Object,System.EventArgs)">
             <summary>
             Construccion de los eventos de escucha del lector al inicializar.

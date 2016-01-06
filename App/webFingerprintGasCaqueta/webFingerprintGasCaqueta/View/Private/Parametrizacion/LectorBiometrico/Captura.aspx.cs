@@ -12,7 +12,8 @@ using webFingerprintGasCaqueta.Controller;
 namespace webFingerprintGasCaqueta.View.Private.Parametrizacion.LectorBiometrico
 {
     public partial class Captura : System.Web.UI.Page
-    {
+    { 
+        private string PEGE_ID = "02011235153";
         private ControllersCOD Controllers  = new ControllersCOD();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,8 +26,8 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion.LectorBiometrico
                 IMDACTILAR.ImageUrl = "Imagen.aspx?id=" +idImagen;
         }
         [DirectMethod(Namespace = "parametro")]
-        public bool registrarHuella(string huella,string usuario) {
-            return Controllers.registrarHuella(huella, usuario);
+        public bool registrarHuella(string huella,string empleado) {
+            return Controllers.registrarHuella(huella, PEGE_ID,"Primario");
         }
 
     }

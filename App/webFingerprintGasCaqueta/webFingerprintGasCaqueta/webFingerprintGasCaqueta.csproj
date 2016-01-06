@@ -113,7 +113,7 @@
     <Content Include="View\Private\Parametrizacion\CamaraWeb\CapturarFoto.aspx" />
     <Content Include="View\Private\Parametrizacion\LectorBiometrico\Captura.aspx" />
     <Content Include="View\Private\Parametrizacion\LectorBiometrico\Imagen.aspx" />
-    <Content Include="View\Private\Parametrizacion\LectorBiometrico\Inscripcion.aspx" />
+    <Content Include="View\Private\Parametrizacion\LectorBiometrico\Circulacion.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -152,12 +152,12 @@
     <Compile Include="View\Private\Parametrizacion\LectorBiometrico\Imagen.aspx.designer.cs">
       <DependentUpon>Imagen.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\Private\Parametrizacion\LectorBiometrico\Inscripcion.aspx.cs">
-      <DependentUpon>Inscripcion.aspx</DependentUpon>
+    <Compile Include="View\Private\Parametrizacion\LectorBiometrico\Circulacion.aspx.cs">
+      <DependentUpon>Circulacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\Private\Parametrizacion\LectorBiometrico\Inscripcion.aspx.designer.cs">
-      <DependentUpon>Inscripcion.aspx</DependentUpon>
+    <Compile Include="View\Private\Parametrizacion\LectorBiometrico\Circulacion.aspx.designer.cs">
+      <DependentUpon>Circulacion.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -6,6 +6,8 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
+using DPFP;
+using Newtonsoft.Json;
 
 
 namespace PluginDigitalPersona
@@ -16,13 +18,16 @@ namespace PluginDigitalPersona
     [ProgId("PluginDigitalPersona.pluginDigitalpersona")]
     public class pluginDigitalpersona: Form,DPFP.Capture.EventHandler
     {
-        public string messageBiometricDevice = null; // Controla mensajes y alertas del dispositivo cuando (Conectado/Desconecta).
+        public string messageBiometricDevice = null; // Controla mensajes y alertas del dispositivo cuando esta en estado (Conectado/Desconectado).
         public string checkFingerprint = null;  // chequea el estado de la huella cuando el dedo del usuario esta en el lector.
         public string bitmapDactilar = null;  // almacena la imagen de la huella en string.
         public string footprint = null;     // almacena huella en cadena string.
-        public int stateEnrroller = 0;     // controla estado del proceso incripción.
+        public string typeProcces = "capture"; // tipo de proceso que ejecutara el lector (capture/validation) 
+        public int stateEnrroller = 0;     // controla el estado del proceso de incripción.
         public DPFP.Processing.Enrollment Enroller;  // incripcion de huella.
         public DPFP.Capture.Capture Capturer;    // controla la captura de la huella.
+        public List<FingerPrint> _filterFinger = new List<FingerPrint>();
+        public bool stateUserVerify = false;
         public pluginDigitalpersona() {
             Init();
             Start();
@@ -89,6 +94,10 @@ namespace PluginDigitalPersona
                 }
             }
 		}
+        /// <summary>
+        /// Ejecuta el proceso de incripcion de la huella
+        /// </summary>
+        /// <param name="Sample"></param>
         private void Process(DPFP.Sample Sample)
         {
             BitMapToString(ConvertSampleToBitmap(Sample)); // CREO LA IMAGEN DE LA HUELLA.
@@ -121,6 +130,46 @@ namespace PluginDigitalPersona
                     }
                 }
         }
+        private void Validate(DPFP.Sample Sample) {
+            BitMapToString(ConvertSampleToBitmap(Sample)); // CREO LA IMAGEN DE LA HUELLA.
+            DPFP.FeatureSet features = ExtractFeatures(Sample, DPFP.Processing.DataPurpose.Verification);
+            if (features != null) { 
+                  UpdateStatus(); //Actualiza el estado del lector.
+                  this.stateUserVerify = ValidateOneFingerPrint(features) ? true:false;
+            }
+        }
+
+        private bool ValidateOneFingerPrint(FeatureSet features)
+        {
+            byte[] byteFinger;
+            string iduser;
+            foreach (var fingerOne in _filterFinger)
+            {
+                byteFinger = ByteToString(fingerOne.finger);
+                if (VerifyFinger(byteFinger, features))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        private bool VerifyFinger(byte[] byteFinger, FeatureSet features)
+        {
+            DPFP.Verification.Verification.Result resulta = new DPFP.Verification.Verification.Result();
+            DPFP.Verification.Verification verify = new DPFP.Verification.Verification();
+            MemoryStream stream = new MemoryStream(byteFinger);
+            DPFP.Template _templates = new DPFP.Template(stream);
+            _templates.DeSerialize((byte[])byteFinger);
+            verify.Verify(features, _templates, ref resulta);
+            return (resulta.Verified);
+        }
+
+        public void DowloadFinger(string FilterFinger)
+        {
+            FingerPrint _finger = new FingerPrint();
+            _finger = JsonConvert.DeserializeObject<FingerPrint>(FilterFinger);
+            _filterFinger.Add(_finger);
+        }
 
         public void ConverBitmap(DPFP.Sample Sample)
         {
@@ -147,9 +196,28 @@ namespace PluginDigitalPersona
              
 
         }
+        /// <summary>
+        /// Conversión de Byte[] a formato string.
+        /// </summary>
+        /// <param name="footprintByte"></param>
+        /// <returns></returns>
         public string StringToByte(byte[] footprintByte) {
             return Convert.ToBase64String(footprintByte);
         }
+
+
+        /// <summary>
+        /// Conversor de String a Byte[]
+        /// </summary>
+        /// <param name="finger"></param>
+        /// <returns></returns>
+        public byte[] ByteToString(string finger)
+        {
+            byte[] bytes = new byte[finger.Length * sizeof(char)];
+            System.Buffer.BlockCopy(finger.ToCharArray(), 0, bytes, 0, bytes.Length);
+            return bytes;
+        }
+
         protected DPFP.FeatureSet ExtractFeatures(DPFP.Sample Sample, DPFP.Processing.DataPurpose Purpose)
         {
             DPFP.Processing.FeatureExtraction Extractor = new DPFP.Processing.FeatureExtraction();  // Create a feature extractor
@@ -192,7 +260,14 @@ namespace PluginDigitalPersona
         public void OnComplete(object Capture, string ReaderSerialNumber, DPFP.Sample Sample)
         {
             checkFingerprint = "true";
-            Process(Sample);
+            if (typeProcces == "capture")   // Si typeProcces es igual capture: Ejecuta procceso de Incripcion
+            {
+                Process(Sample);     
+            }
+            else                           // Sino ejecuta el processo de Validación.
+            {
+                Validate(Sample);
+            }
 
         }
         [ComVisible(true)]
@@ -293,7 +368,38 @@ namespace PluginDigitalPersona
                 footprint = value;
             }
         }
+        [ComVisible(true)]
+        public string TypeProcces
+        {
+            get
+            {
+                return typeProcces;
+            }
+            set
+            {
+                typeProcces = value;
+            }
+        }
+        [ComVisible(true)]
+        public bool StateUserVerify
+        {
+            get
+            {
+                return stateUserVerify;
+            }
+            set
+            {
+                stateUserVerify = value;
+            }
+        }
         #endregion
+    }
+    public class FingerPrint
+    {
+        public string finger { get; set; }
+        public string iduser { get; set; }
+
+       
     }
 }
  

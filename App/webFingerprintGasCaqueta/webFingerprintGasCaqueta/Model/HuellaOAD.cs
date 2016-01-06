@@ -34,21 +34,23 @@ namespace webFingerprintGasCaqueta.Model
             return connection.getDataMariaDB(sql).Tables[0];
         }
 
-        public bool registrarHuella(string primaryKey,string huella, string usuario)
+        public bool registrarHuella(string primaryKey,string huella, string empleado,string dedo)
         {
             string sql = "INSERT "
                         + "INTO "
                         + "    control_acceso.huella "
                         + "    ( "
-                        + "        USUA_ID, "
-                        + "        VEHI_ID, "
-                    
+                        + "        huell_id, "
+                        + "        emple_codempleado, "
+                        + "        huell_huella,"
+                        + "        huell_dedo"
                         + "    ) "
                         + "    VALUES "
                         + "    ( "
+                        + "        '" + primaryKey + "', "
+                        + "        '" + empleado + "', "
                         + "        '" + huella + "', "
-                        + "        '" + usuario + "', "
-                      
+                        + "        '" + dedo + "' "
                         + "    )";
 
             return connection.sendSetDataMariaDB(sql);

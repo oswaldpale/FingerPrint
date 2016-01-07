@@ -16,6 +16,17 @@
         catch (e) {
             alert('Incompatibilidad con ActiveX');
         }
+	     function FhuellaUsuario () {
+	     parametro.consultarHuellas('10012914', {
+	             success: function (result) {
+	                 obj.JsonToString(result);
+	             }, failure: function (errorMsg) {
+	                 Ext.net.Notification.show({
+	                     html: 'Ha ocurrido un error!', title: 'Notificación'
+	                 });
+	             }
+	         });
+	     }
 	    function DeviceConnected(){
             Concurrent.Thread.create(proceso);
         }
@@ -31,42 +42,26 @@
 
 	                if (NotifyBiometricDevice != obj.MessageBiometricDevice()) {
 	                    NotifyBiometricDevice = obj.MessageBiometricDevice();
-	                    App.TBIOMETRICOESTADO.clear();
-	                    App.TBIOMETRICOESTADO.appendLine(NotifyBiometricDevice);
+	                    App.LBIOMETRICOSTATE.setHtml('<font face="Comic Sans MS,arial,verdana" color="red">' + NotifyBiometricDevice + '</font>');
 
 	                }
 	                CheckFingerPrint = obj.CheckFingerprint();
 	                if (typeof (CheckFingerPrint) != "undefined" || CheckFingerPrint != null) {
 	                    if (CheckFingerPrint == 'true') {
-	                        StateFingerPrintNeed = obj.StateEnrroller();
+	                       
 	                        BitmapDactilar = obj.BitmapDactilar();
-	                        App.direct.CreateSessionImage(BitmapDactilar, StateFingerPrintNeed);
+	                        App.direct.CreateSessionImage(BitmapDactilar, Math.random());
 	                        obj.checkFingerprint = 'false';
 	                        obj.bitmapDactilar = null;
-	                        App.LFINGERPRINTNEED.setHtml('<font face="Comic Sans MS,arial,verdana" color="red">Muestra de Huella Necesaria: ' + StateFingerPrintNeed + '</font>');
-	                    } else {
-
-	                        if (State == 0) {
-	                            parametro.registrarHuella(obj.Footprint(), '112345', {
-	                                success: function (result) {
-	                                    App.TBIOMETRICOESTADO.appendLine('Finalizado Incripción de la Huella!');
-	                                    App.TBIOMETRICOESTADO.appendLine('Guardado Exitosamente!');
-	                                }, failure: function (errorMsg) {
-	                                    App.TBIOMETRICOESTADO.appendLine('Ha ocurrido un error!');
-	                                }
-	                            });
-	                            obj.stateEnrroller = -1;
-	                        }
 	                    }
 	                }
 	            } else {
 	                NotifyBiometricDevice = obj.MessageBiometricDevice();
-	                App.TBIOMETRICOESTADO.clear();
-	                App.TBIOMETRICOESTADO.appendLine(NotifyBiometricDevice);
+	                App.LBIOMETRICOSTATE.setHtml('<font face="Comic Sans MS,arial,verdana" color="red">' + NotifyBiometricDevice + '</font>');
 	               
 
 	            }
-	            Concurrent.Thread.sleep(500);
+	            Concurrent.Thread.sleep(800);
 	        }
 	    }
         
@@ -81,9 +76,29 @@
             </LayoutConfig>
             <Items>
 
-                <ext:FormPanel runat="server" BodyPadding="8" AutoScroll="true" Title="VALIDACION EMPLEADO." Weight="600">
+                <ext:FormPanel runat="server" BodyPadding="8" AutoScroll="true" Title="VALIDACION EMPLEADO." Weight="900" Icon="UserKey">
                     <FieldDefaults LabelAlign="Right" LabelWidth="115" MsgTarget="Side" />
                     <Items>
+                        <ext:Panel runat="server" Layout="ColumnLayout" MarginSpec="2">
+                            <Items>
+                                <ext:Label runat="server" Text="Identificación:"   />
+                                <ext:TextField runat="server"  EnableKeyEvents="true" >
+                                    <Listeners>
+                                        <KeyPress Handler="if(e.getKey() == Ext.EventObject.ENTER){
+                                                            FhuellaUsuario();
+                                                           }"   
+                                                  Buffer="200"  />
+                                                                                
+                                    </Listeners>
+                                </ext:TextField>
+                            </Items>
+                        </ext:Panel>
+                        <ext:Panel runat="server">
+                            <Items>
+                                <ext:TextField runat="server" ID="TTIPOUSUARIO" FieldLabel="TIPO USUARIO:" ReadOnly="true" />
+                                 <ext:TextField runat="server" ID="TUSUARIO" FieldLabel="USUARIO: " ReadOnly="true" />
+                            </Items>
+                        </ext:Panel>
                         <ext:Panel runat="server" Layout="ColumnLayout">
                             <Items>
                                 <ext:Panel runat="server" Border="false" AutoScroll="true" Region="East" Height="200" BodyPadding="20">
@@ -100,24 +115,13 @@
                                 </ext:Panel>
                             </Items>
                         </ext:Panel>
-                        <ext:Panel runat="server" Border="false" Height="80" Layout="FormLayout" Width="400"  >
-                            <Items>
-                                <ext:TextArea runat="server"  ID="TBIOMETRICOESTADO" Border="false" Height="30"   AutoScroll="true" EmptyText="Estado del Lector.." />
-                            </Items>
-                        </ext:Panel>
+                     
                     </Items>
                     <BottomBar>
                         <ext:Toolbar runat="server">
                             <Items>
-                                <ext:Label runat="server" ID="LFINGERPRINTNEED"  Width="250" />
+                                <ext:Label runat="server" ID="LBIOMETRICOSTATE"  Width="250" />
                                 <ext:ToolbarFill />
-                                <ext:Button runat="server" Text="CANCELAR">
-                                    <Listeners>
-                                        <%--<Click Handler ="" />--%>
-                                    </Listeners>
-                                </ext:Button>
-                                <ext:Button runat="server" Text="GUARDAR">
-                                </ext:Button>
                             </Items>
                         </ext:Toolbar>
                     </BottomBar>

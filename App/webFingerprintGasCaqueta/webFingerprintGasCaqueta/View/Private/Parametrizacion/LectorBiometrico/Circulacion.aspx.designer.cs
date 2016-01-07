@@ -31,6 +31,24 @@ namespace webFingerprintGasCaqueta.View.Public {
         protected global::Ext.Net.ResourceManager ResourceManager2;
         
         /// <summary>
+        /// Control TTIPOUSUARIO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField TTIPOUSUARIO;
+        
+        /// <summary>
+        /// Control TUSUARIO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField TUSUARIO;
+        
+        /// <summary>
         /// Control IMPERFIL.
         /// </summary>
         /// <remarks>
@@ -49,21 +67,12 @@ namespace webFingerprintGasCaqueta.View.Public {
         protected global::Ext.Net.Image IMDACTILAR;
         
         /// <summary>
-        /// Control TBIOMETRICOESTADO.
+        /// Control LBIOMETRICOSTATE.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextArea TBIOMETRICOESTADO;
-        
-        /// <summary>
-        /// Control LFINGERPRINTNEED.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Label LFINGERPRINTNEED;
+        protected global::Ext.Net.Label LBIOMETRICOSTATE;
     }
 }

@@ -14,9 +14,9 @@ namespace webFingerprintGasCaqueta.Controller
 
 
         #region GESTION DE HUELLA
-        public DataTable consultarHuella(string filtroUsuario)
+        public DataTable consultarHuellaPorUsuario(string filtroUsuario)
         {
-            return huella.consultarHuella(filtroUsuario);
+            return huella.consultarHuellaPorUsuario(filtroUsuario);
         }
         
         public bool eliminarHuella(string identificacion)
@@ -26,6 +26,9 @@ namespace webFingerprintGasCaqueta.Controller
         public bool registrarHuella(string Dactilar, string empleado,string dedo) {
             return huella.registrarHuella(general.nextPrimaryKey("huella", "huell_id"), Dactilar, empleado,dedo);
         }
+        #endregion
+        #region GESTIONAR CIRCULACIÓN
+
         #endregion
     }
 }

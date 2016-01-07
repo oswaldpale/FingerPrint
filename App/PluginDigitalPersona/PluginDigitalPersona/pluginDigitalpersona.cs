@@ -35,7 +35,7 @@ namespace PluginDigitalPersona
        
         [ComVisible(true)]
         public void prueba() {
-            MessageBox.Show("Prueba");
+            MessageBox.Show(_filterFinger.ToString());
         }
 
         #region METODOS DE INICIALIZACION
@@ -176,6 +176,8 @@ namespace PluginDigitalPersona
             // Draw fingerprint sample image.
             //DrawPicture(ConvertSampleToBitmap(Sample));
         }
+
+     
         
         #endregion
         #region METODOS DE CONVERSION DE IMAGEN
@@ -186,6 +188,8 @@ namespace PluginDigitalPersona
             Convertor.ConvertToPicture(Sample, ref bitmap);                                 // TODO: return bitmap as a result
             return bitmap;
         }
+        #endregion
+        #region METODOS CONVERSION DE DATOS
         public void BitMapToString(Bitmap bitmap)
         {
             Bitmap bImage = bitmap;  //Your Bitmap Image
@@ -216,6 +220,14 @@ namespace PluginDigitalPersona
             byte[] bytes = new byte[finger.Length * sizeof(char)];
             System.Buffer.BlockCopy(finger.ToCharArray(), 0, bytes, 0, bytes.Length);
             return bytes;
+        }
+        /// <summary>
+        /// Convierte json que se envia desde javascript a Objetos.
+        /// </summary>
+        /// <param name="_json"></param>
+        [ComVisible(true)]
+        public void  JsonToString(string _json) {
+            _filterFinger =  JsonConvert.DeserializeObject<List<FingerPrint>>(_json);
         }
 
         protected DPFP.FeatureSet ExtractFeatures(DPFP.Sample Sample, DPFP.Processing.DataPurpose Purpose)

@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AC4D05E9-A31A-4237-B568-E4B694135A65}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WindowsFormsApplication1</RootNamespace>
+    <AssemblyName>WindowsFormsApplication1</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AForge.Video">
+      <HintPath>obj\Debug\AForge.Video.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video.DirectShow">
+      <HintPath>obj\Debug\AForge.Video.DirectShow.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPDevNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=696774c42ee28c57, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Visual Studio 2010\Projects\Capturadordehuellas\dll del lector\DPFPDevNET.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPEngNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=7fe76e7adf19964b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Visual Studio 2010\Projects\Capturadordehuellas\dll del lector\DPFPEngNET.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPGuiNet, Version=1.6.1.0, Culture=neutral, PublicKeyToken=d4f4a0bd9c559145, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Visual Studio 2010\Projects\Capturadordehuellas\dll del lector\DPFPGuiNet.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPShrNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=d902fe275a8d6cf2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Visual Studio 2010\Projects\Capturadordehuellas\dll del lector\DPFPShrNET.dll</HintPath>
+    </Reference>
+    <Reference Include="DPFPVerNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=4de0a9c4dcc83984, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Visual Studio 2010\Projects\Capturadordehuellas\dll del lector\DPFPVerNET.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.7.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BDconexion.cs" />
+    <Compile Include="BuscarPersona.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuscarPersona.Designer.cs">
+      <DependentUpon>BuscarPersona.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Camara.cs" />
+    <Compile Include="gestionarPersona.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gestionarPersona.Designer.cs">
+      <DependentUpon>gestionarPersona.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vehiculo.cs" />
+    <Compile Include="VerificarUsuarioCarro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerificarUsuarioCarro.Designer.cs">
+      <DependentUpon>VerificarUsuarioCarro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCamara.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCamara.Designer.cs">
+      <DependentUpon>FormCamara.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GuardarHuella.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GuardarHuella.Designer.cs">
+      <DependentUpon>GuardarHuella.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Huella.cs" />
+    <Compile Include="Persona.cs" />
+    <Compile Include="PersonaDAL.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CapturarHuella.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CapturarHuella.Designer.cs">
+      <DependentUpon>CapturarHuella.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarPersona.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrarPersona.Designer.cs">
+      <DependentUpon>RegistrarPersona.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TipoPersonaDal.cs" />
+    <EmbeddedResource Include="BuscarPersona.resx">
+      <DependentUpon>BuscarPersona.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gestionarPersona.resx">
+      <DependentUpon>gestionarPersona.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerificarUsuarioCarro.resx">
+      <DependentUpon>VerificarUsuarioCarro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCamara.resx">
+      <DependentUpon>FormCamara.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GuardarHuella.resx">
+      <DependentUpon>GuardarHuella.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="CapturarHuella.resx">
+      <DependentUpon>CapturarHuella.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrarPersona.resx">
+      <DependentUpon>RegistrarPersona.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\derecho.jpg" />
+    <Content Include="Resources\huella.jpg" />
+    <Content Include="Resources\izquierdo.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

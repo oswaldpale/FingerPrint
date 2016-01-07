@@ -30,6 +30,12 @@
             <param name="finger"></param>
             <returns></returns>
         </member>
+        <member name="M:PluginDigitalPersona.pluginDigitalpersona.JsonToString(System.String)">
+            <summary>
+            Convierte json que se envia desde javascript a Objetos.
+            </summary>
+            <param name="_json"></param>
+        </member>
         <member name="M:PluginDigitalPersona.pluginDigitalpersona.CaptureForm_Load(System.Object,System.EventArgs)">
             <summary>
             Construccion de los eventos de escucha del lector al inicializar.

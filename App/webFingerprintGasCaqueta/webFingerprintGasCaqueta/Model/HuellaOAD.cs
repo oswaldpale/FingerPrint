@@ -12,23 +12,20 @@ namespace webFingerprintGasCaqueta.Model
         private Conexion connection = new Conexion();
        
 
-        public DataTable consultarHuella(string filtroUsuario)
+        public DataTable consultarHuellaPorUsuario(string filtroUsuario)
         {
 
-            string sql = "SELECT "
-                        + "    V.VEHI_ID, "
-                        + "    V.VEHI_PLACA, "
-                        + "    V.VEHI_MARCA, "
-                        + "    V.VEHI_MODELO, "
-                        + "    V.VEHI_OBSERVACION "
+            string sql ="SELECT "
+                        + "    h.emple_codempleado, "
+                        + "    h.huell_huella, "
+                        + "    h.huell_dedo "
                         + "FROM "
-                        + "    BOOTPARK.AUTORIZACION A "
-                        + "INNER JOIN BOOTPARK.VEHICULO V "
+                        + "    huella h "
+                        + "INNER JOIN empleado e "
                         + "ON "
-                        + "    ( "
-                        + "        A.VEHI_ID=V.VEHI_ID "
-                        + "    ) "
-                        + " WHERE A.USUA_ID='" + filtroUsuario + "'";
+                        + "    h.emple_codempleado = e.Cod_empleado "
+                        + "WHERE "
+                        + "    e.Identificacion='"+ filtroUsuario + "'";
                   
 
             return connection.getDataMariaDB(sql).Tables[0];

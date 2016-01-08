@@ -14,7 +14,7 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado
         private ControllersCOD Controllers = new ControllersCOD();
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.CargarEmpleados();
+            //this.CargarEmpleados();
         }
         private void CargarEmpleados() {
             SEMPLEADO.DataSource = Controllers.consultarEmpleados();

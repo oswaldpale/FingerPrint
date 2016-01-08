@@ -10,6 +10,7 @@ namespace webFingerprintGasCaqueta.Controller
     public class ControllersCOD
     {
         private HuellaOAD huella = new HuellaOAD();
+        private EmpleadoOAD empleado = new EmpleadoOAD();
         private General general = new General();
 
 
@@ -29,6 +30,15 @@ namespace webFingerprintGasCaqueta.Controller
         #endregion
         #region GESTIONAR CIRCULACIÓN
 
+        #endregion
+
+        #region GESTIONAR EMPLEADOS
+        public DataTable consultarEmpleados() {
+            return empleado.consultarEmpleados();
+        }
+        public DataTable consultarInformacionUsuario(string identificacion) {
+            return empleado.consultarInformacionUsuario(identificacion);
+        }
         #endregion
     }
 }

@@ -17,9 +17,10 @@
             alert('Incompatibilidad con ActiveX');
         }
 	     function FhuellaUsuario () {
-	     parametro.consultarHuellas('10012914', {
+	         parametro.consultarHuellas('1000064015', {
 	             success: function (result) {
 	                 obj.JsonToString(result);
+	                 alert(result);
 	             }, failure: function (errorMsg) {
 	                 Ext.net.Notification.show({
 	                     html: 'Ha ocurrido un error!', title: 'Notificación'

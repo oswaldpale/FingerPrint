@@ -8,13 +8,16 @@
     
     <script src="../../../../Content/js/Concurrent.Thread.js"></script>
 	<script type="text/javascript">
-	 try {
-	     var obj = new ActiveXObject("PluginDigitalPersona.pluginDigitalpersona");
-	         
-        }
-        catch (e) {
-            alert('Incompatibilidad con ActiveX');
-        }
+	    
+	    function ActiveConecction() {
+	        try {
+	            var obj = new ActiveXObject("PluginDigitalPersona.pluginDigitalpersona");   
+	        }catch (e) {
+	            alert('Incompatibilidad con ActiveX')
+	        }
+	    }
+        
+        
 	    function DeviceConnected(){
             Concurrent.Thread.create(proceso);
         }
@@ -51,7 +54,7 @@
 	                    } else {
 
 	                        if (StateFingerPrintNeed == 0) {
-	                            parametro.registrarHuella(obj.Footprint(), '112345', {
+	                            parametro.registrarHuella(obj.Footprint(), {
 	                                success: function (result) {
 	                                    App.TBIOMETRICOESTADO.appendLine('Finalizado Incripción de la Huella!');
 	                                    App.TBIOMETRICOESTADO.appendLine('Guardado Exitosamente!');
@@ -85,7 +88,7 @@
             </LayoutConfig>
             <Items>
 
-                <ext:FormPanel runat="server" BodyPadding="8" AutoScroll="true" Title="INSCRIPCÍON DE HUELLA." Weight="600">
+                <ext:FormPanel ID="FCAPTURA" runat="server" BodyPadding="8" AutoScroll="true"  Weight="600">
                     <FieldDefaults LabelAlign="Right" LabelWidth="115" MsgTarget="Side" />
                     <Items>
                         <ext:Panel runat="server" Layout="ColumnLayout">
@@ -126,7 +129,7 @@
                         </ext:Toolbar>
                     </BottomBar>
                  <Listeners>
-                     <AfterRender Handler="DeviceConnected();">
+                     <AfterRender Handler="ActiveConecction();DeviceConnected();">
                      </AfterRender>
                  </Listeners>
                 </ext:FormPanel>

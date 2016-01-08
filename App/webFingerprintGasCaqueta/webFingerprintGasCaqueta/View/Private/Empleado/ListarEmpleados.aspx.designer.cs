@@ -7,10 +7,10 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace webFingerprintGasCaqueta.View.Private.Parametrizacion.LectorBiometrico {
+namespace webFingerprintGasCaqueta.View.Private.Empleado {
     
     
-    public partial class Captura {
+    public partial class ListarEmpleado {
         
         /// <summary>
         /// Control form1.
@@ -31,48 +31,39 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion.LectorBiometrico
         protected global::Ext.Net.ResourceManager ResourceManager2;
         
         /// <summary>
-        /// Control FCAPTURA.
+        /// Control GEMPLEADO.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FormPanel FCAPTURA;
+        protected global::Ext.Net.GridPanel GEMPLEADO;
         
         /// <summary>
-        /// Control IMPERFIL.
+        /// Control SEMPLEADO.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Image IMPERFIL;
+        protected global::Ext.Net.Store SEMPLEADO;
         
         /// <summary>
-        /// Control IMDACTILAR.
+        /// Control MIDENTIFICACION.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Image IMDACTILAR;
+        protected global::Ext.Net.Column MIDENTIFICACION;
         
         /// <summary>
-        /// Control TBIOMETRICOESTADO.
+        /// Control MNOMBRE.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextArea TBIOMETRICOESTADO;
-        
-        /// <summary>
-        /// Control LFINGERPRINTNEED.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Label LFINGERPRINTNEED;
+        protected global::Ext.Net.Column MNOMBRE;
     }
 }

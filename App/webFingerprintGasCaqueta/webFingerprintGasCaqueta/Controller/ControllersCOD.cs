@@ -24,6 +24,9 @@ namespace webFingerprintGasCaqueta.Controller
         {
             return huella.eliminarHuella(identificacion);
         }
+        public bool consultarEstadoHuella(string identificacion, string dedo) {
+            return huella.consultarEstadoHuella(identificacion, dedo);
+        }
         public bool registrarHuella(string Dactilar, string empleado,string dedo) {
             return huella.registrarHuella(general.nextPrimaryKey("huella", "huell_id"), Dactilar, empleado,dedo);
         }

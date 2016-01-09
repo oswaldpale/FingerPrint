@@ -8,18 +8,22 @@
     
     <script src="../../../../Content/js/Concurrent.Thread.js"></script>
 	<script type="text/javascript">
-	    
-	    function ActiveConecction() {
-	        try {
-	            var obj = new ActiveXObject("PluginDigitalPersona.pluginDigitalpersona");   
-	        }catch (e) {
-	            alert('Incompatibilidad con ActiveX')
-	        }
+	    try {
+	        var obj = new ActiveXObject("PluginDigitalPersona.pluginDigitalpersona");
+	    } catch (e) {
+	        var _ActiveXError = e;
 	    }
-        
-        
-	    function DeviceConnected(){
-            Concurrent.Thread.create(proceso);
+
+	    function DeviceConnected() {
+	        if (_ActiveXError != null) {
+	            /// Desactivo el formulario..
+	            /// envio link para configurar el navegador.
+	            /// Detecto el navegador que usa para asi mismo dirigir la url plugin.
+               
+	        }else {
+                  Concurrent.Thread.create(proceso);
+            }
+            
         }
 
 	    function proceso() {
@@ -107,9 +111,9 @@
                                 </ext:Panel>
                             </Items>
                         </ext:Panel>
-                        <ext:Panel runat="server" Border="false" Height="80" Layout="FormLayout" Width="400"  >
+                        <ext:Panel runat="server" Border="false" Height="70" Layout="FormLayout" Width="400"  >
                             <Items>
-                                <ext:TextArea runat="server"  ID="TBIOMETRICOESTADO" Border="false" Height="30"   AutoScroll="true" EmptyText="Estado del Lector.." />
+                                <ext:TextArea runat="server"  ID="TBIOMETRICOESTADO" Border="false" Height="10"  EmptyText="Estado del Lector.." />
                             </Items>
                         </ext:Panel>
                     </Items>
@@ -118,18 +122,11 @@
                             <Items>
                                 <ext:Label runat="server" ID="LFINGERPRINTNEED"  Width="250" />
                                 <ext:ToolbarFill />
-                                <ext:Button runat="server" Text="CANCELAR">
-                                    <Listeners>
-                                        <%--<Click Handler ="" />--%>
-                                    </Listeners>
-                                </ext:Button>
-                                <ext:Button runat="server" Text="GUARDAR">
-                                </ext:Button>
                             </Items>
                         </ext:Toolbar>
                     </BottomBar>
                  <Listeners>
-                     <AfterRender Handler="ActiveConecction();DeviceConnected();">
+                     <AfterRender Handler="DeviceConnected();">
                      </AfterRender>
                  </Listeners>
                 </ext:FormPanel>

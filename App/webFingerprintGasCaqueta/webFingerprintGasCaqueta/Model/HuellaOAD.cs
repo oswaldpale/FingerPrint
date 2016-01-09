@@ -16,7 +16,7 @@ namespace webFingerprintGasCaqueta.Model
         {
 
             string sql ="SELECT "
-                        + "    h.emple_codempleado, "
+                        + "    h.huell_identificacion, "
                         + "    h.huell_huella, "
                         + "    h.huell_dedo "
                         + "FROM "
@@ -38,7 +38,7 @@ namespace webFingerprintGasCaqueta.Model
                         + "    control_acceso.huella "
                         + "    ( "
                         + "        huell_id, "
-                        + "        emple_codempleado, "
+                        + "        huell_identificacion, "
                         + "        huell_huella,"
                         + "        huell_dedo"
                         + "    ) "
@@ -61,6 +61,16 @@ namespace webFingerprintGasCaqueta.Model
                          + "    USUA_ID ='" + idhuella + "' ";
                         
             return connection.sendSetDataMariaDB(sql);
+        }
+        public bool consultarEstadoHuella(string identificacion, string dedo) {
+            string sql = "SELECT "
+                        + "    COUNT(*) "
+                        + "FROM "
+                        + "    huella h "
+                        + "WHERE "
+                        + "    h.huell_identificacion = '" + identificacion + "' "
+                        + "AND h.huell_dedo = '" + dedo + "'";
+            return  connection.getDataMariaDB(sql).Tables[0].Rows.Count!=0 ? true : false;
         }
     }
 }

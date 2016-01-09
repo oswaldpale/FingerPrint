@@ -15,7 +15,7 @@ namespace webFingerprintGasCaqueta.Model
                     + "    e.Cod_empleado AS MCODIGO, "
                     + "    e.Identificacion AS MIDENTIFICACION, "
                     + "    CONCAT(e.Nombres, ' ', e.Apellido1 , ' ', e.Apellido2) AS MNOMBRE , "
-                    + "    t.Tipo AS MTIPO "
+                    + "    UPPER(t.Tipo) AS MTIPO "
                     + "FROM "
                     + "    control_acceso.empleado e "
                     + "INNER JOIN "

@@ -30,7 +30,7 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion.LectorBiometrico
         private void ConsultarInformacionUsuario(string identificacion) {
             DataTable DUSUARIO = Controllers.consultarInformacionUsuario(identificacion);
             DataRow row =  DUSUARIO.Rows[0];
-            FCAPTURA.Title = row["NOMBRE"].ToString() +" (" + row["TIPO"].ToString() + ")";
+            FCAPTURA.Title = row["NOMBRE"].ToString() +" (" + row["TIPO"].ToString().ToUpper() + ")";
             FCAPTURA.Icon = Ext.Net.Icon.User;
         }
         [DirectMethod]

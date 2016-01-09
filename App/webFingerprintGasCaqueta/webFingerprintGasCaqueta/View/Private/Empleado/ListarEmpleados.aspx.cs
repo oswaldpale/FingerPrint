@@ -14,21 +14,24 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado
         private ControllersCOD Controllers = new ControllersCOD();
         protected void Page_Load(object sender, EventArgs e)
         {
-            //this.CargarEmpleados();
+            this.CargarEmpleados();
         }
         private void CargarEmpleados() {
             SEMPLEADO.DataSource = Controllers.consultarEmpleados();
             SEMPLEADO.DataBind();
         }
         [DirectMethod(Namespace = "parametro")]
+        public bool ConsultarEstadoHuella(string identificacion, string tipoHuella) {
+            return Controllers.consultarEstadoHuella(identificacion, tipoHuella);
+        }
+        [DirectMethod(Namespace = "parametro")]
         public void AbrirVentanaIncripcionHuella(string identificacion,string TipoHuella) {
             Window win = new Window
             {
                 ID = "WCAPTURAHUELLA",
-                Title = "Registro dedo " + TipoHuella,
-                Height = 500,
-                Width = 450,
-                BodyPadding = 5,
+                Title = "REGISTRO DE HUELLA " + TipoHuella,
+                Height = 380,
+                Width = 430,
                 Modal = true,
                 
                 CloseAction = CloseAction.Destroy,

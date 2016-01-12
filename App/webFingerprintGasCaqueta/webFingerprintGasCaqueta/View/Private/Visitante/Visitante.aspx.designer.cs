@@ -94,30 +94,75 @@ namespace webFingerprintGasCaqueta.View.Private.Visitante {
         protected global::Ext.Net.FormPanel FREGISTRO;
         
         /// <summary>
-        /// Control CTIPO.
+        /// Control TIDENTIFICACION.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ComboBox CTIPO;
+        protected global::Ext.Net.TextField TIDENTIFICACION;
         
         /// <summary>
-        /// Control TTERM_IP.
+        /// Control TNOMBRE.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField TTERM_IP;
+        protected global::Ext.Net.TextField TNOMBRE;
         
         /// <summary>
-        /// Control TTERM_PUERTO.
+        /// Control TAPELLIDO1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField TTERM_PUERTO;
+        protected global::Ext.Net.TextField TAPELLIDO1;
+        
+        /// <summary>
+        /// Control TAPELLIDO2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField TAPELLIDO2;
+        
+        /// <summary>
+        /// Control TOBSERVACIÓN.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextArea TOBSERVACIÓN;
+        
+        /// <summary>
+        /// Control IMPERFIL.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Image IMPERFIL;
+        
+        /// <summary>
+        /// Control BFOTO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Button BFOTO;
+        
+        /// <summary>
+        /// Control BCANCELAR.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Button BCANCELAR;
     }
 }

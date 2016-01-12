@@ -80,7 +80,7 @@
                                     <ext:ToolbarFill />
                                     <ext:Button runat="server" Icon="Add" Text="NUEVO VISITANTE">
                                         <Listeners>
-                                            <Click Handler="WREGISTRO.show();" />
+                                            <Click Handler="App.WREGISTRO.show();" />
                                         </Listeners>
                                     </ext:Button>
                                 </Items>
@@ -90,19 +90,29 @@
                 </Items>
             </ext:Viewport>
 
-            <ext:Window ID="WREGISTRO" runat="server" Draggable="false" Resizable="false" Height="230" Width="350" Icon="DriveAdd" Title="Nueva Terminal" Hidden="true" Modal="true">
+            <ext:Window ID="WREGISTRO" runat="server" Draggable="false" Resizable="true" Height="290" Width="527" Icon="UserB" Title="Nueva Visitante" Hidden="true" Modal="true">
                 <Items>
-                    <ext:FormPanel runat="server" ID="FREGISTRO" Frame="true" Padding="10" LabelAlign="Top">
+                    <ext:FormPanel runat="server" ID="FREGISTRO" Padding="15" Layout="ColumnLayout">
+                    <Items>
+                        <ext:Panel runat="server"  Region="East">
                         <Items>
-                            <ext:ComboBox ID="CTIPO" FieldLabel="Tipo" runat="server" Width="300" EmptyText="Tipo de terminal" ForceSelection="true" AllowBlank="false">
-                                <Items>
-                                    <ext:ListItem Text="Biometrico" Value="Biometrico" />
-                                    <ext:ListItem Text="Rfid" Value="Rfid" />
-                                </Items>
-                            </ext:ComboBox>
-                            <ext:TextField ID="TTERM_IP" FieldLabel="Ip" runat="server" Width="300" EmptyText="Dirección del dispositivo" AllowBlank="false"  />
-                            <ext:TextField ID="TTERM_PUERTO" FieldLabel="Puerto" runat="server" Width="300" EmptyText="Puerto de comunicación" AllowBlank="false" />
-
+                            <ext:TextField ID="TIDENTIFICACION" FieldLabel="Identificación" runat="server" Width="300" AllowBlank="false"  />
+                            <ext:TextField ID="TNOMBRE" FieldLabel="Nombre" runat="server" Width="300"  AllowBlank="false" />
+                            <ext:TextField ID="TAPELLIDO1" FieldLabel="Primer Apellido" runat="server" Width="300"  AllowBlank="false" />
+                            <ext:TextField ID="TAPELLIDO2" FieldLabel="Seg Apellido" runat="server" Width="300"  AllowBlank="false" />
+                            <ext:TextArea ID="TOBSERVACIÓN" FieldLabel="Observación" runat="server" Width="300" Height="50"  AllowBlank="true" />
+                        </Items>
+                        </ext:Panel>
+                        <ext:Panel runat="server"  Width="185" MarginSpec="0 0 20 10" >
+                            <Items>
+                                <ext:Panel runat="server"  Layout="CenterLayout" >
+                                    <Items>
+                                        <ext:Image ID="IMPERFIL" runat="server" Width="160px" Height="180px"  />
+                                        <ext:Button ID="BFOTO" runat="server" Width="160px" Text="Cambiar Foto" />
+                                    </Items>
+                                </ext:Panel>
+                            </Items>
+                        </ext:Panel>
                         </Items>
                     </ext:FormPanel>
                 </Items>
@@ -110,6 +120,11 @@
                     <ext:Toolbar runat="server">
                         <Items>
                             <ext:ToolbarFill />
+                               <ext:Button ID="BCANCELAR" runat="server"  Text="Cancelar" >
+                                <Listeners>
+                                    <Click Handler="App.FREGISTRO.reset();App.WREGISTRO.hide();" />
+                                </Listeners>
+                            </ext:Button>
                             <ext:Button runat="server" Icon="Add" Text="Guardar" FormBind="true">
                                 <Listeners>
                                     <Click Handler="if(#{FREGISTRO}.getForm().isValid()) {parametro.crearTerminal(TTERM_PUERTO.getValue(), TTERM_IP.getValue(), CTIPO.getValue());}else{ return false;}  " />

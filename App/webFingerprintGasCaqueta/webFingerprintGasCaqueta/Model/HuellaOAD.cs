@@ -64,7 +64,7 @@ namespace webFingerprintGasCaqueta.Model
         }
         public bool consultarEstadoHuella(string identificacion, string dedo) {
             string sql = "SELECT "
-                        + "    COUNT(*) "
+                        + "    * "
                         + "FROM "
                         + "    huella h "
                         + "WHERE "

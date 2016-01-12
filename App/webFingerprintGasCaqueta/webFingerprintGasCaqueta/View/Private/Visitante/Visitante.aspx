@@ -5,7 +5,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="../../../Content/css/Style.css" rel="stylesheet" />
     <title></title>
+    <script type="text/javascript">
+        var prepareCommand = function (grid, toolbar, rowIndex, record) {
+            var firstButton = toolbar.items.get(0);
+            console.log(record.data.EXISTHUEPRIMARY);
+            if (record.data.EXISTHUEPRIMARY == 'true') {
+                firstButton.setIconCls('shortcut-icon-footprintregister icon-footprintregister');
+            }
+         
+        };
+    </script>
 </head>
 <body>
         <ext:ResourceManager ID="ResourceManager1" runat="server" />
@@ -35,6 +46,8 @@
                                                     <ext:ModelField Name="IDENTIFICACION" />
                                                     <ext:ModelField Name="NOMBRE" />
                                                     <ext:ModelField Name="OBSERVACION" />
+                                                    <ext:ModelField Name="EXISTHUEPRIMARY" />
+                                                    <ext:ModelField Name="EXISTHUESECOND" />
                                                 </Fields>
                                             </ext:Model>
                                         </Model>
@@ -44,7 +57,7 @@
                                 <ColumnModel>
                                     <Columns>
                                         <ext:RowNumbererColumn runat="server" />
-                                        <ext:Column ID="CIDENTIFICACION" runat="server" DataIndex="COBSERVACION" Header="IDENTIFICACION" Width="150">
+                                        <ext:Column ID="CIDENTIFICACION" runat="server" DataIndex="IDENTIFICACION" Header="IDENTIFICACION" Width="150">
                                            
                                         </ext:Column>
                                         <ext:Column ColumnID="CNOMBRE" runat="server" DataIndex="NOMBRE" Header="NOMBRE" Flex="3">
@@ -57,21 +70,21 @@
                                                 <ext:TextField runat="server" />
                                             </Editor>
                                         </ext:Column>
-                                        <ext:CommandColumn runat="server" Width="70" Text="HUELLA">
+                                        <ext:CommandColumn runat="server" Width="70" Text="HUELLA" >
                                             <Commands>
-                                                <ext:GridCommand Icon="User" CommandName="fingerprint1">
+                                                <ext:GridCommand  CommandName="fingerprint1" IconCls="shortcut-icon-footprint icon-footprint">
                                                     <ToolTip Text="Registrar huella primaria" />
                                                 </ext:GridCommand>
-                                                <ext:GridCommand Icon="User" CommandName="fingerprint2">
-                                                    <ToolTip Text="Registrar huella secundaria" />
+                                                <ext:GridCommand CommandName="fingerprint2" IconCls="shortcut-icon-footprint icon-footprint">
+                                                    <ToolTip Text="Registrar huella secundaria"  />
                                                 </ext:GridCommand>
                                             </Commands>
+                                            <PrepareToolbar Fn="prepareCommand" />
                                         </ext:CommandColumn>
+                                        
                                     </Columns>
                                 </ColumnModel>
-                                <SelectionModel>
-                                    <ext:RowSelectionModel runat="server" SingleSelect="true" />
-                                </SelectionModel>
+                               
                             </ext:GridPanel>
                         </Items>
                         <BottomBar>
@@ -96,7 +109,9 @@
                     <Items>
                         <ext:Panel runat="server"  Region="East">
                         <Items>
-                            <ext:TextField ID="TIDENTIFICACION" FieldLabel="Identificación" runat="server" Width="300" AllowBlank="false"  />
+                            <ext:TextField ID="TIDENTIFICACION" FieldLabel="Identificación" runat="server" Width="300" AllowBlank="false" MaskRe="[0-9]" IsRemoteValidation="true">
+                                 <RemoteValidation OnValidation = "consultarSiExisteVisitante" />
+                            </ext:TextField>
                             <ext:TextField ID="TNOMBRE" FieldLabel="Nombre" runat="server" Width="300"  AllowBlank="false" />
                             <ext:TextField ID="TAPELLIDO1" FieldLabel="Primer Apellido" runat="server" Width="300"  AllowBlank="false" />
                             <ext:TextField ID="TAPELLIDO2" FieldLabel="Seg Apellido" runat="server" Width="300"  AllowBlank="false" />
@@ -114,6 +129,9 @@
                             </Items>
                         </ext:Panel>
                         </Items>
+                        <Listeners>
+                            <ValidityChange Handler="#{BGUARDAR}.setDisabled(!valid);" />
+                        </Listeners>
                     </ext:FormPanel>
                 </Items>
                 <BottomBar>
@@ -125,16 +143,17 @@
                                     <Click Handler="App.FREGISTRO.reset();App.WREGISTRO.hide();" />
                                 </Listeners>
                             </ext:Button>
-                            <ext:Button runat="server" Icon="Add" Text="Guardar" FormBind="true">
+                            <ext:Button runat="server" ID="BGUARDAR" Icon="Add" Text="Guardar" FormBind="true">
                                 <Listeners>
-                                    <Click Handler="if(#{FREGISTRO}.getForm().isValid()) {parametro.crearTerminal(TTERM_PUERTO.getValue(), TTERM_IP.getValue(), CTIPO.getValue());}else{ return false;}  " />
+                                    <Click Handler="if(#{FREGISTRO}.getForm().isValid()) {parametro.registrarVisitante();}else{ return false;}  " />
                                 </Listeners>
                             </ext:Button>
+
                         </Items>
                     </ext:Toolbar>
                 </BottomBar>
                 <Listeners>
-                    <BeforeHide Handler="FTERMINAL.reset();" />
+                    <BeforeHide Handler="App.FREGISTRO.reset();" />
                 </Listeners>
             </ext:Window>
         </div>

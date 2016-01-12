@@ -1,0 +1,5 @@
+regasm.exe myDll.dll /tlb /codebase
+
+REGSVR32 LaDll.dll 
+
+regasm myTest.dll /regfile:myTest.reg

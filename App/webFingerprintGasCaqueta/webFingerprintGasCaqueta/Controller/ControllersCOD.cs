@@ -12,6 +12,7 @@ namespace webFingerprintGasCaqueta.Controller
         private HuellaOAD huella = new HuellaOAD();
         private EmpleadoOAD empleado = new EmpleadoOAD();
         private General general = new General();
+        private VisitanteCOD visitante = new VisitanteCOD();
 
 
         #region GESTION DE HUELLA
@@ -41,6 +42,17 @@ namespace webFingerprintGasCaqueta.Controller
         }
         public DataTable consultarInformacionUsuario(string identificacion) {
             return empleado.consultarInformacionUsuario(identificacion);
+        }
+        #endregion
+        #region
+        public bool registrarVisitante(string identificacion, string nombre, string apellido1, string apellido2, string observacion, string foto) {
+            return visitante.registrarVisitante(identificacion,nombre,apellido1,apellido2,observacion,foto);
+        }
+        public DataTable consultarVisitantes() {
+            return visitante.consultarVisitantes();
+        }
+        public bool consultarSiExisteVisitante(string identficacion) {
+            return visitante.consultarSiExisteVisitante(identficacion);
         }
         #endregion
     }

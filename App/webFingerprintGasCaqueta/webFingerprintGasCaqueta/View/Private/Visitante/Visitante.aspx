@@ -8,11 +8,16 @@
     <link href="../../../Content/css/Style.css" rel="stylesheet" />
     <title></title>
     <script type="text/javascript">
+        var Jidentificacion, Jdedo;
         var prepareCommand = function (grid, toolbar, rowIndex, record) {
             var firstButton = toolbar.items.get(0);
-            console.log(record.data.EXISTHUEPRIMARY);
+            var firstButton2 = toolbar.items.get(1);
+          
             if (record.data.EXISTHUEPRIMARY == 'true') {
                 firstButton.setIconCls('shortcut-icon-footprintregister icon-footprintregister');
+            }
+            if (record.data.EXISTHUESECOND == 'true') {
+                firstButton2.setIconCls('shortcut-icon-footprintregister icon-footprintregister');
             }
         };
 
@@ -21,13 +26,17 @@
         }
 
         var ClickCommand = function (grid, command, record, row) {
-            if (command == 'footprint1') {
-                if(record.get("EXISTHUEPRIMARY") =='true') {
+            Jidentificacion = record.get("IDENTIFICACION");
+         
+            if (command == 'fingerprint1') {
+                Jdedo = 'Primario'
+                if (record.get("EXISTHUEPRIMARY") == 'true') {
+                   
                             Ext.Msg.show({
                                 title: 'Notificación',
                                 msg: '¿Desea reemplazar la huella existente?',
                                 buttons: Ext.Msg.YESNO,
-                                fn: alert(''),
+                                fn: ConfirmResult,
                                 animEl: 'elId',
                                 icon: Ext.MessageBox.INFO
                             });
@@ -36,8 +45,9 @@
                        }
             }
            
-            if (command == 'footprint2') {
-                parametro.AbrirVentanaIncripcionHuella(record.get("IDENTIFICACION"), 'Secundario', {
+            if (command == 'fingerprint2') {
+                Jdedo = 'Secundario'
+                parametro.AbrirVentanaIncripcionHuella(record.get("IDENTIFICACION"), Jdedo, {
                     success: function (result) {
                         ///aca puedo hacer algo... 
                     }, failure: function (errorMsg) {
@@ -47,7 +57,37 @@
                     }
                 });
             }
-        }; 
+        };
+        function ConfirmResult(btn){
+            if (btn == 'yes') {
+                parametro.EliminarHuella(Jidentificacion, Jdedo, {
+                    success: function (result) {
+                        parametro.AbrirVentanaIncripcionHuella(Jidentificacion, Jdedo);
+                    }, failure: function (errorMsg) {
+                        Ext.net.Notification.show({
+                            html: 'Ha ocurrido un error.!', title: 'Notificación'
+                        });
+                    }
+                });
+            }
+        }
+
+        var findUser = function (Store, texto, e) {
+            if (e.getKey() == 13) {
+                var store = Store,
+                    text = texto;
+                store.clearFilter();
+                if (Ext.isEmpty(text, false)) {
+                    return;
+                }
+                var re = new RegExp(".*" + text + ".*", "i");
+                store.filterBy(function (node) {
+                    var RESUMEN = node.data.IDENTIFICACION + node.data.NOMBRE;
+                    var a = re.test(RESUMEN);
+                    return a;
+                });
+            }
+        };
 
     </script>
 </head>
@@ -65,7 +105,7 @@
                                         <Items>
                                             <ext:TextField ID="TFVISITANTE" runat="server" EmptyText="Identificación o  nombre para buscar" Width="400" EnableKeyEvents="true" Icon="Magnifier">
                                                 <Listeners>
-                                                    <KeyPress Handler="findUser(GPVISITANTE.store, TFVISITANTE.getValue(), Ext.EventObject);" />
+                                                    <KeyPress Handler="findUser(App.GPVISITANTE.store, App.TFVISITANTE.getValue(), Ext.EventObject);"/>
                                                 </Listeners>
                                             </ext:TextField>
                                         </Items>
@@ -118,6 +158,7 @@
                                                       <Command Fn="ClickCommand" />     
                                               </Listeners>
                                         </ext:CommandColumn>
+
                                         
                                     </Columns>
                                 </ColumnModel>

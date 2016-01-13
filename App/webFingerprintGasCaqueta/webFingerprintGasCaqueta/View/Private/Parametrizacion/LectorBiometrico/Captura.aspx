@@ -16,10 +16,14 @@
 
 	    function DeviceConnected() {
 	        if (_ActiveXError != null) {
-	            /// Desactivo el formulario..
-	            /// envio link para configurar el navegador.
-	            /// Detecto el navegador que usa para asi mismo dirigir la url plugin.
-               
+	            App.FCAPTURA.setDisabled(true);
+	            Ext.Msg.show({
+	                title: 'Advertencia!',
+	                msg: 'El Navegador no esta configurado con la aplicación del Dispositivo!',
+	                buttons: Ext.Msg.YES,
+	                animEl: 'elId',
+	                icon: Ext.MessageBox.ERROR
+	            });
 	        }else {
                   Concurrent.Thread.create(proceso);
             }
@@ -113,7 +117,7 @@
                         </ext:Panel>
                         <ext:Panel runat="server" Border="false" Height="70" Layout="FormLayout" Width="400"  >
                             <Items>
-                                <ext:TextArea runat="server"  ID="TBIOMETRICOESTADO" Border="false" Height="10"  EmptyText="Estado del Lector.." />
+                                <ext:TextArea runat="server"  ID="TBIOMETRICOESTADO" Border="false" Height="10"  EmptyText="Estado del Lector.." ReadOnly="true" />
                             </Items>
                         </ext:Panel>
                     </Items>

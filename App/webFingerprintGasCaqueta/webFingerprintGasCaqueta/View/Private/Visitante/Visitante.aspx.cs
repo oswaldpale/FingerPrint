@@ -43,6 +43,12 @@ namespace webFingerprintGasCaqueta.View.Private.Visitante
             SVISITANTE.DataSource =  Controllers.consultarVisitantes();
             SVISITANTE.DataBind();
         }
+        [DirectMethod(Namespace = "parametro")]
+        public bool EliminarHuella(string identificacion,string dedo)
+        {
+             return Controllers.eliminarHuella(identificacion,dedo);
+            
+        }
         [DirectMethod]
         public bool consultarSiExisteVisitante() {
             string SIdentificacion = TIDENTIFICACION.Text.Trim();
@@ -61,7 +67,7 @@ namespace webFingerprintGasCaqueta.View.Private.Visitante
             Window win = new Window
             {
                 ID = "WCAPTURAHUELLA",
-                Title = "REGISTRO DE HUELLA " + TipoHuella,
+                Title = "REGISTRO DE HUELLA: " + TipoHuella.ToUpper(),
                 Height = 380,
                 Width = 430,
                 Modal = true,

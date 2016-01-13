@@ -16,7 +16,8 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado
         {
             this.CargarEmpleados();
         }
-        private void CargarEmpleados() {
+        [DirectMethod(Namespace = "parametro")]
+        public void CargarEmpleados() {
             SEMPLEADO.DataSource = Controllers.consultarEmpleados();
             SEMPLEADO.DataBind();
         }
@@ -26,10 +27,11 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado
         }
         [DirectMethod(Namespace = "parametro")]
         public void AbrirVentanaIncripcionHuella(string identificacion,string TipoHuella) {
+
             Window win = new Window
             {
                 ID = "WCAPTURAHUELLA",
-                Title = "REGISTRO DE HUELLA " + TipoHuella,
+                Title = "REGISTRO DE HUELLA: " + TipoHuella.ToUpper(),
                 Height = 380,
                 Width = 430,
                 Modal = true,
@@ -45,9 +47,10 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado
                 }
                 }
             };
-
+            win.Listeners.Hide.Handler = "parametro.CargarEmpleados();";
             win.Render(this.Form);
-
+            
+          
         }
     }
 }

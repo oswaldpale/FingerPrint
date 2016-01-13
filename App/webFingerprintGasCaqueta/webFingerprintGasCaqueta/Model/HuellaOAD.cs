@@ -52,16 +52,7 @@ namespace webFingerprintGasCaqueta.Model
 
             return connection.sendSetDataMariaDB(sql);
         }
-        public bool eliminarHuella(string idhuella)
-        {
-            string sql = "DELETE "
-                         + "FROM "
-                         + "    BOOTPARK.AUTORIZACION "
-                         + "WHERE "
-                         + "    USUA_ID ='" + idhuella + "' ";
-                        
-            return connection.sendSetDataMariaDB(sql);
-        }
+        
         public bool consultarEstadoHuella(string identificacion, string dedo) {
             string sql = "SELECT "
                         + "    * "
@@ -71,6 +62,17 @@ namespace webFingerprintGasCaqueta.Model
                         + "    h.huell_identificacion = '" + identificacion + "' "
                         + "AND h.huell_dedo = '" + dedo + "'";
             return  connection.getDataMariaDB(sql).Tables[0].Rows.Count!=0 ? true : false;
+        }
+
+        public bool eliminarHuella(string identificacion, string dedo)
+        {
+            string sql = "DELETE "
+                            + "FROM "
+                            + "    huella "
+                            + "WHERE "
+                            + "    huell_identificacion = '" + identificacion + "' "
+                            + "AND huell_dedo='" + dedo + "'";
+            return connection.sendSetDataMariaDB(sql);
         }
     }
 }

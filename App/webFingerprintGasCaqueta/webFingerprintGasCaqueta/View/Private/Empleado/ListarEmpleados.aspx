@@ -8,23 +8,34 @@
     <link href="../../../Content/css/Style.css" rel="stylesheet" />
     <title>LISTA DE EMPLEADOS</title>
     <script type="text/javascript">
-
+        var Jidentificacion, Jdedo;
         function AbrirVentanaIncripcionHuella(record) {
             parametro.AbrirVentanaIncripcionHuella(record.get("MCODIGO"), 'Primaria');
         }
 
-        var prepareCommand = function (grid, command, record, row) {
+        var prepareCommand = function (grid, toolbar, rowIndex, record) {
+           
+            var firstButton = toolbar.items.get(2);
+            var firstButton2 = toolbar.items.get(3);
+            if (record.data.EXISTHUEPRIMARY == 'true') {
+                firstButton.setIconCls('shortcut-icon-footprintregister icon-footprintregister');
+            }
+            if (record.data.EXISTHUESECOND == 'true') {
+                firstButton2.setIconCls('shortcut-icon-footprintregister icon-footprintregister');
+            }
+        };
+
+        var ClickCommand = function (grid, command, record, row) {
             if (command == 'footprint1') {
-                parametro.ConsultarEstadoHuella(record.get("MCODIGO"), 'Primaria', {
+                parametro.ConsultarEstadoHuella(record.get("MCODIGO"), 'Primario', {
                     success: function (result) {
                         console.log(result);
                         if (result == 'true') {
-                            alert(record.get("MCODIGO"));
                             Ext.Msg.show({
                                 title: 'Notificación',
                                 msg: '¿Desea reemplazar la huella existente?',
                                 buttons: Ext.Msg.YESNO,
-                                fn: alert(''),
+                                fn: ConfirmResult,
                                 animEl: 'elId',
                                 icon: Ext.MessageBox.INFO
                             });
@@ -48,22 +59,37 @@
             }
         };
 
-        var findUser = function (Store, texto, e) {
-            if (e.getKey() == 13) {
-                var store = Store,
-                    text = texto;
-                store.clearFilter();
-                if (Ext.isEmpty(text, false)) {
-                    return;
-                }
-                var re = new RegExp(".*" + text + ".*", "i");
-                store.filterBy(function (node) {
-                    var RESUMEN = node.data.MIDENTIFICACION + node.data.MNOMBRE + node.data.MTIPO;
-                    var a = re.test(RESUMEN);
-                    return a;
+        function ConfirmResult(btn) {
+            if (btn == 'yes') {
+                parametro.EliminarHuella(Jidentificacion, Jdedo, {
+                    success: function (result) {
+                        parametro.AbrirVentanaIncripcionHuella(Jidentificacion, Jdedo);
+                    }, failure: function (errorMsg) {
+                        Ext.net.Notification.show({
+                            html: 'Ha ocurrido un error.!', title: 'Notificación'
+                        });
+                    }
                 });
             }
-        };
+
+            var findUser = function (Store, texto, e) {
+                if (e.getKey() == 13) {
+                    var store = Store,
+                        text = texto;
+                    store.clearFilter();
+                    if (Ext.isEmpty(text, false)) {
+                        return;
+                    }
+                    var re = new RegExp(".*" + text + ".*", "i");
+                    store.filterBy(function (node) {
+                        var RESUMEN = node.data.MIDENTIFICACION + node.data.MNOMBRE + node.data.MTIPO;
+                        var a = re.test(RESUMEN);
+                        return a;
+                    });
+                }
+            };
+
+        }
     </script>
 </head>
 <body>
@@ -101,8 +127,8 @@
                                                         <ext:ModelField Name="MIDENTIFICACION" />
                                                         <ext:ModelField Name="MNOMBRE" />
                                                         <ext:ModelField Name="MTIPO"  />
-                                                        <ext:ModelField Name="MDPRIMARIO" />
-                                                        <ext:ModelField Name="MDSECUNDARIO" />
+                                                        <ext:ModelField Name="EXISTHUEPRIMARY" />
+                                                        <ext:ModelField Name="EXISTHUESECOND" />
                                                     </Fields>
                                                 </ext:Model>
                                             </Model>
@@ -114,10 +140,10 @@
                                             <ext:Column runat="server" ID="MIDENTIFICACION" Text="IDENTIFICACIÓN" DataIndex="MIDENTIFICACION" Width="130" />
                                             <ext:Column runat="server" ID="MNOMBRE" Text="NOMBRE" DataIndex="MNOMBRE" Flex="3" />
                                             <ext:Column runat="server" ID="MTIPO" Text="TIPO" DataIndex="MTIPO" Flex="2"  />
-                                            <ext:CommandColumn runat="server" Width="110" Text="FOTO/HUELLA">
+                                            <ext:CommandColumn runat="server" ID="CTOOLBOX" Width="110" Text="FOTO/HUELLA">
                                                 <Commands>
                                                     <ext:CommandSpacer Width="10" />
-                                                    <ext:GridCommand Icon="Webcam" CommandName="webcam">
+                                                    <ext:GridCommand Icon="Webcam"  CommandName="webcam">
                                                         <ToolTip Text="Capturar Foto del Empleado" />
                                                     </ext:GridCommand>
                                                     <ext:CommandSpacer Width="15" />
@@ -129,16 +155,16 @@
                                                         <ToolTip Text="Inscripción de huella dactilar secundaria" />
                                                     </ext:GridCommand>
                                                 </Commands>
+                                                <PrepareToolbar Fn="prepareCommand" />
                                                 <Listeners>
-                                                      <Command Fn="prepareCommand" />     
+                                                      <Command Fn="ClickCommand" />     
                                                 </Listeners>
                                             </ext:CommandColumn>
                                         </Columns>
                                     </ColumnModel>
                                     <BottomBar>
-                                        <ext:PagingToolbar runat="server"  />
+                                        <ext:PagingToolbar runat="server" />
                                     </BottomBar>
-                                   
                                 </ext:GridPanel>
                     </Items>
                 </ext:FormPanel>

@@ -7,7 +7,7 @@ using webFingerprintGasCaqueta.Model.Boot_Park.Conections;
 
 namespace webFingerprintGasCaqueta.Model
 {
-    public class VisitanteCOD
+    public class VisitanteOAD
     {
         private Conexion connection = new Conexion();
         public bool registrarVisitante(string identificacion, string nombre, string apellido1, string apellido2, string observacion, string foto)
@@ -66,6 +66,9 @@ namespace webFingerprintGasCaqueta.Model
             return connection.getDataMariaDB(sql).Tables[0];
 
         }
+
+     
+
         public bool consultarSiExisteVisitante(string identificacion) {
             string sql = "SELECT "
                             + "   * "

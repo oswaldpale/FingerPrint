@@ -14,8 +14,41 @@
             if (record.data.EXISTHUEPRIMARY == 'true') {
                 firstButton.setIconCls('shortcut-icon-footprintregister icon-footprintregister');
             }
-         
         };
+
+        function AbrirVentanaIncripcionHuella(record) {
+            parametro.AbrirVentanaIncripcionHuella(record.get("IDENTIFICACION"), 'Primaria');
+        }
+
+        var ClickCommand = function (grid, command, record, row) {
+            if (command == 'footprint1') {
+                if(record.get("EXISTHUEPRIMARY") =='true') {
+                            Ext.Msg.show({
+                                title: 'Notificación',
+                                msg: '¿Desea reemplazar la huella existente?',
+                                buttons: Ext.Msg.YESNO,
+                                fn: alert(''),
+                                animEl: 'elId',
+                                icon: Ext.MessageBox.INFO
+                            });
+                } else {
+                            AbrirVentanaIncripcionHuella(record)
+                       }
+            }
+           
+            if (command == 'footprint2') {
+                parametro.AbrirVentanaIncripcionHuella(record.get("IDENTIFICACION"), 'Secundario', {
+                    success: function (result) {
+                        ///aca puedo hacer algo... 
+                    }, failure: function (errorMsg) {
+                        Ext.net.Notification.show({
+                            html: 'Ha ocurrido un error al abrir la pagina.!', title: 'Notificación'
+                        });
+                    }
+                });
+            }
+        }; 
+
     </script>
 </head>
 <body>
@@ -78,8 +111,12 @@
                                                 <ext:GridCommand CommandName="fingerprint2" IconCls="shortcut-icon-footprint icon-footprint">
                                                     <ToolTip Text="Registrar huella secundaria"  />
                                                 </ext:GridCommand>
+                                               
                                             </Commands>
                                             <PrepareToolbar Fn="prepareCommand" />
+                                              <Listeners>
+                                                      <Command Fn="ClickCommand" />     
+                                              </Listeners>
                                         </ext:CommandColumn>
                                         
                                     </Columns>

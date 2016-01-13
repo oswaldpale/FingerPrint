@@ -55,10 +55,37 @@ namespace webFingerprintGasCaqueta.View.Private.Visitante
                 return false ;
             }
         }
+        [DirectMethod(Namespace = "parametro")]
+        public void AbrirVentanaIncripcionHuella(string identificacion, string TipoHuella)
+        {
+            Window win = new Window
+            {
+                ID = "WCAPTURAHUELLA",
+                Title = "REGISTRO DE HUELLA " + TipoHuella,
+                Height = 380,
+                Width = 430,
+                Modal = true,
+
+                CloseAction = CloseAction.Destroy,
+                Loader = new ComponentLoader
+                {
+                    Url = "../Parametrizacion/LectorBiometrico/Captura.aspx?identificacion=" + identificacion + "&tipo=" + TipoHuella,
+                    Mode = LoadMode.Frame,
+                    LoadMask =
+                    {
+                        ShowMask = true
+                    }
+                }
+            };
+
+            win.Render(this.Form);
+
+        }
+
         protected void consultarSiExisteVisitante(object sender, RemoteValidationEventArgs e)
         {
             string SIdentificacion = TIDENTIFICACION.Text.Trim();
-            if (Controllers.consultarSiExisteVisitante(SIdentificacion))
+            if (Controllers.consultarSiExisteVisitante(SIdentificacion) == true)
             {
                 e.Success = true;
             }

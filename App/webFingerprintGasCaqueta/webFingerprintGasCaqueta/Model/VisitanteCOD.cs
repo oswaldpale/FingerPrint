@@ -85,7 +85,7 @@ namespace webFingerprintGasCaqueta.Model
                             + "    )) AS u "
                             + "WHERE "
                             + "    u.IDENTIFICACION ='" + identificacion + "'";
-            return connection.getDataMariaDB(sql).Tables[0].Rows.Count != 0 ? true : false;
+            return connection.getDataMariaDB(sql).Tables[0].Rows.Count != 0 ? false : true;
         }
     }
 }

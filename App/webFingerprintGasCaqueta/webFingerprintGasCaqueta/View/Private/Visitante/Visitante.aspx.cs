@@ -46,7 +46,7 @@ namespace webFingerprintGasCaqueta.View.Private.Visitante
         [DirectMethod(Namespace = "parametro")]
         public bool EliminarHuella(string identificacion,string dedo)
         {
-             return Controllers.eliminarHuella(identificacion,dedo);
+             return Controllers.eliminarHuellaVisitante(identificacion,dedo);
             
         }
         [DirectMethod]

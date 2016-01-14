@@ -20,16 +20,31 @@ namespace webFingerprintGasCaqueta.Controller
         {
             return huella.consultarHuellaPorUsuario(filtroUsuario);
         }
-        
-        public bool eliminarHuella(string identificacion,string dedo)
+        /// <summary>
+        /// Eliminar la huella de un visitante
+        /// </summary>
+        /// <param name="identificacion"></param>
+        /// <param name="dedo"></param>
+        /// <returns></returns>
+        public bool eliminarHuellaVisitante(string identificacion,string dedo)
         {
-            return huella.eliminarHuella(identificacion,dedo);
+            return huella.eliminarHuellaVisitante(identificacion,dedo);
         }
         public bool consultarEstadoHuella(string identificacion, string dedo) {
             return huella.consultarEstadoHuella(identificacion, dedo);
         }
         public bool registrarHuella(string Dactilar, string empleado,string dedo) {
             return huella.registrarHuella(general.nextPrimaryKey("huella", "huell_id"), Dactilar, empleado,dedo);
+        }
+        /// <summary>
+        /// Elimina la huella de un empleado
+        /// </summary>
+        /// <param name="identificacion"></param>
+        /// <param name="dedo"></param>
+        /// <returns></returns>
+        public bool eliminarHuellaEmpleado(string identificacion, string dedo)
+        {
+            return huella.eliminarHuellaEmpleado(identificacion, dedo);
         }
         #endregion
         #region GESTIONAR CIRCULACIÓN
@@ -54,6 +69,8 @@ namespace webFingerprintGasCaqueta.Controller
         public bool consultarSiExisteVisitante(string identficacion) {
             return visitante.consultarSiExisteVisitante(identficacion);
         }
+
+       
         #endregion
     }
 }

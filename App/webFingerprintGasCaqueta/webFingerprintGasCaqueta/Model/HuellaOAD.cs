@@ -52,7 +52,7 @@ namespace webFingerprintGasCaqueta.Model
 
             return connection.sendSetDataMariaDB(sql);
         }
-        
+
         public bool consultarEstadoHuella(string identificacion, string dedo) {
             string sql = "SELECT "
                         + "    * "
@@ -64,7 +64,7 @@ namespace webFingerprintGasCaqueta.Model
             return  connection.getDataMariaDB(sql).Tables[0].Rows.Count!=0 ? true : false;
         }
 
-        public bool eliminarHuella(string identificacion, string dedo)
+        public bool eliminarHuellaVisitante(string identificacion, string dedo)
         {
             string sql = "DELETE "
                             + "FROM "
@@ -74,5 +74,20 @@ namespace webFingerprintGasCaqueta.Model
                             + "AND huell_dedo='" + dedo + "'";
             return connection.sendSetDataMariaDB(sql);
         }
+        public bool eliminarHuellaEmpleado(string identificacion, string dedo)
+        {
+            string sql =  @"DELETE
+                                h.*
+                            FROM
+                                huella h
+                            INNER JOIN empleado e
+                            ON
+                                h.huell_identificacion = e.Cod_empleado
+                            WHERE
+                                e.Identificacion = '"+ identificacion +@"'
+                            AND h.huell_dedo = '" + dedo + @"'";
+            return connection.sendSetDataMariaDB(sql);
+        }
+
     }
 }

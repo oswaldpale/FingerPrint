@@ -49,8 +49,15 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado
             };
             win.Listeners.Hide.Handler = "parametro.CargarEmpleados();";
             win.Render(this.Form);
-            
           
         }
+        [DirectMethod(Namespace = "parametro")]
+        public bool EliminarHuellaEmpleado(string identificacion, string dedo)
+        {
+            this.CargarEmpleados();
+            return Controllers.eliminarHuellaEmpleado(identificacion, dedo);
+
+        }
+
     }
 }

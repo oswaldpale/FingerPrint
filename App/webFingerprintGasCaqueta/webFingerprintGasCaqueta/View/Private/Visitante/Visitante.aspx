@@ -47,15 +47,19 @@
            
             if (command == 'fingerprint2') {
                 Jdedo = 'Secundario'
-                parametro.AbrirVentanaIncripcionHuella(record.get("IDENTIFICACION"), Jdedo, {
-                    success: function (result) {
-                        ///aca puedo hacer algo... 
-                    }, failure: function (errorMsg) {
-                        Ext.net.Notification.show({
-                            html: 'Ha ocurrido un error al abrir la pagina.!', title: 'Notificación'
-                        });
-                    }
-                });
+                if (record.get("EXISTHUESECOND") == 'true') {
+
+                    Ext.Msg.show({
+                        title: 'Notificación',
+                        msg: '¿Desea reemplazar la huella existente?',
+                        buttons: Ext.Msg.YESNO,
+                        fn: ConfirmResult,
+                        animEl: 'elId',
+                        icon: Ext.MessageBox.INFO
+                    });
+                } else {
+                    AbrirVentanaIncripcionHuella(record)
+                }
             }
         };
         function ConfirmResult(btn){

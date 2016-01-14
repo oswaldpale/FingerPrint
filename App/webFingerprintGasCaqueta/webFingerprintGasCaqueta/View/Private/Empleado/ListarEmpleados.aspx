@@ -10,15 +10,16 @@
     <script type="text/javascript">
         var Jidentificacion, Jdedo;
         function AbrirVentanaIncripcionHuella(record) {
-            parametro.AbrirVentanaIncripcionHuella(record.get("MCODIGO"), 'Primaria');
+            parametro.AbrirVentanaIncripcionHuella(record.get("MCODIGO"), 'Primario');
         }
 
         var prepareCommand = function (grid, toolbar, rowIndex, record) {
            
-            var firstButton = toolbar.items.get(2);
-            var firstButton2 = toolbar.items.get(3);
+            var firstButton = toolbar.items.get(1); //button 1
+            var firstButton2 = toolbar.items.get(3); //button 2
             if (record.data.EXISTHUEPRIMARY == 'true') {
                 firstButton.setIconCls('shortcut-icon-footprintregister icon-footprintregister');
+               
             }
             if (record.data.EXISTHUESECOND == 'true') {
                 firstButton2.setIconCls('shortcut-icon-footprintregister icon-footprintregister');
@@ -26,42 +27,45 @@
         };
 
         var ClickCommand = function (grid, command, record, row) {
+            Jidentificacion = record.get("MIDENTIFICACION");
             if (command == 'footprint1') {
-                parametro.ConsultarEstadoHuella(record.get("MCODIGO"), 'Primario', {
-                    success: function (result) {
-                        console.log(result);
-                        if (result == 'true') {
-                            Ext.Msg.show({
-                                title: 'Notificación',
-                                msg: '¿Desea reemplazar la huella existente?',
-                                buttons: Ext.Msg.YESNO,
-                                fn: ConfirmResult,
-                                animEl: 'elId',
-                                icon: Ext.MessageBox.INFO
-                            });
-                        } else {
-                            AbrirVentanaIncripcionHuella(record)
-                        }
-                    }
-                });
-               
+                Jdedo = 'Primario'
+
+                if (record.get("EXISTHUEPRIMARY") == 'true') {
+
+                    Ext.Msg.show({
+                        title: 'Notificación',
+                        msg: '¿Desea reemplazar la huella existente?',
+                        buttons: Ext.Msg.YESNO,
+                        fn: ConfirmResult,
+                        animEl: 'elId',
+                        icon: Ext.MessageBox.INFO
+                    });
+                } else {
+                    AbrirVentanaIncripcionHuella(record)
+                }
             }
             if (command == 'footprint2') {
-                parametro.AbrirVentanaIncripcionHuella(record.get("MCODIGO"), 'Secundario', {
-                    success: function (result) {
-                        ///aca puedo hacer algo... 
-                    }, failure: function (errorMsg) {
-                        Ext.net.Notification.show({
-                            html: 'Ha ocurrido un error al abrir la pagina.!', title: 'Notificación'
-                        });
-                    }
-                });
+                if (record.get("EXISTHUESECOND") == 'true') {
+                    Jdedo = 'Secundario'
+                    Ext.Msg.show({
+                        title: 'Notificación',
+                        msg: '¿Desea reemplazar la huella existente?',
+                        buttons: Ext.Msg.YESNO,
+                        fn: ConfirmResult,
+                        animEl: 'elId',
+                        icon: Ext.MessageBox.INFO
+                    });
+                } else {
+                    AbrirVentanaIncripcionHuella(record)
+                }
             }
         };
 
         function ConfirmResult(btn) {
             if (btn == 'yes') {
-                parametro.EliminarHuella(Jidentificacion, Jdedo, {
+                alert(Jidentificacion +'  '+ Jdedo);
+                parametro.EliminarHuellaEmpleado(Jidentificacion, Jdedo, {
                     success: function (result) {
                         parametro.AbrirVentanaIncripcionHuella(Jidentificacion, Jdedo);
                     }, failure: function (errorMsg) {
@@ -71,25 +75,23 @@
                     }
                 });
             }
-
-            var findUser = function (Store, texto, e) {
-                if (e.getKey() == 13) {
-                    var store = Store,
-                        text = texto;
-                    store.clearFilter();
-                    if (Ext.isEmpty(text, false)) {
-                        return;
-                    }
-                    var re = new RegExp(".*" + text + ".*", "i");
-                    store.filterBy(function (node) {
-                        var RESUMEN = node.data.MIDENTIFICACION + node.data.MNOMBRE + node.data.MTIPO;
-                        var a = re.test(RESUMEN);
-                        return a;
-                    });
-                }
-            };
-
         }
+        var findUser = function (Store, texto, e) {
+            if (e.getKey() == 13) {
+                var store = Store,
+                    text = texto;
+                store.clearFilter();
+                if (Ext.isEmpty(text, false)) {
+                    return;
+                }
+                var re = new RegExp(".*" + text + ".*", "i");
+                store.filterBy(function (node) {
+                    var RESUMEN = node.data.MIDENTIFICACION + node.data.MNOMBRE + node.data.MTIPO;
+                    var a = re.test(RESUMEN);
+                    return a;
+                });
+            }
+        };
     </script>
 </head>
 <body>
@@ -142,10 +144,7 @@
                                             <ext:Column runat="server" ID="MTIPO" Text="TIPO" DataIndex="MTIPO" Flex="2"  />
                                             <ext:CommandColumn runat="server" ID="CTOOLBOX" Width="110" Text="FOTO/HUELLA">
                                                 <Commands>
-                                                    <ext:CommandSpacer Width="10" />
-                                                    <ext:GridCommand Icon="Webcam"  CommandName="webcam">
-                                                        <ToolTip Text="Capturar Foto del Empleado" />
-                                                    </ext:GridCommand>
+                                                    
                                                     <ext:CommandSpacer Width="15" />
                                                     <ext:GridCommand IconCls="shortcut-icon-footprint icon-footprint" CommandName="footprint1">
                                                         <ToolTip Text="Inscripción huella dactilar principal." />

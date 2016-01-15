@@ -16,11 +16,10 @@
         catch (e) {
             alert('Incompatibilidad con ActiveX');
         }
-	     function FhuellaUsuario () {
-	         parametro.consultarHuellas('1000064015', {
+	     function FhuellaUsuario() {
+	         parametro.consultarHuellas(App.TFILTRO.getValue(), {
 	             success: function (result) {
 	                 obj.JsonToString(result);
-	                 alert(result);
 	             }, failure: function (errorMsg) {
 	                 Ext.net.Notification.show({
 	                     html: 'Ha ocurrido un error!', title: 'Notificación'
@@ -83,15 +82,20 @@
                         <ext:Panel runat="server" Layout="ColumnLayout" MarginSpec="2">
                             <Items>
                                 <ext:Label runat="server" Text="Identificación:"   />
-                                <ext:TextField runat="server"  EnableKeyEvents="true" >
-                                    <Listeners>
+                                <ext:TextField runat="server" ID="TFILTRO" >
+                                   <%-- <Listeners>
                                         <KeyPress Handler="if(e.getKey() == Ext.EventObject.ENTER){
                                                             FhuellaUsuario();
                                                            }"   
                                                   Buffer="200"  />
                                                                                 
-                                    </Listeners>
+                                    </Listeners>--%>
                                 </ext:TextField>
+                                <ext:Button ID="Bbuscar" Text="Buscar" runat="server" >
+                                    <Listeners>
+                                        <Click Handler ="FhuellaUsuario();" />
+                                    </Listeners>
+                                </ext:Button>
                             </Items>
                         </ext:Panel>
                         <ext:Panel runat="server">

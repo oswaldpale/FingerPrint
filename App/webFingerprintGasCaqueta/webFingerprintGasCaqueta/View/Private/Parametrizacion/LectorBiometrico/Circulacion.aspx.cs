@@ -32,12 +32,15 @@ namespace webFingerprintGasCaqueta.View.Public
             List<FingerPrint> _UsuarioHuella = new List<FingerPrint>();
             DataTable DhuellaUsuario = Controllers.consultarHuellaPorUsuario(identificacion);
             foreach (DataRow row  in DhuellaUsuario.Rows)
-            {
+            { 
                 FingerPrint _huella = new FingerPrint();
-                _huella.finger = row["huell_huella"].ToString();
-                _huella.iduser = row["emple_codempleado"].ToString();
+                byte[] Bhuella = (byte[]) row["huell_huella"];
+                _huella.finger = row["huell_huella"].ToString(); ;
+                _huella.iduser = row["huell_identificacion"].ToString();
+                TUSUARIO.Text = _huella.iduser;
                 _UsuarioHuella.Add(_huella);
             }
+            
             return JsonConvert.SerializeObject(_UsuarioHuella);
         }
     }

@@ -118,7 +118,7 @@ namespace PluginDigitalPersona
                             MemoryStream memoryFootprint = new MemoryStream();
                             template.Serialize(memoryFootprint);
                             byte[] footprintByte = memoryFootprint.ToArray();
-                            this.footprint = StringToByte(footprintByte);
+                            //this.footprint = StringToByte(footprintByte);
                             this.Stop();
                             break;
 
@@ -146,7 +146,7 @@ namespace PluginDigitalPersona
             foreach (var fingerOne in _filterFinger)
             {
                 byteFinger = ByteToString(fingerOne.finger);
-                if (VerifyFinger(byteFinger, features))
+                if (VerifyFinger(byteFinger, features) == true)
                 {
                     return true;
                 }
@@ -217,8 +217,9 @@ namespace PluginDigitalPersona
         /// <returns></returns>
         public byte[] ByteToString(string finger)
         {
-            byte[] bytes = new byte[finger.Length * sizeof(char)];
-            System.Buffer.BlockCopy(finger.ToCharArray(), 0, bytes, 0, bytes.Length);
+            //byte[] bytes = new byte[finger.Length * sizeof(char)];
+            //System.Buffer.BlockCopy(finger.ToCharArray(), 0, bytes, 0, bytes.Length);
+            byte[] bytes = Convert.FromBase64String(finger);
             return bytes;
         }
         /// <summary>

@@ -13,6 +13,7 @@ namespace webFingerprintGasCaqueta.Controller
         private EmpleadoOAD empleado = new EmpleadoOAD();
         private General general = new General();
         private VisitanteOAD visitante = new VisitanteOAD();
+        private FestivosOAD festivo = new FestivosOAD();
 
 
         #region GESTION DE HUELLA
@@ -69,8 +70,20 @@ namespace webFingerprintGasCaqueta.Controller
         public bool consultarSiExisteVisitante(string identficacion) {
             return visitante.consultarSiExisteVisitante(identficacion);
         }
-
-       
+        #endregion
+        #region GESTIONAR FESTIVOS
+        public DataTable consultarFestivos() {
+            return festivo.consultarFestivos();
+        }
+        public bool registrarFestivo(string fecha,string nombreFestivo) {
+            return festivo.registrarFestivo(general.nextPrimaryKey("diasfestivos", "dife_Id"), fecha, nombreFestivo);
+        }
+        public bool eliminarFestivo(string identificacion) {
+            return festivo.eliminarFestivo(identificacion);
+        }
+        public bool consultarFechaExistente(string fecha) {
+            return festivo.consultarFechaExistente(fecha);
+        }
         #endregion
     }
 }

@@ -23,7 +23,7 @@ namespace webFingerprintGasCaqueta.Model
                         + "    huella h "
                         + "INNER JOIN empleado e "
                         + "ON "
-                        + "    h.emple_codempleado = e.Cod_empleado "
+                        + "    h.huell_identificacion = e.Cod_empleado "
                         + "WHERE "
                         + "    e.Identificacion='"+ filtroUsuario + "'";
                   
@@ -33,6 +33,7 @@ namespace webFingerprintGasCaqueta.Model
 
         public bool registrarHuella(string primaryKey,string huella, string empleado,string dedo)
         {
+         
             string sql = "INSERT "
                         + "INTO "
                         + "    control_acceso.huella "

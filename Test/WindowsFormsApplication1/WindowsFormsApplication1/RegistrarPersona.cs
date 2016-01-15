@@ -20,7 +20,7 @@ namespace WindowsFormsApplication1
         public RegistrarPersona()
         {
             InitializeComponent();
-            ListadoTipopersona();
+            //ListadoTipopersona();
         }
         Persona PersonaActual { get; set; }
         void ListadoTipopersona() {

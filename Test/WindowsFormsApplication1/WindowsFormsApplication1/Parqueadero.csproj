@@ -42,26 +42,6 @@
     <Reference Include="AForge.Video.DirectShow">
       <HintPath>obj\Debug\AForge.Video.DirectShow.dll</HintPath>
     </Reference>
-    <Reference Include="DPFPDevNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=696774c42ee28c57, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Visual Studio 2010\Projects\Capturadordehuellas\dll del lector\DPFPDevNET.dll</HintPath>
-    </Reference>
-    <Reference Include="DPFPEngNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=7fe76e7adf19964b, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Visual Studio 2010\Projects\Capturadordehuellas\dll del lector\DPFPEngNET.dll</HintPath>
-    </Reference>
-    <Reference Include="DPFPGuiNet, Version=1.6.1.0, Culture=neutral, PublicKeyToken=d4f4a0bd9c559145, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Visual Studio 2010\Projects\Capturadordehuellas\dll del lector\DPFPGuiNet.dll</HintPath>
-    </Reference>
-    <Reference Include="DPFPShrNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=d902fe275a8d6cf2, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Visual Studio 2010\Projects\Capturadordehuellas\dll del lector\DPFPShrNET.dll</HintPath>
-    </Reference>
-    <Reference Include="DPFPVerNET, Version=1.6.1.0, Culture=neutral, PublicKeyToken=4de0a9c4dcc83984, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Visual Studio 2010\Projects\Capturadordehuellas\dll del lector\DPFPVerNET.dll</HintPath>
-    </Reference>
     <Reference Include="MySql.Data, Version=6.7.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />

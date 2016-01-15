@@ -7,90 +7,117 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace webFingerprintGasCaqueta.View.Public {
+namespace webFingerprintGasCaqueta.View.Private.Parametrizacion {
     
     
-    public partial class Empleado_circulacion {
+    public partial class Festivos {
         
         /// <summary>
-        /// Control form1.
+        /// Control ResourceManager1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::Ext.Net.ResourceManager ResourceManager1;
         
         /// <summary>
-        /// Control ResourceManager2.
+        /// Control VPPRESENTACION.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ResourceManager ResourceManager2;
+        protected global::Ext.Net.Viewport VPPRESENTACION;
         
         /// <summary>
-        /// Control TFILTRO.
+        /// Control PPRESENTACION.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField TFILTRO;
+        protected global::Ext.Net.Panel PPRESENTACION;
         
         /// <summary>
-        /// Control Bbuscar.
+        /// Control GPFESTIVOS.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Button Bbuscar;
+        protected global::Ext.Net.GridPanel GPFESTIVOS;
         
         /// <summary>
-        /// Control TTIPOUSUARIO.
+        /// Control TFDIAS.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField TTIPOUSUARIO;
+        protected global::Ext.Net.TextField TFDIAS;
         
         /// <summary>
-        /// Control TUSUARIO.
+        /// Control SFESTIVOS.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField TUSUARIO;
+        protected global::Ext.Net.Store SFESTIVOS;
         
         /// <summary>
-        /// Control IMPERFIL.
+        /// Control WREGISTRO.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Image IMPERFIL;
+        protected global::Ext.Net.Window WREGISTRO;
         
         /// <summary>
-        /// Control IMDACTILAR.
+        /// Control FREGISTRO.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Image IMDACTILAR;
+        protected global::Ext.Net.FormPanel FREGISTRO;
         
         /// <summary>
-        /// Control LBIOMETRICOSTATE.
+        /// Control TFECHA.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Label LBIOMETRICOSTATE;
+        protected global::Ext.Net.DateField TFECHA;
+        
+        /// <summary>
+        /// Control TNOMBRE.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField TNOMBRE;
+        
+        /// <summary>
+        /// Control BCANCELAR.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Button BCANCELAR;
+        
+        /// <summary>
+        /// Control BGUARDAR.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Button BGUARDAR;
     }
 }

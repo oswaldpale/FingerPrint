@@ -22,7 +22,7 @@
         };
 
         function AbrirVentanaIncripcionHuella(record) {
-            parametro.AbrirVentanaIncripcionHuella(record.get("IDENTIFICACION"), 'Primaria');
+            parametro.AbrirVentanaIncripcionHuella(record.get("IDENTIFICACION"), 'Primario');
         }
 
         var ClickCommand = function (grid, command, record, row) {

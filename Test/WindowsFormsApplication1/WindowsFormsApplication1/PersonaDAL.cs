@@ -22,16 +22,11 @@ namespace WindowsFormsApplication1
                 using (MySqlCommand cmd = new MySqlCommand())
                 {
                     cmd.Connection = conn;
-                    cmd.CommandText = "INSERT INTO persona(cedula, nombres, ape1, ape2, telefono, huella1, huella2, foto, fk_tipoper) VALUES (@Pcedula,@Pnombres,@Pape1,@Pape2,@Ptelefono,@Phuella1,@Phuella2,@Pfoto,@Pfk_tipoper)";
-                    cmd.Parameters.AddWithValue("@Pcedula", pPersona.Id);
-                    cmd.Parameters.AddWithValue("@Pnombres", pPersona.Nombre);
-                    cmd.Parameters.AddWithValue("@Pape1", pPersona.PrimerApellido);
-                    cmd.Parameters.AddWithValue("@Pape2", pPersona.SegundoApellido);
-                    cmd.Parameters.AddWithValue("@Ptelefono", pPersona.Telefono);
-                    cmd.Parameters.AddWithValue("@Phuella1", pPersona.Huella1);
-                    cmd.Parameters.AddWithValue("@Phuella2", pPersona.Huella2);
-                    cmd.Parameters.AddWithValue("@Pfoto", pPersona.Foto);
-                    cmd.Parameters.AddWithValue("@Pfk_tipoper", pPersona.vinculacion);
+                    cmd.CommandText = "INSERT INTO huella(huell_id,huell_identificacion,huell_huella,huell_dedo) VALUES (@huell_id,@huell_identificacion,@huell_huella,@huell_dedo)";
+                    cmd.Parameters.AddWithValue("@huell_id", pPersona.Id);
+                    cmd.Parameters.AddWithValue("@huell_identificacion", pPersona.Id);
+                    cmd.Parameters.AddWithValue("@huell_huella", pPersona.Huella1);
+                    cmd.Parameters.AddWithValue("@huell_dedo", "Primario");
                     retorno = cmd.ExecuteNonQuery();
                     conn.Close();
                 }
@@ -68,7 +63,7 @@ namespace WindowsFormsApplication1
             using (MySqlConnection conn = BDconexion.ObtenerConexion())
             {
                 List<Persona> _lista = new List<Persona>();
-                MySqlCommand _comando = new MySqlCommand(String.Format("SELECT cedula, nombres, ape1, ape2, huella1, huella2, foto FROM persona"), conn);
+                MySqlCommand _comando = new MySqlCommand(String.Format("SELECT '111' AS cedula,'OSWALDO' AS nombres,'LEAL' AS ape1,'PAMO' AS  ape2,huell_huella AS huella1,huell_huella AS huella2,' ' AS foto FROM huella"), conn);
                 MySqlDataReader _reader = _comando.ExecuteReader();
                 while (_reader.Read())
                 {
@@ -79,7 +74,7 @@ namespace WindowsFormsApplication1
                     pPersona.SegundoApellido = Convert.ToString(_reader.GetValue(3));             
                     pPersona.Huella1 = (byte[])_reader.GetValue(4);
                     pPersona.Huella2 = (byte[])_reader.GetValue(5);
-                    pPersona.Foto = (byte[])_reader.GetValue(6);
+                    //pPersona.Foto = (byte[])_reader.GetValue(6);
                     _lista.Add(pPersona);
                 }
               //  conn.Close();

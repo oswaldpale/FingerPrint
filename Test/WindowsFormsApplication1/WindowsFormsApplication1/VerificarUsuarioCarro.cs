@@ -90,7 +90,7 @@ namespace WindowsFormsApplication1
                                 textNombre.Text = DatosPersonales.Nombre;
                                 textPrimerApell.Text = DatosPersonales.PrimerApellido;
                                 textSegundoApell.Text = DatosPersonales.SegundoApellido;
-                                pictureBox1.Image = CargarImagenFoto(DatosPersonales.Foto);
+                                //pictureBox1.Image = CargarImagenFoto(DatosPersonales.Foto);
                             }
                             else
                                 {

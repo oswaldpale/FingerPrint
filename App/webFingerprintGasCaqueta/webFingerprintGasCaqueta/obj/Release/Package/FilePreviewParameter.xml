@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="control_acceso" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\hfvl\\Desktop\\Proyecto\ Lector\ BiometricoUsb\\FingerPrint\\App\\webFingerprintGasCaqueta\\webFingerprintGasCaqueta\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\hfvl\\Desktop\\Proyecto\ Lector\ BiometricoUsb\\FingerPrint\\App\\webFingerprintGasCaqueta\\webFingerprintGasCaqueta\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="ControlPersonal-Web.config Connection String" description="" value="Data Source=192.168.0.91; database=control_acceso; uid=planta; password=planta123" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\hfvl\\Desktop\\Proyecto\ Lector\ BiometricoUsb\\FingerPrint\\App\\webFingerprintGasCaqueta\\webFingerprintGasCaqueta\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ControlPersonal']/@connectionString" />
+  </parameter>
+  <parameter name="ParametroContext-Web.config Connection String" description="" value="metadata=res://*/Models.Parametro.Model.csdl|res://*/Models.Parametro.Model.ssdl|res://*/Models.Parametro.Model.msl;provider=MySql.Data.MySqlClient;provider connection string=&quot;server=192.168.0.100;user id=planta;password=planta123;persistsecurityinfo=True;database=parametro&quot;" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\hfvl\\Desktop\\Proyecto\ Lector\ BiometricoUsb\\FingerPrint\\App\\webFingerprintGasCaqueta\\webFingerprintGasCaqueta\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ParametroContext']/@connectionString" />
+  </parameter>
+</parameters>

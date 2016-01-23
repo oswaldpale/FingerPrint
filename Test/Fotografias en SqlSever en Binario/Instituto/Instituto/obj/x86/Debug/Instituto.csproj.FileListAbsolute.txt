@@ -1,0 +1,54 @@
+C:\Users\SANCHEZ\AppData\Local\Temporary Projects\Instituto\obj\x86\Debug\Instituto.Estudiantes.resources
+C:\Users\SANCHEZ\AppData\Local\Temporary Projects\Instituto\obj\x86\Debug\Instituto.Properties.Resources.resources
+C:\Users\SANCHEZ\AppData\Local\Temporary Projects\Instituto\obj\x86\Debug\Instituto.VistaEstudiantes.resources
+C:\Users\SANCHEZ\AppData\Local\Temporary Projects\Instituto\obj\x86\Debug\Instituto.csproj.GenerateResource.Cache
+C:\Users\SANCHEZ\AppData\Local\Temporary Projects\Instituto\bin\Debug\Instituto.exe
+C:\Users\SANCHEZ\AppData\Local\Temporary Projects\Instituto\bin\Debug\Instituto.pdb
+C:\Users\SANCHEZ\AppData\Local\Temporary Projects\Instituto\obj\x86\Debug\Instituto.exe
+C:\Users\SANCHEZ\AppData\Local\Temporary Projects\Instituto\obj\x86\Debug\Instituto.pdb
+C:\Users\SANCHEZ\Desktop\Instituto\Instituto\obj\x86\Debug\Instituto.exe
+C:\Users\SANCHEZ\Desktop\Instituto\Instituto\obj\x86\Debug\Instituto.pdb
+C:\Users\SANCHEZ\Desktop\Instituto\Instituto\bin\Debug\Instituto.exe
+C:\Users\SANCHEZ\Desktop\Instituto\Instituto\bin\Debug\Instituto.pdb
+C:\Users\SANCHEZ\Desktop\Instituto\Instituto\obj\x86\Debug\Instituto.Estudiantes.resources
+C:\Users\SANCHEZ\Desktop\Instituto\Instituto\obj\x86\Debug\Instituto.Properties.Resources.resources
+C:\Users\SANCHEZ\Desktop\Instituto\Instituto\obj\x86\Debug\Instituto.VistaEstudiantes.resources
+C:\Users\SANCHEZ\Desktop\Instituto\Instituto\obj\x86\Debug\Instituto.csproj.GenerateResource.Cache
+C:\Users\SANCHEZ\Desktop\Instituto\Instituto\obj\x86\Debug\Instituto.BuscarEstudiantes.resources
+C:\Users\SANCHEZ\Desktop\Sistemas Programar\Sistema Instituto\Instituto\Instituto\obj\x86\Debug\Instituto.exe
+C:\Users\SANCHEZ\Desktop\Sistemas Programar\Sistema Instituto\Instituto\Instituto\obj\x86\Debug\Instituto.pdb
+C:\Users\SANCHEZ\Desktop\Sistemas Programar\Sistemas en Curso\Sistema Instituto\Instituto\Instituto\obj\x86\Debug\Instituto.exe
+C:\Users\SANCHEZ\Desktop\Sistemas Programar\Sistemas en Curso\Sistema Instituto\Instituto\Instituto\obj\x86\Debug\Instituto.pdb
+C:\Users\SANCHEZ\Desktop\Sistemas Programar\Sistemas en Curso\Sistema Instituto\Instituto\Instituto\bin\Debug\Instituto.exe
+C:\Users\SANCHEZ\Desktop\Sistemas Programar\Sistemas en Curso\Sistema Instituto\Instituto\Instituto\bin\Debug\Instituto.pdb
+C:\Users\SANCHEZ\Desktop\Sistemas Programar\Sistemas en Curso\Sistema Instituto\Instituto\Instituto\obj\x86\Debug\Instituto.BuscarEstudiantes.resources
+C:\Users\SANCHEZ\Desktop\Sistemas Programar\Sistemas en Curso\Sistema Instituto\Instituto\Instituto\obj\x86\Debug\Instituto.Estudiantes.resources
+C:\Users\SANCHEZ\Desktop\Sistemas Programar\Sistemas en Curso\Sistema Instituto\Instituto\Instituto\obj\x86\Debug\Instituto.Properties.Resources.resources
+C:\Users\SANCHEZ\Desktop\Sistemas Programar\Sistemas en Curso\Sistema Instituto\Instituto\Instituto\obj\x86\Debug\Instituto.VistaEstudiantes.resources
+C:\Users\SANCHEZ\Desktop\Sistemas Programar\Sistemas en Curso\Sistema Instituto\Instituto\Instituto\obj\x86\Debug\Instituto.csproj.GenerateResource.Cache
+C:\Users\SANCHEZ\Desktop\Sistemas Programar\Sistemas en Curso\Sistema Instituto\Instituto\Instituto\obj\x86\Debug\Instituto.csprojResolveAssemblyReference.cache
+C:\Users\SANCHEZ\Desktop\Sistemas Programar\Sistemas en Curso\Sistema Instituto\Instituto\Instituto\obj\x86\Debug\Instituto.Logueo.resources
+C:\Users\SANCHEZ\Desktop\Sistemas Programar\Sistemas en Curso\Sistema Instituto\Instituto\Instituto\obj\x86\Debug\Instituto.Menu.resources
+C:\Users\SANCHEZ\Desktop\Sistemas Programar\Sistemas en Curso\Sistema Instituto\Instituto\Instituto\obj\x86\Debug\Instituto.Listado.resources
+C:\Users\SANCHEZ\Desktop\Sistema Instituto\Instituto\Instituto\obj\x86\Debug\Instituto.exe
+C:\Users\SANCHEZ\Desktop\Sistema Instituto\Instituto\Instituto\obj\x86\Debug\Instituto.pdb
+C:\Users\SANCHEZ\Desktop\Sistema Instituto\Instituto\Instituto\bin\Debug\Instituto.exe
+C:\Users\SANCHEZ\Desktop\Sistema Instituto\Instituto\Instituto\bin\Debug\Instituto.pdb
+C:\Users\SANCHEZ\Desktop\Sistema Instituto\Instituto\Instituto\obj\x86\Debug\Instituto.csprojResolveAssemblyReference.cache
+C:\Users\SANCHEZ\Desktop\Sistema Instituto\Instituto\Instituto\obj\x86\Debug\Instituto.BuscarEstudiantes.resources
+C:\Users\SANCHEZ\Desktop\Sistema Instituto\Instituto\Instituto\obj\x86\Debug\Instituto.Estudiantes.resources
+C:\Users\SANCHEZ\Desktop\Sistema Instituto\Instituto\Instituto\obj\x86\Debug\Instituto.Logueo.resources
+C:\Users\SANCHEZ\Desktop\Sistema Instituto\Instituto\Instituto\obj\x86\Debug\Instituto.Listado.resources
+C:\Users\SANCHEZ\Desktop\Sistema Instituto\Instituto\Instituto\obj\x86\Debug\Instituto.Menu.resources
+C:\Users\SANCHEZ\Desktop\Sistema Instituto\Instituto\Instituto\obj\x86\Debug\Instituto.Properties.Resources.resources
+C:\Users\SANCHEZ\Desktop\Sistema Instituto\Instituto\Instituto\obj\x86\Debug\Instituto.VistaEstudiantes.resources
+C:\Users\SANCHEZ\Desktop\Sistema Instituto\Instituto\Instituto\obj\x86\Debug\Instituto.csproj.GenerateResource.Cache
+C:\Users\SANCHEZ\Desktop\Sistemas Programar\Sistemas en Curso\Sistema Instituto\Instituto\Instituto\obj\x86\Debug\Instituto.BajasEstudiantes.resources
+C:\Users\SANCHEZ\Desktop\Sistema Instituto\Instituto\Instituto\obj\x86\Debug\Instituto.BajasEstudiantes.resources
+C:\Users\SANCHEZ\Desktop\Sistemas Programar\Sistemas en Curso\Sistema Instituto\Instituto\Instituto\obj\x86\Debug\Instituto.Iniciando.resources
+C:\Users\SANCHEZ\Desktop\Instituto\Instituto\obj\x86\Debug\Instituto.csprojResolveAssemblyReference.cache
+C:\Users\SANCHEZ\Desktop\Instituto\Instituto\obj\x86\Debug\Instituto.Logueo.resources
+C:\Users\SANCHEZ\Desktop\Instituto\Instituto\obj\x86\Debug\Instituto.Listado.resources
+C:\Users\SANCHEZ\Desktop\Instituto\Instituto\obj\x86\Debug\Instituto.Menu.resources
+C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\Test\Fotografias en SqlSever en Binario\Instituto\Instituto\obj\x86\Debug\Instituto.exe
+C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\Test\Fotografias en SqlSever en Binario\Instituto\Instituto\obj\x86\Debug\Instituto.pdb

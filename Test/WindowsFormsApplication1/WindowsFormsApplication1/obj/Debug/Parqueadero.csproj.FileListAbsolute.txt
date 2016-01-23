@@ -88,3 +88,5 @@ C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\Test\WindowsForm
 C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.CapturarHuella.resources
 C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.RegistrarPersona.resources
 C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\Parqueadero.csproj.GenerateResource.Cache
+C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\Parqueadero.csprojResolveAssemblyReference.cache
+C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.PruebaLector.resources

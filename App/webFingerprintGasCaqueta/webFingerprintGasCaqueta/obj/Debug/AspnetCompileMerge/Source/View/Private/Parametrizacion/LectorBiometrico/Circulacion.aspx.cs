@@ -40,9 +40,14 @@ namespace webFingerprintGasCaqueta.View.Public
                 TUSUARIO.Text = _huella.iduser;
                 _UsuarioHuella.Add(_huella);
             }
-            
-            return JsonConvert.SerializeObject(_UsuarioHuella);
+            string byteString =   JsonConvert.SerializeObject(_UsuarioHuella);
+            return byteString;
         }
+
+        public void ConversionDatos(string JsonDato) {
+            
+        }
+
     }
     public class FingerPrint
     {

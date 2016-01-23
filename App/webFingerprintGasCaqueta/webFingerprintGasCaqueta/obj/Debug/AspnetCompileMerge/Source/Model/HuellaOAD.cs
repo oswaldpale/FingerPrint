@@ -30,7 +30,7 @@ namespace webFingerprintGasCaqueta.Model
 
             return connection.getDataMariaDB(sql).Tables[0];
         }
-
+        // Este metodo lo translado a la Dll por inconventiene en la serializacion de la huella en javascript
         public bool registrarHuella(string primaryKey,string huella, string empleado,string dedo)
         {
          

@@ -15,13 +15,15 @@ namespace WindowsFormsApplication1
     delegate void FunctionS();
     public partial class GuardarHuella : Form,DPFP.Capture.EventHandler
     {
-        const string MySqlConnecionString = "Server=127.0.0.1; Database=digital; User id=root; Pwd=root;";
+        const string MySqlConnecionString = "server=192.168.0.91; database=control_acceso; Uid=planta; pwd=planta123";
         MySqlConnection conexion;
         public int PROBABILITY_ONE = 0x7FFFFFFF;
         bool registrationInProgress = false;
         int fingerCount = 0;
         byte[] huella = null;
-        
+        byte[] huella1;
+        MemoryStream mem;
+
         System.Drawing.Graphics graphics;
         System.Drawing.Font font;
         DPFP.Capture.ReadersCollection readers;
@@ -98,18 +100,18 @@ namespace WindowsFormsApplication1
             }
             //conexion = new SqlConnection("integrated security=true;server=.;database=digital");
             conexion = new MySqlConnection();
-            conexion.ConnectionString = "Server=127.0.0.1; Database=digital; User id=root; Pwd=root;";
-           
-       
+            conexion.ConnectionString = "server=192.168.0.91; database=control_acceso; Uid=planta; pwd=planta123";
+
+
         }
         public void OnComplete(object obj, string info, DPFP.Sample sample)
         {
-            this.Invoke(new FunctionS(delegate()
+            this.Invoke(new FunctionS(delegate ()
             {
                 tbInfo.Text = "Capture Complete";
             }));
 
-            this.Invoke(new FunctionS(delegate()
+            this.Invoke(new FunctionS(delegate ()
             {
                 Bitmap tempRef = null;
                 converter.ConvertToPicture(sample, ref tempRef);
@@ -121,109 +123,55 @@ namespace WindowsFormsApplication1
                 graphics = Graphics.FromImage(bmp);
                 //AHORA CUANDO EL LECTOR YA TENGA CAPTURADA UNA HUELLA COMIENZA TODO EL PROCESO
 
-                if (registrationInProgress)
-                {
+               
                     try
                     {
-                        //CAPTURAMOS 4 EXTRACCIONES DE LA HUELLA PARA PODER CREAR UNA PLANTILLA OPTIMA QUE
-                        //SERA ALMACENADA
+                        //CAPTURAMOS 4 EXTRACCIONES DE LA HUELLA PARA PODER CREAR UNA PLANTILLA OPTIMA QUE SERA ALMACENADA
                         regFeatures[fingerCount] = ExtractFeatures(sample, DPFP.Processing.DataPurpose.Enrollment);
                         if (regFeatures[fingerCount] != null)
                         {
-                           // string b64 = Convert.ToBase64String(regFeatures[fingerCount].Bytes);
-                      //      regFeatures[fingerCount].DeSerialize(Convert.FromBase64String(b64));
+                            Huella validarBD = new Huella();
+                            verFeatures = ExtractFeatures(sample, DPFP.Processing.DataPurpose.Verification);
 
-                            if (regFeatures[fingerCount] == null)
-                            {
-                                txtLoc.X = pbImage.Width / 2 - 26;
-                                graphics.DrawString("Bad Press", font, Brushes.Cyan, txtLoc);
-                                return;
-                            }
                             ++fingerCount;
-
                             createRegTemplate.AddFeatures(regFeatures[fingerCount - 1]);
-                            graphics = Graphics.FromImage(bmp);
-                            if (fingerCount < 4)
-                                graphics.DrawString("" + fingerCount + " De 4", font, Brushes.Black, txtLoc);
                             if (createRegTemplate.TemplateStatus == DPFP.Processing.Enrollment.Status.Failed)
                             {
+                                createRegTemplate.Clear();
                                 capturer.StopCapture();
                                 fingerCount = 0;
+
+                                capturer.StartCapture();
                                 MessageBox.Show("Registration Failed, \nMake sure you use the same finger for all 4 presses.");
                             }
                             else
                                 if (createRegTemplate.TemplateStatus == DPFP.Processing.Enrollment.Status.Ready)
-                                {
-                                    string mensaje = "";
-                                  // MemoryStream x = new MemoryStream();
-                                   MemoryStream mem = new MemoryStream();
-                                    template = createRegTemplate.Template;
-                                    template.Serialize(mem);
-                                    byte[] imgArr = mem.ToArray();
-                                    guardarhuellaenDB();
-                                    /* 
-                           
-                                    verFeatures = ExtractFeatures(sample, DPFP.Processing.DataPurpose.Verification);
-                                    mensaje = comparar(verFeatures);
-                                    if (mensaje == "Ya Existe un Empleado Con La Huella Capturada")
-                                    {
-                                        MessageBox.Show(mensaje, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                        capturer.StopCapture();
-                                        this.Close();
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Se Procedera a guardar la huella digital", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                        huella = mem.ToArray();
-                                        
-                                        //AQUI PROCEDEMOS A GUARDAR LA HUELLA EN LA DB
-                                        guardarhuellaenDB();
-                                        capturer.StopCapture();
-                                     //   this.Close();
-                                    }
-                                    */
-                                }
+                            {
+                                template = createRegTemplate.Template;
+                                mem = new MemoryStream();
+                                template.Serialize(mem);
+                                MessageBox.Show("Presione: 'Capturar huella derecha'");
+                                huella1 = mem.ToArray();
+                                capturer.StopCapture();
+                                createRegTemplate.Clear();
+                                fingerCount = 0;
+                                capturer.StartCapture();
+                                capturer.EventHandler = null;
+                            }
                         }
+
 
                     }
                     catch (DPFP.Error.SDKException ex)
                     {
 
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show("Registration Failed, \nMake sure you use the same finger for all 4 presses.");
+                        createRegTemplate.Clear();
+                        capturer.StopCapture();
+                        fingerCount = 0;
+                        capturer.StartCapture();
                     }
-
-                }
-                else
-                {
-                    DPFP.Verification.Verification.Result rslt = new DPFP.Verification.Verification.Result();
-                    verFeatures = ExtractFeatures(sample, DPFP.Processing.DataPurpose.Verification);
-                    verify.Verify(verFeatures, template, ref rslt);
-
-                    txtLoc.X = pbImage.Width / 2 - 38;
-                    if (rslt.Verified == true)
-                        graphics.DrawString("Match!!!!", font, Brushes.LightGreen, txtLoc);
-                    else graphics.DrawString("No Match!!!", font, Brushes.Red, txtLoc);
-                }
-                pbImage.Image = bmp;
-            //    MessageBox.Show("aqui");
-                try
-                {
-                    string mensaje2 = "";
-                    //MemoryStream x2 = new MemoryStream();
-                    //MemoryStream mem2 = new MemoryStream();
-
-                    verFeatures2 = ExtractFeatures(sample, DPFP.Processing.DataPurpose.Verification);
-                    mensaje2 = comparar(verFeatures2);
-                    if (mensaje2 == "Ya Existe un Empleado Con La Huella Capturada")
-                    {
-                        MessageBox.Show("encontrado");
-                    }
-                }
-                catch (DPFP.Error.SDKException ex)
-                {
-
-                    MessageBox.Show(ex.Message);
-                }
+                
             }));
         }
         private void guardarhuellaenDB()
@@ -250,9 +198,24 @@ namespace WindowsFormsApplication1
                 {
                     using (MySqlCommand cmd = new MySqlCommand())
                     {
+                      string sql = "INSERT "
+                       + "INTO "
+                       + "    control_acceso.huella "
+                       + "    ( "
+                       + "        huell_id, "
+                       + "        huell_identificacion, "
+                       + "        huell_huella,"
+                       + "        huell_dedo"
+                       + "    ) "
+                       + "    VALUES "
+                       + "    ( "
+                       + "        '" + "12367876" + "', "
+                       + "        '" + "1297094" + "', "
+                       + "        '" + huella + "', "
+                       + "        '" + "Primario" + "' "
+                       + "    )";
                         cmd.Connection = conn;
-                        cmd.CommandText = "INSERT INTO empleado(huella) VALUES (@imgArr)";
-                        cmd.Parameters.AddWithValue("@imgArr", huella);
+                        cmd.CommandText = sql;
                         cmd.ExecuteNonQuery();
                         conn.Close();
                     }

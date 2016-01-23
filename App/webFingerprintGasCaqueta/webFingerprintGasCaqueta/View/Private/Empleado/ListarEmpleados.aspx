@@ -10,9 +10,8 @@
     <script type="text/javascript">
         var Jidentificacion, Jdedo;
         function AbrirVentanaIncripcionHuella(record) {
-            parametro.AbrirVentanaIncripcionHuella(record.get("MCODIGO"), 'Primario');
+            parametro.AbrirVentanaIncripcionHuella(record.get("MCODIGO"), Jdedo);
         }
-
         var prepareCommand = function (grid, toolbar, rowIndex, record) {
            
             var firstButton = toolbar.items.get(1); //button 1
@@ -46,8 +45,8 @@
                 }
             }
             if (command == 'footprint2') {
+                Jdedo = 'Secundario'
                 if (record.get("EXISTHUESECOND") == 'true') {
-                    Jdedo = 'Secundario'
                     Ext.Msg.show({
                         title: 'Notificación',
                         msg: '¿Desea reemplazar la huella existente?',
@@ -64,7 +63,6 @@
 
         function ConfirmResult(btn) {
             if (btn == 'yes') {
-                alert(Jidentificacion +'  '+ Jdedo);
                 parametro.EliminarHuellaEmpleado(Jidentificacion, Jdedo, {
                     success: function (result) {
                         parametro.AbrirVentanaIncripcionHuella(Jidentificacion, Jdedo);
@@ -96,16 +94,16 @@
 </head>
 <body>
     <form id="form1" runat="server">
-      <ext:ResourceManager ID="ResourceManager2" runat="server" />
+      <ext:ResourceManager ID="ResourceManager2" runat="server" AjaxTimeout="5000" />
         <ext:Viewport runat="server" >
             <LayoutConfig>
                 <ext:VBoxLayoutConfig Align="Center" Pack="Center" />
             </LayoutConfig>
             <Items>
-                <ext:FormPanel runat="server" BodyPadding="8" AutoScroll="true" Height="500" Width="920" >
+                <ext:FormPanel runat="server" BodyPadding="8" AutoScroll="true" Height="460" Width="920" >
                     <FieldDefaults LabelAlign="Right" LabelWidth="115" MsgTarget="Side" />
                     <Items>
-                        <ext:GridPanel runat="server" ID="GEMPLEADO" Title="LISTA DE EMPLEADOS." Icon="User" Height="470" Width="900" Frame="true" Padding="2">
+                        <ext:GridPanel runat="server" ID="GEMPLEADO" Title="LISTA DE EMPLEADOS." Icon="User" Height="430" Width="900" Frame="true" Padding="2">
                                     <TopBar>
                                         <ext:Toolbar runat="server">
                                             <Items>
@@ -121,7 +119,7 @@
                                         </ext:Toolbar>
                                     </TopBar>
                                     <Store>
-                                        <ext:Store ID="SEMPLEADO" runat="server">
+                                        <ext:Store ID="SEMPLEADO" runat="server"  PageSize="10">
                                             <Model>
                                                 <ext:Model runat="server">
                                                     <Fields>
@@ -142,11 +140,10 @@
                                             <ext:Column runat="server" ID="MIDENTIFICACION" Text="IDENTIFICACIÓN" DataIndex="MIDENTIFICACION" Width="130" />
                                             <ext:Column runat="server" ID="MNOMBRE" Text="NOMBRE" DataIndex="MNOMBRE" Flex="3" />
                                             <ext:Column runat="server" ID="MTIPO" Text="TIPO" DataIndex="MTIPO" Flex="2"  />
-                                            <ext:CommandColumn runat="server" ID="CTOOLBOX" Width="110" Text="FOTO/HUELLA">
+                                            <ext:CommandColumn runat="server" ID="CTOOLBOX" Width="80" Text="HUELLA" >
                                                 <Commands>
-                                                    
                                                     <ext:CommandSpacer Width="15" />
-                                                    <ext:GridCommand IconCls="shortcut-icon-footprint icon-footprint" CommandName="footprint1">
+                                                    <ext:GridCommand IconCls="shortcut-icon-footprint icon-footprint" CommandName="footprint1" >
                                                         <ToolTip Text="Inscripción huella dactilar principal." />
                                                     </ext:GridCommand>
                                                   <ext:CommandSpacer Width="5" />
@@ -162,8 +159,15 @@
                                         </Columns>
                                     </ColumnModel>
                                     <BottomBar>
-                                        <ext:PagingToolbar runat="server" />
+                                        <ext:PagingToolbar runat="server" AutoRender="true" PageY="30">
+                                            <Items>
+                                                <ext:Button runat="server" Text="Foto Perfil" Icon="Camera" />
+                                                <ext:Button runat="server" Text="Horario semanal" Icon="Calendar" />
+                                            </Items>
+                                        </ext:PagingToolbar>
+                                       
                                     </BottomBar>
+                                    
                                 </ext:GridPanel>
                     </Items>
                 </ext:FormPanel>

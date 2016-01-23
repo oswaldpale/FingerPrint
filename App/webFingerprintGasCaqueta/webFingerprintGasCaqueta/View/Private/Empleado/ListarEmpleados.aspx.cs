@@ -32,22 +32,22 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado
             {
                 ID = "WCAPTURAHUELLA",
                 Title = "REGISTRO DE HUELLA: " + TipoHuella.ToUpper(),
-                Height = 380,
-                Width = 430,
+                Height = 370,
+                Width = 300,
                 Modal = true,
-                
                 CloseAction = CloseAction.Destroy,
                 Loader = new ComponentLoader
                 {
-                    Url = "../Parametrizacion/LectorBiometrico/Captura.aspx?identificacion="+ identificacion + "&tipo=" + TipoHuella,
+                    Url = "../Parametrizacion/LectorBiometrico/Captura.aspx?identificacion=" + identificacion + "&tipo=" + TipoHuella,
                     Mode = LoadMode.Frame,
                     LoadMask =
                 {
                     ShowMask = true
+                  
                 }
                 }
             };
-            win.Listeners.Hide.Handler = "parametro.CargarEmpleados();";
+            win.Listeners.Close.Handler = "parametro.CargarEmpleados();";
             win.Render(this.Form);
           
         }

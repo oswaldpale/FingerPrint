@@ -119,7 +119,7 @@
     <Content Include="View\Private\Parametrizacion\CamaraWeb\CapturarFoto.aspx" />
     <Content Include="View\Private\Parametrizacion\Festivos.aspx" />
     <Content Include="View\Private\Parametrizacion\LectorBiometrico\Captura.aspx" />
-    <Content Include="View\Private\Parametrizacion\LectorBiometrico\Imagen.aspx" />
+    <Content Include="Imagen.aspx" />
     <Content Include="View\Private\Parametrizacion\LectorBiometrico\Circulacion.aspx" />
     <Content Include="View\Private\Visitante\Visitante.aspx" />
     <Content Include="Web.config">
@@ -179,11 +179,11 @@
     <Compile Include="View\Private\Parametrizacion\LectorBiometrico\Captura.aspx.designer.cs">
       <DependentUpon>Captura.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\Private\Parametrizacion\LectorBiometrico\Imagen.aspx.cs">
+    <Compile Include="Imagen.aspx.cs">
       <DependentUpon>Imagen.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\Private\Parametrizacion\LectorBiometrico\Imagen.aspx.designer.cs">
+    <Compile Include="Imagen.aspx.designer.cs">
       <DependentUpon>Imagen.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\Parametrizacion\LectorBiometrico\Circulacion.aspx.cs">

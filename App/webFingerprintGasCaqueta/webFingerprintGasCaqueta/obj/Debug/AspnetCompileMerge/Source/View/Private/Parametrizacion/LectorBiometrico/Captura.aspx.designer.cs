@@ -31,6 +31,24 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion.LectorBiometrico
         protected global::Ext.Net.ResourceManager ResourceManager2;
         
         /// <summary>
+        /// Control HDEDO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Hidden HDEDO;
+        
+        /// <summary>
+        /// Control HIDENTIFICACION.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Hidden HIDENTIFICACION;
+        
+        /// <summary>
         /// Control FCAPTURA.
         /// </summary>
         /// <remarks>
@@ -38,15 +56,6 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion.LectorBiometrico
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.FormPanel FCAPTURA;
-        
-        /// <summary>
-        /// Control IMPERFIL.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Image IMPERFIL;
         
         /// <summary>
         /// Control IMDACTILAR.

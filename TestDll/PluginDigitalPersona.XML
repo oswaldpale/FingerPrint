@@ -56,6 +56,11 @@
             METODOS DE VARIABLES ACCESIBLES DESDE JAVASCRIPT.
             </summary>
         </member>
+        <member name="T:PluginDigitalPersona.InternConexionBD">
+            <summary>
+            Conexion a la base de datos para consultar o registrar huellas.
+            </summary>
+        </member>
         <member name="T:PluginDigitalPersona.Properties.Resources">
             <summary>
               Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.

@@ -8,7 +8,9 @@ using System.Text;
 using System.Windows.Forms;
 using DPFP;
 using Newtonsoft.Json;
-
+using MySql.Data;
+using System.Data;
+using MySql.Data.MySqlClient;
 
 namespace PluginDigitalPersona
 
@@ -16,7 +18,7 @@ namespace PluginDigitalPersona
     [ComVisibleAttribute(true)]
     [Guid("7D30B571-D821-4F7D-B3A6-FD8728EF06F4")]
     [ProgId("PluginDigitalPersona.pluginDigitalpersona")]
-    public class pluginDigitalpersona: Form,DPFP.Capture.EventHandler
+    public class pluginDigitalpersona : DPFP.Capture.EventHandler
     {
         public string messageBiometricDevice = null; // Controla mensajes y alertas del dispositivo cuando esta en estado (Conectado/Desconectado).
         public string checkFingerprint = null;  // chequea el estado de la huella cuando el dedo del usuario esta en el lector.
@@ -28,11 +30,14 @@ namespace PluginDigitalPersona
         public DPFP.Capture.Capture Capturer;    // controla la captura de la huella.
         public List<FingerPrint> _filterFinger = new List<FingerPrint>();
         public bool stateUserVerify = false;
+        public string dedo = "Primario";
+        public Int64 identificacion;
+        public bool resultRegister;
         public pluginDigitalpersona() {
             Init();
             Start();
         }
-       
+
         [ComVisible(true)]
         public void prueba() {
             MessageBox.Show(_filterFinger.ToString());
@@ -55,33 +60,33 @@ namespace PluginDigitalPersona
             }
             catch
             {
-               
+
             }
         }
 
         private void UpdateStatus()
         {
-            this.stateEnrroller =(int) Enroller.FeaturesNeeded;
+            this.stateEnrroller = (int)Enroller.FeaturesNeeded;
         }
 
         protected void Start()
-		{
+        {
             if (null != Capturer)
             {
                 try
                 {
                     Capturer.StartCapture();
-                  
+
                 }
                 catch
                 {
-                  
+
                 }
             }
-		}
+        }
 
-		public void Stop()
-		{
+        public void Stop()
+        {
             if (null != Capturer)
             {
                 try
@@ -90,10 +95,10 @@ namespace PluginDigitalPersona
                 }
                 catch
                 {
-                   
+
                 }
             }
-		}
+        }
         /// <summary>
         /// Ejecuta el proceso de incripcion de la huella
         /// </summary>
@@ -118,7 +123,11 @@ namespace PluginDigitalPersona
                             MemoryStream memoryFootprint = new MemoryStream();
                             template.Serialize(memoryFootprint);
                             byte[] footprintByte = memoryFootprint.ToArray();
-                            //this.footprint = StringToByte(footprintByte);
+                            Huella _huella = new Huella();
+                            _huella._identificacion = identificacion;
+                            _huella._huella1 = footprintByte;
+                            _huella._dedo = dedo;
+                            resultRegister = HuellaOAD.Registrarhuella(_huella) > 0? true:false ;
                             this.Stop();
                             break;
 
@@ -133,9 +142,9 @@ namespace PluginDigitalPersona
         private void Validate(DPFP.Sample Sample) {
             BitMapToString(ConvertSampleToBitmap(Sample)); // CREO LA IMAGEN DE LA HUELLA.
             DPFP.FeatureSet features = ExtractFeatures(Sample, DPFP.Processing.DataPurpose.Verification);
-            if (features != null) { 
-                  UpdateStatus(); //Actualiza el estado del lector.
-                  this.stateUserVerify = ValidateOneFingerPrint(features) ? true:false;
+            if (features != null) {
+                UpdateStatus(); //Actualiza el estado del lector.
+                this.stateUserVerify = ValidateOneFingerPrint(features) ? true : false;
             }
         }
 
@@ -177,8 +186,8 @@ namespace PluginDigitalPersona
             //DrawPicture(ConvertSampleToBitmap(Sample));
         }
 
-     
-        
+
+
         #endregion
         #region METODOS DE CONVERSION DE IMAGEN
         protected Bitmap ConvertSampleToBitmap(DPFP.Sample Sample)
@@ -197,7 +206,7 @@ namespace PluginDigitalPersona
             bImage.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
             byte[] byteImage = ms.ToArray();
             bitmapDactilar = StringToByte(byteImage);
-             
+
 
         }
         /// <summary>
@@ -227,8 +236,8 @@ namespace PluginDigitalPersona
         /// </summary>
         /// <param name="_json"></param>
         [ComVisible(true)]
-        public void  JsonToString(string _json) {
-            _filterFinger =  JsonConvert.DeserializeObject<List<FingerPrint>>(_json);
+        public void JsonToString(string _json) {
+            _filterFinger = JsonConvert.DeserializeObject<List<FingerPrint>>(_json);
         }
 
         protected DPFP.FeatureSet ExtractFeatures(DPFP.Sample Sample, DPFP.Processing.DataPurpose Purpose)
@@ -250,17 +259,17 @@ namespace PluginDigitalPersona
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void CaptureForm_Load(object sender, EventArgs e)
-		{
-			Init();
-			Start();												// Start capture operation.
-		}
+        {
+            Init();
+            Start();                                                // Start capture operation.
+        }
         [ComVisible(true)]
         public void StopDevice() {
             Stop();
         }
 
-	
-	#endregion
+
+        #endregion
 
 
         #region EventHandler Members
@@ -275,7 +284,7 @@ namespace PluginDigitalPersona
             checkFingerprint = "true";
             if (typeProcces == "capture")   // Si typeProcces es igual capture: Ejecuta procceso de Incripcion
             {
-                Process(Sample);     
+                Process(Sample);
             }
             else                           // Sino ejecuta el processo de Validación.
             {
@@ -286,13 +295,13 @@ namespace PluginDigitalPersona
         [ComVisible(true)]
         public void OnFingerGone(object Capture, string ReaderSerialNumber)
         {
-          
-      
+
+
         }
 
         public void OnFingerTouch(object Capture, string ReaderSerialNumber)
         {
-          
+
         }
 
         public void OnReaderConnect(object Capture, string ReaderSerialNumber)
@@ -313,7 +322,7 @@ namespace PluginDigitalPersona
 
         public void OnSampleQuality(object Capture, string ReaderSerialNumber, DPFP.Capture.CaptureFeedback CaptureFeedback)
         {
-           
+
         }
 
         #endregion
@@ -345,6 +354,7 @@ namespace PluginDigitalPersona
                 checkFingerprint = value;
             }
         }
+
         [ComVisible(true)]
         public string BitmapDactilar
         {
@@ -359,7 +369,7 @@ namespace PluginDigitalPersona
         }
         [ComVisible(true)]
         public int StateEnrroller
-        { 
+        {
             get
             {
                 return stateEnrroller;
@@ -405,6 +415,42 @@ namespace PluginDigitalPersona
                 stateUserVerify = value;
             }
         }
+        [ComVisible(true)]
+        public string Dedo
+        {
+            get
+            {
+                return dedo;
+            }
+            set
+            {
+                dedo = value;
+            }
+        }
+        [ComVisible(true)]
+        public Int64 Identificacion
+        {
+            get
+            {
+                return identificacion;
+            }
+            set
+            {
+                identificacion = value;
+            }
+        }
+        [ComVisible(true)]
+        public bool ResultRegister
+        {
+            get
+            {
+                return resultRegister;
+            }
+            set
+            {
+                resultRegister = value;
+            }
+        }
         #endregion
     }
     public class FingerPrint
@@ -412,7 +458,61 @@ namespace PluginDigitalPersona
         public string finger { get; set; }
         public string iduser { get; set; }
 
-       
+
     }
+    #region ENTIDAD
+    public class Huella {
+        public Int64 _identificacion { get; set; }
+        public byte[] _huella1 { get; set; }
+        public string _dedo { get; set; }
+        public Huella() { }
+        public Huella(int primaryKey, Int64 ident, byte[] huella, string dedo) {
+            this._identificacion = ident;
+            this._huella1 = huella;
+            this._dedo = dedo;
+        }
+    }
+    #endregion
+    #region PERSISTENCIA OAD
+    public class HuellaOAD {
+        public static int Registrarhuella(Huella phuella)
+        {
+            int retorno = 0;
+            using (MySqlConnection conn = InternConexionBD.ObtenerConexion())
+            {
+                using (MySqlCommand cmd = new MySqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "INSERT INTO huella(huell_identificacion,huell_huella,huell_dedo) VALUES (@huell_identificacion,@huell_huella,@huell_dedo)";
+                    cmd.Parameters.AddWithValue("@huell_identificacion", phuella._identificacion);
+                    cmd.Parameters.AddWithValue("@huell_huella", phuella._huella1);
+                    cmd.Parameters.AddWithValue("@huell_dedo",  phuella._dedo);
+                    retorno = cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+
+            }
+            return retorno;
+        }
+    }
+    public class General
+    {
+        private InternConexionBD connection = new InternConexionBD();
+    }
+    #endregion
+    #region CONEXION A LA BASE DE DATOS
+    /// <summary>
+    /// Conexion a la base de datos para consultar o registrar huellas.
+    /// </summary>
+    class InternConexionBD
+    {
+        public static MySqlConnection ObtenerConexion()
+        {
+            MySqlConnection conectar = new MySqlConnection("server=192.168.0.91; database=control_acceso; Uid=planta; pwd=planta123;");
+            conectar.Open();
+            return conectar;
+        }
+    }
+
+    #endregion
 }
- 

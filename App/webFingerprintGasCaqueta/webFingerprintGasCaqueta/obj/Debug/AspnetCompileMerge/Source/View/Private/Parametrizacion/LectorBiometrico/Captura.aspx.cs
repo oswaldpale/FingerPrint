@@ -47,12 +47,6 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion.LectorBiometrico
             //return Controllers.registrarHuella(huella, PEGE_ID, PEGE_DEDO);
             return true;
         }
-        //public void CreateSessionImage(string Image, string idImagen)
-        //{
-        //    Session.Remove("ConvertImagen");
-        //    Session["ConvertImagen"] = Image;
-        //    IMDACTILAR.ImageUrl = "Imagen.aspx?id=" + idImagen;
-        //    //Image1.ImageUrl= "../Parametrizacion/LectorBiometrico/Imagen.aspx?id=" + idImagen;
-        //}
+      
     }
 }

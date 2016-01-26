@@ -42,7 +42,7 @@
 		<video id="video"></video>
 		<button id="startbutton">Take photo</button>
 		<canvas id="canvas"></canvas>
-		<img src="../../../../Content/images/SinFoto.jpg" id="photo" alt="photo">
+		<img src="../../../../Content/images/SinFoto.jpg" id="photo" alt="Foto">
 	</div>
 
 <script>

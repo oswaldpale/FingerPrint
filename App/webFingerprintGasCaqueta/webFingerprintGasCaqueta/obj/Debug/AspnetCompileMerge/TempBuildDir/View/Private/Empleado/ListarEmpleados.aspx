@@ -159,9 +159,15 @@
                                         </Columns>
                                     </ColumnModel>
                                     <BottomBar>
-                                        <ext:PagingToolbar runat="server" AutoRender="true" PageY="30" >
-                                            </ext:PagingToolbar>
+                                        <ext:PagingToolbar runat="server" AutoRender="true" PageY="30">
+                                           <%-- <Items>
+                                                <ext:Button runat="server" Text="Foto Perfil" Icon="Camera" />
+                                                <ext:Button runat="server" Text="Horario semanal" Icon="Calendar" />
+                                            </Items>--%>
+                                        </ext:PagingToolbar>
+                                       
                                     </BottomBar>
+                                    
                                 </ext:GridPanel>
                     </Items>
                 </ext:FormPanel>

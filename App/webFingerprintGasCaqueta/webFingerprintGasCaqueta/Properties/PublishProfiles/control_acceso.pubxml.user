@@ -43,10 +43,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/16/2015 15:03:53</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>01/22/2016 15:21:10</publishTime>
+      <publishTime>01/26/2016 14:58:41</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>01/22/2016 15:21:09</publishTime>
+      <publishTime>01/26/2016 14:58:41</publishTime>
     </File>
     <File Include="bin/Ext.Net.dll">
       <publishTime>12/16/2015 15:03:50</publishTime>
@@ -85,13 +85,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/16/2015 15:03:53</publishTime>
     </File>
     <File Include="bin/webFingerprintGasCaqueta.dll">
-      <publishTime>01/22/2016 11:27:49</publishTime>
+      <publishTime>01/26/2016 14:56:50</publishTime>
     </File>
     <File Include="bin/webFingerprintGasCaqueta.dll.config">
-      <publishTime>01/21/2016 16:01:16</publishTime>
+      <publishTime>01/26/2016 14:47:36</publishTime>
     </File>
     <File Include="bin/webFingerprintGasCaqueta.pdb">
-      <publishTime>01/22/2016 11:27:49</publishTime>
+      <publishTime>01/26/2016 14:56:50</publishTime>
     </File>
     <File Include="Content/css/Style.css">
       <publishTime>01/12/2016 17:16:42</publishTime>
@@ -127,22 +127,22 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/07/2016 11:35:46</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>01/22/2016 15:20:57</publishTime>
+      <publishTime>01/26/2016 14:58:30</publishTime>
     </File>
     <File Include="Properties/PublishProfiles/control_acceso.pubxml">
       <publishTime>01/16/2016 09:17:22</publishTime>
     </File>
     <File Include="Properties/PublishProfiles/control_acceso.pubxml.user">
-      <publishTime>01/22/2016 10:00:36</publishTime>
+      <publishTime>01/26/2016 14:51:24</publishTime>
     </File>
     <File Include="View/Private/Empleado/HorarioEmpleado.aspx">
-      <publishTime>01/15/2016 17:01:00</publishTime>
+      <publishTime>01/23/2016 10:14:02</publishTime>
     </File>
     <File Include="View/Private/Empleado/ListarEmpleados.aspx">
-      <publishTime>01/22/2016 10:54:36</publishTime>
+      <publishTime>01/26/2016 14:48:59</publishTime>
     </File>
     <File Include="View/Private/Parametrizacion/CamaraWeb/CapturarFoto.aspx">
-      <publishTime>12/16/2015 15:03:54</publishTime>
+      <publishTime>01/23/2016 10:37:00</publishTime>
     </File>
     <File Include="View/Private/Parametrizacion/Festivos.aspx">
       <publishTime>01/15/2016 17:33:26</publishTime>
@@ -160,7 +160,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/15/2016 10:40:37</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>01/22/2016 09:38:02</publishTime>
+      <publishTime>01/26/2016 14:58:28</publishTime>
     </File>
     <File Include="Web.Debug.config">
       <publishTime>12/16/2015 15:03:54</publishTime>
@@ -172,7 +172,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/22/2016 09:51:30</publishTime>
     </File>
     <File Include="webFingerprintGasCaqueta.csproj.user">
-      <publishTime>01/22/2016 11:27:47</publishTime>
+      <publishTime>01/26/2016 14:39:22</publishTime>
     </File>
   </ItemGroup>
 </Project>

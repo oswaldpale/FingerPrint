@@ -150,14 +150,15 @@ namespace PluginDigitalPersona
 
         private bool ValidateOneFingerPrint(FeatureSet features)
         {
-            byte[] byteFinger;
-            string iduser;
             foreach (var fingerOne in _filterFinger)
             {
-                byteFinger = ByteToString(fingerOne.finger);
-                if (VerifyFinger(byteFinger, features) == true)
+                List<Huella> _dataHuella = HuellaOAD.consultarHuella(identificacion);
+                foreach (Huella item in _dataHuella)
                 {
-                    return true;
+                    if (VerifyFinger(item._huella1, features) == true)
+                    {
+                        return true;
+                    }
                 }
             }
             return false;
@@ -494,6 +495,24 @@ namespace PluginDigitalPersona
             }
             return retorno;
         }
+        public static List<Huella>  consultarHuella(Int64 identificacion) {
+            using (MySqlConnection conn = InternConexionBD.ObtenerConexion())
+            {
+                List<Huella> _lista = new List<Huella>();
+                string sql = "SELECT  huell_identificacion,huell_huella FROM huella WHERE huell_identificacion= '" + identificacion + "'";
+                MySqlCommand _comando = new MySqlCommand(sql, conn);
+                MySqlDataReader _reader = _comando.ExecuteReader();
+                while (_reader.Read())
+                {
+                    Huella pHuella = new Huella();
+                    pHuella._identificacion = _reader.GetUInt32(0);
+                    pHuella._huella1 = (byte[])_reader.GetValue(1);
+                    _lista.Add(pHuella);
+                }
+
+                return _lista;
+            }
+        }
     }
     public class General
     {
@@ -508,7 +527,9 @@ namespace PluginDigitalPersona
     {
         public static MySqlConnection ObtenerConexion()
         {
-            MySqlConnection conectar = new MySqlConnection("server=192.168.0.91; database=control_acceso; Uid=planta; pwd=planta123;");
+            //string connectServer = "server=192.168.0.100; database=control_acceso; Uid=planta; pwd=planta123;";
+            string connectServer = "server=192.168.0.91; database=control_acceso; Uid=planta; pwd=planta123;";
+            MySqlConnection conectar = new MySqlConnection(connectServer);
             conectar.Open();
             return conectar;
         }

@@ -105,6 +105,7 @@
     <Content Include="App_Readme\Ext.NET\README.txt" />
     <Content Include="App_Readme\Transformer.NET\LICENSE.txt" />
     <Content Include="App_Readme\Transformer.NET\README.txt" />
+    <Content Include="Content\css\degraded.css" />
     <Content Include="Content\css\Style.css" />
     <Content Include="Content\images\enrollmentFootprint.ico" />
     <Content Include="Content\images\footprint.ico" />

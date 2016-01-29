@@ -1,6 +1,7 @@
 ﻿/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7abcff+0,60abf8+44,4096ee+100&0.19+0,1+100 */
-
-background: -moz-linear-gradient(left,  rgba(122,188,255,0.19) 0%, rgba(96,171,248,0.55) 44%, rgba(64,150,238,1) 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(left,  rgba(122,188,255,0.19) 0%,rgba(96,171,248,0.55) 44%,rgba(64,150,238,1) 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to right,  rgba(122,188,255,0.19) 0%,rgba(96,171,248,0.55) 44%,rgba(64,150,238,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#307abcff', endColorstr='#4096ee',GradientType=1 ); /* IE6-9 */
+.TopBarDegraded {
+ background: -moz-linear-gradient(left,  rgba(122,188,255,0.19) 0%, rgba(96,171,248,0.55) 44%, rgba(64,150,238,1) 100%); /* FF3.6-15 */
+ background: -webkit-linear-gradient(left,  rgba(122,188,255,0.19) 0%,rgba(96,171,248,0.55) 44%,rgba(64,150,238,1) 100%); /* Chrome10-25,Safari5.1-6 */
+ background: linear-gradient(to right,  rgba(122,188,255,0.19) 0%,rgba(96,171,248,0.55) 44%,rgba(64,150,238,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#307abcff', endColorstr='#4096ee',GradientType=1 ); /* IE6-9 */  
+}

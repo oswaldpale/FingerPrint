@@ -58,6 +58,15 @@ namespace webFingerprintGasCaqueta.View.Public {
         protected global::Ext.Net.Panel PNORTE;
         
         /// <summary>
+        /// Control ILOGO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Image ILOGO;
+        
+        /// <summary>
         /// Control PCONTENEDOR.
         /// </summary>
         /// <remarks>

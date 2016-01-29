@@ -10,7 +10,7 @@
     <link href="../../../../Content/css/degraded.css" rel="stylesheet" type="text/css" />
     <script src="../../../../Content/js/Concurrent.Thread.js"></script>
     <script type="text/javascript">
-        <%--       try {
+        try {
             var obj = new ActiveXObject("PluginDigitalPersona.pluginDigitalpersona");
             obj.typeProcces = "validation";
 
@@ -35,7 +35,6 @@
 
         function proceso() {
             var NotifyBiometricDevice = null;
-            var StateFingerPrintNeed = null;
             var CheckFingerPrint = null;
             var BitmapDactilar = null;
             while (true) {
@@ -44,28 +43,29 @@
 
                     if (NotifyBiometricDevice != obj.MessageBiometricDevice()) {
                         NotifyBiometricDevice = obj.MessageBiometricDevice();
-                        App.LBIOMETRICOSTATE.setHtml('<font face="Comic Sans MS,arial,verdana" color="red">' + NotifyBiometricDevice + '</font>');
+                        parametro.ChangeReaderInf(NotifyBiometricDevice);
+                      
+                        //App.LBIOMETRICOSTATE.setHtml('<font face="Comic Sans MS,arial,verdana" color="red">' + NotifyBiometricDevice + '</font>');
 
                     }
                     CheckFingerPrint = obj.CheckFingerprint();
                     if (typeof (CheckFingerPrint) != "undefined" || CheckFingerPrint != null) {
                         if (CheckFingerPrint == 'true') {
-
                             BitmapDactilar = obj.BitmapDactilar();
-                            App.direct.CreateSessionImage(BitmapDactilar, Math.random());
+                            App.IMDACTILAR.setImageUrl('data:image/png;base64,' + BitmapDactilar + '');
                             obj.checkFingerprint = 'false';
                             obj.bitmapDactilar = null;
                         }
                     }
                 } else {
                     NotifyBiometricDevice = obj.MessageBiometricDevice();
-                    App.LBIOMETRICOSTATE.setHtml('<font face="Comic Sans MS,arial,verdana" color="red">' + NotifyBiometricDevice + '</font>');
+                    //App.LBIOMETRICOSTATE.setHtml('<font face="Comic Sans MS,arial,verdana" color="red">' + NotifyBiometricDevice + '</font>');
 
 
                 }
                 Concurrent.Thread.sleep(800);
             }
-        }--%>
+        }
 
     </script>
 </head>
@@ -90,9 +90,26 @@
                                     <Items>
                                         <ext:Panel runat="server" ID="PDATOS"  Width="700" >
                                             <Items>
-                                                <ext:Panel ID="PDATOSPERSONA" runat="server"   Height="240" Border="false">
+                                                <ext:Panel ID="PDATOSPERSONA" runat="server" Height="240" Border="false"  >
                                                     <Items>
-                                                        
+                                                        <ext:Container runat="server" Layout="HBoxLayout" Cls="UserInf"  >
+                                                            <Items>
+                                                                <ext:Label runat="server" Text="TIPO USUARIO:" AnchorHorizontal="30%" Height="40"  />
+                                                                <ext:Label runat="server" Text="PARTICULAR" AnchorHorizontal="70%" Height="40"  />
+                                                            </Items>
+                                                        </ext:Container>
+                                                         <ext:Container runat="server" Layout="HBoxLayout"  Cls="UserInf" >
+                                                            <Items>
+                                                                <ext:Label runat="server" Text="USUARIO:" AnchorHorizontal="30%" Height="40"   />
+                                                                <ext:Label runat="server" Text="OSWALDO PAMO LEAL" AnchorHorizontal="70%" Height="40"  />
+                                                            </Items>
+                                                        </ext:Container>
+                                                        <ext:Container runat="server" Layout="HBoxLayout"  Cls="UserInf" >
+                                                            <Items>
+                                                                <ext:Label runat="server" Text="CARGO:" AnchorHorizontal="30%" Height="40"  />
+                                                                <ext:Label runat="server" Text="NO APLICA" AnchorHorizontal="70%" Height="40"  />
+                                                            </Items>
+                                                        </ext:Container>
                                                     </Items>
                                                 </ext:Panel>
                                                 <ext:Panel ID="PALERTAS" runat="server"   Height="238" Border="false" />
@@ -108,7 +125,7 @@
                                                        
                                                     </Items>
                                                 </ext:Panel>
-                                                <ext:Panel runat="server" Height="240" Width="284"  Layout="CenterLayout" Border="false" >
+                                                <ext:Panel runat="server" Height="240" Width="284"  Layout="CenterLayout" Border="false"  >
                                                     <Items>
                                                        <ext:Image ID="IMPERFIL" runat="server" ImageUrl="../../../../Content/images/SinFoto.jpg" Width="160px" Height="160px">
                                                         </ext:Image>
@@ -118,14 +135,18 @@
                                         </ext:Panel>
                                     </Items>
                                 </ext:Panel>
-                                <ext:Panel runat="server" ID="PSUR" Height="50" />
+                                <ext:Panel runat="server" ID="PSUR" Height="50" BodyCls="FootBarDegraded">
+                                    <Items>
+                                        <ext:Label runat="server" ID="LESTADO" MarginSpec="0 0 0 15" />
+                                    </Items>
+                                </ext:Panel>
                             </Items>
                         </ext:Panel>
                     </Items>
-                    <%-- <Listeners>
-                                <AfterRender Handler="DeviceConnected();">
-                                </AfterRender>
-                            </Listeners>--%>
+                    <Listeners>
+                        <AfterRender Handler="DeviceConnected();">
+                        </AfterRender>
+                    </Listeners>
                 </ext:Window>
             </Items>
         </ext:Viewport>

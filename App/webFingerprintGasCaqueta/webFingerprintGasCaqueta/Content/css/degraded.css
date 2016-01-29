@@ -1,7 +1,59 @@
 ﻿/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7abcff+0,60abf8+44,4096ee+100&0.19+0,1+100 */
 .TopBarDegraded {
- background: -moz-linear-gradient(left,  rgba(122,188,255,0.19) 0%, rgba(96,171,248,0.55) 44%, rgba(64,150,238,1) 100%); /* FF3.6-15 */
- background: -webkit-linear-gradient(left,  rgba(122,188,255,0.19) 0%,rgba(96,171,248,0.55) 44%,rgba(64,150,238,1) 100%); /* Chrome10-25,Safari5.1-6 */
- background: linear-gradient(to right,  rgba(122,188,255,0.19) 0%,rgba(96,171,248,0.55) 44%,rgba(64,150,238,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
- filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#307abcff', endColorstr='#4096ee',GradientType=1 ); /* IE6-9 */  
+ background: rgba(14,71,123,1);
+background: -moz-linear-gradient(left, rgba(14,71,123,1) 0%, rgba(12,56,105,1) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(14,71,123,1)), color-stop(100%, rgba(12,56,105,1)));
+background: -webkit-linear-gradient(left, rgba(14,71,123,1) 0%, rgba(12,56,105,1) 100%);
+background: -o-linear-gradient(left, rgba(14,71,123,1) 0%, rgba(12,56,105,1) 100%);
+background: -ms-linear-gradient(left, rgba(14,71,123,1) 0%, rgba(12,56,105,1) 100%);
+background: linear-gradient(to right, rgba(14,71,123,1) 0%, rgba(12,56,105,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e477b', endColorstr='#0c3869', GradientType=1 );
+
+}
+.FootBarDegraded {
+background: rgba(16,76,132,1);
+background: -moz-linear-gradient(left, rgba(16,76,132,1) 0%, rgba(13,60,115,0.74) 59%, rgba(13,60,115,0.74) 60%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(16,76,132,1)), color-stop(59%, rgba(13,60,115,0.74)), color-stop(60%, rgba(13,60,115,0.74)));
+background: -webkit-linear-gradient(left, rgba(16,76,132,1) 0%, rgba(13,60,115,0.74) 59%, rgba(13,60,115,0.74) 60%);
+background: -o-linear-gradient(left, rgba(16,76,132,1) 0%, rgba(13,60,115,0.74) 59%, rgba(13,60,115,0.74) 60%);
+background: -ms-linear-gradient(left, rgba(16,76,132,1) 0%, rgba(13,60,115,0.74) 59%, rgba(13,60,115,0.74) 60%);
+background: linear-gradient(to right, rgba(16,76,132,1) 0%, rgba(13,60,115,0.74) 59%, rgba(13,60,115,0.74) 60%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#104c84', endColorstr='#0d3c73', GradientType=1 );
+}
+.ReaderStateConnect {
+font-family: arial, sans-serif;
+color: #09CC02;
+font-size: 16px;
+font-weight: bold;
+font-style: italic;
+text-transform: uppercase;
+letter-spacing: 2pt;
+word-spacing: 6pt;
+text-align: center;
+line-height: 2.8;
+}
+.ReaderStateDisconnect {
+font-family: arial, sans-serif;
+color: #FF0000;
+font-size: 16px;
+font-weight: bold;
+font-style: italic;
+text-transform: uppercase;
+letter-spacing: 2pt;
+word-spacing: 6pt;
+text-align: center;
+line-height: 2.8;
+}
+.UserInf {
+font-family: 'times new roman', times, serif;
+color: #141414;
+font-size: 25px;
+font-weight: bold;
+font-style: italic;
+text-transform: uppercase;
+
+}
+.CenterInf {
+display:table-cell;
+vertical-align:middle;
 }

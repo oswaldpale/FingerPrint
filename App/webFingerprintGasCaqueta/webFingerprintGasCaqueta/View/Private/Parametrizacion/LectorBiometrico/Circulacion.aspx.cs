@@ -19,6 +19,21 @@ namespace webFingerprintGasCaqueta.View.Public
         {
 
         }
+        [DirectMethod(Namespace = "parametro")]
+        public void ChangeReaderInf(string state) {
+            LESTADO.Text = state;
+            if (state=="Dispositivo Desconectado")
+            {
+                LESTADO.Icon = Icon.Disconnect;
+                LESTADO.Cls = "ReaderStateDisconnect";
+            }
+            else
+            {
+                LESTADO.Icon = Icon.Connect;
+                LESTADO.Cls = "ReaderStateConnect";
+            }
+           
+        }
 
     }
 }

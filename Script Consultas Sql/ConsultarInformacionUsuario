@@ -1,0 +1,34 @@
+SELECT
+    u.NOMBRE,
+    u.USUARIO,
+    u.IDENTIFICACION,
+    IF(u.TIPO='','NO APLICA',u.Tipo) AS TIPO,
+    u.FOTO
+FROM
+    (
+        SELECT
+            e.Cod_empleado                                         AS IDENTIFICACION,
+            'EMPLEADO'                                                     AS USUARIO,
+            CONCAT(e.Nombres, ' ', e.Apellido1 , ' ', e.Apellido2) AS NOMBRE ,
+            t.Tipo                                                 AS TIPO,
+            e.FOTO
+        FROM
+            control_acceso.empleado e
+        INNER JOIN sigc972008.tipoempleado t
+        ON
+            e.cod_tipo = t.cod_tipo
+        WHERE
+            e.Eliminado=0
+        UNION ALL
+        SELECT
+            v.visi_identificacion                                                AS IDENTIFICACION,
+            'VISITANTE'                                                                   AS USUARIO,
+            CONCAT(v.visi_nombre, ' ', v.visi_apellido1 , ' ', v.visi_apellido2) AS NOMBRE,
+            ''                                                                   AS TIPO,
+            v.visi_foto                                                          AS FOTO
+        FROM
+            visitante v
+    )
+    u
+WHERE
+    u.IDENTIFICACION = '1117513159';

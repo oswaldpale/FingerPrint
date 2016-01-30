@@ -44,9 +44,6 @@
                     if (NotifyBiometricDevice != obj.MessageBiometricDevice()) {
                         NotifyBiometricDevice = obj.MessageBiometricDevice();
                         parametro.ChangeReaderInf(NotifyBiometricDevice);
-                      
-                        //App.LBIOMETRICOSTATE.setHtml('<font face="Comic Sans MS,arial,verdana" color="red">' + NotifyBiometricDevice + '</font>');
-
                     }
                     CheckFingerPrint = obj.CheckFingerprint();
                     if (typeof (CheckFingerPrint) != "undefined" || CheckFingerPrint != null) {
@@ -59,11 +56,9 @@
                     }
                 } else {
                     NotifyBiometricDevice = obj.MessageBiometricDevice();
-                    //App.LBIOMETRICOSTATE.setHtml('<font face="Comic Sans MS,arial,verdana" color="red">' + NotifyBiometricDevice + '</font>');
-
-
+                    parametro.ChangeReaderInf(NotifyBiometricDevice);
                 }
-                Concurrent.Thread.sleep(800);
+                Concurrent.Thread.sleep(500);
             }
         }
 
@@ -92,22 +87,27 @@
                                             <Items>
                                                 <ext:Panel ID="PDATOSPERSONA" runat="server" Height="240" Border="false"  >
                                                     <Items>
+                                                       <%-- <ext:Container>
+                                                            <Items>
+                                                               
+                                                            </Items>
+                                                        </ext:Container>--%>
                                                         <ext:Container runat="server" Layout="HBoxLayout" Cls="UserInf"  >
                                                             <Items>
                                                                 <ext:Label runat="server" Text="TIPO USUARIO:" AnchorHorizontal="30%" Height="40"  />
-                                                                <ext:Label runat="server" Text="PARTICULAR" AnchorHorizontal="70%" Height="40"  />
+                                                                <ext:Label runat="server" ID="LTIPOUSUARIO" Text="PARTICULAR" AnchorHorizontal="70%" Height="40"  />
                                                             </Items>
                                                         </ext:Container>
                                                          <ext:Container runat="server" Layout="HBoxLayout"  Cls="UserInf" >
                                                             <Items>
                                                                 <ext:Label runat="server" Text="USUARIO:" AnchorHorizontal="30%" Height="40"   />
-                                                                <ext:Label runat="server" Text="OSWALDO PAMO LEAL" AnchorHorizontal="70%" Height="40"  />
+                                                                <ext:Label runat="server" ID="LUSUARIO" Text="OSWALDO PAMO LEAL" AnchorHorizontal="70%" Height="40"  />
                                                             </Items>
                                                         </ext:Container>
                                                         <ext:Container runat="server" Layout="HBoxLayout"  Cls="UserInf" >
                                                             <Items>
                                                                 <ext:Label runat="server" Text="CARGO:" AnchorHorizontal="30%" Height="40"  />
-                                                                <ext:Label runat="server" Text="NO APLICA" AnchorHorizontal="70%" Height="40"  />
+                                                                <ext:Label runat="server" ID="LCARGO" Text="NO APLICA" AnchorHorizontal="70%" Height="40"  />
                                                             </Items>
                                                         </ext:Container>
                                                     </Items>
@@ -120,9 +120,8 @@
                                             <Items>
                                                 <ext:Panel runat="server" Height="240"  Width="284" Frame="false"   Layout="CenterLayout" Border="false">
                                                     <Items>
-                                                          <ext:Image ID="IMDACTILAR" runat="server" ImageUrl="../../../../Content/images/SinHuella.png" Width="160px" Height="160px">
+                                                          <ext:Image ID="IMDACTILAR" runat="server" Cls="RoundFinger" ImageUrl="../../../../Content/images/SinHuella.png" Width="160px" Height="160px">
                                                         </ext:Image>
-                                                       
                                                     </Items>
                                                 </ext:Panel>
                                                 <ext:Panel runat="server" Height="240" Width="284"  Layout="CenterLayout" Border="false"  >

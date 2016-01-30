@@ -14,6 +14,7 @@ namespace webFingerprintGasCaqueta.Controller
         private General general = new General();
         private VisitanteOAD visitante = new VisitanteOAD();
         private FestivosOAD festivo = new FestivosOAD();
+        private CirculacionOAD circulacion = new CirculacionOAD();
 
 
         #region GESTION DE HUELLA
@@ -49,16 +50,17 @@ namespace webFingerprintGasCaqueta.Controller
         }
         #endregion
         #region GESTIONAR CIRCULACIÓN
-
+        public DataTable consultarInformacionUsuario(string identificacion)
+        {
+            return circulacion.consultarInformacionUsuario(identificacion);
+        }
         #endregion
 
         #region GESTIONAR EMPLEADOS
         public DataTable consultarEmpleados() {
             return empleado.consultarEmpleados();
         }
-        public DataTable consultarInformacionUsuario(string identificacion) {
-            return empleado.consultarInformacionUsuario(identificacion);
-        }
+       
         #endregion
         #region GESTIONAR VISITANTE
         public bool registrarVisitante(string identificacion, string nombre, string apellido1, string apellido2, string observacion, string foto) {

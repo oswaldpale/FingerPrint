@@ -135,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\ControllersCOD.cs" />
+    <Compile Include="Model\CirculacionOAD.cs" />
     <Compile Include="Model\EmpleadoOAD.cs" />
     <Compile Include="Model\FestivosOAD.cs" />
     <Compile Include="Model\General.cs" />

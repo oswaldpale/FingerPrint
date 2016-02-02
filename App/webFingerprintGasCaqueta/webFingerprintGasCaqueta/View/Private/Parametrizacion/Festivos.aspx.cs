@@ -27,6 +27,7 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
             string nombreFestivo = TNOMBRE.Text.Trim();
             if (Controllers.registrarFestivo(fecha, nombreFestivo)){
                 X.Msg.Notify("Notificación", "Registrado Exitosamente!.").Show();
+                WREGISTRO.Hide();
                 this.consultarFestivos();
                 FREGISTRO.Reset();
             }
@@ -35,7 +36,11 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
                 X.Msg.Notify("Notificación", "Ha ocurrido un error!..").Show();
             }
         }
-       
+        [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Guardando..", Target = MaskTarget.Page)]
+        public bool eliminarFestivo(string id) {
+            return Controllers.eliminarFestivo(id);
+        }
+
         protected void consultarFechaExistente(object sender, RemoteValidationEventArgs e)
         {
             string fecha = Convert.ToDateTime(TFECHA.Text).ToString("yyyy-MM-dd");

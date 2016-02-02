@@ -18,7 +18,7 @@ namespace webFingerprintGasCaqueta.Model
                                 (
                                     hora_id,
                                     hora_nombre,
-                                    hora_horainicio,
+                                    hora_inicio,
                                     hora_fin,
                                     hora_tiempotarde
                                 )
@@ -38,8 +38,8 @@ namespace webFingerprintGasCaqueta.Model
             string sql = @"SELECT
                             hora_id          AS ID,
                             hora_nombre      AS NOMBREHORARARIO,
-                            hora_horainicio  AS HORA_INICIO,
-                            hora_fin         AS HORA_FIN,
+                            TIME_FORMAT(hora_inicio,'%r')  AS HORA_INICIO,
+                            TIME_FORMAT(hora_fin,'%r')     AS HORA_FIN,
                             hora_tiempotarde AS TIEMPO_TARDE
                         FROM
                             horario";

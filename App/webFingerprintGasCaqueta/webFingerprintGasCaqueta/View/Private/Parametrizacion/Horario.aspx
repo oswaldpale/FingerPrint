@@ -5,6 +5,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <script type="text/javascript">
+        
+        var ClickCommand = function (grid, command, record, row) {
+            if (command == 'del') {
+                Ext.Msg.confirm('Confirmación', 'Estas seguro de eliminar el Horario?',
+                function (btn) {
+                    if (btn === 'yes') {
+                        if (App.direct.eliminarHorario(record.data.ID)) {
+                            Ext.Msg.notify("Notificación", "Eliminado exitosamente.");
+                            parametro.consultarHorarios();
+                        } else {
+                            Ext.Msg.Notify("Notificación","Ha ocurrido un error!..");
+                        }
+                    }
+                });
+            }
+        }
+    </script>
 </head>
 <body>
       <ext:ResourceManager ID="ResourceManager1" runat="server" Locale="es-CO" />
@@ -14,7 +32,7 @@
                 <Items>
                     <ext:Panel ID="PPRESENTACION" runat="server" Layout="Fit" Region="Center" Padding="5">
                         <Items>
-                            <ext:GridPanel ID="GPHORARIO" runat="server" >
+                            <ext:GridPanel ID="GPHORARIO" runat="server" AutoDataBind="true" >
                                 <TopBar>
                                     <ext:Toolbar ID="Toolbar1" runat="server">
                                         <Items>
@@ -64,9 +82,20 @@
                                             <Editor>
                                                 <ext:TextField ID="TextField4" runat="server" />
                                             </Editor>
-                                        </ext:Column>                                       
+                                         </ext:Column>
+                                        <ext:CommandColumn runat="server" Width="60">
+                                            <Commands>
+                                                <ext:GridCommand Icon="Delete" CommandName="del">
+                                                    <ToolTip Text="Eliminar Horario" />
+                                                </ext:GridCommand>
+                                            </Commands>
+                                            <Listeners>
+                                                <Command Fn="ClickCommand" />
+                                            </Listeners>
+                                        </ext:CommandColumn>                                   
                                     </Columns>
                                 </ColumnModel>
+
                             </ext:GridPanel>
                         </Items>
                         <BottomBar>
@@ -117,7 +146,7 @@
                             </ext:Button>
                             <ext:Button runat="server" ID="BGUARDAR" Icon="Add" Text="Guardar" FormBind="true">
                                 <Listeners>
-                                    <Click Handler="if(#{FREGISTRO}.getForm().isValid()) {parametro.registrarHorario(App.THINICIO.getValue());}else{ return false;}  " />
+                                    <Click Handler="if(#{FREGISTRO}.getForm().isValid()) {App.direct.registrarHorario(App.THINICIO.getValue(),App.THFIN.getValue());}else{ return false;}  " />
                                 </Listeners>
                             </ext:Button>
 
@@ -125,7 +154,7 @@
                     </ext:Toolbar>
                 </BottomBar>
                 <Listeners>
-                    <BeforeHide Handler="App.FREGISTRO.reset();" />
+                    <BeforeHide Handler="App.FREGISTRO.reset();parametro.consultarHorarios();" />
                 </Listeners>
             </ext:Window>
         </div>

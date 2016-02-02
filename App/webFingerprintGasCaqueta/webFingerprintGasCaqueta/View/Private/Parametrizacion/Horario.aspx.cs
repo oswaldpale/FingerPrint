@@ -14,41 +14,40 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
         private ControllersCOD Controllers = new ControllersCOD();
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.consultarHorarios();
+                consultarHorarios();
+            
+            
         }
-        [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Guardando..", Target = MaskTarget.Page)]
-        public void registrarHorario(string horainicio) {
+        [DirectMethod(ShowMask = true, Msg = "Guardando..", Target = MaskTarget.Page)]
+        public void registrarHorario(string horainicio,string horafin) {
             string nombre = TNOMBRE.Text.ToUpper();
-            string horaInicio = Convert.ToDateTime(horainicio).ToString("T");
-            string horaFin = THFIN.Text;
+            
+            string horaInicio = Convert.ToDateTime(horainicio.ToString().Replace("\"", "")).ToString("HH:mm");
+            string horaFin = Convert.ToDateTime(horafin.ToString().Replace("\"", "")).ToString("HH:mm");
             string tiempoTarde = TTIEMPOTARDE.Text;
             if (Controllers.registrarHorario(nombre,horaInicio,horaFin,tiempoTarde))
             {
                 X.Msg.Notify("Notificación", "Registrado Exitosamente!.").Show();
-                this.consultarHorarios();
                 FREGISTRO.Reset();
+                WREGISTRO.Hide();
+                this.consultarHorarios();
             }
             else
             {
                 X.Msg.Notify("Notificación", "Ha ocurrido un error!..").Show();
             }
         }
-        [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Consultando..", Target = MaskTarget.Page)]
+        [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Consultando..")]
         public void consultarHorarios()
         {
-            Controllers.consultarHorarios();
+            SHORARIO.DataSource =  Controllers.consultarHorarios();
+            SHORARIO.DataBind();
         }
-        [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Eliminando..", Target = MaskTarget.Page)]
-        public void EliminarHorario(string id)
+        [DirectMethod(ShowMask = true, Msg = "Eliminando..", Target = MaskTarget.Page)]
+        public  bool eliminarHorario(string id)
         {
-            if ( Controllers.eliminarHorario(id))
-            {
-                X.Msg.Notify("Notificación", "Eliminado Exitosamente!..").Show();
-            }
-            else
-            {
-                X.Msg.Notify("Notificación", "Ha ocurrido un error!..").Show();
-            }
+            return Controllers.eliminarHorario(id);
+           
         }
     }
 }

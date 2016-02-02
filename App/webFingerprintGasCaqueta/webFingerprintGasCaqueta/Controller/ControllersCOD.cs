@@ -15,6 +15,7 @@ namespace webFingerprintGasCaqueta.Controller
         private VisitanteOAD visitante = new VisitanteOAD();
         private FestivosOAD festivo = new FestivosOAD();
         private CirculacionOAD circulacion = new CirculacionOAD();
+        private HorarioOAD horario = new HorarioOAD();
 
 
         #region GESTION DE HUELLA
@@ -85,6 +86,20 @@ namespace webFingerprintGasCaqueta.Controller
         }
         public bool consultarFechaExistente(string fecha) {
             return festivo.consultarFechaExistente(fecha);
+        }
+        #endregion
+        #region GESTIONAR HORARIO
+        public bool registrarHorario(string nombre, string horaInicio, string horarFin, string tiempoTarde) {
+            return horario.registrarHorario(general.nextPrimaryKey("horario", "hora_id"),nombre,horaInicio,horarFin,tiempoTarde);
+        }
+        public DataTable consultarHorarios() {
+            return horario.consultarHorarios();
+        }
+        public bool eliminarHorario(string id) {
+            return horario.eliminarHorario(id);
+        }
+        public bool modificarHorario(string id,string nombre, string horaInicio, string horaFin, string tiempoTarde) {
+            return horario.modificarHorario(id,nombre,horaInicio,horaFin,tiempoTarde);
         }
         #endregion
     }

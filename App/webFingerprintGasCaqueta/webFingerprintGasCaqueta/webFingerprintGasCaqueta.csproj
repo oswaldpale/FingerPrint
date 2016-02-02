@@ -119,9 +119,11 @@
     <Content Include="View\Private\Empleado\ListarEmpleados.aspx" />
     <Content Include="View\Private\Parametrizacion\CamaraWeb\CapturarFoto.aspx" />
     <Content Include="View\Private\Parametrizacion\Festivos.aspx" />
+    <Content Include="View\Private\Parametrizacion\Horario.aspx" />
     <Content Include="View\Private\Parametrizacion\LectorBiometrico\Captura.aspx" />
     <Content Include="Imagen.aspx" />
     <Content Include="View\Private\Parametrizacion\LectorBiometrico\Circulacion.aspx" />
+    <Content Include="View\Private\Parametrizacion\PeriodoTurno.aspx" />
     <Content Include="View\Private\Visitante\Visitante.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -143,6 +145,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Connections\Conexion.cs" />
+    <Compile Include="Model\HorarioOAD.cs" />
     <Compile Include="Model\HuellaOAD.cs" />
     <Compile Include="Model\VisitanteOAD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -174,6 +177,13 @@
     <Compile Include="View\Private\Parametrizacion\Festivos.aspx.designer.cs">
       <DependentUpon>Festivos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Private\Parametrizacion\Horario.aspx.cs">
+      <DependentUpon>Horario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\Parametrizacion\Horario.aspx.designer.cs">
+      <DependentUpon>Horario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Private\Parametrizacion\LectorBiometrico\Captura.aspx.cs">
       <DependentUpon>Captura.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -195,6 +205,13 @@
     <Compile Include="View\Private\Parametrizacion\LectorBiometrico\Circulacion.aspx.designer.cs">
       <DependentUpon>Circulacion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Private\Parametrizacion\PeriodoTurno.aspx.cs">
+      <DependentUpon>PeriodoTurno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\Parametrizacion\PeriodoTurno.aspx.designer.cs">
+      <DependentUpon>PeriodoTurno.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Private\Visitante\Visitante.aspx.cs">
       <DependentUpon>Visitante.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -204,7 +221,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="View\Private\Parametrizacion\LectorBiometrico\Imagen\" />
     <Folder Include="View\Public\" />
   </ItemGroup>
   <ItemGroup>

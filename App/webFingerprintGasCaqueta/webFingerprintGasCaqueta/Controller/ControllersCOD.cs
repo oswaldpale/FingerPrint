@@ -101,6 +101,9 @@ namespace webFingerprintGasCaqueta.Controller
         public bool modificarHorario(string id,string nombre, string horaInicio, string horaFin, string tiempoTarde) {
             return horario.modificarHorario(id,nombre,horaInicio,horaFin,tiempoTarde);
         }
+        public DataTable ConsultarHorariosPeriodos() {
+            return horario.ConsultarHorariosPeriodos();
+        }
         #endregion
     }
 }

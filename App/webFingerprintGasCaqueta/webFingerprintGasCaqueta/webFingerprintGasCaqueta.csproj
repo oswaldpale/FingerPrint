@@ -123,7 +123,7 @@
     <Content Include="View\Private\Parametrizacion\LectorBiometrico\Captura.aspx" />
     <Content Include="Imagen.aspx" />
     <Content Include="View\Private\Parametrizacion\LectorBiometrico\Circulacion.aspx" />
-    <Content Include="View\Private\Parametrizacion\PeriodoTurno.aspx" />
+    <Content Include="View\Private\Parametrizacion\PeriodoSemanal.aspx" />
     <Content Include="View\Private\Visitante\Visitante.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -205,12 +205,12 @@
     <Compile Include="View\Private\Parametrizacion\LectorBiometrico\Circulacion.aspx.designer.cs">
       <DependentUpon>Circulacion.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\Private\Parametrizacion\PeriodoTurno.aspx.cs">
-      <DependentUpon>PeriodoTurno.aspx</DependentUpon>
+    <Compile Include="View\Private\Parametrizacion\PeriodoSemanal.aspx.cs">
+      <DependentUpon>PeriodoSemanal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\Private\Parametrizacion\PeriodoTurno.aspx.designer.cs">
-      <DependentUpon>PeriodoTurno.aspx</DependentUpon>
+    <Compile Include="View\Private\Parametrizacion\PeriodoSemanal.aspx.designer.cs">
+      <DependentUpon>PeriodoSemanal.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\Visitante\Visitante.aspx.cs">
       <DependentUpon>Visitante.aspx</DependentUpon>

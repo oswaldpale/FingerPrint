@@ -32,7 +32,7 @@
                 <Items>
                     <ext:Panel ID="PPRESENTACION" runat="server" Layout="Fit" Region="Center" Padding="5">
                         <Items>
-                            <ext:GridPanel ID="GPHORARIO" runat="server" AutoDataBind="true" >
+                            <ext:GridPanel ID="GPHORARIO" runat="server" AutoDataBind="true" Frame="true" Border="true" >
                                 <TopBar>
                                     <ext:Toolbar ID="Toolbar1" runat="server">
                                         <Items>
@@ -63,27 +63,27 @@
                                 <ColumnModel>
                                     <Columns>
                                         <ext:RowNumbererColumn ID="RowNumbererColumn1" runat="server" />
-                                        <ext:Column ID="Column1" ColumnID="CNOMBREHORARIO" runat="server" DataIndex="NOMBREHORARARIO" Header="NOMBRE" Flex="2">
+                                        <ext:Column ID="Column1" ColumnID="CNOMBREHORARIO" runat="server" DataIndex="NOMBREHORARARIO" Header="NOMBRE" Flex="3">
                                             <Editor>
                                                 <ext:TextField ID="TextField1" runat="server" />
                                             </Editor>
                                         </ext:Column>
-                                        <ext:Column ID="Column2" ColumnID="CHORA_INICIO" runat="server" DataIndex="HORA_INICIO" Header="HORA INICIO" Flex="3">
+                                        <ext:Column ID="Column2" ColumnID="CHORA_INICIO" runat="server" DataIndex="HORA_INICIO" Header="HORA INICIO" Flex="1">
                                             <Editor>
                                                 <ext:TextField ID="TextField2" runat="server" />
                                             </Editor>
                                         </ext:Column>
-                                         <ext:Column ID="Column3" ColumnID="CHORA_FIN" runat="server" DataIndex="HORA_FIN" Header="HORA FIN" Flex="3">
+                                         <ext:Column ID="Column3" ColumnID="CHORA_FIN" runat="server" DataIndex="HORA_FIN" Header="HORA FIN" Flex="1">
                                             <Editor>
                                                 <ext:TextField ID="TextField3" runat="server" />
                                             </Editor>
                                         </ext:Column>  
-                                         <ext:Column ID="Column4" ColumnID="CTIEMPO_TARDE" runat="server" DataIndex="TIEMPO_TARDE" Header="TIEMPO TARDE(min)" Flex="3">
+                                         <ext:Column ID="Column4" ColumnID="CTIEMPO_TARDE" runat="server" DataIndex="TIEMPO_TARDE" Header="TIEMPO TARDE(min)" Width="150">
                                             <Editor>
                                                 <ext:TextField ID="TextField4" runat="server" />
                                             </Editor>
                                          </ext:Column>
-                                        <ext:CommandColumn runat="server" Width="60">
+                                        <ext:CommandColumn runat="server" Width="30">
                                             <Commands>
                                                 <ext:GridCommand Icon="Delete" CommandName="del">
                                                     <ToolTip Text="Eliminar Horario" />

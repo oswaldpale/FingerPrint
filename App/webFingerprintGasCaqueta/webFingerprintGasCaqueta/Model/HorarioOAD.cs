@@ -67,5 +67,14 @@ namespace webFingerprintGasCaqueta.Model
 
             return connection.sendSetDataMariaDB(sql);
         }
+        public DataTable ConsultarHorariosPeriodos() {
+            string sql = @"SELECT
+                                hora_id AS ID,
+                                hora_nombre AS NOMBRE,
+                                CONCAT(TIME_FORMAT(hora_inicio, '%r'), ' - ', TIME_FORMAT(hora_fin, '%r')) AS HORARIO
+                            FROM
+                                horario";
+            return connection.getDataMariaDB(sql).Tables[0];
+        }
     }
 }

@@ -70,10 +70,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>07/01/2016 11:35:44</publishTime>
+      <publishTime>01/07/2016 11:35:44</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.xml">
-      <publishTime>07/01/2016 11:35:44</publishTime>
+      <publishTime>01/07/2016 11:35:44</publishTime>
     </File>
     <File Include="bin/Transformer.NET.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -94,7 +94,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/css/Style.css">
-      <publishTime>12/01/2016 17:16:42</publishTime>
+      <publishTime>01/12/2016 17:16:42</publishTime>
     </File>
     <File Include="Content/images/enrollmentFootprint.ico">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -124,7 +124,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>07/01/2016 11:35:46</publishTime>
+      <publishTime>01/07/2016 11:35:46</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
       <publishTime>01/01/0001 00:00:00</publishTime>

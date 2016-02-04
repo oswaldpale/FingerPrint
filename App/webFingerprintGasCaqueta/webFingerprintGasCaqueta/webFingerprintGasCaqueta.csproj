@@ -147,6 +147,7 @@
     <Compile Include="Connections\Conexion.cs" />
     <Compile Include="Model\HorarioOAD.cs" />
     <Compile Include="Model\HuellaOAD.cs" />
+    <Compile Include="Model\SemanaOAD.cs" />
     <Compile Include="Model\VisitanteOAD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\Private\Empleado\HorarioEmpleado.aspx.cs">

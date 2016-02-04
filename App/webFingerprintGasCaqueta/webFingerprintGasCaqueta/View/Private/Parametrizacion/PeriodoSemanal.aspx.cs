@@ -21,6 +21,12 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
             SHORARIO.DataSource = Controllers.ConsultarHorariosPeriodos();
             SHORARIO.DataBind();
         }
+        [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Consultando..", Target = MaskTarget.Page)]
+        public void consultarSemana()
+        {
+            SSEMANA.DataSource = Controllers.consultarSemana();
+            SSEMANA.DataBind();
+        }
         [DirectMethod(Namespace = "parametro")]
         public void AbrirVentanaHorario()
         {

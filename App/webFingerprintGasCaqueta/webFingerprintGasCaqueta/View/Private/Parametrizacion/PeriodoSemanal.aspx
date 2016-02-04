@@ -11,13 +11,12 @@
     <form id="form1" runat="server">
       <ext:ResourceManager runat="server" />
         
-        <ext:Panel runat="server" Width="800" Height="300">
-            <LayoutConfig>
-                <ext:HBoxLayoutConfig Align="Stretch" Padding="5" />
-            </LayoutConfig>
+        <ext:Panel runat="server" Width="850" Height="500" Layout="ColumnLayout" >
             <Items>
-                <ext:GridPanel
-                    ID="GPERIODO"  runat="server" MultiSelect="true" Flex="1"  MarginSpec="0 2 0 0" Border="true" >
+                <ext:Panel runat="server">
+                    <Items>
+                             <ext:GridPanel
+                    ID="GPERIODO"  runat="server" MultiSelect="true" Width="450" Height="400"   Border="true"  >
                     <Store>
                         <ext:Store ID="SHORARIO" runat="server">
                             <Model>
@@ -50,7 +49,7 @@
                             </Listeners>--%>
                         </ext:GridView>
                     </View> 
-                    <TopBar>
+                    <BottomBar>
                     <ext:Toolbar runat="server">
                         <Items>
                             <ext:ToolbarFill runat="server" />
@@ -61,17 +60,19 @@
                             </ext:Button>
                         </Items>
                     </ext:Toolbar>
-                </TopBar>  
+                </BottomBar>  
                 </ext:GridPanel>
-                <ext:GridPanel  ID="GSEMANA" runat="server"  MultiSelect="true"  Title="Semana"  Flex="1" MarginSpec="0 0 0 3">
+                    </Items>
+                </ext:Panel>
+                
+                <ext:GridPanel  ID="GSEMANA" runat="server"  MultiSelect="true"  Width="400" Height="400" >
                     <Store>
                         <ext:Store ID="SSEMANA" runat="server">
                             <Model>
                                 <ext:Model runat="server">
                                     <Fields>
-                                        <ext:ModelField Name="Name" />
-                                        <ext:ModelField Name="Column1" />
-                                        <ext:ModelField Name="Column2" />
+                                        <ext:ModelField Name="ID" />
+                                        <ext:ModelField Name="DIA" />
                                     </Fields>
                                 </ext:Model>
                             </Model>
@@ -80,7 +81,7 @@
                     <ColumnModel>
                         <Columns>
                               <ext:CheckColumn runat="server" Width="30" />
-                              <ext:Column runat="server" Text="Dia" Width="150" DataIndex="DIA" Flex="1" />
+                              <ext:Column runat="server" Text="Dia"  DataIndex="DIA" Flex="1" />
                         </Columns>
                     </ColumnModel>                   
                     <%--<View>
@@ -111,5 +112,4 @@
             </BottomBar>
         </ext:Panel> 
     </form>
-</body>
 </html>

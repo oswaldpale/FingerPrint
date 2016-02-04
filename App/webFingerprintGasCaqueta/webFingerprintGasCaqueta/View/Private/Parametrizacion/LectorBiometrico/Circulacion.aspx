@@ -87,11 +87,11 @@
                                             <Items>
                                                 <ext:Panel ID="PDATOSPERSONA" runat="server" Height="240" Border="false"  >
                                                     <Items>
-                                                       <%-- <ext:Container>
+                                                        <ext:Container>
                                                             <Items>
-                                                               
+                                                                <tr
                                                             </Items>
-                                                        </ext:Container>--%>
+                                                        </ext:Container>
                                                         <ext:Container runat="server" Layout="HBoxLayout" Cls="UserInf"  >
                                                             <Items>
                                                                 <ext:Label runat="server" Text="TIPO USUARIO:" AnchorHorizontal="30%" Height="40"  />

@@ -37,7 +37,7 @@ namespace webFingerprintGasCaqueta.View.Public
             }
             return tipoUsuario;
         }
-        [DirectMethod(Namespace = "parametro")]
+               [DirectMethod(Namespace = "parametro")]
         public void ChangeReaderInf(string state) {
             LESTADO.Text = state;
             if (state=="Dispositivo Desconectado")

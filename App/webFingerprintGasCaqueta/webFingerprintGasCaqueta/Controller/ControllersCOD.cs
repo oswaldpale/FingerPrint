@@ -56,6 +56,9 @@ namespace webFingerprintGasCaqueta.Controller
         {
             return circulacion.consultarInformacionUsuario(identificacion);
         }
+        public DataTable ListarUsuarios() {
+            return circulacion.ListarUsuarios();
+        }
         #endregion
 
         #region GESTIONAR EMPLEADOS

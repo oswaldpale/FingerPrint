@@ -64,3 +64,13 @@ border-radius: 200px 200px 200px 200px;
 -webkit-border-radius: 200px 200px 200px 200px;
 border: 0px solid #000000;
 }
+
+.extra-alt .x-grid-row .x-grid-cell { 
+    background-color: #fff; 
+    color: #000; 
+} 
+ 
+.extra-alt .x-grid-row-alt .x-grid-cell { 
+    background-color: #000; 
+    color: #fff; 
+}

@@ -31,6 +31,7 @@
         }
         function DeviceConnected() {
             Concurrent.Thread.create(proceso);
+            obj.Stop();
         }
 
         function proceso() {
@@ -62,17 +63,37 @@
             }
         }
 
+        var findUser = function (texto, e) {
+            if (e.getKey() == 13) {
+                parametro.buscarUsuario(texto, {
+                    success: function (result) {
+                        obj.Start();// Habilito el lector Biometrico....
+                        App.LMENSAJE.setText('Por Favor Ingrese Su Huella');            // Mensaje de Ingrese la Huella...
+                         //Si es verdadero   ---->Realizo el Cruze de horario para darle permiso al empleado
+                      
+                    }, failure: function (errorMsg) {
+                        Ext.net.Notification.show({
+                            html: 'Ha ocurrido un error!', title: 'Notificación'
+                        });
+                    }
+                });
+               
+            }
+        };
+
+
+
     </script>
 </head>
 <body>
     <form id="form1" runat="server">
-        <ext:ResourceManager ID="ResourceManager2" Theme="Gray" runat="server" />
+        <ext:ResourceManager ID="ResourceManager2" Theme="Crisp" runat="server"  />
         <ext:Viewport runat="server">
             <LayoutConfig>
                 <ext:VBoxLayoutConfig Align="Center" Pack="Center" />
             </LayoutConfig>
             <Items>
-                <ext:Window ID="WPRINCIPAL" runat="server" Title="Control de Acceso" Icon="User" Width="1000" Height="600">
+                <ext:Window ID="WPRINCIPAL" runat="server" Title="Control de Acceso" Icon="User" Width="900" Height="600" UI="Info">
                     <Items>
                         <ext:Panel runat="server" ID="PPRINCIPAL" Border="false">
                             <Items>
@@ -83,40 +104,80 @@
                                 </ext:Panel>
                                 <ext:Panel runat="server" ID="PCONTENEDOR" Layout="ColumnLayout" Border="false" >
                                     <Items>
-                                        <ext:Panel runat="server" ID="PDATOS"  Width="700" >
+                                        <ext:Panel runat="server" ID="PDATOS"  Width="600" Border="true"  >
                                             <Items>
                                                 <ext:Panel ID="PDATOSPERSONA" runat="server" Height="240" Border="false"  >
                                                     <Items>
-                                                        <ext:Container>
+                                                        <ext:Container runat="server" Height="100" Layout="CenterLayout" Cls="UserInf" >
                                                             <Items>
-                                                                <tr
+                                                                <ext:DropDownField ID="DDIDENTIFICACION" runat="server" Width ="500" TriggerIcon="Search" EmptyText="Ingrese su número de identificación." FieldLabel="Identificación:" LabelWidth="150" UI="Default" BodyStyle="padding:2px 2px;" EnableKeyEvents="true" >
+                                                                    <Component>
+                                                                        <ext:Panel runat="server" Height="200" ID="PBUSQUEDA">
+                                                                            <Items>
+                                                                                <ext:GridPanel ID="GSEARCHUSER" runat="server" Cls="extra-alt">
+                                                                                    <Store>
+                                                                                        <ext:Store ID="SUSUARIO" runat="server" PageSize="10">
+                                                                                            <Model>
+                                                                                                <ext:Model runat="server">
+                                                                                                    <Fields>
+                                                                                                        <ext:ModelField Name="IDENTIFICACION"  />
+                                                                                                        <ext:ModelField Name="NOMBRE" />
+                                                                                                        <ext:ModelField Name="TIPO" />
+                                                                                                    </Fields>
+                                                                                                </ext:Model>
+                                                                                            </Model>
+                                                                                        </ext:Store>
+                                                                                    </Store>
+                                                                                    <ColumnModel runat="server">
+                                                                                        <Columns>
+                                                                                            <ext:Column runat="server" ID="CIDENTIFICACION" Text="IDENTIFICACIÓN" DataIndex="IDENTIFICACION" Width="160" />
+                                                                                            <ext:Column runat="server" ID="CNOMBRE" Text="NOMBRE" DataIndex="NOMBRE" Flex="3" />
+                                                                                        </Columns>
+                                                                                    </ColumnModel>
+                                                                                </ext:GridPanel>
+                                                                            </Items>
+                                                                        </ext:Panel>
+                                                                    </Component>
+                                                                    <Listeners>
+                                                                         <KeyPress Handler="findUser(App.DDIDENTIFICACION.getValue(), Ext.EventObject);" Buffer="200" />
+                                                                    </Listeners>
+                                                                </ext:DropDownField>
                                                             </Items>
                                                         </ext:Container>
-                                                        <ext:Container runat="server" Layout="HBoxLayout" Cls="UserInf"  >
+                                                        <ext:Container runat="server" Layout="CenterLayout" Cls="UserInf" Height="40" >
                                                             <Items>
-                                                                <ext:Label runat="server" Text="TIPO USUARIO:" AnchorHorizontal="30%" Height="40"  />
-                                                                <ext:Label runat="server" ID="LTIPOUSUARIO" Text="PARTICULAR" AnchorHorizontal="70%" Height="40"  />
+                                                                <ext:TextField ID="TTIPOOUSUARIO" runat="server" Width="500"   FieldLabel="TIPO" LabelWidth="150"  />
                                                             </Items>
                                                         </ext:Container>
-                                                         <ext:Container runat="server" Layout="HBoxLayout"  Cls="UserInf" >
+                                                         <ext:Container runat="server" Layout="CenterLayout"  Cls="UserInf" >
                                                             <Items>
-                                                                <ext:Label runat="server" Text="USUARIO:" AnchorHorizontal="30%" Height="40"   />
-                                                                <ext:Label runat="server" ID="LUSUARIO" Text="OSWALDO PAMO LEAL" AnchorHorizontal="70%" Height="40"  />
+                                                                  <ext:TextField runat="server" ID="TUSUARIO"  Width="500" ReadOnly="true" FieldLabel="USUARIO" LabelWidth="150" />
                                                             </Items>
                                                         </ext:Container>
-                                                        <ext:Container runat="server" Layout="HBoxLayout"  Cls="UserInf" >
+                                                        <ext:Container runat="server" Layout="CenterLayout"  Cls="UserInf" Height="40" >
                                                             <Items>
-                                                                <ext:Label runat="server" Text="CARGO:" AnchorHorizontal="30%" Height="40"  />
-                                                                <ext:Label runat="server" ID="LCARGO" Text="NO APLICA" AnchorHorizontal="70%" Height="40"  />
+                                                                <ext:TextField runat="server" ID="TCARGO"  Width="500" ReadOnly="true" FieldLabel="CARGO" LabelWidth="150"  />
                                                             </Items>
                                                         </ext:Container>
                                                     </Items>
                                                 </ext:Panel>
-                                                <ext:Panel ID="PALERTAS" runat="server"   Height="238" Border="false" />
+                                                <ext:Panel ID="PALERTAS" runat="server"   Height="238" Border="false">
+                                                    <Items>
+                                                        <ext:Container runat="server" Layout="CenterLayout"  >
+                                                            <Items>
+                                                                  <ext:Panel ID="PMENSAJE" runat="server" Width="500" Title="MENSAJE" Frame="true" UI="Info" Height="200" Layout="CenterLayout" >
+                                                                      <Items>
+                                                                          <ext:Label runat="server" ID="LMENSAJE" Text="BIENVENIDO.. " Cls="UserInf" />
+                                                                      </Items>
+                                                                  </ext:Panel>
+                                                            </Items>
+                                                        </ext:Container>
+                                                    </Items>
+                                                </ext:Panel>
                                             </Items>
                                         </ext:Panel>
                                         <%-- <ext:Panel runat="server" Title="Oeste" Region="Center" Collapsible="false"  Height="300" />--%>
-                                        <ext:Panel runat="server" ID="PFOTOS"  Width="284" Height="480" Layout="VBoxLayout" Border="false" >
+                                        <ext:Panel runat="server" ID="PFOTOS"  Width="284" Height="480" Layout="VBoxLayout" Border="true" Frame="true" >
                                             <Items>
                                                 <ext:Panel runat="server" Height="240"  Width="284" Frame="false"   Layout="CenterLayout" Border="false">
                                                     <Items>

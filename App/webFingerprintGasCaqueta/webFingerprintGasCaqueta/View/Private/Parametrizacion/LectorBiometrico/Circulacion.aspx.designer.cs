@@ -94,31 +94,85 @@ namespace webFingerprintGasCaqueta.View.Public {
         protected global::Ext.Net.Panel PDATOSPERSONA;
         
         /// <summary>
-        /// Control LTIPOUSUARIO.
+        /// Control DDIDENTIFICACION.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Label LTIPOUSUARIO;
+        protected global::Ext.Net.DropDownField DDIDENTIFICACION;
         
         /// <summary>
-        /// Control LUSUARIO.
+        /// Control PBUSQUEDA.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Label LUSUARIO;
+        protected global::Ext.Net.Panel PBUSQUEDA;
         
         /// <summary>
-        /// Control LCARGO.
+        /// Control GSEARCHUSER.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Label LCARGO;
+        protected global::Ext.Net.GridPanel GSEARCHUSER;
+        
+        /// <summary>
+        /// Control SUSUARIO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store SUSUARIO;
+        
+        /// <summary>
+        /// Control CIDENTIFICACION.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column CIDENTIFICACION;
+        
+        /// <summary>
+        /// Control CNOMBRE.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column CNOMBRE;
+        
+        /// <summary>
+        /// Control TTIPOOUSUARIO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField TTIPOOUSUARIO;
+        
+        /// <summary>
+        /// Control TUSUARIO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField TUSUARIO;
+        
+        /// <summary>
+        /// Control TCARGO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField TCARGO;
         
         /// <summary>
         /// Control PALERTAS.
@@ -128,6 +182,24 @@ namespace webFingerprintGasCaqueta.View.Public {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Panel PALERTAS;
+        
+        /// <summary>
+        /// Control PMENSAJE.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Panel PMENSAJE;
+        
+        /// <summary>
+        /// Control LMENSAJE.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Label LMENSAJE;
         
         /// <summary>
         /// Control PFOTOS.

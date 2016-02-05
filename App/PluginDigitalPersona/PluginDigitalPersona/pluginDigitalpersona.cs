@@ -69,7 +69,7 @@ namespace PluginDigitalPersona
             this.stateEnrroller = (int)Enroller.FeaturesNeeded;
         }
 
-        protected void Start()
+        public void Start()
         {
             if (null != Capturer)
             {

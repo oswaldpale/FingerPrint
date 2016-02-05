@@ -20,16 +20,23 @@ namespace webFingerprintGasCaqueta.View.Public
 
         }
         [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Consultando..", Target = MaskTarget.Page)]
+        public void ListarUsuarios() {
+            SUSUARIO.DataSource = Controllers.ListarUsuarios();
+            SUSUARIO.DataBind();
+        }
+
+        [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Consultando..", Target = MaskTarget.Page)]
         public bool buscarUsuario(string identificacion) {
+          
             DataTable inforUsuario = Controllers.consultarInformacionUsuario(identificacion);
             bool tipoUsuario = false;
             if (inforUsuario.Rows.Count > 0)
             {
                 DataRow _inforUsuario = inforUsuario.Rows[0];
-                LTIPOUSUARIO.Text = _inforUsuario["USUARIO"].ToString();
-                LUSUARIO.Text = _inforUsuario["NOMBRE"].ToString();
-                LCARGO.Text = _inforUsuario["TIPO"].ToString();
-                if (_inforUsuario["USUARIO"].ToString() == "EMPLEADO")
+                TUSUARIO.Text = _inforUsuario["NOMBRE"].ToString().ToUpper();
+                TCARGO.SetValue(_inforUsuario["CARGO"].ToString().ToUpper());
+                TTIPOOUSUARIO.Text = _inforUsuario["TIPO"].ToString().ToUpper();
+                if (_inforUsuario["TIPO"].ToString() == "Empleado")
                 {
                     tipoUsuario = true;
                 }

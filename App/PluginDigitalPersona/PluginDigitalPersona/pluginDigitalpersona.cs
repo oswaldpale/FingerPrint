@@ -143,6 +143,7 @@ namespace PluginDigitalPersona
             BitMapToString(ConvertSampleToBitmap(Sample)); // CREO LA IMAGEN DE LA HUELLA.
             DPFP.FeatureSet features = ExtractFeatures(Sample, DPFP.Processing.DataPurpose.Verification);
             if (features != null) {
+              
                 UpdateStatus(); //Actualiza el estado del lector.
                 this.stateUserVerify = ValidateOneFingerPrint(features) ? true : false;
             }
@@ -150,17 +151,18 @@ namespace PluginDigitalPersona
 
         private bool ValidateOneFingerPrint(FeatureSet features)
         {
-            foreach (var fingerOne in _filterFinger)
-            {
+               
                 List<Huella> _dataHuella = HuellaOAD.consultarHuella(identificacion);
                 foreach (Huella item in _dataHuella)
                 {
+
                     if (VerifyFinger(item._huella1, features) == true)
                     {
                         return true;
+
                     }
                 }
-            }
+            
             return false;
         }
         private bool VerifyFinger(byte[] byteFinger, FeatureSet features)
@@ -497,18 +499,24 @@ namespace PluginDigitalPersona
         }
         public static List<Huella>  consultarHuella(Int64 identificacion) {
             using (MySqlConnection conn = InternConexionBD.ObtenerConexion())
-            {
+            { 
                 List<Huella> _lista = new List<Huella>();
                 string sql = "SELECT  huell_identificacion,huell_huella FROM huella WHERE huell_identificacion= '" + identificacion + "'";
                 MySqlCommand _comando = new MySqlCommand(sql, conn);
                 MySqlDataReader _reader = _comando.ExecuteReader();
+                string v="";
+                MessageBox.Show("Consultando.. ");
                 while (_reader.Read())
                 {
+                     
                     Huella pHuella = new Huella();
                     pHuella._identificacion = _reader.GetUInt32(0);
+                    v =" " + pHuella._identificacion;
                     pHuella._huella1 = (byte[])_reader.GetValue(1);
                     _lista.Add(pHuella);
+                    
                 }
+                MessageBox.Show(v);
 
                 return _lista;
             }

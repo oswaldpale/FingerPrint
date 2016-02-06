@@ -24,6 +24,9 @@ namespace webFingerprintGasCaqueta.Controller
         {
             return huella.consultarHuellaPorUsuario(filtroUsuario);
         }
+
+       
+
         /// <summary>
         /// Eliminar la huella de un visitante
         /// </summary>
@@ -58,6 +61,10 @@ namespace webFingerprintGasCaqueta.Controller
         }
         public DataTable ListarUsuarios() {
             return circulacion.ListarUsuarios();
+        }
+        public DataTable consultarTipoIngreso()
+        {
+            return circulacion.consultarTipoIngreso();
         }
         #endregion
 

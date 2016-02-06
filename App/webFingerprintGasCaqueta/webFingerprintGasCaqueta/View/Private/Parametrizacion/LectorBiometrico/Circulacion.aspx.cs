@@ -24,6 +24,13 @@ namespace webFingerprintGasCaqueta.View.Public
             SUSUARIO.DataSource = Controllers.ListarUsuarios();
             SUSUARIO.DataBind();
         }
+        [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Consultando..", Target = MaskTarget.Page)]
+        public bool consultarTipoIngreso(string identificacion) {
+            bool RegUserDoor= false;                            //Estado de entrada o Salida.
+            string InAcceso = Controllers.consultarTipoIngreso().Rows[0][""].ToString();
+            return(RegUserDoor = (InAcceso == "ENTRADA") ? true:false);
+            
+        }
 
         [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Consultando..", Target = MaskTarget.Page)]
         public bool buscarUsuario(string identificacion) {
@@ -36,6 +43,7 @@ namespace webFingerprintGasCaqueta.View.Public
                 TUSUARIO.Text = _inforUsuario["NOMBRE"].ToString().ToUpper();
                 TCARGO.SetValue(_inforUsuario["CARGO"].ToString().ToUpper());
                 TTIPOOUSUARIO.Text = _inforUsuario["TIPO"].ToString().ToUpper();
+                HIDUSER.Text = _inforUsuario["IDENTIFICACION"].ToString();
                 if (_inforUsuario["TIPO"].ToString() == "Empleado")
                 {
                     tipoUsuario = true;

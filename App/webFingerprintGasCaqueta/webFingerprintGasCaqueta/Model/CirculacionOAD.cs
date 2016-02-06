@@ -75,5 +75,12 @@ namespace webFingerprintGasCaqueta.Model
                                 u";
             return connection.getDataMariaDB(sql).Tables[0];
         }
+
+        public  DataTable consultarTipoIngreso()
+        {
+            string sql = "";
+            return connection.getDataMariaDB(sql).Tables[0];
+
+        }
     }
 }

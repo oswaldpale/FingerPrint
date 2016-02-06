@@ -13,7 +13,6 @@
         try {
             var obj = new ActiveXObject("PluginDigitalPersona.pluginDigitalpersona");
             obj.typeProcces = "validation";
-
         }
         catch (e) {
             alert('Incompatibilidad con ActiveX');
@@ -51,10 +50,26 @@
                         if (CheckFingerPrint == 'true') {
                             BitmapDactilar = obj.BitmapDactilar();
                             App.IMDACTILAR.setImageUrl('data:image/png;base64,' + BitmapDactilar + '');
-                            obj.checkFingerprint = 'false';
+                            
                             obj.bitmapDactilar = null;
+
+                            if (obj.StateUserVerify() == true) {
+                               
+                                Ext.net.Notification.show({
+                                    html: 'Acceso Concedido!', title: 'Notificación'
+                                });
+                                parametro.
+                            } else {
+                                Ext.net.Notification.show({
+                                    html: 'Acceso Denegado!', title: 'Notificación'
+                                });
+                            }
+                           
+                            obj.checkFingerprint = 'false';
                         }
+                        
                     }
+
                 } else {
                     NotifyBiometricDevice = obj.MessageBiometricDevice();
                     parametro.ChangeReaderInf(NotifyBiometricDevice);
@@ -68,9 +83,9 @@
                 parametro.buscarUsuario(texto, {
                     success: function (result) {
                         obj.Start();// Habilito el lector Biometrico....
+                        obj.identificacion = '1117513159';
                         App.LMENSAJE.setText('Por Favor Ingrese Su Huella');            // Mensaje de Ingrese la Huella...
                          //Si es verdadero   ---->Realizo el Cruze de horario para darle permiso al empleado
-                      
                     }, failure: function (errorMsg) {
                         Ext.net.Notification.show({
                             html: 'Ha ocurrido un error!', title: 'Notificación'
@@ -87,6 +102,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <ext:Hidden runat="server" ID="HIDUSER" />
         <ext:ResourceManager ID="ResourceManager2" Theme="Crisp" runat="server"  />
         <ext:Viewport runat="server">
             <LayoutConfig>

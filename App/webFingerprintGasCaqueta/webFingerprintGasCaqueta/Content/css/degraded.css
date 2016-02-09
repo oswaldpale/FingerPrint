@@ -74,3 +74,6 @@ border: 0px solid #000000;
     background-color: #000; 
     color: #fff; 
 }
+ body {
+	        background-color : #4E79B2 !important;
+	    }

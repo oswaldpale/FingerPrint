@@ -24,13 +24,34 @@ namespace webFingerprintGasCaqueta.View.Public
             SUSUARIO.DataSource = Controllers.ListarUsuarios();
             SUSUARIO.DataBind();
         }
-        [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Consultando..", Target = MaskTarget.Page)]
-        public bool consultarTipoIngreso(string identificacion) {
-            bool RegUserDoor= false;                            //Estado de entrada o Salida.
-            string InAcceso = Controllers.consultarTipoIngreso().Rows[0][""].ToString();
-            return(RegUserDoor = (InAcceso == "ENTRADA") ? true:false);
-            
+
+        #region CONTROL DE LA ENTRADA Y SALIDA
+        [DirectMethod(Namespace = "parametro", ShowMask = true, Target = MaskTarget.Page)]
+        public bool consultarTipoIngreso(string identificacion)
+        {
+            bool RegUserDoor = false;                            //Estado de entrada o Salida.
+            DataTable _DInAcceso = Controllers.consultarTipoIngreso(identificacion);
+            if (_DInAcceso.Rows.Count > 0)
+            {
+                string InAcceso = _DInAcceso.Rows[0]["INGRESOESTADO"].ToString();
+                TIDTUPLA.Text = _DInAcceso.Rows[0]["ID"].ToString();
+                return (RegUserDoor = (InAcceso == "SALIDA") ? true : false);  //SI ES TRUE ES UNA SALIDA
+            }
+            else
+            {
+                return RegUserDoor;
+            }
         }
+        [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Guardando..", Target = MaskTarget.Page)]
+        public bool registrarEntrada(string identificacion) {
+        
+            return Controllers.registrarEntrada(identificacion);
+        }
+        [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Guardando..", Target = MaskTarget.Page)]
+        public bool registrarSalida(string idTupla, string identificacion) {
+            return Controllers.registrarSalida(idTupla,identificacion);
+        }
+        #endregion
 
         [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Consultando..", Target = MaskTarget.Page)]
         public bool buscarUsuario(string identificacion) {
@@ -43,7 +64,8 @@ namespace webFingerprintGasCaqueta.View.Public
                 TUSUARIO.Text = _inforUsuario["NOMBRE"].ToString().ToUpper();
                 TCARGO.SetValue(_inforUsuario["CARGO"].ToString().ToUpper());
                 TTIPOOUSUARIO.Text = _inforUsuario["TIPO"].ToString().ToUpper();
-                HIDUSER.Text = _inforUsuario["IDENTIFICACION"].ToString();
+                string ident = _inforUsuario["IDENTIFICACION"].ToString();
+                TIDUSER.SetValue(ident);
                 if (_inforUsuario["TIPO"].ToString() == "Empleado")
                 {
                     tipoUsuario = true;

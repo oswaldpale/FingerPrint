@@ -22,15 +22,6 @@ namespace webFingerprintGasCaqueta.View.Public {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control HIDUSER.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Hidden HIDUSER;
-        
-        /// <summary>
         /// Control ResourceManager2.
         /// </summary>
         /// <remarks>
@@ -38,6 +29,24 @@ namespace webFingerprintGasCaqueta.View.Public {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.ResourceManager ResourceManager2;
+        
+        /// <summary>
+        /// Control TIDUSER.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField TIDUSER;
+        
+        /// <summary>
+        /// Control TIDTUPLA.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField TIDTUPLA;
         
         /// <summary>
         /// Control WPRINCIPAL.

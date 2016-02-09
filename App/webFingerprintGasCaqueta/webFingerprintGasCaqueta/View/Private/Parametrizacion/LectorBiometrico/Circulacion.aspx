@@ -50,19 +50,56 @@
                         if (CheckFingerPrint == 'true') {
                             BitmapDactilar = obj.BitmapDactilar();
                             App.IMDACTILAR.setImageUrl('data:image/png;base64,' + BitmapDactilar + '');
-                            
-                            obj.bitmapDactilar = null;
-
-                            if (obj.StateUserVerify() == true) {
                                
-                                Ext.net.Notification.show({
-                                    html: 'Acceso Concedido!', title: 'Notificación'
-                                });
-                                parametro.
-                            } else {
-                                Ext.net.Notification.show({
-                                    html: 'Acceso Denegado!', title: 'Notificación'
-                                });
+                            obj.bitmapDactilar = null;
+                            var _stateUserVerify  = obj.StateUserVerify();
+                            if (typeof (_stateUserVerify) != "undefined") {
+                               
+                                if (_stateUserVerify  == 'true') {
+                                    parametro.consultarTipoIngreso(App.TIDUSER.getValue(), {   /// pa la siguiente fase se puede hacer el cruze de los horarios.
+                                        success: function (result) {
+                                            alert(result);
+                                            if (result == false) {    // retorna false----> registra una entrada
+                                                parametro.registrarEntrada(App.TIDUSER.getValue(), {
+                                                    success: function (result) {
+                                                        Ext.net.Notification.show({
+                                                            html: 'Bienvenido a Gas Caqueta!', title: 'Notificación'
+                                                        });
+                                                    }, failure: function (errorMsg) {
+                                                        Ext.net.Notification.show({
+                                                            html: 'Ha ocurrido un error!', title: 'Notificación'
+                                                        });
+                                                    }
+                                                });
+                                            } else {           // registra una salida -->xq ya existe una entrada..
+                                                
+                                                parametro.registrarSalida(App.TIDTUPLA.getValue(), App.TIDUSER.getValue(), {
+                                                    success: function (result) {
+                                                        Ext.net.Notification.show({
+                                                            html: 'Buen Descanso Adios!', title: 'Notificación'
+                                                        });
+                                                       
+                                                    }, failure: function (errorMsg) {
+                                                        Ext.net.Notification.show({
+                                                            html: 'Ha ocurrido un error!', title: 'Notificación'
+                                                        });
+                                                    }
+                                                });
+                                            }
+                                        }, failure: function (errorMsg) {
+                                            Ext.net.Notification.show({
+                                                html: 'Ha ocurrido un error!', title: 'Notificación'
+                                            });
+                                        }
+
+                                    });
+
+                                } else {
+                                    Ext.net.Notification.show({
+                                        html: 'Acceso Denegado!', title: 'Notificación'
+                                    });
+                                }
+                               
                             }
                            
                             obj.checkFingerprint = 'false';
@@ -74,8 +111,12 @@
                     NotifyBiometricDevice = obj.MessageBiometricDevice();
                     parametro.ChangeReaderInf(NotifyBiometricDevice);
                 }
-                Concurrent.Thread.sleep(500);
+                Concurrent.Thread.sleep(800);
             }
+        }
+
+        function ClearForm(){
+            
         }
 
         var findUser = function (texto, e) {
@@ -83,7 +124,8 @@
                 parametro.buscarUsuario(texto, {
                     success: function (result) {
                         obj.Start();// Habilito el lector Biometrico....
-                        obj.identificacion = '1117513159';
+                        VID = App.TIDUSER.getValue();
+                        obj.identificacion = VID ;
                         App.LMENSAJE.setText('Por Favor Ingrese Su Huella');            // Mensaje de Ingrese la Huella...
                          //Si es verdadero   ---->Realizo el Cruze de horario para darle permiso al empleado
                     }, failure: function (errorMsg) {
@@ -102,14 +144,16 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <ext:Hidden runat="server" ID="HIDUSER" />
+        
         <ext:ResourceManager ID="ResourceManager2" Theme="Crisp" runat="server"  />
         <ext:Viewport runat="server">
             <LayoutConfig>
                 <ext:VBoxLayoutConfig Align="Center" Pack="Center" />
             </LayoutConfig>
             <Items>
-                <ext:Window ID="WPRINCIPAL" runat="server" Title="Control de Acceso" Icon="User" Width="900" Height="600" UI="Info">
+                <ext:TextField runat="server" ID="TIDUSER"  Hidden="true"/>
+                <ext:TextField runat="server" ID="TIDTUPLA"  Hidden="true"/>
+                <ext:Window ID="WPRINCIPAL" runat="server" Title="Control de Acceso" Icon="User" Width="900" Height="600" UI="Info"  Draggable="false" Closable="false">
                     <Items>
                         <ext:Panel runat="server" ID="PPRINCIPAL" Border="false">
                             <Items>

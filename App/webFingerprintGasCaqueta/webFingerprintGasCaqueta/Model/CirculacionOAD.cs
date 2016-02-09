@@ -14,7 +14,7 @@ namespace webFingerprintGasCaqueta.Model
         {
             string sql = @"SELECT
                                 u.NOMBRE,
-                                u.IDENTIFICACION,
+                                CAST(u.IDENTIFICACION AS CHAR) AS IDENTIFICACION,
                                 IF(u.TIPO = 'No Aplica', 'Visitante', 'Empleado') AS TIPO,
                                 u.TIPO AS CARGO,
                                 u.FOTO
@@ -45,6 +45,37 @@ namespace webFingerprintGasCaqueta.Model
                              WHERE u.IDENTIFICACION = '" + identificacion + "'";
             return connection.getDataMariaDB(sql).Tables[0];
         }
+
+        public bool registrarEntrada(string id,string identificacion)
+        {
+            string sql = @"INSERT
+                            INTO
+                                circulacion
+                                (
+                                    circu_id,
+                                    circu_idusuario,
+                                    circu_fecha,
+                                    circu_horaentrada
+                                )
+                                VALUES
+                                (
+                                    " + id + @",
+                                    '" + identificacion + @"',
+                                    CURDATE(),
+                                    CURTIME()
+                                )";
+            return connection.sendSetDataMariaDB(sql);
+        }
+        public bool registrarSalida(string id, string identificacion) {
+            string sql = @"UPDATE
+                                circulacion
+                            SET
+                                circu_horasalida = CURTIME() 
+                            WHERE
+                                circu_id = '" + id + @"'";
+            return connection.sendSetDataMariaDB(sql);
+        }
+
         public DataTable ListarUsuarios() {
             string sql = @"SELECT
                                 u.NOMBRE,
@@ -76,9 +107,17 @@ namespace webFingerprintGasCaqueta.Model
             return connection.getDataMariaDB(sql).Tables[0];
         }
 
-        public  DataTable consultarTipoIngreso()
+        public  DataTable consultarTipoIngreso(string identificacion)
         {
-            string sql = "";
+            string sql = @"SELECT
+                                circu_id AS ID,
+                                circu_fecha AS FECHA,
+                                IF(circu_horaentrada is not null AND circu_horasalida IS NULL, 'SALIDA', 'ENTRADA')  AS INGRESOESTADO
+                            FROM
+                                circulacion
+                            WHERE
+                               circu_idusuario = '" + identificacion + "'"
+                            + "ORDER BY ID DESC LIMIT 1";
             return connection.getDataMariaDB(sql).Tables[0];
 
         }

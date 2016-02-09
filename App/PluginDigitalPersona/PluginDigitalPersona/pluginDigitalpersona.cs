@@ -29,7 +29,7 @@ namespace PluginDigitalPersona
         public DPFP.Processing.Enrollment Enroller;  // incripcion de huella.
         public DPFP.Capture.Capture Capturer;    // controla la captura de la huella.
         public List<FingerPrint> _filterFinger = new List<FingerPrint>();
-        public bool stateUserVerify = false;
+        public string stateUserVerify = null;
         public string dedo = "Primario";
         public Int64 identificacion;
         public bool resultRegister;
@@ -145,7 +145,7 @@ namespace PluginDigitalPersona
             if (features != null) {
               
                 UpdateStatus(); //Actualiza el estado del lector.
-                this.stateUserVerify = ValidateOneFingerPrint(features) ? true : false;
+                this.stateUserVerify = ValidateOneFingerPrint(features) ? "true" : "false";
             }
         }
 
@@ -407,7 +407,7 @@ namespace PluginDigitalPersona
             }
         }
         [ComVisible(true)]
-        public bool StateUserVerify
+        public string StateUserVerify
         {
             get
             {
@@ -504,19 +504,17 @@ namespace PluginDigitalPersona
                 string sql = "SELECT  huell_identificacion,huell_huella FROM huella WHERE huell_identificacion= '" + identificacion + "'";
                 MySqlCommand _comando = new MySqlCommand(sql, conn);
                 MySqlDataReader _reader = _comando.ExecuteReader();
-                string v="";
-                MessageBox.Show("Consultando.. ");
+                
                 while (_reader.Read())
                 {
                      
                     Huella pHuella = new Huella();
                     pHuella._identificacion = _reader.GetUInt32(0);
-                    v =" " + pHuella._identificacion;
                     pHuella._huella1 = (byte[])_reader.GetValue(1);
                     _lista.Add(pHuella);
                     
                 }
-                MessageBox.Show(v);
+             
 
                 return _lista;
             }

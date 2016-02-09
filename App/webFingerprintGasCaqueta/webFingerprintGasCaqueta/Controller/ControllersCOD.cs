@@ -43,6 +43,9 @@ namespace webFingerprintGasCaqueta.Controller
         public bool registrarHuella(string Dactilar, string empleado,string dedo) {
             return huella.registrarHuella(general.nextPrimaryKey("huella", "huell_id"), Dactilar, empleado,dedo);
         }
+
+       
+
         /// <summary>
         /// Elimina la huella de un empleado
         /// </summary>
@@ -62,9 +65,18 @@ namespace webFingerprintGasCaqueta.Controller
         public DataTable ListarUsuarios() {
             return circulacion.ListarUsuarios();
         }
-        public DataTable consultarTipoIngreso()
+        public DataTable consultarTipoIngreso(string identificacion)
         {
-            return circulacion.consultarTipoIngreso();
+            return circulacion.consultarTipoIngreso(identificacion);
+        }
+        public bool registrarEntrada(string identificacion)
+        {
+            return circulacion.registrarEntrada(general.nextPrimaryKey("circulacion", "circu_id"), identificacion);
+        }
+
+        public bool registrarSalida(string idTupla, string identificacion)
+        {
+            return circulacion.registrarSalida(idTupla, identificacion);
         }
         #endregion
 

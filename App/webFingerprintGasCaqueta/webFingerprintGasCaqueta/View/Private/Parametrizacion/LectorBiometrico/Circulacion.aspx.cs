@@ -19,6 +19,12 @@ namespace webFingerprintGasCaqueta.View.Public
         {
 
         }
+        [DirectMethod(Namespace = "parametro")]
+        public void RefreshTime()
+        {
+            string clock = DateTime.Now.ToString("hh:mm:ss tt");
+            this.LCLOCK.Text = clock.Replace(". m.", "m");
+        }
         [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Consultando..", Target = MaskTarget.Page)]
         public void ListarUsuarios() {
             SUSUARIO.DataSource = Controllers.ListarUsuarios();
@@ -87,7 +93,7 @@ namespace webFingerprintGasCaqueta.View.Public
                 LESTADO.Icon = Icon.Connect;
                 LESTADO.Cls = "ReaderStateConnect";
             }
-           
+            this.RefreshTime();
         }
 
     }

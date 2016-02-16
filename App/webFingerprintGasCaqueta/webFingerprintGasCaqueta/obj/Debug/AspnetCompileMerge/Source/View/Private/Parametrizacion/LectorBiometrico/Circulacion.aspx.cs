@@ -19,39 +19,82 @@ namespace webFingerprintGasCaqueta.View.Public
         {
 
         }
-        [DirectMethod]
-        public void CreateSessionImage(string Image, string idImagen)
-        {
-            Session.Remove("ConvertImagen");
-            Session["ConvertImagen"] = Image;
-            IMDACTILAR.ImageUrl = "Imagen.aspx?id=" + idImagen;
-        }
-      
         [DirectMethod(Namespace = "parametro")]
-        public string consultarHuellas(string identificacion) {
-            List<FingerPrint> _UsuarioHuella = new List<FingerPrint>();
-            DataTable DhuellaUsuario = Controllers.consultarHuellaPorUsuario(identificacion);
-            foreach (DataRow row  in DhuellaUsuario.Rows)
-            { 
-                FingerPrint _huella = new FingerPrint();
-                byte[] Bhuella = (byte[]) row["huell_huella"];
-                _huella.finger = row["huell_huella"].ToString(); ;
-                _huella.iduser = row["huell_identificacion"].ToString();
-                TUSUARIO.Text = _huella.iduser;
-                _UsuarioHuella.Add(_huella);
+        public void RefreshTime()
+        {
+            string clock = DateTime.Now.ToString("hh:mm:ss tt");
+            this.LCLOCK.Text = clock.Replace(". m.", "m");
+        }
+        [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Consultando..", Target = MaskTarget.Page)]
+        public void ListarUsuarios() {
+            SUSUARIO.DataSource = Controllers.ListarUsuarios();
+            SUSUARIO.DataBind();
+        }
+
+        #region CONTROL DE LA ENTRADA Y SALIDA
+        [DirectMethod(Namespace = "parametro", ShowMask = true, Target = MaskTarget.Page)]
+        public bool consultarTipoIngreso(string identificacion)
+        {
+            bool RegUserDoor = false;                            //Estado de entrada o Salida.
+            DataTable _DInAcceso = Controllers.consultarTipoIngreso(identificacion);
+            if (_DInAcceso.Rows.Count > 0)
+            {
+                string InAcceso = _DInAcceso.Rows[0]["INGRESOESTADO"].ToString();
+                TIDTUPLA.Text = _DInAcceso.Rows[0]["ID"].ToString();
+                return (RegUserDoor = (InAcceso == "SALIDA") ? true : false);  //SI ES TRUE ES UNA SALIDA
             }
-            string byteString =   JsonConvert.SerializeObject(_UsuarioHuella);
-            return byteString;
+            else
+            {
+                return RegUserDoor;
+            }
+        }
+        [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Guardando..", Target = MaskTarget.Page)]
+        public bool registrarEntrada(string identificacion) {
+        
+            return Controllers.registrarEntrada(identificacion);
+        }
+        [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Guardando..", Target = MaskTarget.Page)]
+        public bool registrarSalida(string idTupla, string identificacion) {
+            return Controllers.registrarSalida(idTupla,identificacion);
+        }
+        #endregion
+
+        [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Consultando..", Target = MaskTarget.Page)]
+        public bool buscarUsuario(string identificacion) {
+          
+            DataTable inforUsuario = Controllers.consultarInformacionUsuario(identificacion);
+            bool tipoUsuario = false;
+            if (inforUsuario.Rows.Count > 0)
+            {
+                DataRow _inforUsuario = inforUsuario.Rows[0];
+                TUSUARIO.Text = _inforUsuario["NOMBRE"].ToString().ToUpper();
+                TCARGO.SetValue(_inforUsuario["CARGO"].ToString().ToUpper());
+                TTIPOOUSUARIO.Text = _inforUsuario["TIPO"].ToString().ToUpper();
+                string ident = _inforUsuario["IDENTIFICACION"].ToString();
+                TIDUSER.SetValue(ident);
+                if (_inforUsuario["TIPO"].ToString() == "Empleado")
+                {
+                    tipoUsuario = true;
+                }
+               
+            }
+            return tipoUsuario;
+        }
+               [DirectMethod(Namespace = "parametro")]
+        public void ChangeReaderInf(string state) {
+            LESTADO.Text = state;
+            if (state=="Dispositivo Desconectado")
+            {
+                LESTADO.Icon = Icon.Disconnect;
+                LESTADO.Cls = "ReaderStateDisconnect";
+            }
+            else
+            {
+                LESTADO.Icon = Icon.Connect;
+                LESTADO.Cls = "ReaderStateConnect";
+            }
+            this.RefreshTime();
         }
 
-        public void ConversionDatos(string JsonDato) {
-            
-        }
-
-    }
-    public class FingerPrint
-    {
-        public string finger { get; set; }
-        public string iduser { get; set; }
     }
 }

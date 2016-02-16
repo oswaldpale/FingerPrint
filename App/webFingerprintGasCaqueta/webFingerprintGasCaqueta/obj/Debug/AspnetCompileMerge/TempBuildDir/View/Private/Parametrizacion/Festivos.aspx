@@ -6,6 +6,24 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>DIAS FESTIVOS</title>
+     <script type="text/javascript">
+        
+        var ClickCommand = function (grid, command, record, row) {
+            if (command == 'del') {
+                Ext.Msg.confirm('Confirmación', 'Estas seguro de eliminar el Festivos?',
+                function (btn) {
+                    if (btn === 'yes') {
+                        if (parametro.eliminarFestivo(record.data.IDENTIFICACION)) {
+                            Ext.Msg.notify("Notificación", "Eliminado exitosamente.");
+                            parametro.consultarHorarios();
+                        } else {
+                            Ext.Msg.Notify("Notificación","Ha ocurrido un error!..");
+                        }
+                    }
+                });
+            }
+        }
+    </script>
 </head>
 <body>
       <ext:ResourceManager ID="ResourceManager1" runat="server" />
@@ -53,7 +71,17 @@
                                             <Editor>
                                                 <ext:TextField runat="server" />
                                             </Editor>
-                                        </ext:Column>                                       
+                                        </ext:Column> 
+                                        <ext:CommandColumn runat="server" Width="60">
+                                            <Commands>
+                                                <ext:GridCommand Icon="Delete" CommandName="del">
+                                                    <ToolTip Text="Eliminar Festivos" />
+                                                </ext:GridCommand>
+                                            </Commands>
+                                            <Listeners>
+                                                <Command Fn="ClickCommand" />
+                                            </Listeners>
+                                        </ext:CommandColumn>                                          
                                     </Columns>
                                 </ColumnModel>
                             </ext:GridPanel>

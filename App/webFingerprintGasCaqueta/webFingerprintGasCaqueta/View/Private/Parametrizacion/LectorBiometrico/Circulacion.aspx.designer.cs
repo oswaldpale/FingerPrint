@@ -64,7 +64,7 @@ namespace webFingerprintGasCaqueta.View.Public {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Panel PPRINCIPAL;
+        protected global::Ext.Net.FormPanel PPRINCIPAL;
         
         /// <summary>
         /// Control PNORTE.

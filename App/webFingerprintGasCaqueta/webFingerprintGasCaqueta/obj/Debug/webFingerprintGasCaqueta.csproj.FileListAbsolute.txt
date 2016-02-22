@@ -1,4 +1,3 @@
-C:\Users\strongher\Documents\Proyecto\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\webFingerprintGasCaqueta.dll.config
 C:\Users\strongher\Documents\Proyecto\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\webFingerprintGasCaqueta.dll
 C:\Users\strongher\Documents\Proyecto\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\webFingerprintGasCaqueta.pdb
 C:\Users\strongher\Documents\Proyecto\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\Ext.Net.dll

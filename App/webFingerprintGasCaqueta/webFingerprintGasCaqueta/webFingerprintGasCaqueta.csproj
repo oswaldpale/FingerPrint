@@ -115,6 +115,8 @@
     <Content Include="Content\js\Concurrent.Thread.js" />
     <Content Include="Ext.NET.Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Report\Container\Reporteador.aspx" />
+    <Content Include="Report\View\ControlAccesoEmpleado.aspx" />
     <Content Include="View\Private\Empleado\HorarioEmpleado.aspx" />
     <Content Include="View\Private\Empleado\ListarEmpleados.aspx" />
     <Content Include="View\Private\Parametrizacion\CamaraWeb\CapturarFoto.aspx" />
@@ -150,6 +152,20 @@
     <Compile Include="Model\SemanaOAD.cs" />
     <Compile Include="Model\VisitanteOAD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\Container\Reporteador.aspx.cs">
+      <DependentUpon>Reporteador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\Container\Reporteador.aspx.designer.cs">
+      <DependentUpon>Reporteador.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\View\ControlAccesoEmpleado.aspx.cs">
+      <DependentUpon>ControlAccesoEmpleado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\View\ControlAccesoEmpleado.aspx.designer.cs">
+      <DependentUpon>ControlAccesoEmpleado.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Private\Empleado\HorarioEmpleado.aspx.cs">
       <DependentUpon>HorarioEmpleado.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -222,6 +238,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Report\Repository\" />
+    <Folder Include="Report\Template\" />
     <Folder Include="View\Public\" />
   </ItemGroup>
   <ItemGroup>

@@ -14,6 +14,8 @@ namespace webFingerprintGasCaqueta.Report.View
         private ControllerReportCOD _Controllers = new ControllerReportCOD();
         protected void Page_Load(object sender, EventArgs e)
         {
+            DFECHAINICIO.MaxDate = DateTime.Now;
+            DFECHAFIN.MaxDate = DateTime.Now;
 
         }
         [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Consultando..", Target = MaskTarget.Page)]

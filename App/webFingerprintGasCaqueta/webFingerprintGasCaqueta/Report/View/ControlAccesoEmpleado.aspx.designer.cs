@@ -121,6 +121,60 @@ namespace webFingerprintGasCaqueta.Report.View {
         protected global::Ext.Net.Store SCONTROL;
         
         /// <summary>
+        /// Control CIDENTIFICACION.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column CIDENTIFICACION;
+        
+        /// <summary>
+        /// Control CEMPLEADO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column CEMPLEADO;
+        
+        /// <summary>
+        /// Control CFECHA.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column CFECHA;
+        
+        /// <summary>
+        /// Control CHORAINICIO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column CHORAINICIO;
+        
+        /// <summary>
+        /// Control CHORAFIN.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column CHORAFIN;
+        
+        /// <summary>
+        /// Control CDURACION.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column CDURACION;
+        
+        /// <summary>
         /// Control Summary.
         /// </summary>
         /// <remarks>

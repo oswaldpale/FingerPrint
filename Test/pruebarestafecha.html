@@ -1,0 +1,30 @@
+<html>
+<head>
+<title>Untitled</title>
+</head>
+
+<body>
+<script>
+function calcular(f){
+horas1=f['hora1'].value.split(":");
+horas2=f['hora2'].value.split(":");
+horatotale=new Array();
+for(a=0;a<3;a++){
+horas1[a]=(isNaN(parseInt(horas1[a])))?0:parseInt(horas1[a])
+horas2[a]=(isNaN(parseInt(horas2[a])))?0:parseInt(horas2[a])
+horatotale[a]=(horas1[a]+horas2[a]); // Suma o resta según prefieras
+}
+horatotal=new Date()
+horatotal.setHours(horatotale[0]);
+horatotal.setMinutes(horatotale[1]);
+horatotal.setSeconds(horatotale[2]);
+
+f['horatotal'].value=horatotal.getHours()+":"+horatotal.getMinutes()+":"+horatotal.getSeconds();
+
+}
+</script>
+<form action="#" onsubmit="calcular(this);return false">
+<input type="text" name="hora1"  onblur="calcular(this.form)" /> - <input type="text" name="hora2" onblur="calcular(this.form)" /> = <input type="text" name="horatotal" /> <input type="submit" value="calcular" />
+</form>
+</body>
+</html>

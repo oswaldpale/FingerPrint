@@ -138,6 +138,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\ControllerReportCOD.cs" />
     <Compile Include="Controller\ControllersCOD.cs" />
     <Compile Include="Model\CirculacionOAD.cs" />
     <Compile Include="Model\EmpleadoOAD.cs" />
@@ -149,6 +150,7 @@
     <Compile Include="Connections\Conexion.cs" />
     <Compile Include="Model\HorarioOAD.cs" />
     <Compile Include="Model\HuellaOAD.cs" />
+    <Compile Include="Model\ReporteOAD.cs" />
     <Compile Include="Model\SemanaOAD.cs" />
     <Compile Include="Model\VisitanteOAD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -15,13 +15,12 @@
         var addTab = function (tabPanel, menuPanel, menuItem, url) {
             debugger;
             var menuText = menuItem.text;
-            var texto = 'PRUEBA';
             var tab = tabPanel.getComponent("id" + menuItem);
 
             if (!tab) {
                 tab = tabPanel.add({
                     id: "id" + menuText,
-                    title: "Reporte:" + Ext.util.Format.uppercase(menuText),
+                    title: Ext.util.Format.uppercase(menuText),
                     closable: true,
                     menuItem: menuItem,
                     loader: {
@@ -46,17 +45,17 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <ext:ResourceManager ID="ResourceManager1" runat="server">
+    <ext:ResourceManager ID="ResourceManager1" runat="server" Theme="Crisp" >
     </ext:ResourceManager>
     <div>
-        <ext:Viewport ID="Viewport1" runat="server" Layout="border">
+        <ext:Viewport ID="Viewport1" runat="server" Layout="border" UI="Default">
             <Items>
                 <ext:MenuPanel ID="MenuPanel1" runat="server" Collapsible="true" Region="West" Split="true" Title="Informes" Width="200">
                     <Menu ID="Menu2" runat="server">
                         <Items>                           
                             <ext:MenuItem ID="MenuItem1" runat="server" Text="Entrada/Salida Empleados" Icon="UserGo">
                                 <Listeners>
-                                    <Click Handler="addTab(#{TabPanel1}, #{MenuPanel1},#{MenuItem1},'http://www.sencha.com');" />
+                                    <Click Handler="addTab(#{TabPanel1}, #{MenuPanel1},#{MenuItem1},'../View/ControlAccesoEmpleado.aspx');" />
                                 </Listeners>
                             </ext:MenuItem>
                             <ext:MenuSeparator />

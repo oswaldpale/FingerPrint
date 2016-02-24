@@ -55,7 +55,7 @@
                 record;
             var h;
             var hours = 0, minutes = 0, seconds = 0;
-            for (; i < length; ++i) {
+            for (;i < length; ++i) {
                 record = records[i];
                 h = record.get('DURACION').split(":");
                 seconds = parseInt(h[2].toString()) + seconds;
@@ -94,7 +94,7 @@
                 <ext:VBoxLayoutConfig Align="Center" Pack="Center" />
             </LayoutConfig>
             <Items>
-                <ext:FormPanel ID="FPRINCIPAL" runat="server" Width="1200" Height="580" Border="true"   TitleAlign="Center" BodyPadding="8" AutoScroll="true" UI="Default">
+                <ext:FormPanel ID="FPRINCIPAL" runat="server" Width="1200" Height="600" Border="true"   TitleAlign="Center" BodyPadding="8" AutoScroll="true" UI="Default">
                     <FieldDefaults LabelAlign="Right" LabelWidth="115" MsgTarget="Side" />
                     <Items>
                         <ext:FieldSet runat="server" DefaultWidth="1250" Title="Filtros"  Height="70">
@@ -122,7 +122,7 @@
                             </Items>
                         </ext:FieldSet>
 
-                        <ext:FieldSet  runat="server" DefaultWidth="1160"  Height="450" Title="LISTADO DE ASISTENCIAS" >
+                        <ext:FieldSet  runat="server" DefaultWidth="1180"  Height="450" Title="LISTADO DE ASISTENCIAS" >
                             <Items>
                                 <ext:Container runat="server" >
                                     <Items>
@@ -171,16 +171,16 @@
                                                      <ext:Column ID="CEMPLEADO" runat="server" DataIndex="EMPLEADO" Text="EMPLEADO" Align="Left" Width="400" >
                                                            <SummaryRenderer Handler="return '&nbsp;';" />
                                                      </ext:Column>
-                                                     <ext:Column ID="CFECHA" runat="server" DataIndex="FECHA" Text="FECHA" Align="Left" Width="120" >
+                                                     <ext:Column ID="CFECHA" runat="server" DataIndex="FECHA" Text="FECHA" Align="Left" Width="130" >
                                                           <SummaryRenderer Handler="return '&nbsp;';" />
                                                     </ext:Column>
-                                                     <ext:Column ID="CHORAINICIO" runat="server" DataIndex="HORAINICIO" Text="HORA INGRESO" Align="Left" Width="130">
+                                                     <ext:Column ID="CHORAINICIO" runat="server" DataIndex="HORAINICIO" Text="HORA INGRESO" Align="Left" Width="140">
                                                            <SummaryRenderer Handler="return '&nbsp;';" />
                                                      </ext:Column>
-                                                     <ext:Column ID="CHORAFIN" runat="server" DataIndex="HORAFIN" Text="HORA SALIDA" Align="Left" Width="130">
+                                                     <ext:Column ID="CHORAFIN" runat="server" DataIndex="HORAFIN" Text="HORA SALIDA" Align="Left" Width="140">
                                                            <SummaryRenderer Handler="return '&nbsp;';" />
                                                       </ext:Column>
-                                                     <ext:Column ID="CDURACION" runat="server" DataIndex="DURACION" Text="DURACIÓN" Align="Left" Width="120" CustomSummaryType="TotalHoras">
+                                                     <ext:Column ID="CDURACION" runat="server" DataIndex="DURACION" Text="DURACIÓN" Align="Left" Width="140" CustomSummaryType="TotalHoras">
                                                         <SummaryRenderer Handler="return value + '';" />
                                                      </ext:Column>
                                                 </Columns>
@@ -189,31 +189,24 @@
                                                 <ext:Summary ID="Summary" runat="server" />
                                             </Features>
                                             <BottomBar>
-                                                <ext:PagingToolbar runat="server" HideRefresh="true" />
-                                               <%-- <ext:Toolbar runat="server" >
+                                                <ext:PagingToolbar runat="server" HideRefresh="true">
                                                     <Items>
-                                                     
-                                                       
-
+                                                         <ext:Button runat="server" Text="EXPORTAR" Icon="Report" UI="Primary" >
+                                                             <Listeners>
+                                                                 <Click Handler="parametro.reporteAsistencia();" />
+                                                             </Listeners>
+                                                         </ext:Button>
                                                     </Items>
-                                                </ext:Toolbar>--%>
+                                                </ext:PagingToolbar>
                                             </BottomBar>
+                                            <LeftBar />
+                                           
                                         </ext:GridPanel>
                                     </Items>
                                 </ext:Container>
                             </Items>
                         </ext:FieldSet>
                     </Items>
-                    <FooterBar>
-                        <ext:Toolbar runat="server" ID="asdas">
-                            <Items>
-                             <%--   <ext:Button runat="server" ID="btn_exportar" Text="EXPORTAR" Icon="PageExcel" Scale="Small"
-                                    Hidden="false" Disabled="true" OnClick="ToExcel2" AutoPostBack="true">
-                                   
-                                </ext:Button>--%>
-                            </Items>
-                        </ext:Toolbar>
-                    </FooterBar>
                 </ext:FormPanel>
             </Items>
         </ext:Viewport>

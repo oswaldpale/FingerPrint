@@ -1,0 +1,11 @@
+<invoice number="XXXXXXXXXXXX" name="X">
+    <tickets subtotal="€ 473.62">
+        <ticket category="PDF Association Members" amount="2" priceNet="€ 199.00" vat="19 %" priceGross="€ 473.62"/>
+    </tickets>
+    <total invoiceAmount="€ 473.62">
+        <subtotal priceGross="€ 473.62">
+            <invoiceAmountNet vat="19 %" priceGross="€ 398.00"/>
+            <includedVat vat="19 %" priceGross="€ 75.62"/>
+        </subtotal>
+    </total>
+</invoice>

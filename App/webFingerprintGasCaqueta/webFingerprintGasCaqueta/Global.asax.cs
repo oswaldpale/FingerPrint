@@ -9,7 +9,9 @@ namespace webFingerprintGasCaqueta
 {
     public class Global : System.Web.HttpApplication
     {
-
+        public static String path2 = "";
+        public static string Empresa = "GAS CAQUETA S.A.";
+        public static string Nit = "828000499";
         void Application_Start(object sender, EventArgs e)
         {
             // Código que se ejecuta al iniciarse la aplicación

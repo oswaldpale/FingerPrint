@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="invoice" type="invoiceType"/>
+  <xs:complexType name="subtotalType">
+    <xs:sequence>
+      <xs:element type="invoiceAmountNetType" name="invoiceAmountNet"/>
+      <xs:element type="includedVatType" name="includedVat"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="priceGross"/>
+  </xs:complexType>
+  <xs:complexType name="includedVatType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="vat"/>
+        <xs:attribute type="xs:string" name="priceGross"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="invoiceAmountNetType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="vat"/>
+        <xs:attribute type="xs:string" name="priceGross"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ticketsType">
+    <xs:sequence>
+      <xs:element type="ticketType" name="ticket" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="subtotal"/>
+  </xs:complexType>
+  <xs:complexType name="ticketType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="category" use="optional"/>
+        <xs:attribute type="xs:string" name="amount" use="optional"/>
+        <xs:attribute type="xs:string" name="priceNet" use="optional"/>
+        <xs:attribute type="xs:string" name="vat" use="optional"/>
+        <xs:attribute type="xs:string" name="priceGross" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="invoiceType">
+    <xs:sequence>
+      <xs:element type="ticketsType" name="tickets"/>
+      <xs:element type="totalType" name="total"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="number"/>
+    <xs:attribute type="xs:string" name="name"/>
+  </xs:complexType>
+  <xs:complexType name="totalType">
+    <xs:sequence>
+      <xs:element type="subtotalType" name="subtotal"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="invoiceAmount"/>
+  </xs:complexType>
+</xs:schema>

@@ -1,30 +1,281 @@
-<html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Untitled</title>
+
 </head>
+<body style="font-size: 9px; font:Arial, Helvetica, Sans-Serif;">
+    
+    <br />
+    <table width="100%" style=" font-size:8px; line-height:9px;">
 
-<body>
-<script>
-function calcular(f){
-horas1=f['hora1'].value.split(":");
-horas2=f['hora2'].value.split(":");
-horatotale=new Array();
-for(a=0;a<3;a++){
-horas1[a]=(isNaN(parseInt(horas1[a])))?0:parseInt(horas1[a])
-horas2[a]=(isNaN(parseInt(horas2[a])))?0:parseInt(horas2[a])
-horatotale[a]=(horas1[a]+horas2[a]); // Suma o resta según prefieras
-}
-horatotal=new Date()
-horatotal.setHours(horatotale[0]);
-horatotal.setMinutes(horatotale[1]);
-horatotal.setSeconds(horatotale[2]);
+        <tr>
+            <td align="left">
+                <b>
+                   <br />
+                </b> 95110500018
+            </td>
+            <td align="left">
+                <b>
+                    <br />
+                </b> OSWALDO
+            </td>
+        </tr>
+    </table>
+    
+    <br />
+    <table width="100%">
+        <tr>
+            <td colspan="1" align="left">
+                <b>FECHA</b>
+            </td>
+            <td align="left" colspan="3">
+                <b>ENTRADA</b>
+            </td>
 
-f['horatotal'].value=horatotal.getHours()+":"+horatotal.getMinutes()+":"+horatotal.getSeconds();
+            <td colspan="2" align="right">
+                <b>SALIDA</b>
+            </td>
 
-}
-</script>
-<form action="#" onsubmit="calcular(this);return false">
-<input type="text" name="hora1"  onblur="calcular(this.form)" /> - <input type="text" name="hora2" onblur="calcular(this.form)" /> = <input type="text" name="horatotal" /> <input type="submit" value="calcular" />
-</form>
-</body>
-</html>
+            <td colspan="2" align="right">
+                <b>TIEMPO TRABAJADO</b>
+            </td>
+
+        </tr>
+    </table>
+    <hr width="100%" size="1" color="#000000" />
+    
+    <table width="100%" cellspacing="0" cellpadding="0" style=" font-size:8px; line-height:10px;">
+        <tr style=" border-color #000000">
+            <td colspan="1" align="left">DIANA MARCELA CUELLAR GIRALDO</td>
+            <td colspan="3" align="left">2016-02-04</td>
+            <td colspan="2" align="left">08:00:25 AM</td>
+            <td colspan="2" align="justify">11:01:00 AM</td>
+        </tr>
+    </table>
+    
+    <table width="100%" cellspacing="0" cellpadding="0" style=" font-size:8px; line-height:10px;">
+        <tr style=" border-color #000000">
+            <td colspan="1" align="left">DIANA MARCELA CUELLAR GIRALDO</td>
+            <td colspan="3" align="left">2016-02-08</td>
+            <td colspan="2" align="left">11:03:50 AM</td>
+            <td colspan="2" align="justify">11:05:51 AM</td>
+        </tr>
+    </table>
+    
+    <br />
+    <table width="100%" style=" font-size:8px; line-height:9px;">
+
+        <tr>
+            <td align="left">
+                <b>
+                   <br />
+                </b> 1117506429
+            </td>
+            <td align="left">
+                <b>
+                    <br />
+                </b> OSWALDO
+            </td>
+        </tr>
+    </table>
+    
+    <br />
+    <table width="100%">
+        <tr>
+            <td colspan="1" align="left">
+                <b>FECHA</b>
+            </td>
+            <td align="left" colspan="3">
+                <b>ENTRADA</b>
+            </td>
+
+            <td colspan="2" align="right">
+                <b>SALIDA</b>
+            </td>
+
+            <td colspan="2" align="right">
+                <b>TIEMPO TRABAJADO</b>
+            </td>
+
+        </tr>
+    </table>
+    <hr width="100%" size="1" color="#000000" />
+    
+    <table width="100%" cellspacing="0" cellpadding="0" style=" font-size:8px; line-height:10px;">
+        <tr style=" border-color #000000">
+            <td colspan="1" align="left">JEFFERSON CUPITRE ARTUNDUAGA</td>
+            <td colspan="3" align="left">2016-02-08</td>
+            <td colspan="2" align="left">06:57:14 PM</td>
+            <td colspan="2" align="justify">06:57:32 PM</td>
+        </tr>
+    </table>
+    
+    <br />
+    <table width="100%" style=" font-size:8px; line-height:9px;">
+
+        <tr>
+            <td align="left">
+                <b>
+                   <br />
+                </b> 1032443283
+            </td>
+            <td align="left">
+                <b>
+                    <br />
+                </b> OSWALDO
+            </td>
+        </tr>
+    </table>
+    
+    <br />
+    <table width="100%">
+        <tr>
+            <td colspan="1" align="left">
+                <b>FECHA</b>
+            </td>
+            <td align="left" colspan="3">
+                <b>ENTRADA</b>
+            </td>
+
+            <td colspan="2" align="right">
+                <b>SALIDA</b>
+            </td>
+
+            <td colspan="2" align="right">
+                <b>TIEMPO TRABAJADO</b>
+            </td>
+
+        </tr>
+    </table>
+    <hr width="100%" size="1" color="#000000" />
+    
+ <div class="datagrid"><table>
+<thead><tr><th>header</th><th>header</th><th>header</th><th>header</th></tr></thead>
+<tfoot><tr><td colspan="4"><div id="paging"><ul><li><a href="#"><span>Previous</span></a></li><li><a href="#" class="active"><span>1</span></a></li><li><a href="#"><span>2</span></a></li><li><a href="#"><span>3</span></a></li><li><a href="#"><span>4</span></a></li><li><a href="#"><span>5</span></a></li><li><a href="#"><span>Next</span></a></li></ul></div></tr></tfoot>
+<tbody><tr><td>data</td><td>data</td><td>data</td><td>data</td></tr>
+<tr class="alt"><td>data</td><td>data</td><td>data</td><td>data</td></tr>
+<tr><td>data</td><td>data</td><td>data</td><td>data</td></tr>
+<tr class="alt"><td>data</td><td>data</td><td>data</td><td>data</td></tr>
+<tr><td>data</td><td>data</td><td>data</td><td>data</td></tr>
+</tbody>
+</table></div>
+    
+    <br />
+    <table width="100%" style=" font-size:8px; line-height:9px;">
+
+        <tr>
+            <td align="left">
+                <b>
+                   <br />
+                </b> 1012383111
+            </td>
+            <td align="left">
+                <b>
+                    <br />
+                </b> OSWALDO
+            </td>
+        </tr>
+    </table>
+    
+    <br />
+    <table width="100%">
+        <tr>
+            <td colspan="1" align="left">
+                <b>FECHA</b>
+            </td>
+            <td align="left" colspan="3">
+                <b>ENTRADA</b>
+            </td>
+
+            <td colspan="2" align="right">
+                <b>SALIDA</b>
+            </td>
+
+            <td colspan="2" align="right">
+                <b>TIEMPO TRABAJADO</b>
+            </td>
+
+        </tr>
+    </table>
+    <hr width="100%" size="1" color="#000000" />
+    
+    <table width="100%" cellspacing="0" cellpadding="0" style=" font-size:8px; line-height:10px;">
+        <tr style=" border-color #000000">
+            <td colspan="1" align="left">MARIA DEL PILAR  CONTA  JARAMILLO</td>
+            <td colspan="3" align="left">2016-02-16</td>
+            <td colspan="2" align="left">05:10:30 PM</td>
+            <td colspan="2" align="justify">05:44:54 PM</td>
+        </tr>
+    </table>
+    
+    <br />
+    <table width="100%" style=" font-size:8px; line-height:9px;">
+
+        <tr>
+            <td align="left">
+                <b>
+                   <br />
+                </b> 1006518030
+            </td>
+            <td align="left">
+                <b>
+                    <br />
+                </b> OSWALDO
+            </td>
+        </tr>
+    </table>
+    
+    <br />
+    <table width="100%">
+        <tr>
+            <td colspan="1" align="left">
+                <b>FECHA</b>
+            </td>
+            <td align="left" colspan="3">
+                <b>ENTRADA</b>
+            </td>
+
+            <td colspan="2" align="right">
+                <b>SALIDA</b>
+            </td>
+
+            <td colspan="2" align="right">
+                <b>TIEMPO TRABAJADO</b>
+            </td>
+
+        </tr>
+    </table>
+    <hr width="100%" size="1" color="#000000" />
+    
+    <table width="100%" cellspacing="0" cellpadding="0" style=" font-size:8px; line-height:10px;">
+        <tr style=" border-color #000000">
+            <td colspan="1" align="left">JOSE FABIAN QUIROGA </td>
+            <td colspan="3" align="left">2016-02-17</td>
+            <td colspan="2" align="left">05:10:34 PM</td>
+            <td colspan="2" align="justify">05:10:47 PM</td>
+        </tr>
+    </table>
+    
+    <table width="100%" border="0" style=" font-size:8px; line-height:9px;">
+        <tr>
+            <td colspan="18" />
+            <td colspan="6">
+                <hr width="100%" size="1" />
+            </td>
+        </tr>
+        <tr>
+            <td align="right" colspan="18"><b>TOTAL TIEMPO TRABAJADO:</b></td>
+            <td align="right" colspan="3"><b>valor </b></td>
+        </tr>
+    </table>
+    
+
+    <br />
+    
+
+    &nbsp;
+    <br />
+    
+    &nbsp;
+    <br />
+    </body></html>

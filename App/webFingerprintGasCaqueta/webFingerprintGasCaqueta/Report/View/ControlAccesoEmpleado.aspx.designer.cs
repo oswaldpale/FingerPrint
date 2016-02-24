@@ -182,14 +182,5 @@ namespace webFingerprintGasCaqueta.Report.View {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Summary Summary;
-        
-        /// <summary>
-        /// Control asdas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Toolbar asdas;
     }
 }

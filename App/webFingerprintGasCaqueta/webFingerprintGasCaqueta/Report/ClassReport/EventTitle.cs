@@ -28,6 +28,7 @@ namespace webFingerprintGasCaqueta.Report.ClassReport
 
         public override void OnEndPage(PdfWriter writer, Document document)
         {
+           
         }
     }
 }

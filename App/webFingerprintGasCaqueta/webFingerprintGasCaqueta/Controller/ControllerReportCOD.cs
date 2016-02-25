@@ -130,27 +130,16 @@ namespace webFingerprintGasCaqueta.Controller
                     seconds = seconds - 60;
                     minutes = minutes + 1;
                 }
-                minutes = minutes + Convert.ToInt32(data[1].ToString());
+                minutes = minutes + Convert.ToInt32(h[1].ToString());
                 if (minutes >= 60)
                 {
                     minutes = minutes - 60;
                     hours = hours + 1;
                 }
-                hours = hours + Convert.ToInt32(data[i].ToString());
+                hours = hours + Convert.ToInt32(h[0].ToString());
             }
-            if (seconds < 9)
-            {
-                seconds = '0' + seconds;
-            }
-            if (minutes < 9)
-            {
-                minutes = '0' + minutes;
-            }
-            if (hours < 9)
-            {
-                hours = '0' + hours;
-            }
-            total = hours + ":" + minutes + ":" + seconds;
+           
+            total = hours + " HORAS " + minutes + " MINUTOS " + seconds + " SEGUNDOS";
             return total;
         }
         #endregion

@@ -82,6 +82,17 @@
             total = hours + ':' + minutes + ':' + seconds;
             return total;
         };
+        function ReportePorEmpleado() {
+            var _GCONTROL = App.GCONTROL;
+            var result = _GCONTROL.selection === null ? 'NO' : 'YES'; //  Si no existe una selección de la fila en el GridPanel.
+            if (result == 'NO') {
+                parametro.ReporteAsistenciaEmpleadoIndividual(result.selection.data.CODIGO);
+            } else {
+                Ext.net.Notification.show({
+                    html: 'No se ha seleccionado un funcionario!', title: 'Notificación'
+                });
+            }
+        }
     </script>
 </head>
 <body>
@@ -192,9 +203,23 @@
                                                 <ext:PagingToolbar runat="server" HideRefresh="true">
                                                     <Items>
                                                          <ext:Button runat="server" Text="EXPORTAR" Icon="Report" UI="Primary" >
-                                                             <Listeners>
-                                                                 <Click Handler="parametro.reporteAsistencia();" />
-                                                             </Listeners>
+                                                           <Menu>
+                                                               <ext:Menu runat="server" UI="Primary">
+                                                                   <Items>
+                                                                       <ext:MenuItem runat="server" Text="EMPLEADOS"  Icon="UserBrown">
+                                                                           <Listeners>
+                                                                               <Click Handler="parametro.reporteAsistencia();" />
+                                                                           </Listeners>
+                                                                       </ext:MenuItem>
+                                                                       <ext:MenuItem runat="server" Text="INDIVIDUAL" Icon="ReportUser" >
+                                                                           <Listeners>
+                                                                               <Click Handler="ReportePorEmpleado();" />
+                                                                           </Listeners>
+                                                                       </ext:MenuItem>
+                                                                   </Items>
+                                                               </ext:Menu>
+                                                           </Menu>
+                                                           
                                                          </ext:Button>
                                                     </Items>
                                                 </ext:PagingToolbar>

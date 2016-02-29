@@ -84,9 +84,9 @@
         };
         function ReportePorEmpleado() {
             var _GCONTROL = App.GCONTROL;
-            var result = _GCONTROL.selection === null ? 'NO' : 'YES'; //  Si no existe una selección de la fila en el GridPanel.
+            var result = _GCONTROL.selection === null ? 'YES' : 'NO'; //  Si no existe una selección de la fila en el GridPanel.
             if (result == 'NO') {
-                parametro.ReporteAsistenciaEmpleadoIndividual(result.selection.data.CODIGO);
+                parametro.ReporteAsistenciaEmpleadoIndividual(_GCONTROL.selection.data.CODIGO);
             } else {
                 Ext.net.Notification.show({
                     html: 'No se ha seleccionado un funcionario!', title: 'Notificación'

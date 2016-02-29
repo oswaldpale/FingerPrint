@@ -3,3 +3,11 @@ regasm.exe myDll.dll /tlb /codebase
 REGSVR32 LaDll.dll 
 
 regasm myTest.dll /regfile:myTest.reg
+
+
+https://mega.nz/#!3J8C0BYB!P1KCVgdUYzuR46zOn3NxOwrHcup7VAbJuE1Xa7JkQxU
+https://mega.nz/#!yNlFGR6a!QMElWdQrKiYPjq5OlY_9YU1CMWgBeR5ng9JxhsXYaTw
+https://mega.nz/#!6NtgCZoC!qwYkuwzBTmr0papEx14EtSsFi5Joq36BquvxpBMW9TU
+https://mega.nz/#!XBFWxSDY!HIchgAxKrPC0qKZZqHAuZzZ3C4zRGrjnTVr3ry1jFZk
+
+http://www.descargatelocorp.com/

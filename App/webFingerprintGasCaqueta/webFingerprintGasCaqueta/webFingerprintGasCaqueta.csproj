@@ -156,6 +156,7 @@
     <Compile Include="Connections\Conexion.cs" />
     <Compile Include="Model\HorarioOAD.cs" />
     <Compile Include="Model\HuellaOAD.cs" />
+    <Compile Include="Model\PeriodoOAD.cs" />
     <Compile Include="Model\ReporteOAD.cs" />
     <Compile Include="Model\SemanaOAD.cs" />
     <Compile Include="Model\VisitanteOAD.cs" />

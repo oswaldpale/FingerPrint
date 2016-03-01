@@ -17,6 +17,7 @@ namespace webFingerprintGasCaqueta.Controller
         private CirculacionOAD circulacion = new CirculacionOAD();
         private HorarioOAD horario = new HorarioOAD();
         private SemanaOAD semana = new SemanaOAD();
+        private PeriodoOAD _periodo = new PeriodoOAD();
 
 
         #region GESTION DE HUELLA
@@ -84,7 +85,12 @@ namespace webFingerprintGasCaqueta.Controller
         public DataTable consultarEmpleados() {
             return empleado.consultarEmpleados();
         }
-       
+        #endregion
+        #region GESTIONAR PERIODO HORARIO
+        public DataTable ConsultarPeriodo(string idperiodo,string diasemana)
+        {
+            return _periodo.consultarPeriodo(idperiodo,diasemana);
+        }
         #endregion
         #region GESTIONAR VISITANTE
         public bool registrarVisitante(string identificacion, string nombre, string apellido1, string apellido2, string observacion, string foto) {
@@ -134,5 +140,6 @@ namespace webFingerprintGasCaqueta.Controller
             return semana.consultarSemana();
         }
         #endregion
+      
     }
 }

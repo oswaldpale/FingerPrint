@@ -9,8 +9,10 @@
     <title> Control de Acceso</title>
     <link href="../../../../Content/css/degraded.css" rel="stylesheet" type="text/css" />
     <script src="../../../../Content/js/Concurrent.Thread.js"></script>
+ 
     <script type="text/javascript">
         try {
+            var TimeActive = 10;
             var obj = new ActiveXObject("PluginDigitalPersona.pluginDigitalpersona");
             obj.typeProcces = "validation";
         }
@@ -29,6 +31,7 @@
             });
         }
         function DeviceConnected() {
+            App.DDIDENTIFICACION.focus();
             Concurrent.Thread.create(proceso);
         }
 
@@ -38,9 +41,12 @@
             var BitmapDactilar = null;
            
             while (true) {
-                parametro.RefreshTime();
-                if (typeof (NotifyBiometricDevice) != "undefined" || NotifyBiometricDevice != null) {
+                if (TimeActive==0) {
                     parametro.RefreshTime();
+                } else {
+                    TimeActive = TimeActive - 1;
+                }
+                if (typeof (NotifyBiometricDevice) != "undefined" || NotifyBiometricDevice != null) {
                     if (NotifyBiometricDevice != obj.MessageBiometricDevice()) {
                         NotifyBiometricDevice = obj.MessageBiometricDevice();
                         parametro.ChangeReaderInf(NotifyBiometricDevice);
@@ -64,7 +70,7 @@
                                                         Ext.net.Notification.show({
                                                             html: 'Bienvenido a Gas Caqueta!', title: 'Notificación'
                                                         });
-
+                                                        ClearData();
                                                     }, failure: function (errorMsg) {
                                                         Ext.net.Notification.show({
                                                             html: 'Ha ocurrido un error!', title: 'Notificación'
@@ -78,6 +84,7 @@
                                                         Ext.net.Notification.show({
                                                             html: 'Buen Descanso Adios!', title: 'Notificación'
                                                         });
+                                                        ClearData();
                                                        
                                                     }, failure: function (errorMsg) {
                                                         Ext.net.Notification.show({
@@ -111,6 +118,7 @@
                     NotifyBiometricDevice = obj.MessageBiometricDevice();
                     parametro.ChangeReaderInf(NotifyBiometricDevice);
                 }
+                
                 Concurrent.Thread.sleep(1000);
             }
         }
@@ -120,6 +128,7 @@
                 parametro.buscarUsuario(texto, {
                     success: function (result) {
                         obj.Start();// Habilito el lector Biometrico....
+                        parametro.ShowWarningInfo();
                         VID = App.TIDUSER.getValue();
                         obj.identificacion = VID ;
                         App.LMENSAJE.setText('Por Favor Ingrese Su Huella');            // Mensaje de Ingrese la Huella...
@@ -133,8 +142,15 @@
                
             }
         };
+        function ClearData() {
+            obj.identificacion = "";
+            App.PPRINCIPAL.reset();
+            App.TIDUSER.reset();
+            App.TIDTUPLA.reset();
+            App.DDIDENTIFICACION.focus();
+        }
 
-
+     
 
     </script>
 </head>
@@ -151,7 +167,7 @@
                 <ext:TextField runat="server" ID="TIDTUPLA"  Hidden="true"/>
                 <ext:Window ID="WPRINCIPAL" runat="server" Title="Control de Acceso" Icon="User" Width="900" Height="600" UI="Info"  Draggable="false" Closable="false">
                     <Items>
-                        <ext:Panel runat="server" ID="PPRINCIPAL" Border="false">
+                        <ext:FormPanel runat="server" ID="PPRINCIPAL" Border="false">
                             <Items>
                                 <ext:Panel runat="server" ID="PNORTE" Region="North" Height="40" Border="false" BodyCls="TopBarDegraded" >
                                     <Items>
@@ -166,7 +182,7 @@
                                                     <Items>
                                                         <ext:Container runat="server" Height="100" Layout="CenterLayout" Cls="UserInf" >
                                                             <Items>
-                                                                <ext:DropDownField ID="DDIDENTIFICACION" runat="server" Width ="500" TriggerIcon="Search" EmptyText="Ingrese su número de identificación." FieldLabel="Identificación:" LabelWidth="150" UI="Default" BodyStyle="padding:2px 2px;" EnableKeyEvents="true" >
+                                                                <ext:DropDownField ID="DDIDENTIFICACION" runat="server" Width ="500" TriggerIcon="Search" EmptyText="Ingrese su número de identificación." FieldLabel="Identificación:" LabelWidth="150" UI="Default" BodyStyle="padding:2px 2px;" EnableKeyEvents="true" AutoFocus="true"  >
                                                                     <Component>
                                                                         <ext:Panel runat="server" Height="200" ID="PBUSQUEDA">
                                                                             <Items>
@@ -253,7 +269,7 @@
                                 </ext:Panel>
                                 <ext:Panel runat="server" ID="PSUR" Height="50"  Layout="TableLayout" BodyCls="FootBarDegraded">
                                     <Items>
-                                        <ext:Container runat="server" Width="450">
+                                        <ext:Container runat="server" Width="500">
                                             <Items>
                                                 <ext:Label runat="server" ID="LESTADO" />
                                             </Items>
@@ -267,7 +283,7 @@
                                     </Items>
                                 </ext:Panel>
                             </Items>
-                        </ext:Panel>
+                        </ext:FormPanel>
                     </Items>
                     <Listeners>
                         <AfterRender Handler="DeviceConnected();">

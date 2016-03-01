@@ -47,5 +47,7 @@ namespace webFingerprintGasCaqueta.Model
                             e.Eliminado= 0";
             return  connection.getDataMariaDB(sql).Tables[0];
         }
+
+       
     }
 }

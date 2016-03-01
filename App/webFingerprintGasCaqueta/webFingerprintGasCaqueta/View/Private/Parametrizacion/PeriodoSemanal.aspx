@@ -98,8 +98,7 @@
                         </ext:RowExpander>--%>
                         <ext:RowExpander ID="REHORARIO" runat="server">
                             <Listeners>
-
-                                <Expand Handler="parametro.consultarPeriodoHorario(record.data.ID)" Delay="1" />
+                                <Collapse Handler="parametro.consultarPeriodoHorario(record.data.ID);" Buffer="200" />
                             </Listeners>
 
                             <Component>

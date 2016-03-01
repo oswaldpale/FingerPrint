@@ -53,6 +53,10 @@
       <HintPath>..\packages\Ext.NET.Utilities.2.5.0\lib\Ext.Net.Utilities.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="itextsharp, Version=5.0.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -106,6 +110,7 @@
     <Content Include="App_Readme\Transformer.NET\LICENSE.txt" />
     <Content Include="App_Readme\Transformer.NET\README.txt" />
     <Content Include="Content\css\degraded.css" />
+    <Content Include="Content\css\ReportStyle.css" />
     <Content Include="Content\css\Style.css" />
     <Content Include="Content\images\enrollmentFootprint.ico" />
     <Content Include="Content\images\footprint.ico" />
@@ -115,6 +120,9 @@
     <Content Include="Content\js\Concurrent.Thread.js" />
     <Content Include="Ext.NET.Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Report\Container\Reporteador.aspx" />
+    <Content Include="Report\Template\rptListadoControlAccesoEmpleado.htm" />
+    <Content Include="Report\View\ControlAccesoEmpleado.aspx" />
     <Content Include="View\Private\Empleado\HorarioEmpleado.aspx" />
     <Content Include="View\Private\Empleado\ListarEmpleados.aspx" />
     <Content Include="View\Private\Parametrizacion\CamaraWeb\CapturarFoto.aspx" />
@@ -136,6 +144,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\ControllerReportCOD.cs" />
     <Compile Include="Controller\ControllersCOD.cs" />
     <Compile Include="Model\CirculacionOAD.cs" />
     <Compile Include="Model\EmpleadoOAD.cs" />
@@ -147,9 +156,27 @@
     <Compile Include="Connections\Conexion.cs" />
     <Compile Include="Model\HorarioOAD.cs" />
     <Compile Include="Model\HuellaOAD.cs" />
+    <Compile Include="Model\PeriodoOAD.cs" />
+    <Compile Include="Model\ReporteOAD.cs" />
     <Compile Include="Model\SemanaOAD.cs" />
     <Compile Include="Model\VisitanteOAD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\ClassReport\EventTitle.cs" />
+    <Compile Include="Report\ClassReport\ReportePDF.cs" />
+    <Compile Include="Report\Container\Reporteador.aspx.cs">
+      <DependentUpon>Reporteador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\Container\Reporteador.aspx.designer.cs">
+      <DependentUpon>Reporteador.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\View\ControlAccesoEmpleado.aspx.cs">
+      <DependentUpon>ControlAccesoEmpleado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\View\ControlAccesoEmpleado.aspx.designer.cs">
+      <DependentUpon>ControlAccesoEmpleado.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Private\Empleado\HorarioEmpleado.aspx.cs">
       <DependentUpon>HorarioEmpleado.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -222,6 +249,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Report\Repository\" />
     <Folder Include="View\Public\" />
   </ItemGroup>
   <ItemGroup>

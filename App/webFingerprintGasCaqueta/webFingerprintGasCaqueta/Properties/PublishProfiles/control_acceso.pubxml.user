@@ -10,169 +10,292 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
   </PropertyGroup>
   <ItemGroup>
     <File Include="App_Readme/Ext.NET.Utilities/BREAKING_CHANGES.txt">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="App_Readme/Ext.NET.Utilities/LICENSE.txt">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="App_Readme/Ext.NET.Utilities/README.txt">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="App_Readme/Ext.NET/BREAKING_CHANGES.txt">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="App_Readme/Ext.NET/CHANGELOG.txt">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="App_Readme/Ext.NET/Ext.NET.Default.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="App_Readme/Ext.NET/LICENSE.txt">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="App_Readme/Ext.NET/README.txt">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="App_Readme/Ext.NET/Sample.Web.config">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="App_Readme/Transformer.NET/LICENSE.txt">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="App_Readme/Transformer.NET/README.txt">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>03/01/2016 14:58:35</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>03/01/2016 14:58:35</publishTime>
     </File>
     <File Include="bin/Ext.Net.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:26</publishTime>
     </File>
     <File Include="bin/Ext.Net.Utilities.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="bin/Ext.Net.Utilities.xml">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="bin/Ext.Net.xml">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:26</publishTime>
+    </File>
+    <File Include="bin/itextsharp.dll">
+      <publishTime>07/27/2015 17:33:06</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="bin/MySql.Data.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:33</publishTime>
     </File>
     <File Include="bin/MySql.Data.Entity.EF6.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:33</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>01/07/2016 11:35:44</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.xml">
-      <publishTime>01/07/2016 11:35:44</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="bin/Transformer.NET.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="bin/Transformer.NET.xml">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="bin/WebActivatorEx.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="bin/webFingerprintGasCaqueta.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>03/01/2016 14:58:07</publishTime>
     </File>
     <File Include="bin/webFingerprintGasCaqueta.dll.config">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/23/2016 09:59:31</publishTime>
     </File>
     <File Include="bin/webFingerprintGasCaqueta.pdb">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>03/01/2016 14:58:07</publishTime>
+    </File>
+    <File Include="Content/css/degraded.css">
+      <publishTime>02/16/2016 16:29:02</publishTime>
+    </File>
+    <File Include="Content/css/ReportStyle.css">
+      <publishTime>02/24/2016 15:24:23</publishTime>
     </File>
     <File Include="Content/css/Style.css">
-      <publishTime>01/12/2016 17:16:42</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="Content/images/enrollmentFootprint.ico">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="Content/images/footprint.ico">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="Content/images/SinFoto.jpg">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="Content/images/SinHuella.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="Content/images/Thumbs.db">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="Content/js/BiometricDevice.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="Content/js/Concurrent.Thread.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="Ext.NET.Default.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="Imagen.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>01/07/2016 11:35:46</publishTime>
+      <publishTime>02/23/2016 09:59:30</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>03/01/2016 14:58:18</publishTime>
     </File>
     <File Include="Properties/PublishProfiles/control_acceso.pubxml">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="Properties/PublishProfiles/control_acceso.pubxml.user">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
+    </File>
+    <File Include="Report/Container/Reporteador.aspx">
+      <publishTime>02/22/2016 17:24:13</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_AsistenciasPorEmpleado__101736.pdf">
+      <publishTime>02/29/2016 10:17:36</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_AsistenciasPorEmpleado__101758.pdf">
+      <publishTime>02/29/2016 10:17:58</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_Asistencias__10156.pdf">
+      <publishTime>02/29/2016 10:15:06</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_Asistencias__10947.pdf">
+      <publishTime>02/29/2016 10:09:47</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_Asistencias__145054.pdf">
+      <publishTime>02/24/2016 14:50:54</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_Asistencias__145338.pdf">
+      <publishTime>02/24/2016 14:53:39</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_Asistencias__145621.pdf">
+      <publishTime>02/24/2016 14:56:21</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_Asistencias__145720.pdf">
+      <publishTime>02/24/2016 14:57:20</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_Asistencias__145846.pdf">
+      <publishTime>02/24/2016 14:58:46</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_Asistencias__145924.pdf">
+      <publishTime>02/24/2016 14:59:24</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_Asistencias__15049.pdf">
+      <publishTime>02/24/2016 15:00:49</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_Asistencias__15134.pdf">
+      <publishTime>02/24/2016 15:01:34</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_Asistencias__15254.pdf">
+      <publishTime>02/24/2016 15:02:54</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_Asistencias__15349.pdf">
+      <publishTime>02/24/2016 15:34:10</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_Asistencias__153624.pdf">
+      <publishTime>02/24/2016 15:36:24</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_Asistencias__15367.pdf">
+      <publishTime>02/24/2016 15:36:07</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_Asistencias__153718.pdf">
+      <publishTime>02/24/2016 15:37:18</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_Asistencias__153743.pdf">
+      <publishTime>02/24/2016 15:37:43</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_Asistencias__153928.pdf">
+      <publishTime>02/24/2016 15:39:28</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_Asistencias__153941.pdf">
+      <publishTime>02/24/2016 15:39:41</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_Asistencias__153944.pdf">
+      <publishTime>02/24/2016 15:39:44</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_Asistencias__15437.pdf">
+      <publishTime>02/24/2016 15:04:37</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_Asistencias__15537.pdf">
+      <publishTime>02/24/2016 15:05:37</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_Asistencias__155539.pdf">
+      <publishTime>02/24/2016 15:55:41</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_Asistencias__15638.pdf">
+      <publishTime>02/24/2016 15:06:38</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_Asistencias__165621.pdf">
+      <publishTime>02/25/2016 16:56:40</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_Asistencias__16574.pdf">
+      <publishTime>02/25/2016 16:57:04</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_Asistencias__17044.pdf">
+      <publishTime>02/25/2016 17:00:44</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_Asistencias__17104.pdf">
+      <publishTime>02/25/2016 17:10:07</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_Asistencias__171338.pdf">
+      <publishTime>02/25/2016 17:13:38</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_Asistencias__171636.pdf">
+      <publishTime>02/25/2016 17:16:37</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_Asistencias__17518.pdf">
+      <publishTime>02/25/2016 17:05:22</publishTime>
+    </File>
+    <File Include="Report/Repository/Informe_Asistencias__17727.pdf">
+      <publishTime>02/25/2016 17:07:27</publishTime>
+    </File>
+    <File Include="Report/Template/rptListadoControlAccesoEmpleado.htm">
+      <publishTime>02/29/2016 10:11:08</publishTime>
+    </File>
+    <File Include="Report/View/ControlAccesoEmpleado.aspx">
+      <publishTime>02/29/2016 10:16:36</publishTime>
     </File>
     <File Include="View/Private/Empleado/HorarioEmpleado.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="View/Private/Empleado/ListarEmpleados.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="View/Private/Parametrizacion/CamaraWeb/CapturarFoto.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="View/Private/Parametrizacion/Festivos.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/16/2016 17:54:53</publishTime>
+    </File>
+    <File Include="View/Private/Parametrizacion/Horario.aspx">
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="View/Private/Parametrizacion/LectorBiometrico/Captura.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="View/Private/Parametrizacion/LectorBiometrico/Circulacion.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/17/2016 18:03:50</publishTime>
     </File>
     <File Include="View/Private/Parametrizacion/LectorBiometrico/Imagen.aspx">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
+    <File Include="View/Private/Parametrizacion/PeriodoSemanal.aspx">
+      <publishTime>02/29/2016 17:23:09</publishTime>
+    </File>
     <File Include="View/Private/Visitante/Visitante.aspx">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>03/01/2016 14:58:13</publishTime>
     </File>
     <File Include="Web.Debug.config">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="Web.Release.config">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="webFingerprintGasCaqueta.csproj">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/29/2016 15:43:26</publishTime>
     </File>
     <File Include="webFingerprintGasCaqueta.csproj.user">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/29/2016 15:43:26</publishTime>
     </File>
   </ItemGroup>
 </Project>

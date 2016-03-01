@@ -59,7 +59,8 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
         }
         [DirectMethod(Namespace = "parametro")]
         public void consultarPeriodoHorario(string idsemana) {
-            S Controllers.ConsultarPeriodo(_periodo, idsemana);
+            SPERIODOHORARIO.DataSource =  Controllers.ConsultarPeriodo(_periodo, idsemana);
+            SPERIODOHORARIO.DataBind();
         }
 
         [DirectMethod]

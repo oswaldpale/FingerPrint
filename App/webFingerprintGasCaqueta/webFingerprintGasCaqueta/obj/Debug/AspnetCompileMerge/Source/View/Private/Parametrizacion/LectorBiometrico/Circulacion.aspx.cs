@@ -19,6 +19,7 @@ namespace webFingerprintGasCaqueta.View.Public
         {
 
         }
+   
         [DirectMethod(Namespace = "parametro")]
         public void RefreshTime()
         {
@@ -87,13 +88,12 @@ namespace webFingerprintGasCaqueta.View.Public
             {
                 LESTADO.Icon = Icon.Disconnect;
                 LESTADO.Cls = "ReaderStateDisconnect";
+                return;
             }
-            else
-            {
                 LESTADO.Icon = Icon.Connect;
                 LESTADO.Cls = "ReaderStateConnect";
-            }
-            this.RefreshTime();
+           
+          
         }
 
     }

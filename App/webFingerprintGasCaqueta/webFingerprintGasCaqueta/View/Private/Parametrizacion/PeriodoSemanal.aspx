@@ -18,13 +18,6 @@
 
                 for (var i = 0; i < records.length; i++) {
                     rec = records[i];
-
-                    data.records.push(this.store.createModel({
-                        ID: rec.get("ID"),
-                        NOMBRE: rec.get("NOMBRE"),
-                        HORARIO: rec.get("HORARIO")
-                    }));
-
                     rec.remove(true);
                 }
 
@@ -32,28 +25,26 @@
             }
         };
         var beforerecorddrop = function (node, data, overModel, dropPosition, dropFn) {
-            alert('entro');
-            debugger;
-            if (Ext.isArray(data.records)) {
-                var records = data.records,
-                    rec;
+          
+            if (node.innerText.trim() !== "SEMANA") {
+                if (Ext.isArray(data.records)) {
+                    var records = data.records,
+                        rec;
 
-                data.records = [];
+                    data.records = [];
+                    debugger;
+                    for (var i = 0; i < records.length; i++) {
+                        rec = records[i];
 
-                for (var i = 0; i < records.length; i++) {
-                    rec = records[i];
-
-                    data.records.push({
-                        text: rec.get("HORARIO"),
-                        leaf: true,
-                        ID: rec.get("ID"),
-                        NOMBRE: rec.get("NOMBRE"),
-                        HORARIO: rec.get("HORARIO")
-                    });
-
-                    rec.store.remove(rec);
+                        data.records.push({
+                            text: rec.get("HORARIO"),
+                            leaf: true,
+                            ID: rec.get("ID"),
+                            NOMBRE: rec.get("NOMBRE"),
+                            HORARIO: rec.get("HORARIO")
+                        });
+                    }
                 }
-
                 return true;
             }
         };
@@ -69,7 +60,7 @@
     <form id="form1" runat="server">
         <ext:ResourceManager runat="server" />
 
-        <ext:Panel runat="server" Width="850" Height="500" Layout="BorderLayout">
+        <ext:Panel runat="server" Width="850" Height="600" Layout="BorderLayout">
             <Items>
                 <ext:GridPanel
                     ID="GPERIODO" runat="server" MultiSelect="true" Width="450" Height="400"  Region="Center"  MarginSpec="5 0 5 5" Border="true">
@@ -145,6 +136,7 @@
                             </Listeners>
                         </ext:TreeView>
                     </View>
+                   
                     <ColumnModel>
                         <Columns>
                             <ext:TreeColumn ID="TDESCRIPCION" runat="server" Flex="1"  DataIndex="text" />

@@ -41,6 +41,9 @@ namespace webFingerprintGasCaqueta.Controller
         public bool consultarEstadoHuella(string identificacion, string dedo) {
             return huella.consultarEstadoHuella(identificacion, dedo);
         }
+
+      
+
         public bool registrarHuella(string Dactilar, string empleado,string dedo) {
             return huella.registrarHuella(general.nextPrimaryKey("huella", "huell_id"), Dactilar, empleado,dedo);
         }
@@ -94,6 +97,18 @@ namespace webFingerprintGasCaqueta.Controller
         public string ConsultarPeriodoDisponible()
         {
             return  general.nextPrimaryKey("periodo","peri_id");
+        }
+        public DataTable ConsultarEstadoPeriodo(string idperiodo) {
+            return _periodo.ConsultarEstadoPeriodo(idperiodo);
+        }
+        public bool registrarHorarioPeriodo(string idperiodo, string idsemana, string idhorario)
+        {
+            if (this.ConsultarEstadoPeriodo(idperiodo).Rows.Count == 0)
+            {
+                _periodo.registrarPeriodo(idperiodo, "0", "");
+            }
+            return _periodo.registrarHorarioPeriodo(idperiodo, idsemana, idhorario, general.nextPrimaryKey("horariosemanal", "hose_id"));
+
         }
         #endregion
         #region GESTIONAR VISITANTE

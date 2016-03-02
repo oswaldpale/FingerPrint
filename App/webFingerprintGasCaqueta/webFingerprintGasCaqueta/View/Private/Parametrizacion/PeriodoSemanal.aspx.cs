@@ -33,8 +33,8 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
             //SSEMANA.DataBind();
         }
         [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Guardando..", Target = MaskTarget.Page)]
-        public bool registrarPeriodo(string horario) { 
-            return Controllers.regist
+        public bool registrarPeriodo(string idDiasemana, string idHorario) {
+            return Controllers.registrarHorarioPeriodo(_periodo, idDiasemana, idHorario);
         }
         [DirectMethod(Namespace = "parametro")]
         public void AbrirVentanaHorario()

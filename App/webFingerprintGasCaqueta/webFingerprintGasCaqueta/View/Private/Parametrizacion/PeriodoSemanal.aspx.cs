@@ -16,6 +16,7 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
         string _periodo="1";
         protected void Page_Load(object sender, EventArgs e)
         {
+            _periodo = Controllers.ConsultarPeriodoDisponible();
             this.consultarHorarioPeriodo();
             this.consultarSemana();
         }
@@ -28,8 +29,12 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
         [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Consultando..", Target = MaskTarget.Page)]
         public void consultarSemana()
         {
-            SSEMANA.DataSource = Controllers.consultarSemana();
-            SSEMANA.DataBind();
+            //SSEMANA.DataSource = Controllers.consultarSemana();
+            //SSEMANA.DataBind();
+        }
+        [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Guardando..", Target = MaskTarget.Page)]
+        public bool registrarPeriodo(string horario) { 
+            return Controllers.regist
         }
         [DirectMethod(Namespace = "parametro")]
         public void AbrirVentanaHorario()
@@ -59,8 +64,8 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
         }
         [DirectMethod(Namespace = "parametro")]
         public void consultarPeriodoHorario(string idsemana) {
-            SPERIODOHORARIO.DataSource =  Controllers.ConsultarPeriodo(_periodo, idsemana);
-            SPERIODOHORARIO.DataBind();
+            //SPERIODOHORARIO.DataSource =  Controllers.ConsultarPeriodo(_periodo, idsemana);
+            //SPERIODOHORARIO.DataBind();
         }
 
         [DirectMethod]

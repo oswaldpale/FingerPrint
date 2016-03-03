@@ -40,6 +40,24 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion {
         protected global::Ext.Net.Store SHORARIO;
         
         /// <summary>
+        /// Control GridView1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.GridView GridView1;
+        
+        /// <summary>
+        /// Control GridDragDrop1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.GridDragDrop GridDragDrop1;
+        
+        /// <summary>
         /// Control BADICIONAR.
         /// </summary>
         /// <remarks>
@@ -49,48 +67,39 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion {
         protected global::Ext.Net.Button BADICIONAR;
         
         /// <summary>
-        /// Control GSEMANA.
+        /// Control TSEMANAHORARIO.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.GridPanel GSEMANA;
+        protected global::Ext.Net.TreePanel TSEMANAHORARIO;
         
         /// <summary>
-        /// Control SSEMANA.
+        /// Control TreeView1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Store SSEMANA;
+        protected global::Ext.Net.TreeView TreeView1;
         
         /// <summary>
-        /// Control REHORARIO.
+        /// Control TreeViewDragDrop1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.RowExpander REHORARIO;
+        protected global::Ext.Net.TreeViewDragDrop TreeViewDragDrop1;
         
         /// <summary>
-        /// Control GPERIODOHORARIO.
+        /// Control TDESCRIPCION.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.GridPanel GPERIODOHORARIO;
-        
-        /// <summary>
-        /// Control SPERIODOHORARIO.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Store SPERIODOHORARIO;
+        protected global::Ext.Net.TreeColumn TDESCRIPCION;
     }
 }

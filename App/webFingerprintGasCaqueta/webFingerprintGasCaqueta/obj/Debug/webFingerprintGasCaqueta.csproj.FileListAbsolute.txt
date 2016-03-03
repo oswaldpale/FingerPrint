@@ -45,3 +45,19 @@ C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\App\webFingerpri
 C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\obj\Debug\webFingerprintGasCaqueta.pdb
 C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\obj\Debug\webFingerprintGasCaqueta.csprojResolveAssemblyReference.cache
 C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\itextsharp.xml
+C:\Users\casa\Desktop\Proyecto\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\webFingerprintGasCaqueta.dll
+C:\Users\casa\Desktop\Proyecto\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\webFingerprintGasCaqueta.pdb
+C:\Users\casa\Desktop\Proyecto\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\Ext.Net.dll
+C:\Users\casa\Desktop\Proyecto\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\Ext.Net.Utilities.dll
+C:\Users\casa\Desktop\Proyecto\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\casa\Desktop\Proyecto\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\Newtonsoft.Json.dll
+C:\Users\casa\Desktop\Proyecto\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\Transformer.NET.dll
+C:\Users\casa\Desktop\Proyecto\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\WebActivatorEx.dll
+C:\Users\casa\Desktop\Proyecto\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\Ext.Net.xml
+C:\Users\casa\Desktop\Proyecto\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\Ext.Net.Utilities.xml
+C:\Users\casa\Desktop\Proyecto\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\itextsharp.xml
+C:\Users\casa\Desktop\Proyecto\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\Newtonsoft.Json.xml
+C:\Users\casa\Desktop\Proyecto\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\Transformer.NET.xml
+C:\Users\casa\Desktop\Proyecto\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\obj\Debug\webFingerprintGasCaqueta.csprojResolveAssemblyReference.cache
+C:\Users\casa\Desktop\Proyecto\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\obj\Debug\webFingerprintGasCaqueta.dll
+C:\Users\casa\Desktop\Proyecto\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\obj\Debug\webFingerprintGasCaqueta.pdb

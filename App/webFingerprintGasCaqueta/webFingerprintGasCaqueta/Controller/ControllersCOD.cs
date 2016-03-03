@@ -91,6 +91,10 @@ namespace webFingerprintGasCaqueta.Controller
         {
             return _periodo.consultarPeriodo(idperiodo,diasemana);
         }
+        public string ConsultarPeriodoDisponible()
+        {
+            return  general.nextPrimaryKey("periodo","peri_id");
+        }
         #endregion
         #region GESTIONAR VISITANTE
         public bool registrarVisitante(string identificacion, string nombre, string apellido1, string apellido2, string observacion, string foto) {
@@ -140,6 +144,8 @@ namespace webFingerprintGasCaqueta.Controller
             return semana.consultarSemana();
         }
         #endregion
-      
+
+
+        
     }
 }

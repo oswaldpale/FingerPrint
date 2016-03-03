@@ -76,5 +76,6 @@ namespace webFingerprintGasCaqueta.Model
                                 horario";
             return connection.getDataMariaDB(sql).Tables[0];
         }
+      
     }
 }

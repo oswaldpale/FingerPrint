@@ -18,6 +18,7 @@ namespace webFingerprintGasCaqueta.Controller
         private HorarioOAD horario = new HorarioOAD();
         private SemanaOAD semana = new SemanaOAD();
         private PeriodoOAD _periodo = new PeriodoOAD();
+        private HorarioSemanaOAD horariosemana = new HorarioSemanaOAD();
 
 
         #region GESTION DE HUELLA
@@ -90,10 +91,7 @@ namespace webFingerprintGasCaqueta.Controller
         }
         #endregion
         #region GESTIONAR PERIODO HORARIO
-        public DataTable ConsultarPeriodo(string idperiodo,string diasemana)
-        {
-            return _periodo.consultarPeriodo(idperiodo,diasemana);
-        }
+     
         public string ConsultarPeriodoDisponible()
         {
             return  general.nextPrimaryKey("periodo","peri_id");
@@ -101,6 +99,12 @@ namespace webFingerprintGasCaqueta.Controller
         public DataTable ConsultarEstadoPeriodo(string idperiodo) {
             return _periodo.ConsultarEstadoPeriodo(idperiodo);
         }
+        #region GESTIONAR HORARIO SEMANA
+        public DataTable consultarHorarioporDia(string idperiodo, string diasemana)
+        {
+            return horariosemana.consultarHorarioporDia(idperiodo, diasemana);
+        }
+        #endregion
         public bool registrarHorarioPeriodo(string idperiodo, string idsemana, string idhorario)
         {
             if (this.ConsultarEstadoPeriodo(idperiodo).Rows.Count == 0)

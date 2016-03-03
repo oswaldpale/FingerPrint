@@ -26,7 +26,7 @@
         };
         var beforerecorddrop = function (node, data, overModel, dropPosition, dropFn) {
           
-            if (node.innerText.trim() !== "SEMANA") {
+            if (node.innerText.trim() !== "SEMAN") {
                 if (Ext.isArray(data.records)) {
                     var records = data.records,
                         rec;
@@ -114,7 +114,7 @@
                     MarginSpec="5 5 5 0"
                     Split="true">
                     <Root>
-                        <ext:Node Text="SEMANA" Expanded="true" AllowDrag="false">
+                        <%--<ext:Node NodeID="NSEMANA"  Expanded="true" >
                             <Children>
                                 <ext:Node Text="Lunes" NodeID="NLunes" AllowDrag="false"/>
                                 <ext:Node Text="Martes" NodeID="NMartes"  AllowDrag="false"/>
@@ -124,7 +124,7 @@
                                 <ext:Node Text="Sabado" NodeID="NSabado"  AllowDrag="false"/>
                                 <ext:Node Text="Domingo" NodeID="NDomingo"  AllowDrag="false"/>
                             </Children>
-                        </ext:Node>
+                        </ext:Node>--%>
                     </Root>
                     <View>
                         <ext:TreeView ID="TreeView1" runat="server">

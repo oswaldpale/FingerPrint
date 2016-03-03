@@ -13,12 +13,62 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
     public partial class PeriodoSemanal : System.Web.UI.Page
     {
         private ControllersCOD Controllers = new ControllersCOD();
-        string _periodo="1";
+        string _periodo = "1";
         protected void Page_Load(object sender, EventArgs e)
         {
             _periodo = Controllers.ConsultarPeriodoDisponible();
             this.consultarHorarioPeriodo();
             this.consultarSemana();
+            NodeRaiz();
+        }
+        public void NodeRaiz()
+        {
+            string _periodo = "1";
+            List<DiaSemana> Semana = new List<DiaSemana>();
+            DataTable DSemana = Controllers.consultarSemana();
+            foreach (DataRow dia in DSemana.Rows)
+            {
+                DiaSemana _dia = new DiaSemana();
+                _dia.IDPERIODO = _periodo;
+                _dia.IDSEMANA = dia["ID"].ToString();
+                _dia.NOMBRE = dia["DIA"].ToString();
+                DataTable _DHDIA = Controllers.consultarHorarioporDia(_periodo, _dia.IDSEMANA);
+                _dia.HORARIO = new List<HorarioPorDia>(); 
+                foreach (DataRow _franjahora in _DHDIA.Rows)
+                {
+                    HorarioPorDia hora = new HorarioPorDia();
+                    hora.ID = _franjahora["ID"].ToString();
+                    hora.HORARIO = _franjahora["HORARIO"].ToString();
+                    _dia.HORARIO.Add(hora);
+                }
+                Semana.Add(_dia);
+            }
+            Ext.Net.Node root = new Ext.Net.Node()
+            {
+                Text = "SEMANA"
+            };
+            root.Expanded = true;
+            TSEMANAHORARIO.Root.Add(root);
+
+            foreach (var dia in Semana)
+            {
+                Ext.Net.Node _componentedia = new Ext.Net.Node()
+                {
+                    Text = dia.NOMBRE,
+                    Icon = Icon.Folder
+                };
+                root.Children.Add(_componentedia);
+                foreach (var franja in dia.HORARIO)
+                {
+                    Ext.Net.Node _franjaHora = new Ext.Net.Node()
+                    {
+                        Text = franja.HORARIO,
+                        Icon = Icon.Time,
+                        Leaf = true
+                    };
+                    _componentedia.Children.Add(_franjaHora);
+                }
+            }
         }
         [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Consultando..", Target = MaskTarget.Page)]
         public void consultarHorarioPeriodo()
@@ -68,46 +118,27 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
             //SPERIODOHORARIO.DataBind();
         }
 
-        [DirectMethod]
-        public string gridPanelHorario(Dictionary<string, string> parameters)
-        {
-            // string id = parameters["id"];
-            string diasemana = parameters["IDSEMANA"];
-            GridPanel grid = new GridPanel
-            {
-                Height = 200,
-                EnableColumnHide = false,
-                Store =
-            {
-                new Store
-                {
-                    Model = {
-                        new Ext.Net.Model {
-                            IDProperty = "ID",
-                            Fields =
-                            {
-                                new ModelField("ID"),
-                                new ModelField("HORARIO"),
-                                new ModelField("DURACION")
-                            }
-                        }
-                    },
-                    DataSource = Controllers.ConsultarPeriodo(_periodo,diasemana)
-                 }
-            },
-                ColumnModel =
-            {
-                Columns =
-                {
-                    new Column { Text = "HORARIO", DataIndex = "HORARIO", Width = 150 },
-                    new Column { Text = "HORAS DE TRABAJO", DataIndex = "DURACION", Width = 200 }
-                }
-            }
-            };
-
-            return ComponentLoader.ToConfig(grid);
-        }
-       
-
     }
+    #region ENTIDAD
+    public class HorarioPorDia
+    {
+        public string ID { get; set; }
+        public string HORARIO{ get; set; }
+        public HorarioPorDia() { }
+        public HorarioPorDia(string id, string horario)
+        {
+            this.ID = id;
+            this.HORARIO = horario;
+        }
+    }
+    public class DiaSemana
+    {
+        public string IDSEMANA { get; set; }
+        public string IDPERIODO { get; set; }
+        public string NOMBRE { get; set; }
+        public List<HorarioPorDia> HORARIO { get; set; }
+        public DiaSemana() { }
+    }
+    #endregion
+
 }

@@ -128,7 +128,7 @@
                 parametro.buscarUsuario(texto, {
                     success: function (result) {
                         obj.Start();// Habilito el lector Biometrico....
-                        parametro.ShowWarningInfo();
+                        //parametro.ShowWarningInfo();
                         VID = App.TIDUSER.getValue();
                         obj.identificacion = VID ;
                         App.LMENSAJE.setText('Por Favor Ingrese Su Huella');            // Mensaje de Ingrese la Huella...

@@ -89,15 +89,21 @@ namespace webFingerprintGasCaqueta.Controller
         public DataTable consultarEmpleados() {
             return empleado.consultarEmpleados();
         }
+        public DataTable consultarEmpleadosHorarios() {
+            return empleado.consultarEmpleadosHorarios();
+        }
         #endregion
         #region GESTIONAR PERIODO HORARIO
-     
+
         public string ConsultarPeriodoDisponible()
         {
             return  general.nextPrimaryKey("periodo","peri_id");
         }
         public DataTable ConsultarEstadoPeriodo(string idperiodo) {
             return _periodo.ConsultarEstadoPeriodo(idperiodo);
+        }
+        public DataTable consultarPeriodo() {
+            return _periodo.consultarPeriodo();
         }
         #region GESTIONAR HORARIO SEMANA
         public DataTable consultarHorarioporDia(string idperiodo, string diasemana)

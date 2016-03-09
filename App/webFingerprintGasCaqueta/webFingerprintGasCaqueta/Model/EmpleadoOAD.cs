@@ -47,6 +47,38 @@ namespace webFingerprintGasCaqueta.Model
                             e.Eliminado= 0";
             return  connection.getDataMariaDB(sql).Tables[0];
         }
+        public DataTable consultarEmpleadosHorarios() {
+            string sql = @"SELECT
+                            e.Cod_empleado AS CODIGO,
+                            e.Identificacion AS IDENTIFICACION,
+                            CONCAT(e.Nombres, ' ', e.Apellido1, ' ', e.Apellido2) AS NOMBRE,
+                           UPPER(t.Tipo)AS TIPO,
+                           IF(
+                           (
+                               SELECT
+
+                                   COUNT(h.hoem_id)
+
+                               FROM
+
+                                   horarioempleado h
+
+                               WHERE
+
+                                   h.empl_idempleado = e.Cod_empleado
+
+                               AND h.hoem_estado = 0
+                           )
+                           != 0, 'true', 'false') AS EXISTHORARIO
+                        FROM
+                            control_acceso.empleado e
+                        INNER JOIN sigc972008.tipoempleado t
+                        ON
+                            e.cod_tipo = t.cod_tipo
+                        WHERE
+                            e.Eliminado = 0";
+            return connection.getDataMariaDB(sql).Tables[0];
+        }
 
        
     }

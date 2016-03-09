@@ -11,6 +11,15 @@ namespace webFingerprintGasCaqueta.Model
     {
         private Conexion connection = new Conexion();
 
+        public DataTable consultarPeriodo() {
+            string sql = @"SELECT
+                                peri_id AS IDPERIODO,
+                                peri_totalhoras AS DURACION,
+                                peri_descripcion AS HORARIO
+                            FROM
+                                periodo";
+            return connection.getDataMariaDB(sql).Tables[0];
+        }
     
         public DataTable ConsultarEstadoPeriodo(string periodo) {
             string sql = @"SELECT

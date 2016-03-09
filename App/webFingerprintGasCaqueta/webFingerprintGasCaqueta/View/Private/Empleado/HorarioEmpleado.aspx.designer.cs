@@ -31,6 +31,42 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado {
         protected global::Ext.Net.Panel WestPanel;
         
         /// <summary>
+        /// Control GHORARIOS.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.GridPanel GHORARIOS;
+        
+        /// <summary>
+        /// Control SHORARIO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store SHORARIO;
+        
+        /// <summary>
+        /// Control CMHORARIO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column CMHORARIO;
+        
+        /// <summary>
+        /// Control CMURACION.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column CMURACION;
+        
+        /// <summary>
         /// Control GEMPLEADOS.
         /// </summary>
         /// <remarks>
@@ -40,6 +76,15 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado {
         protected global::Ext.Net.GridPanel GEMPLEADOS;
         
         /// <summary>
+        /// Control TFEMPLEADO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField TFEMPLEADO;
+        
+        /// <summary>
         /// Control SEMPLEADOS.
         /// </summary>
         /// <remarks>
@@ -47,15 +92,6 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Store SEMPLEADOS;
-        
-        /// <summary>
-        /// Control CKECK.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.CheckColumn CKECK;
         
         /// <summary>
         /// Control CIDENTIFICACION.

@@ -1,0 +1,4 @@
+SELECT
+    CONCAT(TIME_FORMAT(h.hora_inicio, '%r'), ' - ', TIME_FORMAT(h.hora_fin, '%r')) AS HORARIO
+FROM
+    HORARIO h

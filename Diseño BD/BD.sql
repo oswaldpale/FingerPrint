@@ -1,12 +1,12 @@
 -- --------------------------------------------------------
--- Host:                         192.168.0.91
--- Versión del servidor:         5.0.45-community-nt - MySQL Community Edition (GPL)
+-- Host:                         127.0.0.1
+-- Versión del servidor:         5.5.10 - MySQL Community Server (GPL)
 -- SO del servidor:              Win32
--- HeidiSQL Versión:             9.1.0.4867
+-- HeidiSQL Versión:             9.3.0.4984
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
@@ -17,12 +17,12 @@ USE `control_acceso`;
 
 -- Volcando estructura para tabla control_acceso.circulacion
 CREATE TABLE IF NOT EXISTS `circulacion` (
-  `circu_idusuario` varchar(25) default NULL,
-  `circu_fecha` date default NULL,
-  `circu_horaentrada` time default NULL,
-  `circu_horasalida` time default NULL,
+  `circu_idusuario` varchar(25) DEFAULT NULL,
+  `circu_fecha` date DEFAULT NULL,
+  `circu_horaentrada` time DEFAULT NULL,
+  `circu_horasalida` time DEFAULT NULL,
   `circu_id` int(11) NOT NULL,
-  PRIMARY KEY  (`circu_id`)
+  PRIMARY KEY (`circu_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla control_acceso.circulacion: ~10 rows (aproximadamente)
@@ -44,9 +44,9 @@ INSERT INTO `circulacion` (`circu_idusuario`, `circu_fecha`, `circu_horaentrada`
 -- Volcando estructura para tabla control_acceso.diasfestivos
 CREATE TABLE IF NOT EXISTS `diasfestivos` (
   `dife_Id` int(11) NOT NULL,
-  `dife_fecha` date default NULL,
-  `dife_nombre` varchar(50) default NULL,
-  PRIMARY KEY  (`dife_Id`)
+  `dife_fecha` date DEFAULT NULL,
+  `dife_nombre` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`dife_Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla control_acceso.diasfestivos: ~8 rows (aproximadamente)
@@ -80,33 +80,34 @@ CREATE TABLE `empleado` (
 -- Volcando estructura para tabla control_acceso.horario
 CREATE TABLE IF NOT EXISTS `horario` (
   `hora_id` int(11) NOT NULL,
-  `hora_nombre` varchar(50) default NULL,
-  `hora_inicio` time default NULL,
-  `hora_fin` time default NULL,
-  `hora_tiempotarde` int(11) default NULL,
-  PRIMARY KEY  (`hora_id`)
+  `hora_nombre` varchar(50) DEFAULT NULL,
+  `hora_inicio` time DEFAULT NULL,
+  `hora_fin` time DEFAULT NULL,
+  `hora_tiempotarde` int(11) DEFAULT NULL,
+  PRIMARY KEY (`hora_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Horario del Empleado.';
 
--- Volcando datos para la tabla control_acceso.horario: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla control_acceso.horario: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `horario` DISABLE KEYS */;
 INSERT INTO `horario` (`hora_id`, `hora_nombre`, `hora_inicio`, `hora_fin`, `hora_tiempotarde`) VALUES
-	(1, 'JORNADA MAÑANA', '05:18:13', '15:18:26', 10),
-	(2, 'JORNADA TARDE', '04:00:00', '13:00:00', 10);
+	(1, 'JORNADA MAÑANA', '08:00:00', '12:00:00', 10),
+	(2, 'JORNADA TARDE', '14:00:00', '18:00:00', 10),
+	(3, 'NOCHE', '19:00:00', '20:00:00', 0);
 /*!40000 ALTER TABLE `horario` ENABLE KEYS */;
 
 
 -- Volcando estructura para tabla control_acceso.horarioempleado
 CREATE TABLE IF NOT EXISTS `horarioempleado` (
   `hoem_id` int(11) NOT NULL,
-  `hoem_estado` tinyint(4) default NULL,
-  `empl_idempleado` varchar(20) default NULL,
-  `hose_id` int(11) default NULL,
-  `hoem_vincularfestivos` tinyint(4) default NULL,
-  `hoem_tiempotarde` int(4) default NULL,
-  `hoem_tipohorario` set('fijo','periodo') default NULL,
-  `hoem_fechainicio` date default NULL,
-  `hoem_fin` date default NULL,
-  PRIMARY KEY  (`hoem_id`)
+  `hoem_estado` tinyint(4) DEFAULT NULL,
+  `empl_idempleado` varchar(20) DEFAULT NULL,
+  `peri_id` int(11) DEFAULT NULL,
+  `hoem_vincularfestivos` tinyint(4) DEFAULT NULL,
+  `hoem_tiempotarde` int(4) DEFAULT NULL,
+  `hoem_tipohorario` set('fijo','periodo') DEFAULT NULL,
+  `hoem_fechainicio` date DEFAULT NULL,
+  `hoem_fechafin` date DEFAULT NULL,
+  PRIMARY KEY (`hoem_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla control_acceso.horarioempleado: ~0 rows (aproximadamente)
@@ -116,25 +117,37 @@ CREATE TABLE IF NOT EXISTS `horarioempleado` (
 
 -- Volcando estructura para tabla control_acceso.horariosemanal
 CREATE TABLE IF NOT EXISTS `horariosemanal` (
-  `hose_id` int(11) NOT NULL,
-  `hose_diasemanaid` int(10) default NULL,
-  `hose_horaid` int(10) default NULL,
-  `hose_nombre` varchar(20) default NULL,
-  PRIMARY KEY  (`hose_id`)
+  `peri_id` int(11) NOT NULL,
+  `hose_diasemanaid` int(10) DEFAULT NULL,
+  `hose_horaid` int(10) DEFAULT NULL,
+  `hose_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla control_acceso.horariosemanal: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla control_acceso.horariosemanal: ~12 rows (aproximadamente)
 /*!40000 ALTER TABLE `horariosemanal` DISABLE KEYS */;
+INSERT INTO `horariosemanal` (`peri_id`, `hose_diasemanaid`, `hose_horaid`, `hose_id`) VALUES
+	(1, 1, 1, 11),
+	(1, 2, 2, 13),
+	(1, 6, 1, 17),
+	(1, 6, 2, 18),
+	(1, 1, 2, 19),
+	(1, 2, 3, 20),
+	(1, 5, 1, 21),
+	(1, 5, 2, 22),
+	(1, 3, 1, 23),
+	(1, 3, 2, 24),
+	(1, 4, 1, 25),
+	(1, 4, 2, 26);
 /*!40000 ALTER TABLE `horariosemanal` ENABLE KEYS */;
 
 
 -- Volcando estructura para tabla control_acceso.huella
 CREATE TABLE IF NOT EXISTS `huella` (
-  `huell_id` int(25) NOT NULL auto_increment,
-  `huell_identificacion` varchar(40) default NULL,
+  `huell_id` int(25) NOT NULL AUTO_INCREMENT,
+  `huell_identificacion` varchar(40) DEFAULT NULL,
   `huell_huella` blob,
-  `huell_dedo` set('Primario','Secundario') default NULL,
-  PRIMARY KEY  (`huell_id`)
+  `huell_dedo` set('Primario','Secundario') DEFAULT NULL,
+  PRIMARY KEY (`huell_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla control_acceso.huella: ~1 rows (aproximadamente)
@@ -144,19 +157,37 @@ INSERT INTO `huella` (`huell_id`, `huell_identificacion`, `huell_huella`, `huell
 /*!40000 ALTER TABLE `huella` ENABLE KEYS */;
 
 
+-- Volcando estructura para tabla control_acceso.periodo
+CREATE TABLE IF NOT EXISTS `periodo` (
+  `peri_id` int(11) NOT NULL,
+  `peri_totalhoras` double DEFAULT NULL,
+  `peri_descripcion` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`peri_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Volcando datos para la tabla control_acceso.periodo: ~4 rows (aproximadamente)
+/*!40000 ALTER TABLE `periodo` DISABLE KEYS */;
+INSERT INTO `periodo` (`peri_id`, `peri_totalhoras`, `peri_descripcion`) VALUES
+	(1, 12, 'HORARIO LABORAL'),
+	(2, 0, ''),
+	(3, 0, ''),
+	(4, 0, '');
+/*!40000 ALTER TABLE `periodo` ENABLE KEYS */;
+
+
 -- Volcando estructura para tabla control_acceso.permisos
 CREATE TABLE IF NOT EXISTS `permisos` (
   `perm_id` int(11) NOT NULL,
-  `perm_nombre` varchar(20) default NULL,
-  `perm_descripcion` varchar(50) default NULL,
-  `perm_fechasolicitud` date default NULL,
-  `perm_cancelado` tinyint(4) default NULL,
-  `perm_fechainicio` date default NULL,
-  `perm_fechafin` date default NULL,
-  `perm_horainicio` time default NULL,
-  `perm_horafin` time default NULL,
-  `perm_tipo` set('dias','horas') default NULL,
-  PRIMARY KEY  (`perm_id`)
+  `perm_nombre` varchar(20) DEFAULT NULL,
+  `perm_descripcion` varchar(50) DEFAULT NULL,
+  `perm_fechasolicitud` date DEFAULT NULL,
+  `perm_cancelado` tinyint(4) DEFAULT NULL,
+  `perm_fechainicio` date DEFAULT NULL,
+  `perm_fechafin` date DEFAULT NULL,
+  `perm_horainicio` time DEFAULT NULL,
+  `perm_horafin` time DEFAULT NULL,
+  `perm_tipo` set('dias','horas') DEFAULT NULL,
+  PRIMARY KEY (`perm_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla control_acceso.permisos: ~0 rows (aproximadamente)
@@ -167,11 +198,11 @@ CREATE TABLE IF NOT EXISTS `permisos` (
 -- Volcando estructura para tabla control_acceso.retardo
 CREATE TABLE IF NOT EXISTS `retardo` (
   `reta_id` int(11) NOT NULL,
-  `reta_idusuario` varchar(20) default NULL,
-  `reta_fecha` date default NULL,
-  `reta_hora` time default NULL,
-  `reta_estado` tinyint(4) default NULL,
-  PRIMARY KEY  (`reta_id`)
+  `reta_idusuario` varchar(20) DEFAULT NULL,
+  `reta_fecha` date DEFAULT NULL,
+  `reta_hora` time DEFAULT NULL,
+  `reta_estado` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`reta_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='se registra el retardo cuando  el empleado llega tarde';
 
 -- Volcando datos para la tabla control_acceso.retardo: ~0 rows (aproximadamente)
@@ -183,11 +214,11 @@ CREATE TABLE IF NOT EXISTS `retardo` (
 CREATE TABLE IF NOT EXISTS `retardojusticacion` (
   `reju_id` int(11) NOT NULL,
   `reta_id` int(11) NOT NULL,
-  `reju_observacion` varchar(100) default NULL,
-  `reju_motivo` varchar(50) default NULL,
-  `reju_fecha` date default NULL,
-  `reju_hora` time default NULL,
-  PRIMARY KEY  (`reju_id`)
+  `reju_observacion` varchar(100) DEFAULT NULL,
+  `reju_motivo` varchar(50) DEFAULT NULL,
+  `reju_fecha` date DEFAULT NULL,
+  `reju_hora` time DEFAULT NULL,
+  PRIMARY KEY (`reju_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='el empleado describe la situacion porque llego tarde.';
 
 -- Volcando datos para la tabla control_acceso.retardojusticacion: ~0 rows (aproximadamente)
@@ -198,8 +229,8 @@ CREATE TABLE IF NOT EXISTS `retardojusticacion` (
 -- Volcando estructura para tabla control_acceso.semana
 CREATE TABLE IF NOT EXISTS `semana` (
   `sema_id` int(11) NOT NULL,
-  `sema_dia` varchar(20) default NULL,
-  PRIMARY KEY  (`sema_id`)
+  `sema_dia` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`sema_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla control_acceso.semana: ~7 rows (aproximadamente)
@@ -218,12 +249,12 @@ INSERT INTO `semana` (`sema_id`, `sema_dia`) VALUES
 -- Volcando estructura para tabla control_acceso.visitante
 CREATE TABLE IF NOT EXISTS `visitante` (
   `visi_identificacion` int(20) NOT NULL,
-  `visi_nombre` varchar(30) default NULL,
-  `visi_apellido1` varchar(20) default NULL,
-  `visi_apellido2` varchar(20) default NULL,
+  `visi_nombre` varchar(30) DEFAULT NULL,
+  `visi_apellido1` varchar(20) DEFAULT NULL,
+  `visi_apellido2` varchar(20) DEFAULT NULL,
   `visi_foto` blob,
-  `visi_observacion` varchar(50) default NULL,
-  PRIMARY KEY  (`visi_identificacion`)
+  `visi_observacion` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`visi_identificacion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla control_acceso.visitante: ~2 rows (aproximadamente)
@@ -237,7 +268,7 @@ INSERT INTO `visitante` (`visi_identificacion`, `visi_nombre`, `visi_apellido1`,
 -- Volcando estructura para vista control_acceso.empleado
 -- Eliminando tabla temporal y crear estructura final de VIEW
 DROP TABLE IF EXISTS `empleado`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`planta`@`%` SQL SECURITY DEFINER VIEW `control_acceso`.`empleado` AS select `e`.`Cod_empleado` AS `Cod_empleado`,`e`.`Identificacion` AS `Identificacion`,`e`.`Nombres` AS `Nombres`,`e`.`Apellido1` AS `Apellido1`,`e`.`Apellido2` AS `Apellido2`,`e`.`cod_tipo` AS `cod_tipo`,`e`.`Eliminado` AS `Eliminado`,`e`.`FOTO` AS `FOTO` from `sigc972008`.`empleado` `e`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `empleado` AS select `e`.`Cod_empleado` AS `Cod_empleado`,`e`.`Identificacion` AS `Identificacion`,`e`.`Nombres` AS `Nombres`,`e`.`Apellido1` AS `Apellido1`,`e`.`Apellido2` AS `Apellido2`,`e`.`cod_tipo` AS `cod_tipo`,`e`.`Eliminado` AS `Eliminado`,`e`.`FOTO` AS `FOTO` from `sigc972008`.`empleado` `e` ;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

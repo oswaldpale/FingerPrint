@@ -78,7 +78,7 @@
                                                 <ext:TextField ID="TextField3" runat="server" />
                                             </Editor>
                                         </ext:Column>  
-                                         <ext:Column ID="Column4" ColumnID="CTIEMPO_TARDE" runat="server" DataIndex="TIEMPO_TARDE" Header="TIEMPO TARDE(min)" Width="150">
+                                         <ext:Column ID="Column4" ColumnID="CTIEMPO_TARDE" runat="server" DataIndex="TIEMPO_TARDE" Header="TIEMPO TARDE(min)" Width="130">
                                             <Editor>
                                                 <ext:TextField ID="TextField4" runat="server" />
                                             </Editor>

@@ -104,6 +104,12 @@ namespace webFingerprintGasCaqueta.Controller
         {
             return horariosemana.consultarHorarioporDia(idperiodo, diasemana);
         }
+        public bool eliminarHorarioSemana(string id) {
+            return horariosemana.eliminarHorarioSemana(id);     
+        }
+        public int consultarIDsemanaHorario() {
+            return Convert.ToInt32(general.nextPrimaryKey("horariosemanal","hose_id").ToString()) - 1;
+        }
         #endregion
         public bool registrarHorarioPeriodo(string idperiodo, string idsemana, string idhorario)
         {
@@ -114,6 +120,7 @@ namespace webFingerprintGasCaqueta.Controller
             return _periodo.registrarHorarioPeriodo(idperiodo, idsemana, idhorario, general.nextPrimaryKey("horariosemanal", "hose_id"));
 
         }
+        
         #endregion
         #region GESTIONAR VISITANTE
         public bool registrarVisitante(string identificacion, string nombre, string apellido1, string apellido2, string observacion, string foto) {

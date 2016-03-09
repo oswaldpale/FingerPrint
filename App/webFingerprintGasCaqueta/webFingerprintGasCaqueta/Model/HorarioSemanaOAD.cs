@@ -14,6 +14,7 @@ namespace webFingerprintGasCaqueta.Model
         {
             string sql = @"SELECT
                                 h.hose_id AS ID,
+                                h.hose_horaid AS IDHORA,
                                 CONCAT(TIME_FORMAT(ho.hora_inicio, '%r'), ' - ', TIME_FORMAT(ho.hora_fin, '%r')) AS HORARIO,
                                  timediff(ho.hora_fin, ho.hora_inicio)      AS DURACION
                             FROM
@@ -30,5 +31,15 @@ namespace webFingerprintGasCaqueta.Model
                               " AND h.hose_diasemanaid = " + diasemana;
             return connection.getDataMariaDB(sql).Tables[0];
         }
+        public bool eliminarHorarioSemana(string id){
+            string sql = @"DELETE
+                            FROM
+                                horariosemanal
+                            WHERE
+                            hose_id =" + id;
+             return connection.sendSetDataMariaDB(sql);
+        }
+
+        
     }
 }

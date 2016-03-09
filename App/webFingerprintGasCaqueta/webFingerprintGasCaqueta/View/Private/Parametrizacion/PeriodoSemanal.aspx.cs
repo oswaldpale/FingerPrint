@@ -13,36 +13,39 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
     public partial class PeriodoSemanal : System.Web.UI.Page
     {
         private ControllersCOD Controllers = new ControllersCOD();
-        string _periodo = "1";
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            _periodo = Controllers.ConsultarPeriodoDisponible();
+            HIDPERIODO.Text = Controllers.ConsultarPeriodoDisponible();
+            HIDPERIODO.Text = "1";
             this.consultarHorarioPeriodo();
             this.consultarSemana();
             NodeRaiz();
         }
         public void NodeRaiz()
         {
-            string _periodo = "1";
+
             List<DiaSemana> Semana = new List<DiaSemana>();
             DataTable DSemana = Controllers.consultarSemana();
             foreach (DataRow dia in DSemana.Rows)
             {
                 DiaSemana _dia = new DiaSemana();
-                _dia.IDPERIODO = _periodo;
+                _dia.IDPERIODO = HIDPERIODO.Text;
                 _dia.IDSEMANA = dia["ID"].ToString();
                 _dia.NOMBRE = dia["DIA"].ToString();
-                DataTable _DHDIA = Controllers.consultarHorarioporDia(_periodo, _dia.IDSEMANA);
-                _dia.HORARIO = new List<HorarioPorDia>(); 
+                DataTable _DHDIA = Controllers.consultarHorarioporDia(HIDPERIODO.Text, _dia.IDSEMANA);
+                _dia.HORARIO = new List<HorarioPorDia>();
                 foreach (DataRow _franjahora in _DHDIA.Rows)
                 {
                     HorarioPorDia hora = new HorarioPorDia();
                     hora.ID = _franjahora["ID"].ToString();
+                    hora.IDHORA = _franjahora["IDHORA"].ToString();
                     hora.HORARIO = _franjahora["HORARIO"].ToString();
                     _dia.HORARIO.Add(hora);
                 }
                 Semana.Add(_dia);
             }
+            Session["Semana"] = Semana;
             Ext.Net.Node root = new Ext.Net.Node()
             {
                 Text = "SEMANA"
@@ -50,20 +53,23 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
             root.Expanded = true;
             TSEMANAHORARIO.Root.Add(root);
 
-            foreach (var dia in Semana)
+            foreach (DiaSemana dia in Semana)
             {
                 Ext.Net.Node _componentedia = new Ext.Net.Node()
                 {
                     Text = dia.NOMBRE,
-                    Icon = Icon.Folder
+                    Icon = Icon.CalendarSelectDay,
+                    NodeID = "N" + dia.IDSEMANA
+
                 };
+                _componentedia.Expandable = true;
                 root.Children.Add(_componentedia);
-                foreach (var franja in dia.HORARIO)
+                foreach (HorarioPorDia franja in dia.HORARIO)
                 {
                     Ext.Net.Node _franjaHora = new Ext.Net.Node()
                     {
+                        NodeID = "HS" + franja.ID,
                         Text = franja.HORARIO,
-                        Icon = Icon.Time,
                         Leaf = true
                     };
                     _componentedia.Children.Add(_franjaHora);
@@ -83,9 +89,58 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
             //SSEMANA.DataBind();
         }
         [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Guardando..", Target = MaskTarget.Page)]
-        public bool registrarPeriodo(string idDiasemana, string idHorario) {
-            return Controllers.registrarHorarioPeriodo(_periodo, idDiasemana, idHorario);
+        public void registrarPeriodo(string idDiasemana, string idHorario, string horario)
+        {
+            List<DiaSemana> Semana = (List<DiaSemana>)Session["Semana"];
+            int exist = 0;
+            foreach (DiaSemana dia in Semana.Where(row => row.IDSEMANA == idDiasemana).ToList())
+            {
+                exist = dia.HORARIO.Where(item => item.IDHORA == idHorario).Count();
+                if (exist == 0)
+                {
+                    HorarioPorDia h = new HorarioPorDia();
+                    h.IDHORA = idHorario;
+                    h.HORARIO = horario;
+                    dia.HORARIO.Add(h);
+                    if (Controllers.registrarHorarioPeriodo(HIDPERIODO.Text.Trim(), idDiasemana, idHorario) == true)
+                    {
+                        Node node = new Node()
+                        {
+                            NodeID ="HS" + Convert.ToString(Controllers.consultarIDsemanaHorario()),
+                            Text = horario,
+                            Leaf = true
+                        };
+                        var record = this.TSEMANAHORARIO.GetNodeById("N" + idDiasemana);
+                        record.AppendChild(node);
+                        X.Msg.Notify("Notificación", "registrado Exitosamente").Show();
+                    }
+                }
+                else
+                {
+                    X.Msg.Notify("Notificación", "Este Horario ya esta asignado para este día").Show();
+                }
+            }
+            Session.Remove("semana");
+            Session["semana"] = Semana;
         }
+         [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Eliminando..", Target = MaskTarget.Page)]
+        public bool eliminarHorarioSemana(string idDiasemana, string idsemanahorario)
+        { 
+             string idEliminado= "-1";
+             List<DiaSemana> Semana =  (List < DiaSemana >) Session["Semana"];  
+             foreach (DiaSemana dia in Semana.Where(row => row.IDSEMANA == idDiasemana).ToList())
+             {
+                 foreach (HorarioPorDia item in dia.HORARIO.Where(item => item.ID == idsemanahorario).ToList())
+                 {
+		            idEliminado = item.ID;
+                    dia.HORARIO.Remove(item);
+	            }
+            }
+            Session.Remove("semana");
+            Session["semana"] = Semana;
+            return Controllers.eliminarHorarioSemana(idEliminado);
+         }
+
         [DirectMethod(Namespace = "parametro")]
         public void AbrirVentanaHorario()
         {
@@ -102,28 +157,25 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
                     Url = "../Parametrizacion/Horario.aspx",
                     Mode = LoadMode.Frame,
                     LoadMask =
-                {
-                    ShowMask = true
+                    {
+                        ShowMask = true
 
-                }
+                    }
                 }
             };
             win.Listeners.Close.Handler = "parametro.consultarHorarioPeriodo();";
             win.Render(this.Form);
 
         }
-        [DirectMethod(Namespace = "parametro")]
-        public void consultarPeriodoHorario(string idsemana) {
-            //SPERIODOHORARIO.DataSource =  Controllers.ConsultarPeriodo(_periodo, idsemana);
-            //SPERIODOHORARIO.DataBind();
-        }
+
 
     }
     #region ENTIDAD
     public class HorarioPorDia
     {
         public string ID { get; set; }
-        public string HORARIO{ get; set; }
+        public string HORARIO { get; set; }
+        public string IDHORA { get; set; }
         public HorarioPorDia() { }
         public HorarioPorDia(string id, string horario)
         {

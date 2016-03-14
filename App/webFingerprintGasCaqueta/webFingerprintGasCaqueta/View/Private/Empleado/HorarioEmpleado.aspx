@@ -130,11 +130,13 @@
                                                 <Model>
                                                     <ext:Model runat="server">
                                                         <Fields>
-                                                            <ext:ModelField Name="IDSEMANA" />
-                                                            <ext:ModelField Name="IDPERIODO" />
-                                                            <ext:ModelField Name="DIASEMANA" />
-                                                            <ext:ModelField Name="HORARIO" />
-                                                            <ext:ModelField Name="DURACION" />
+                                                            <ext:ModelField Name="LUNES" />
+                                                            <ext:ModelField Name="MARTES" />
+                                                            <ext:ModelField Name="MIERCOLES" />
+                                                            <ext:ModelField Name="JUEVES" />
+                                                            <ext:ModelField Name="VIERNES" />
+                                                            <ext:ModelField Name="SABADO" />
+                                                            <ext:ModelField Name="DOMINGO" />
                                                         </Fields>
                                                     </ext:Model>
                                                 </Model>

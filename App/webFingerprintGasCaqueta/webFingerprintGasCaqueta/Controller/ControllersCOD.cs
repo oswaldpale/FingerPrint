@@ -94,6 +94,9 @@ namespace webFingerprintGasCaqueta.Controller
         }
         #endregion
         #region GESTIONAR PERIODO HORARIO
+        public DataTable consultarHorariosPorPeriodo(string periodo) {
+            return _periodo.consultarHorariosPorPeriodo(periodo);
+        }
 
         public string ConsultarPeriodoDisponible()
         {

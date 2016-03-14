@@ -1,4 +1,12 @@
 SELECT
-    CONCAT(TIME_FORMAT(h.hora_inicio, '%r'), ' - ', TIME_FORMAT(h.hora_fin, '%r')) AS HORARIO
+    hs.hose_diasemanaid                                                             AS DIAID,
+    CONCAT(TIME_FORMAT(h.hora_inicio, '%r'), ' - ', TIME_FORMAT( h.hora_fin, '%r')) AS HORARIO
 FROM
     HORARIO h
+INNER JOIN horariosemanal hs
+ON
+    h.hora_id = hs.hose_horaid
+WHERE
+    hs.peri_id='1'
+ORDER BY DIAID
+    

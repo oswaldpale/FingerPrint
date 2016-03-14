@@ -71,5 +71,20 @@ namespace webFingerprintGasCaqueta.Model
                                 ")";
             return connection.sendSetDataMariaDB(sql);
         }
+        public DataTable consultarHorariosPorPeriodo(string periodo) {
+            string sql = @"SELECT
+                            hs.hose_diasemanaid AS DIAID,
+                            CONCAT(TIME_FORMAT(h.hora_inicio, '%r'), ' - ', TIME_FORMAT(h.hora_fin, '%r')) AS HORARIO
+                        FROM
+                            HORARIO h
+                        INNER JOIN horariosemanal hs
+                        ON
+                            h.hora_id = hs.hose_horaid
+                        WHERE
+                            hs.peri_id = '" + periodo + "'" +
+                        "ORDER BY DIAID";
+            return connection.getDataMariaDB(sql).Tables[0];
+        }
+
     }
 }

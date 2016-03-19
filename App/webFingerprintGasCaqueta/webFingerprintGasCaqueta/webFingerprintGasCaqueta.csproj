@@ -154,6 +154,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Connections\Conexion.cs" />
+    <Compile Include="Model\HorarioEmpleado.cs" />
     <Compile Include="Model\HorarioOAD.cs" />
     <Compile Include="Model\HorarioSemanaOAD.cs" />
     <Compile Include="Model\HuellaOAD.cs" />

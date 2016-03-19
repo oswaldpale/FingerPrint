@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using webFingerprintGasCaqueta.Controller;
 using Newtonsoft.Json;
 using System.Data;
+using System.Globalization;
 
 namespace webFingerprintGasCaqueta.View.Public
 {
@@ -51,7 +52,14 @@ namespace webFingerprintGasCaqueta.View.Public
         }
         [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Guardando..", Target = MaskTarget.Page)]
         public bool registrarEntrada(string identificacion) {
-        
+            string clockServer = DateTime.Now.ToString("hh:mm:ss tt");
+            DateTime DateValue = DateTime.Parse(clockServer, CultureInfo.InvariantCulture);
+            int dSemanaServer = (int) DateValue.DayOfWeek;
+            if (Controllers.consultarHorarioEmpleadoDia(clockServer,identificacion,dSemanaServer)==true) //valida el horario asignado en bd del empleado con la hora que se toma del servidor. 
+            {
+
+            }
+
             return Controllers.registrarEntrada(identificacion);
         }
         [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Guardando..", Target = MaskTarget.Page)]

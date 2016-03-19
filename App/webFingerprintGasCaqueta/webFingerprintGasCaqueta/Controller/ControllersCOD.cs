@@ -84,7 +84,11 @@ namespace webFingerprintGasCaqueta.Controller
             return circulacion.registrarSalida(idTupla, identificacion);
         }
         #endregion
-
+        #region GESTIONAR HORARIO EMPLEADO
+        public  bool consultarHorarioEmpleadoDia(string idempleado,string fechaserver, int diaserver){
+            return false;
+        }
+        #endregion
         #region GESTIONAR EMPLEADOS
         public DataTable consultarEmpleados() {
             return empleado.consultarEmpleados();
@@ -97,7 +101,6 @@ namespace webFingerprintGasCaqueta.Controller
         public DataTable consultarHorariosPorPeriodo(string periodo) {
             return _periodo.consultarHorariosPorPeriodo(periodo);
         }
-
         public string ConsultarPeriodoDisponible()
         {
             return  general.nextPrimaryKey("periodo","peri_id");
@@ -108,6 +111,7 @@ namespace webFingerprintGasCaqueta.Controller
         public DataTable consultarPeriodo() {
             return _periodo.consultarPeriodo();
         }
+        #endregion
         #region GESTIONAR HORARIO SEMANA
         public DataTable consultarHorarioporDia(string idperiodo, string diasemana)
         {
@@ -119,7 +123,7 @@ namespace webFingerprintGasCaqueta.Controller
         public int consultarIDsemanaHorario() {
             return Convert.ToInt32(general.nextPrimaryKey("horariosemanal","hose_id").ToString()) - 1;
         }
-        #endregion
+
         public bool registrarHorarioPeriodo(string idperiodo, string idsemana, string idhorario)
         {
             if (this.ConsultarEstadoPeriodo(idperiodo).Rows.Count == 0)
@@ -129,7 +133,6 @@ namespace webFingerprintGasCaqueta.Controller
             return _periodo.registrarHorarioPeriodo(idperiodo, idsemana, idhorario, general.nextPrimaryKey("horariosemanal", "hose_id"));
 
         }
-        
         #endregion
         #region GESTIONAR VISITANTE
         public bool registrarVisitante(string identificacion, string nombre, string apellido1, string apellido2, string observacion, string foto) {

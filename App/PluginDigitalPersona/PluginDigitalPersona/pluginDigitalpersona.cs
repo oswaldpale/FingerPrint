@@ -533,8 +533,8 @@ namespace PluginDigitalPersona
     {
         public static MySqlConnection ObtenerConexion()
         {
-            //string connectServer = "server=192.168.0.100; database=control_acceso; Uid=planta; pwd=planta123;";
-            string connectServer = "server=192.168.0.91; database=control_acceso; Uid=planta; pwd=planta123;";
+            string connectServer = "server=192.168.0.100; database=control_acceso; Uid=planta; pwd=planta123;";
+            //string connectServer = "server=192.168.0.91; database=control_acceso; Uid=planta; pwd=planta123;";
             MySqlConnection conectar = new MySqlConnection(connectServer);
             conectar.Open();
             return conectar;

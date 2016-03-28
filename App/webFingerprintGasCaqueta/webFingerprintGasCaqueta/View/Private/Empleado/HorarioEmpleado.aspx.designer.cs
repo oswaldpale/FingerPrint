@@ -22,13 +22,13 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado {
         protected global::Ext.Net.FormPanel FPRIMARIO;
         
         /// <summary>
-        /// Control WestPanel.
+        /// Control PHORARIO.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Panel WestPanel;
+        protected global::Ext.Net.Panel PHORARIO;
         
         /// <summary>
         /// Control GHORARIOS.
@@ -65,6 +65,15 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Column CMURACION;
+        
+        /// <summary>
+        /// Control PEMPLEADO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Panel PEMPLEADO;
         
         /// <summary>
         /// Control GEMPLEADOS.
@@ -130,6 +139,15 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado {
         protected global::Ext.Net.Column CEXISTHORARIO;
         
         /// <summary>
+        /// Control PHORARIOSEMANA.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Panel PHORARIOSEMANA;
+        
+        /// <summary>
         /// Control GHORARIOSEMANA.
         /// </summary>
         /// <remarks>
@@ -184,12 +202,120 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado {
         protected global::Ext.Net.Column Column4;
         
         /// <summary>
-        /// Control SouthPanel.
+        /// Control Column1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Panel SouthPanel;
+        protected global::Ext.Net.Column Column1;
+        
+        /// <summary>
+        /// Control Column2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column Column2;
+        
+        /// <summary>
+        /// Control Column5.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column Column5;
+        
+        /// <summary>
+        /// Control POPCION.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Panel POPCION;
+        
+        /// <summary>
+        /// Control BTIPOHORARIO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.CycleButton BTIPOHORARIO;
+        
+        /// <summary>
+        /// Control MTIPO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Menu MTIPO;
+        
+        /// <summary>
+        /// Control MFIJO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.MenuItem MFIJO;
+        
+        /// <summary>
+        /// Control MPERIODO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.MenuItem MPERIODO;
+        
+        /// <summary>
+        /// Control CFECHAS.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Container CFECHAS;
+        
+        /// <summary>
+        /// Control DFECHAINI.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.DateField DFECHAINI;
+        
+        /// <summary>
+        /// Control DFECHAFIN.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.DateField DFECHAFIN;
+        
+        /// <summary>
+        /// Control CFESTIVO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Checkbox CFESTIVO;
+        
+        /// <summary>
+        /// Control BGUARDAR.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Button BGUARDAR;
     }
 }

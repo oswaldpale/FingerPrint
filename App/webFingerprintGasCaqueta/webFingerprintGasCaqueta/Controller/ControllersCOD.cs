@@ -111,6 +111,10 @@ namespace webFingerprintGasCaqueta.Controller
         public DataTable consultarPeriodo() {
             return _periodo.consultarPeriodo();
         }
+
+        public bool registrarPeriodo(string totalHoras,string descripcion) {
+            return _periodo.registrarPeriodo(general.nextPrimaryKey("periodo", "peri_id").ToString(), totalHoras, descripcion);
+        }
         #endregion
         #region GESTIONAR HORARIO SEMANA
         public DataTable consultarHorarioporDia(string idperiodo, string diasemana)

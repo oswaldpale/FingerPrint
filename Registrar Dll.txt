@@ -9,3 +9,8 @@ http://examples.ext.net/#/TreePanel/Basic/Built_in_CodeBehind/
 
 
 http://blogs.gamefilia.com/ollydbg/03-03-2011/40264/crear-codigos-de-barras-con-itextsharp-desde-net
+
+
+http://www.taboca.com/p/camcanvas/
+
+http://www.scriptcam.com/demo_1.cfm

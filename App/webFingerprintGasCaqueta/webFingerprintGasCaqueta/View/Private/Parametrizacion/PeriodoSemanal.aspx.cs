@@ -16,19 +16,38 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            HIDPERIODO.Text = Controllers.ConsultarPeriodoDisponible();
-            HIDPERIODO.Text = "1";
+            
+            HIDPERIODO.Text = "-1";
             this.consultarHorarioPeriodo();
-            this.consultarSemana();
-            NodeRaiz();
+            this.consultarPeriodo();
+            //NodeRaiz(HIDPERIODO.Text);
         }
-        public void NodeRaiz()
+        
+        private void consultarPeriodo()
         {
-
+            SPERIODO.DataSource = Controllers.consultarPeriodo();
+            SPERIODO.DataBind();
+        }
+        [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Consultando..", Target = MaskTarget.Page)]
+        public void consultarHorarioPeriodo()
+        {
+            SHORARIO.DataSource = Controllers.ConsultarHorariosPeriodos();
+            SHORARIO.DataBind();
+        }
+        [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Consultando..", Target = MaskTarget.Page)]
+        public void consultarSemana()
+        {
+            //SSEMANA.DataSource = Controllers.consultarSemana();
+            //SSEMANA.DataBind();
+        }
+        [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Consultando..", Target = MaskTarget.Page)]
+        public void NodeRaiz(string idperiodo)
+        {
+            HIDPERIODO.Text = idperiodo;
             List<DiaSemana> Semana = new List<DiaSemana>();
             DataTable DSemana = Controllers.consultarSemana();
             foreach (DataRow dia in DSemana.Rows)
-            {
+            { 
                 DiaSemana _dia = new DiaSemana();
                 _dia.IDPERIODO = HIDPERIODO.Text;
                 _dia.IDSEMANA = dia["ID"].ToString();
@@ -48,7 +67,8 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
             Session["Semana"] = Semana;
             Ext.Net.Node root = new Ext.Net.Node()
             {
-                Text = "SEMANA"
+                Text = "SEMANA",
+                NodeID="IDSEMANA" 
             };
             root.Expanded = true;
             TSEMANAHORARIO.Root.Add(root);
@@ -75,18 +95,16 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
                     _componentedia.Children.Add(_franjaHora);
                 }
             }
+            TSEMANAHORARIO.ExpandAll();
+            TSEMANAHORARIO.Render();
         }
-        [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Consultando..", Target = MaskTarget.Page)]
-        public void consultarHorarioPeriodo()
-        {
-            SHORARIO.DataSource = Controllers.ConsultarHorariosPeriodos();
-            SHORARIO.DataBind();
-        }
-        [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Consultando..", Target = MaskTarget.Page)]
-        public void consultarSemana()
-        {
-            //SSEMANA.DataSource = Controllers.consultarSemana();
-            //SSEMANA.DataBind();
+        [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Creando..", Target = MaskTarget.Page)]
+        public bool crearPeriodo(string descripcion) {
+            if (Controllers.registrarPeriodo("0", descripcion) == true) {
+                HIDPERIODO.Text = Controllers.ConsultarPeriodoDisponible();
+                return true;
+            }
+            return false ;
         }
         [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Guardando..", Target = MaskTarget.Page)]
         public void registrarPeriodo(string idDiasemana, string idHorario, string horario)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ext.Net;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -29,12 +30,13 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado
             SHORARIO.DataSource = _Controllers.consultarPeriodo();
             SHORARIO.DataBind();
         }
+        [DirectMethod(Namespace = "parametro")]
         public void consultarHorariosPorPeriodo(string periodo)
         {
             String[,] semana = new String[7, 7];
-            
 
-            DataTable tablaHorario = _Controllers.consultarHorariosPorPeriodo("1");
+
+            DataTable tablaHorario = _Controllers.consultarHorariosPorPeriodo(periodo);
             for (int i = 1; i < 7; i++)
             {
                 DataRow[] result = tablaHorario.Select("DIAID = '" + i + "'");
@@ -71,9 +73,8 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado
                 }
             }
         }
-
-
     }
+
 }
 
 

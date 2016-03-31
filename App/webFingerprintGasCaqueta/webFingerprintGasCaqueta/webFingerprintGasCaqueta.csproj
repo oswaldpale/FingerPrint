@@ -124,7 +124,9 @@
     <Content Include="Report\Template\rptListadoControlAccesoEmpleado.htm" />
     <Content Include="Report\View\ControlAccesoEmpleado.aspx" />
     <Content Include="View\Private\Empleado\HorarioEmpleado.aspx" />
+    <Content Include="View\Private\Empleado\Incidencia.aspx" />
     <Content Include="View\Private\Empleado\ListarEmpleados.aspx" />
+    <Content Include="View\Private\Empleado\PermisoLaboral.aspx" />
     <Content Include="View\Private\Parametrizacion\CamaraWeb\CapturarFoto.aspx" />
     <Content Include="View\Private\Parametrizacion\Festivos.aspx" />
     <Content Include="View\Private\Parametrizacion\Horario.aspx" />
@@ -186,12 +188,26 @@
     <Compile Include="View\Private\Empleado\HorarioEmpleado.aspx.designer.cs">
       <DependentUpon>HorarioEmpleado.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Private\Empleado\Incidencia.aspx.cs">
+      <DependentUpon>Incidencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\Empleado\Incidencia.aspx.designer.cs">
+      <DependentUpon>Incidencia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Private\Empleado\ListarEmpleados.aspx.cs">
       <DependentUpon>ListarEmpleados.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="View\Private\Empleado\ListarEmpleados.aspx.designer.cs">
       <DependentUpon>ListarEmpleados.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\Empleado\PermisoLaboral.aspx.cs">
+      <DependentUpon>PermisoLaboral.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\Empleado\PermisoLaboral.aspx.designer.cs">
+      <DependentUpon>PermisoLaboral.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\Parametrizacion\CamaraWeb\CapturarFoto.aspx.cs">
       <DependentUpon>CapturarFoto.aspx</DependentUpon>

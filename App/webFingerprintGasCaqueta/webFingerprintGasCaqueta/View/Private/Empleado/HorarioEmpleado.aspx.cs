@@ -73,6 +73,19 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado
                 }
             }
         }
+
+        [DirectMethod(Namespace = "parametro")]
+        public void RegistrarHorarioEmpleado(string plantillahorariom,string tipohorario,string festivo) {
+            if (true)
+            {
+
+            }
+            else
+            {
+               
+            }
+        }
+       
     }
 
 }

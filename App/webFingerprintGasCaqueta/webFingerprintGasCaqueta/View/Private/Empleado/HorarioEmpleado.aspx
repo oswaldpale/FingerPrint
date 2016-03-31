@@ -26,6 +26,7 @@
                 });
             }
         };
+
     </script>
 </head>
 <body>
@@ -77,6 +78,13 @@
                             <BeforeCollapse Handler="this.setTitle('HORARIO SEMANAL');" />
                             <BeforeExpand Handler="this.setTitle(this.initialConfig.title);" />
                         </Listeners>
+                        <Buttons>
+                            <ext:Button ID="BHORARIOSEMANAL" runat="server" Icon="Add" Text="AGREGAR" >
+                                <Listeners>
+                                    <Click Handler="parametro.AbrirVentanaHorario();" />
+                                </Listeners>
+                            </ext:Button>
+                        </Buttons>
                     </ext:Panel>
                     <ext:Panel runat="server" Region="Center" Enabled="true" Layout="BorderLayout" UI="Primary">
                         <Items>
@@ -175,15 +183,7 @@
                                <Items>
                                   <ext:Container runat="server" Padding="7" Width="150" >
                                       <Items>
-                                         <%-- <ext:ComboBox runat="server"  ID="CBXTIPO" Padding="5" FieldLabel="HORARIO" LabelWidth="70" ForceSelection="true" Text="FIJO" AllowBlank="false" >
-                                              <Items>
-                                                  <ext:ListItem Text="FIJO" Value="FIJO"  />
-                                                  <ext:ListItem Text="POR PERIODO" Value="PERIODO" />
-                                              </Items>
-                                              <Listeners>
-                                                  <Select Handler=" this.getValue()" />
-                                              </Listeners>
-                                          </ext:ComboBox>--%>
+                                        
                                           <ext:CycleButton  ID="BTIPOHORARIO" runat="server" Padding="5" ShowText="true" Width="130"  >
                                               <Menu>
                                                   <ext:Menu ID="MTIPO" runat="server">
@@ -226,8 +226,11 @@
                     </ext:Panel>
                 </Items>
                 <Buttons>
-                    <ext:Button ID="BGUARDAR" runat="server" Text="GUARDAR" />
-                   
+                    <ext:Button ID="BGUARDAR" runat="server" Text="GUARDAR" FormBind="true">
+                        <Listeners>
+                            <Click Handler="parametro.RegistrarHorarioEmpleado();" />
+                        </Listeners>
+                    </ext:Button>
                 </Buttons>
             </ext:FormPanel>
         </Items>

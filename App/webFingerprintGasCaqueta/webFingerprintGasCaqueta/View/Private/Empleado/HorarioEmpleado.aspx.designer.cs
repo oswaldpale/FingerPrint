@@ -67,6 +67,15 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado {
         protected global::Ext.Net.Column CMURACION;
         
         /// <summary>
+        /// Control BHORARIOSEMANAL.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Button BHORARIOSEMANAL;
+        
+        /// <summary>
         /// Control PEMPLEADO.
         /// </summary>
         /// <remarks>

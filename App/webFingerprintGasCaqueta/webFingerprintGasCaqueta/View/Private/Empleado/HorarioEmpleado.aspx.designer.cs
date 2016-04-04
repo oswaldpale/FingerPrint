@@ -13,6 +13,15 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado {
     public partial class Horario {
         
         /// <summary>
+        /// Control HPERIODO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Hidden HPERIODO;
+        
+        /// <summary>
         /// Control FPRIMARIO.
         /// </summary>
         /// <remarks>
@@ -110,6 +119,15 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Store SEMPLEADOS;
+        
+        /// <summary>
+        /// Control CODIGO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Model CODIGO;
         
         /// <summary>
         /// Control CIDENTIFICACION.
@@ -238,13 +256,13 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado {
         protected global::Ext.Net.Column Column5;
         
         /// <summary>
-        /// Control POPCION.
+        /// Control FOPCION.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Panel POPCION;
+        protected global::Ext.Net.FormPanel FOPCION;
         
         /// <summary>
         /// Control BTIPOHORARIO.
@@ -308,6 +326,15 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.DateField DFECHAFIN;
+        
+        /// <summary>
+        /// Control NRETRASO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.NumberField NRETRASO;
         
         /// <summary>
         /// Control CFESTIVO.

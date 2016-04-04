@@ -36,6 +36,7 @@
             <ext:VBoxLayoutConfig Align="Center" Pack="Center" />
         </LayoutConfig>
         <Items>
+            <ext:Hidden runat="server" ID="HPERIODO" />
             <ext:FormPanel ID="FPRIMARIO" runat="server" Width="1200"  Height="700"   UI="Primary" Border="true" Padding="5" Layout="BorderLayout">
                 <Items>
                     <ext:Panel ID="PHORARIO"  runat="server" Icon="CalendarSelectWeek" Region="West" Collapsible="true"  MinWidth="300"  Split="true" Width="300"  Title="HORARIO SEMANAL" Collapsed="false" BodyPadding="5" >
@@ -64,7 +65,8 @@
                                                App.PHORARIO.collapse();
                                                App.PHORARIOSEMANA.expand();
                                                App.PEMPLEADO.expand(); 
-                                               console.log(record.data.IDPERIODO);
+                                               App.HPERIODO.setValue(record.data.IDPERIODO);
+                                               App.PEMPLEADO.setTitle('LISTA DE EMPLEADOS' + '(' +record.data.HORARIO +')');
                                                parametro.consultarHorariosPorPeriodo(record.data.IDPERIODO);
                                                "
                                            />
@@ -108,7 +110,7 @@
                                         <Store>
                                             <ext:Store runat="server" ID="SEMPLEADOS" PageSize="11">
                                                 <Model>
-                                                    <ext:Model runat="server">
+                                                    <ext:Model runat="server"  ID="CODIGO">
                                                         <Fields>
                                                             <ext:ModelField Name="CODIGO" />
                                                             <ext:ModelField Name="IDENTIFICACION" />
@@ -132,10 +134,10 @@
                                         <ext:PagingToolbar runat="server" AutoRender="true" StoreID="SEMPLEADOS" />
                                     </BottomBar>
                                         <SelectionModel>
-                                            <ext:CheckboxSelectionModel runat="server" Mode="Multi" />
+                                            <ext:CheckboxSelectionModel  runat="server" Mode="Multi" />
                                         </SelectionModel>
                                         <Listeners>
-                                            <BeforeSelect Handler="App.POPCION.expand(); App.PHORARIOSEMANA.collapse();" />
+                                            <BeforeSelect Handler="App.FOPCION.expand(); App.PHORARIOSEMANA.collapse();" />
                                         </Listeners>
                                     </ext:GridPanel>
                                 </Items>
@@ -177,7 +179,7 @@
                         </Items>
                     </ext:Panel>
                        
-                    <ext:Panel ID="POPCION" runat="server" Region="South" Collapsible="true" Collapsed="true" Split="true" Height="80" Title="PREFERENCIA HORARIO" Floatable="false">
+                    <ext:FormPanel ID="FOPCION" runat="server" Region="South" Collapsible="true" Collapsed="true" Split="true" Height="80" Title="PREFERENCIA HORARIO" Floatable="false">
                         <Items>
                             <ext:Panel runat="server" Layout="HBoxLayout">
                                <Items>
@@ -190,12 +192,12 @@
                                                       <Items>
                                                           <ext:MenuItem ID="MFIJO"  runat="server" Text="FIJO">
                                                               <Listeners>
-                                                                  <Click Handler="App.CFECHAS.hide();" />
+                                                                  <Click Handler="App.CFECHAS.hide();App.DFECHAINI.allowBlank=true;App.DFECHAFIN.allowBlank=true;App.FOPCION.reset();" />
                                                               </Listeners>
                                                           </ext:MenuItem>
                                                           <ext:MenuItem ID="MPERIODO" runat="server" Text="POR PERIODO">
                                                               <Listeners>
-                                                                  <Click Handler="App.CFECHAS.show();" />
+                                                                  <Click Handler="App.CFECHAS.show();App.DFECHAINI.allowBlank=false;App.DFECHAFIN.allowBlank=false;App.FOPCION.reset();" />
                                                               </Listeners>
                                                           </ext:MenuItem>
                                                       </Items>
@@ -210,9 +212,10 @@
                                           <ext:DateField runat="server" ID="DFECHAFIN" Padding="5" FieldLabel="FECHA FIN" LabelWidth="90"   Vtype="daterange"   StartDateField="DFECHAINI" />
                                       </Items>
                                   </ext:Container> 
-                                   <ext:Container runat="server"  Width="400" Padding="5" >
+                                   <ext:Container runat="server"  Width="370" Padding="5" Layout="HBoxLayout" >
                                        <Items>
-                                         <ext:Checkbox runat="server"  ID="CFESTIVO"  FieldLabel="INCLUIR FESTIVOS" Padding="5" WidthSpec="300" LabelWidth="130" />
+                                         <ext:NumberField runat="server" ID="NRETRASO" FieldLabel="RETARDO(MIN)" Padding="5" Width="180" LabelWidth="100" MinValue="0" AllowBlank="false" />
+                                         <ext:Checkbox runat="server"  ID="CFESTIVO"  FieldLabel="INCLUIR FESTIVOS" Padding="5" Width="150" LabelWidth="130" />
                                        </Items>
                                    </ext:Container>
                                </Items>
@@ -223,12 +226,22 @@
                             <BeforeCollapse Handler="this.setTitle('PREFERENCIA HORARIO');" />
                             <BeforeExpand Handler="this.setTitle(this.initialConfig.title);" />
                         </Listeners>
-                    </ext:Panel>
+                    </ext:FormPanel>
                 </Items>
                 <Buttons>
                     <ext:Button ID="BGUARDAR" runat="server" Text="GUARDAR" FormBind="true">
                         <Listeners>
-                            <Click Handler="parametro.RegistrarHorarioEmpleado();" />
+                            <Click Handler="var opcionHorario = App.BTIPOHORARIO.activeItem;
+                                            if(App.FPRIMARIO.isValid()){
+                                                parametro.RegistrarHorarioEmpleado(App.HPERIODO.getValue(),opcionHorario.id,App.CFESTIVO.checked,App.NRETRASO.getValue());
+                                            }else{
+                                                 Ext.Msg.show({
+                                                   title: 'Notificación',
+                                                   msg: 'Faltan por llenar campos',
+                                                   buttons: Ext.Msg.OK,
+                                                   icon: Ext.window.MessageBox.INFO
+                                                 });  
+                                            }" />
                         </Listeners>
                     </ext:Button>
                 </Buttons>

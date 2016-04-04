@@ -118,6 +118,11 @@
     <Content Include="Content\images\SinHuella.png" />
     <Content Include="Content\js\BiometricDevice.js" />
     <Content Include="Content\js\Concurrent.Thread.js" />
+    <Content Include="Content\js\ga.js" />
+    <Content Include="Content\js\scriptcam.js" />
+    <Content Include="Content\js\scriptcam.swf" />
+    <Content Include="Content\js\shCore.css" />
+    <Content Include="Content\js\swfobject.js" />
     <Content Include="Ext.NET.Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Report\Container\Reporteador.aspx" />

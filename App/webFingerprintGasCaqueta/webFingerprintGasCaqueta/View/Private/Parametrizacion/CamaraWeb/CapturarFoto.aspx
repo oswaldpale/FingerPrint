@@ -1,111 +1,75 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CapturarFoto.aspx.cs" Inherits="webFingerprintGasCaqueta.View.Private.Parametrizacion.CapturarFoto" %>
 
-<!DOCTYPE html>
 
-<!DOCTYPE HTML>
-<html lang="en-US">
+<!DOCTYPE html>
+<html>
 <head>
-	<meta charset="UTF-8">
-	<title>Very simple cam</title>
-	<style type="text/css">
-		html {
-			background: #111111;
-			height: 100%;
-			background: linear-gradient( #333, #000);
-		}
-		canvas {
-			display: none;
-		}
-		video, img, #startbutton {
-			display: block;
-			float: left;
-			border: 10px solid #fff;
-			border-radius: 10px;
-		}
-		#startbutton {
-			background: green;
-			border: none;
-			color: #fff;
-			margin: 100px 20px 20px 20px;
-			padding: 10px 20px;
-			font-size: 20px;
-		}
-		#container {
-			overflow: hidden;
-			width: 880px;
-			margin: 20px auto;
-		}
-	</style>
+    <title>CAMARA WEB</title>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+    <script type="text/javascript" src="../../../../Content/js/scriptcam.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#webcam").scriptcam({
+                showMicrophoneErrors: false,
+                onError: onError,
+                cornerRadius: 20,
+                disableHardwareAcceleration: 1,
+                cornerColor: 'e3e5e2',
+                onWebcamReady: onWebcamReady,
+                uploadImage: 'upload.gif',
+                onPictureAsBase64: base64_tofield_and_image
+            });
+        });
+        function base64_tofield() {
+            $('#formfield').val($.scriptcam.getFrameAsBase64());
+        };
+        function base64_toimage() {
+            $('#image').attr("src", "data:image/png;base64," + $.scriptcam.getFrameAsBase64());
+        };
+        function base64_tofield_and_image(b64) {
+            $('#formfield').val(b64);
+            $('#image').attr("src", "data:image/png;base64," + b64);
+        };
+        function changeCamera() {
+            $.scriptcam.changeCamera($('#cameraNames').val());
+        }
+        function onError(errorId, errorMsg) {
+            $("#btn1").attr("disabled", true);
+            $("#btn2").attr("disabled", true);
+            alert(errorMsg);
+        }
+        function onWebcamReady(cameraNames, camera, microphoneNames, microphone, volume) {
+            $.each(cameraNames, function (index, text) {
+                $('#cameraNames').append($('<option></option>').val(index).html(text))
+            });
+            $('#cameraNames').val(camera);
+        }
+    </script>
 </head>
 <body>
-	<div id="container">
-		<video id="video"></video>
-		<button id="startbutton">Take photo</button>
-		<canvas id="canvas"></canvas>
-		<img src="../../../../Content/images/SinFoto.jpg" id="photo" alt="Foto">
-	</div>
-
-<script>
-(function() {
-
-  var streaming = false,
-      video        = document.querySelector('#video'),
-      cover        = document.querySelector('#cover'),
-      canvas       = document.querySelector('#canvas'),
-      photo        = document.querySelector('#photo'),
-      startbutton  = document.querySelector('#startbutton'),
-      width = 320,
-      height = 0;
-
-  navigator.getMedia = ( navigator.getUserMedia || 
-                         navigator.webkitGetUserMedia ||
-                         navigator.mozGetUserMedia ||
-                         navigator.msGetUserMedia);
-
-  navigator.getMedia(
-    { 
-      video: true, 
-      audio: false 
-    },
-    function(stream) {
-      if (navigator.mozGetUserMedia) { 
-        video.mozSrcObject = stream;
-      } else {
-        var vendorURL = window.URL || window.webkitURL;
-        video.src = vendorURL.createObjectURL(stream);
-      }
-      video.play();
-    },
-    function(err) {
-      console.log("An error occured! " + err);
-    }
-  );
-
-  video.addEventListener('canplay', function(ev){
-    if (!streaming) {
-      height = video.videoHeight / (video.videoWidth/width);
-      video.setAttribute('width', width);
-      video.setAttribute('height', height);
-      canvas.setAttribute('width', width);
-      canvas.setAttribute('height', height);
-      streaming = true;
-    }
-  }, false);
-
-  function takepicture() {
-    canvas.width = width;
-    canvas.height = height;
-    canvas.getContext('2d').drawImage(video, 0, 0, width, height);
-    var data = canvas.toDataURL('image/png');
-    photo.setAttribute('src', data);
-  }
-
-  startbutton.addEventListener('click', function(ev){
-  	takepicture();
-    ev.preventDefault();
-  }, false);
-
-})();
-</script>
+    <ext:ResourceManager ID="ResourceManager1" runat="server" />
+    <ext:FormPanel runat="server" Width="750" Height="400" UI="Primary" Frame="true" Layout="BorderLayout">
+        <Items>
+            <ext:Panel runat="server" Width="700">
+                <Content>
+                    <div style="width: 100px; float: left; padding: 15px">
+                        <div id="webcam">
+                        </div>
+                    </div>
+                    <div style="width: 250px; float: right;">
+                            <img id="image" style="width:250px; height: 244px; padding: 15px" />
+                    </div>
+                </Content>
+            </ext:Panel>
+        </Items>
+        <Buttons>
+            <ext:Button runat="server">
+                <Listeners>
+                    <Click Handler="base64_toimage()" />
+                </Listeners>
+            </ext:Button>
+        </Buttons>
+    </ext:FormPanel>
 </body>
 </html>

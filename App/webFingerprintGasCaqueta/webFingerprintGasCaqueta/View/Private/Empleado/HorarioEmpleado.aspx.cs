@@ -75,15 +75,28 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado
         }
 
         [DirectMethod(Namespace = "parametro")]
-        public void RegistrarHorarioEmpleado(string plantillahorariom,string tipohorario,string festivo) {
-            if (true)
-            {
+        public void RegistrarHorarioEmpleado(string periodo,string tipohorario,string festivo,string retardo) {
 
+            string fechainicio = Convert.ToDateTime(DFECHAINI.Text).ToString("yyyy-MM-dd"); 
+            string fechafin = Convert.ToDateTime(DFECHAFIN.Text).ToString("yyyy-MM-dd"); 
+
+            RowSelectionModel sm = this.GEMPLEADOS.GetSelectionModel() as RowSelectionModel;
+            var codigoEmpleado = new List<string>();
+            foreach (SelectedRow row in sm.SelectedRows)
+            {
+                codigoEmpleado.Add(row.RecordID);
+            }
+            string estado = "1";
+            if ( _Controllers.registrarEmpleados(estado,codigoEmpleado,periodo,festivo,retardo,tipohorario,fechafin,fechafin))
+            {
+                X.Msg.Notify("Notificación", "Registrado Exitosamente!.").Show();
             }
             else
             {
-               
+                X.Msg.Notify("Notificación", "Ha ocurrido un error!..").Show();
             }
+            
+           
         }
        
     }

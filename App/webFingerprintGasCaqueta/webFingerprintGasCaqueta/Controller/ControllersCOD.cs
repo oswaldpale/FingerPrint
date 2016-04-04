@@ -19,6 +19,7 @@ namespace webFingerprintGasCaqueta.Controller
         private SemanaOAD semana = new SemanaOAD();
         private PeriodoOAD _periodo = new PeriodoOAD();
         private HorarioSemanaOAD horariosemana = new HorarioSemanaOAD();
+        private HorarioEmpleado horarioempleado = new HorarioEmpleado();
 
 
         #region GESTION DE HUELLA
@@ -87,6 +88,10 @@ namespace webFingerprintGasCaqueta.Controller
         #region GESTIONAR HORARIO EMPLEADO
         public  bool consultarHorarioEmpleadoDia(string idempleado,string fechaserver, int diaserver){
             return false;
+        }
+        public bool registrarEmpleados(string estado, List<string> idempleado, string periodo, string festivo, string tiemporetardo, string tipohorario, string fechainicio, string fechafin)
+        {
+            return horarioempleado.registrarEmpleados(general.nextPrimaryKey("horarioempleado", "hoem_id"), estado, idempleado, periodo, festivo, tiemporetardo, tipohorario, fechainicio, fechafin);
         }
         #endregion
         #region GESTIONAR EMPLEADOS

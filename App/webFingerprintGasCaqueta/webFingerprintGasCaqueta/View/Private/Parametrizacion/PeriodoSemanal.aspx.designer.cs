@@ -49,6 +49,15 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion {
         protected global::Ext.Net.Hidden HIDPERIODO;
         
         /// <summary>
+        /// Control VPPRESENTACION.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Viewport VPPRESENTACION;
+        
+        /// <summary>
         /// Control PPRINCIPAL.
         /// </summary>
         /// <remarks>

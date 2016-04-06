@@ -1,6 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="HorarioEmpleado.aspx.cs" Inherits="webFingerprintGasCaqueta.View.Private.Empleado.Horario" %>
 <html>
 <head runat="server">
+   
+   
     <title>HORARIOS EMPLEADOS</title>
     <style>
         .complete .x-grid-cell-inner {
@@ -26,6 +28,27 @@
                 });
             }
         };
+        var registrarHorarioEmpleado = function () {
+            var r = App.GEMPLEADOS.getSelectionModel();
+            var s = r.selected.items;
+            var count;
+            var Idempleado = [];
+            var length = s.length;
+            for (count = 0; count < length; count++) {
+                Idempleado.push(s[count].id);
+            }
+            var opcionHorario = App.BTIPOHORARIO.activeItem;
+            if (App.FPRIMARIO.isValid()) {
+                parametro.RegistrarHorarioEmpleado(Idempleado, App.HPERIODO.getValue(), opcionHorario.id, App.CFESTIVO.checked, App.NRETRASO.getValue());
+            } else {
+                Ext.Msg.show({
+                    title: 'Notificación',
+                    msg: 'Faltan por llenar campos',
+                    buttons: Ext.Msg.OK,
+                    icon: Ext.window.MessageBox.INFO
+                });
+            }
+        }
 
     </script>
 </head>
@@ -108,9 +131,9 @@
                                         </ext:Toolbar>
                                     </TopBar>
                                         <Store>
-                                            <ext:Store runat="server" ID="SEMPLEADOS" PageSize="11">
+                                            <ext:Store runat="server" ID="SEMPLEADOS" PageSize="11" >
                                                 <Model>
-                                                    <ext:Model runat="server"  ID="CODIGO">
+                                                    <ext:Model runat="server" IDProperty="CODIGO">
                                                         <Fields>
                                                             <ext:ModelField Name="CODIGO" />
                                                             <ext:ModelField Name="IDENTIFICACION" />
@@ -131,10 +154,10 @@
                                         </Columns>
                                     </ColumnModel>
                                     <BottomBar>
-                                        <ext:PagingToolbar runat="server" AutoRender="true" StoreID="SEMPLEADOS" />
+                                        <ext:PagingToolbar runat="server" AutoRender="true" StoreID="SEMPLEADOS"/>
                                     </BottomBar>
                                         <SelectionModel>
-                                            <ext:CheckboxSelectionModel  runat="server" Mode="Multi" />
+                                            <ext:CheckboxSelectionModel ID="CheckboxSelectionModel1" runat="server" Mode="Multi" />
                                         </SelectionModel>
                                         <Listeners>
                                             <BeforeSelect Handler="App.FOPCION.expand(); App.PHORARIOSEMANA.collapse();" />
@@ -230,19 +253,9 @@
                 </Items>
                 <Buttons>
                     <ext:Button ID="BGUARDAR" runat="server" Text="GUARDAR" FormBind="true">
-                        <Listeners>
-                            <Click Handler="var opcionHorario = App.BTIPOHORARIO.activeItem;
-                                            if(App.FPRIMARIO.isValid()){
-                                                parametro.RegistrarHorarioEmpleado(App.HPERIODO.getValue(),opcionHorario.id,App.CFESTIVO.checked,App.NRETRASO.getValue());
-                                            }else{
-                                                 Ext.Msg.show({
-                                                   title: 'Notificación',
-                                                   msg: 'Faltan por llenar campos',
-                                                   buttons: Ext.Msg.OK,
-                                                   icon: Ext.window.MessageBox.INFO
-                                                 });  
-                                            }" />
-                        </Listeners>
+                       <Listeners>
+                           <Click Fn="registrarHorarioEmpleado" />
+                       </Listeners>
                     </ext:Button>
                 </Buttons>
             </ext:FormPanel>

@@ -95,15 +95,12 @@
 <body>
     <form id="form1" runat="server">
       <ext:ResourceManager ID="ResourceManager2" runat="server" AjaxTimeout="5000" />
-        <ext:Viewport runat="server" >
-            <LayoutConfig>
-                <ext:VBoxLayoutConfig Align="Center" Pack="Center" />
-            </LayoutConfig>
+        <ext:Viewport runat="server" Layout="border" >
             <Items>
-                <ext:FormPanel runat="server" BodyPadding="8" AutoScroll="true" Height="460" Width="920" >
+                <ext:FormPanel runat="server" Layout="Fit" Region="Center" Padding="5" Frame="true" Border="true" >
                     <FieldDefaults LabelAlign="Right" LabelWidth="115" MsgTarget="Side" />
                     <Items>
-                        <ext:GridPanel runat="server" ID="GEMPLEADO" Title="LISTA DE EMPLEADOS." Icon="User" Height="430" Width="900" Frame="true" Padding="2">
+                        <ext:GridPanel runat="server" ID="GEMPLEADO" Title="LISTA DE EMPLEADOS." Icon="User"  Frame="true" Padding="2">
                                     <TopBar>
                                         <ext:Toolbar runat="server">
                                             <Items>
@@ -119,7 +116,7 @@
                                         </ext:Toolbar>
                                     </TopBar>
                                     <Store>
-                                        <ext:Store ID="SEMPLEADO" runat="server"  PageSize="10">
+                                        <ext:Store ID="SEMPLEADO" runat="server" >
                                             <Model>
                                                 <ext:Model runat="server">
                                                     <Fields>
@@ -140,7 +137,7 @@
                                             <ext:Column runat="server" ID="MIDENTIFICACION" Text="IDENTIFICACIÓN" DataIndex="MIDENTIFICACION" Width="130" />
                                             <ext:Column runat="server" ID="MNOMBRE" Text="NOMBRE" DataIndex="MNOMBRE" Flex="3" />
                                             <ext:Column runat="server" ID="MTIPO" Text="TIPO" DataIndex="MTIPO" Flex="2"  />
-                                            <ext:CommandColumn runat="server" ID="CTOOLBOX" Width="80" Text="HUELLA" >
+                                            <ext:CommandColumn runat="server" ID="CTOOLBOX" Width="90" Text="HUELLA" >
                                                 <Commands>
                                                     <ext:CommandSpacer Width="15" />
                                                     <ext:GridCommand IconCls="shortcut-icon-footprint icon-footprint" CommandName="footprint1" >
@@ -160,10 +157,6 @@
                                     </ColumnModel>
                                     <BottomBar>
                                         <ext:PagingToolbar runat="server" AutoRender="true" PageY="30">
-                                           <%-- <Items>
-                                                <ext:Button runat="server" Text="Foto Perfil" Icon="Camera" />
-                                                <ext:Button runat="server" Text="Horario semanal" Icon="Calendar" />
-                                            </Items>--%>
                                         </ext:PagingToolbar>
                                        
                                     </BottomBar>

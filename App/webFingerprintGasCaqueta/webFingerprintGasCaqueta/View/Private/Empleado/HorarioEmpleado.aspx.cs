@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -15,9 +16,13 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado
         private ControllersCOD _Controllers = new ControllersCOD();
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.consultarEmpleadosHorarios();
-            this.consultarPeriodo();
-            this.consultarHorariosPorPeriodo("1");
+            if (!X.IsAjaxRequest)
+            {
+                this.consultarEmpleadosHorarios();
+                this.consultarPeriodo();
+                this.consultarHorariosPorPeriodo("1");
+            }
+          
         }
 
         public void consultarEmpleadosHorarios()
@@ -73,21 +78,31 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado
                 }
             }
         }
-
-        [DirectMethod(Namespace = "parametro")]
-        public void RegistrarHorarioEmpleado(string periodo,string tipohorario,string festivo,string retardo) {
-
-            string fechainicio = Convert.ToDateTime(DFECHAINI.Text).ToString("yyyy-MM-dd"); 
-            string fechafin = Convert.ToDateTime(DFECHAFIN.Text).ToString("yyyy-MM-dd"); 
-
-            RowSelectionModel sm = this.GEMPLEADOS.GetSelectionModel() as RowSelectionModel;
-            var codigoEmpleado = new List<string>();
-            foreach (SelectedRow row in sm.SelectedRows)
+       [DirectMethod(Namespace = "parametro")]
+        public void RegistrarHorarioEmpleado(Newtonsoft.Json.Linq.JArray identificacion,string periodo,string tipohorario,string festivo,string retardo)
+        {
+            string _festivo = (festivo=="true") ? "1" : "-1";
+            List<string> codigoEmpleado = new List<string>();
+            for (int i = 0; i < identificacion.Count; i++)
             {
-                codigoEmpleado.Add(row.RecordID);
+               codigoEmpleado.Add(identificacion[i].ToString());
             }
             string estado = "1";
-            if ( _Controllers.registrarEmpleados(estado,codigoEmpleado,periodo,festivo,retardo,tipohorario,fechafin,fechafin))
+            bool result;
+            string _tipohorario = (tipohorario == "MPERIODO") ? "PERIODO" : "FIJO";
+            if (_tipohorario == "PERIODO")
+            {
+                
+                string fechainicio = Convert.ToDateTime(DFECHAINI.Value).ToString("yyyy-MM-dd");
+                string fechafin = Convert.ToDateTime(DFECHAFIN.Value).ToString("yyyy-MM-dd");
+                result = _Controllers.registrarHorarioPeriodoEmpleado(estado, codigoEmpleado, periodo, _festivo, retardo, _tipohorario, fechafin, fechafin);
+
+            }
+            else
+            {
+                result = _Controllers.registrarHorarioFijoEmpleado(estado, codigoEmpleado, periodo, _festivo, retardo, _tipohorario);
+            }
+            if (result == true)
             {
                 X.Msg.Notify("Notificación", "Registrado Exitosamente!.").Show();
             }

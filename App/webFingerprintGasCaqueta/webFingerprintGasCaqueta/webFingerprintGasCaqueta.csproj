@@ -118,16 +118,15 @@
     <Content Include="Content\images\SinHuella.png" />
     <Content Include="Content\js\BiometricDevice.js" />
     <Content Include="Content\js\Concurrent.Thread.js" />
-    <Content Include="Content\js\ga.js" />
     <Content Include="Content\js\scriptcam.js" />
     <Content Include="Content\js\scriptcam.swf" />
-    <Content Include="Content\js\shCore.css" />
     <Content Include="Content\js\swfobject.js" />
     <Content Include="Ext.NET.Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Report\Container\Reporteador.aspx" />
     <Content Include="Report\Template\rptListadoControlAccesoEmpleado.htm" />
     <Content Include="Report\View\ControlAccesoEmpleado.aspx" />
+    <Content Include="View\Private\Container\Content_Parametrizacion.aspx" />
     <Content Include="View\Private\Empleado\HorarioEmpleado.aspx" />
     <Content Include="View\Private\Empleado\Incidencia.aspx" />
     <Content Include="View\Private\Empleado\ListarEmpleados.aspx" />
@@ -185,6 +184,13 @@
     </Compile>
     <Compile Include="Report\View\ControlAccesoEmpleado.aspx.designer.cs">
       <DependentUpon>ControlAccesoEmpleado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\Container\Content_Parametrizacion.aspx.cs">
+      <DependentUpon>Content_Parametrizacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\Container\Content_Parametrizacion.aspx.designer.cs">
+      <DependentUpon>Content_Parametrizacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\Empleado\HorarioEmpleado.aspx.cs">
       <DependentUpon>HorarioEmpleado.aspx</DependentUpon>

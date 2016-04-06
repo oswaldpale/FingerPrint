@@ -37,7 +37,7 @@
                                 <TopBar>
                                     <ext:Toolbar runat="server">
                                         <Items>
-                                            <ext:TextField ID="TFDIAS" runat="server" EmptyText="Fecha o Nombre" Width="400" EnableKeyEvents="true" Icon="Magnifier">
+                                            <ext:TextField ID="TFDIAS" runat="server" EmptyText="Fecha o Nombre para filtrar" Width="400" EnableKeyEvents="true" Icon="Magnifier">
                                                 <Listeners>
                                                     <KeyPress Handler="findUser(App.GPFESTIVO.store, App.TFDIAS.getValue(), Ext.EventObject);"/>
                                                 </Listeners>

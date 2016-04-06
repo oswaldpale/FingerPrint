@@ -89,9 +89,13 @@ namespace webFingerprintGasCaqueta.Controller
         public  bool consultarHorarioEmpleadoDia(string idempleado,string fechaserver, int diaserver){
             return false;
         }
-        public bool registrarEmpleados(string estado, List<string> idempleado, string periodo, string festivo, string tiemporetardo, string tipohorario, string fechainicio, string fechafin)
+        public bool registrarHorarioPeriodoEmpleado(string estado, List<string> idempleado, string periodo, string festivo, string tiemporetardo, string tipohorario, string fechainicio, string fechafin)
         {
-            return horarioempleado.registrarEmpleados(general.nextPrimaryKey("horarioempleado", "hoem_id"), estado, idempleado, periodo, festivo, tiemporetardo, tipohorario, fechainicio, fechafin);
+            return horarioempleado.registrarHorarioPeriodoEmpleado(estado, idempleado, periodo, festivo, tiemporetardo, tipohorario, fechainicio, fechafin);
+        }
+        public bool registrarHorarioFijoEmpleado(string estado, List<string> idempleado, string periodo, string festivo, string tiemporetardo, string tipohorario)
+        {
+            return horarioempleado.registrarHorarioFijoEmpleado(estado, idempleado, periodo, festivo, tiemporetardo, tipohorario);
         }
         #endregion
         #region GESTIONAR EMPLEADOS

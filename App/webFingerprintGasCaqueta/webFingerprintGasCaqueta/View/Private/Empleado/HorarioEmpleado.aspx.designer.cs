@@ -121,15 +121,6 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado {
         protected global::Ext.Net.Store SEMPLEADOS;
         
         /// <summary>
-        /// Control CODIGO.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Model CODIGO;
-        
-        /// <summary>
         /// Control CIDENTIFICACION.
         /// </summary>
         /// <remarks>
@@ -164,6 +155,15 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Column CEXISTHORARIO;
+        
+        /// <summary>
+        /// Control CheckboxSelectionModel1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.CheckboxSelectionModel CheckboxSelectionModel1;
         
         /// <summary>
         /// Control PHORARIOSEMANA.

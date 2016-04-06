@@ -17,7 +17,7 @@
                 disableHardwareAcceleration: 1,
                 cornerColor: 'e3e5e2',
                 onWebcamReady: onWebcamReady,
-                uploadImage: 'upload.gif',
+                uploadImage: '../../../../Content/images/upload1.png',
                 onPictureAsBase64: base64_tofield_and_image
             });
         });
@@ -25,11 +25,10 @@
             $('#formfield').val($.scriptcam.getFrameAsBase64());
         };
         function base64_toimage() {
-            $('#image').attr("src", "data:image/png;base64," + $.scriptcam.getFrameAsBase64());
+            App.IFOTO.setImageUrl("data:image/png;base64," + $.scriptcam.getFrameAsBase64());
         };
         function base64_tofield_and_image(b64) {
-            $('#formfield').val(b64);
-            $('#image').attr("src", "data:image/png;base64," + b64);
+            App.IFOTO.setImageUrl("data:image/png;base64," + b64 );
         };
         function changeCamera() {
             $.scriptcam.changeCamera($('#cameraNames').val());
@@ -49,27 +48,58 @@
 </head>
 <body>
     <ext:ResourceManager ID="ResourceManager1" runat="server" />
-    <ext:FormPanel runat="server" Width="750" Height="400" UI="Primary" Frame="true" Layout="BorderLayout">
+    <ext:FormPanel runat="server" UI="Primary" Width="690" Frame="true" >
         <Items>
-            <ext:Panel runat="server" Width="700">
-                <Content>
-                    <div style="width: 100px; float: left; padding: 15px">
-                        <div id="webcam">
-                        </div>
-                    </div>
-                    <div style="width: 250px; float: right;">
-                            <img id="image" style="width:250px; height: 244px; padding: 15px" />
-                    </div>
-                </Content>
+            <ext:Panel runat="server" Height="320"  Layout="BorderLayout"  BodyPadding="5">
+                <Items>
+                    <ext:Panel runat="server" ID="PCAMARA" Padding="10"  Split="true"  Title="CAMARA" Icon="Camera"   Region="West"
+                TitleCollapse="false"
+                Floatable="false"
+                Collapsed="true"
+                Collapsible="true"
+                BodyPadding="5" >
+                        <Content>
+                            <div >
+                                <div id="webcam">
+                                </div>
+                            </div>
+                           
+                        </Content>
+                         <Listeners>
+                    <AfterRender Handler="this.setTitle('CAMARA');" />
+                    <BeforeCollapse Handler="this.setTitle('CAMARA');" />
+                    <BeforeExpand Handler="this.setTitle(this.initialConfig.title);" />
+                </Listeners>
+                    </ext:Panel>
+                    <ext:Panel runat="server" ID="PFOTO" Padding="10" Height="300"  Split="true"  Title="FOTO PERFIL" Icon="ReportUser" Region="Center"  BodyPadding="5"   Floatable="false" Layout="CenterLayout"  >
+                        <Items>
+                            <ext:Image runat="server" ID="IFOTO" Width="280" Height="244" />
+                        </Items>
+                         <Listeners>
+                    <AfterRender Handler="this.setTitle('FOTO PERFIL');" />
+                    <BeforeCollapse Handler="this.setTitle('FOTO PERFIL');" />
+                    <BeforeExpand Handler="this.setTitle(this.initialConfig.title);" />
+                </Listeners>
+                    </ext:Panel>
+                </Items>
             </ext:Panel>
         </Items>
-        <Buttons>
-            <ext:Button runat="server">
-                <Listeners>
-                    <Click Handler="base64_toimage()" />
-                </Listeners>
-            </ext:Button>
-        </Buttons>
+        <FooterBar>
+            <ext:Toolbar runat="server">
+                <Items>
+                    <ext:Button runat="server" ID="BFOTO" Text="TOMAR FOTO" Icon="CameraGo">
+                        <Listeners>
+                            <Click Handler="base64_toimage()" />
+                        </Listeners>
+                    </ext:Button>
+                    <ext:ToolbarFill />
+                    <ext:Button runat="server" ID="BGUARDAR" Text="GUARDAR">
+                        <Listeners>
+                        </Listeners>
+                    </ext:Button>
+                </Items>
+            </ext:Toolbar>
+        </FooterBar>
     </ext:FormPanel>
 </body>
 </html>

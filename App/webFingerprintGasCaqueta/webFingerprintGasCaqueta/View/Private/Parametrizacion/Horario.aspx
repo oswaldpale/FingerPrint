@@ -30,13 +30,13 @@
         <div>
             <ext:Viewport ID="VPPRESENTACION" runat="server" Layout="border">
                 <Items>
-                    <ext:Panel ID="PPRESENTACION" runat="server" Layout="Fit" Region="Center" Padding="5">
+                    <ext:Panel ID="PPRESENTACION" runat="server" Layout="Fit" Region="Center" Padding="5" Frame="true" Border="true">
                         <Items>
                             <ext:GridPanel ID="GPHORARIO" runat="server" AutoDataBind="true" Frame="true" Border="true" >
                                 <TopBar>
                                     <ext:Toolbar ID="Toolbar1" runat="server">
                                         <Items>
-                                            <ext:TextField ID="TFHORARIO" runat="server" EmptyText="Nombre" Width="400" EnableKeyEvents="true" Icon="Magnifier">
+                                            <ext:TextField ID="TFHORARIO" runat="server" EmptyText="Nombre para buscar" Width="400" EnableKeyEvents="true" Icon="Magnifier">
                                                 <Listeners>
                                                     <KeyPress Handler="findUser(App.GPHORARIO.store, App.TFHORARIO.getValue(), Ext.EventObject);"/>
                                                 </Listeners>
@@ -78,7 +78,7 @@
                                                 <ext:TextField ID="TextField3" runat="server" />
                                             </Editor>
                                         </ext:Column>  
-                                         <ext:Column ID="Column4" ColumnID="CTIEMPO_TARDE" runat="server" DataIndex="TIEMPO_TARDE" Header="TIEMPO TARDE(min)" Width="130">
+                                         <ext:Column ID="Column4" ColumnID="CTIEMPO_TARDE" runat="server" DataIndex="TIEMPO_TARDE" Header="TIEMPO TARDE(min)" Width="180">
                                             <Editor>
                                                 <ext:TextField ID="TextField4" runat="server" />
                                             </Editor>
@@ -120,9 +120,6 @@
                     <Items>
                         <ext:Panel ID="Panel1" runat="server"  DefaultWidth="280">
                         <Items>
-                            <%--<ext:DateField ID="TFECHA" FieldLabel="Fecha:" LabelWidth="60" runat="server" Flex="1" IsRemoteValidation="true"  AllowBlank="false" F>
-                                 <RemoteValidation OnValidation = "consultarFechaExistente" />
-                            </ext:DateField>--%>
                             <ext:TextField ID="TNOMBRE" FieldLabel="Nombre:"  runat="server" Flex="1"  AllowBlank="false" />
                             <ext:TimeField   ID="THINICIO"  runat="server" FieldLabel="Hora Inicio:"  Increment="30"  Format="hh:mm tt"   />
                             <ext:TimeField   ID="THFIN"  runat="server" FieldLabel="Hora Fin:"  Increment="30"  Format="hh:mm tt"   />

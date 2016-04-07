@@ -11,7 +11,9 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            DFECHAINI.MinDate = DateTime.Now;
+            DFECHAHORA.MinDate = DateTime.Now;
+            TFECHASOLICITUD.Text = Convert.ToDateTime(DateTime.Now).ToString("yyyy-MM-dd");
         }
     }
 }

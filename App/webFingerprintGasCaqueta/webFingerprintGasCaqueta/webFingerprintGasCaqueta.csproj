@@ -121,7 +121,6 @@
     <Content Include="Content\js\scriptcam.js" />
     <Content Include="Content\js\scriptcam.swf" />
     <Content Include="Content\js\swfobject.js" />
-    <Content Include="Ext.NET.Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Report\Container\Reporteador.aspx" />
     <Content Include="Report\Template\rptListadoControlAccesoEmpleado.htm" />

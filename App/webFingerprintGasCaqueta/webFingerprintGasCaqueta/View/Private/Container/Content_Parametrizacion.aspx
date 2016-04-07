@@ -139,7 +139,7 @@
                                         </ext:MenuItem>
                                         <ext:MenuItem ID="MPERMISO" runat="server" Text="Permisos" Icon="UserTick">
                                             <Listeners>
-                                                <Click Handler="addTab(#{TDETALLE}, #{MINCIPERMISO},#{MPERMISO},'../Empleado/ListarEmpleados.aspx');" />
+                                                <Click Handler="addTab(#{TDETALLE}, #{MINCIPERMISO},#{MPERMISO},'../Empleado/PermisoLaboral.aspx');" />
                                             </Listeners>
                                         </ext:MenuItem>
                                     </Items>

@@ -211,13 +211,67 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado {
         protected global::Ext.Net.TextField TFECHASOLICITUD;
         
         /// <summary>
-        /// Control TEMPLEADO.
+        /// Control DEMPLEADO.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextField TEMPLEADO;
+        protected global::Ext.Net.DropDownField DEMPLEADO;
+        
+        /// <summary>
+        /// Control GEMPLEADO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.GridPanel GEMPLEADO;
+        
+        /// <summary>
+        /// Control TFEMPLEADO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField TFEMPLEADO;
+        
+        /// <summary>
+        /// Control SEMPLEADO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store SEMPLEADO;
+        
+        /// <summary>
+        /// Control CIDENTIFICACION.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column CIDENTIFICACION;
+        
+        /// <summary>
+        /// Control CNOMBRE.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column CNOMBRE;
+        
+        /// <summary>
+        /// Control CTIPO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Column CTIPO;
         
         /// <summary>
         /// Control COPCION.
@@ -247,15 +301,6 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado {
         protected global::Ext.Net.Menu MTIPOHORA;
         
         /// <summary>
-        /// Control MDIA.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.MenuItem MDIA;
-        
-        /// <summary>
         /// Control MHORA.
         /// </summary>
         /// <remarks>
@@ -263,6 +308,15 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.MenuItem MHORA;
+        
+        /// <summary>
+        /// Control MDIA.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.MenuItem MDIA;
         
         /// <summary>
         /// Control DFECHAHORA.
@@ -283,31 +337,13 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado {
         protected global::Ext.Net.CycleButton CESTADO;
         
         /// <summary>
-        /// Control MenuItem1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.MenuItem MenuItem1;
-        
-        /// <summary>
-        /// Control MenuItem2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.MenuItem MenuItem2;
-        
-        /// <summary>
         /// Control FHORA.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FormPanel FHORA;
+        protected global::Ext.Net.FieldSet FHORA;
         
         /// <summary>
         /// Control THINICIO.
@@ -334,7 +370,7 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.FormPanel FDIA;
+        protected global::Ext.Net.FieldSet FDIA;
         
         /// <summary>
         /// Control DFECHAINI.
@@ -353,15 +389,6 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.DateField DFECHAFIN;
-        
-        /// <summary>
-        /// Control Toolbar3.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Toolbar Toolbar3;
         
         /// <summary>
         /// Control BCANCELAR.

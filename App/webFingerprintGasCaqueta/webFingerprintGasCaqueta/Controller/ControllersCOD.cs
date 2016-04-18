@@ -20,7 +20,7 @@ namespace webFingerprintGasCaqueta.Controller
         private PeriodoOAD _periodo = new PeriodoOAD();
         private HorarioSemanaOAD horariosemana = new HorarioSemanaOAD();
         private HorarioEmpleado horarioempleado = new HorarioEmpleado();
-
+        private PermisoOAD permiso = new  PermisoOAD();
 
         #region GESTION DE HUELLA
         public DataTable consultarHuellaPorUsuario(string filtroUsuario)
@@ -195,8 +195,15 @@ namespace webFingerprintGasCaqueta.Controller
             return semana.consultarSemana();
         }
         #endregion
+        #region GESTIONAR PERMISOS
+        public bool registrarPermisoHora(string idempleado ,string tipotiempo,string tipopermiso,string fechasolicitud,string estado,string fechapermiso,string horainicio,string horafin) {
+            return permiso.registrarPermisoHora(general.nextPrimaryKey("permisos", "perm_id").ToString(), idempleado,"PER" + general.nextKeyControl("PER").ToString(), tipotiempo, tipopermiso, fechasolicitud, estado, fechapermiso, horainicio, horafin);
+        }
+        public bool registrarPermisoDia(string idempleado, string tipotiempo, string tipopermiso, string fechasolicitud, string estado, string fechapermiso, string horainicio, string horafin)
+        {
+            return permiso.registrarPermisoHora(general.nextPrimaryKey("permisos", "perm_id").ToString(), idempleado,"PER" + general.nextKeyControl("PER").ToString(), tipotiempo, tipopermiso, fechasolicitud, estado, fechapermiso, horainicio, horafin);
+        }
+        #endregion
 
-
-        
     }
 }

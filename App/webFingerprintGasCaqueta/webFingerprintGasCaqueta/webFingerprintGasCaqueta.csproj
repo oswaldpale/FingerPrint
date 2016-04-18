@@ -164,6 +164,7 @@
     <Compile Include="Model\HorarioSemanaOAD.cs" />
     <Compile Include="Model\HuellaOAD.cs" />
     <Compile Include="Model\PeriodoOAD.cs" />
+    <Compile Include="Model\PermisoOAD.cs" />
     <Compile Include="Model\ReporteOAD.cs" />
     <Compile Include="Model\SemanaOAD.cs" />
     <Compile Include="Model\VisitanteOAD.cs" />

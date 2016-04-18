@@ -26,5 +26,11 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado
             SEMPLEADO.DataSource = Controllers.consultarEmpleados();
             SEMPLEADO.DataBind();
         }
+        [DirectMethod(Namespace = "parametro")]
+        public void registrarPermiso()
+        {
+            
+        }
+
     }
 }

@@ -14,3 +14,10 @@ C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\Test\Acceso\Acce
 C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\Test\Acceso\Acceso\Acceso\obj\Debug\Acceso.Presentacion.AccesoSistema.frmAccesoSistema.resources
 C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\Test\Acceso\Acceso\Acceso\obj\Debug\Acceso.Properties.Resources.resources
 C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\Test\Acceso\Acceso\Acceso\obj\Debug\Acceso.csproj.GenerateResource.Cache
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\Test\Acceso\Acceso\Acceso\obj\Debug\Acceso.exe
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\Test\Acceso\Acceso\Acceso\obj\Debug\Acceso.pdb
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\Test\Acceso\Acceso\Acceso\obj\Debug\Acceso.csprojResolveAssemblyReference.cache
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\Test\Acceso\Acceso\Acceso\obj\Debug\Acceso.Form1.resources
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\Test\Acceso\Acceso\Acceso\obj\Debug\Acceso.Presentacion.AccesoSistema.frmAccesoSistema.resources
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\Test\Acceso\Acceso\Acceso\obj\Debug\Acceso.Properties.Resources.resources
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\Test\Acceso\Acceso\Acceso\obj\Debug\Acceso.csproj.GenerateResource.Cache

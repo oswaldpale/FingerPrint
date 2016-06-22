@@ -13,6 +13,7 @@ namespace webFingerprintGasCaqueta.Model
         public DataTable consultarInformacionUsuario(string identificacion)
         {
             string sql = @"SELECT
+                                u.CODIGO,
                                 u.NOMBRE,
                                 CAST(u.IDENTIFICACION AS CHAR) AS IDENTIFICACION,
                                 IF(u.TIPO = 'No Aplica', 'Visitante', 'Empleado') AS TIPO,
@@ -21,8 +22,9 @@ namespace webFingerprintGasCaqueta.Model
                             FROM
                                 (
                                     SELECT
-                                        e.Cod_empleado                                         AS IDENTIFICACION,
-                                        CONCAT(e.Nombres, ' ', e.Apellido1, ' ', e.Apellido2) AS NOMBRE,
+                                        e.Cod_empleado                                         AS CODIGO,
+                                        e.Identificacion                                       AS IDENTIFICACION,
+                                        CONCAT(e.Nombres, ' ', e.Apellido1, ' ', IF(e.Apellido2 IS NOT NULL,e.Apellido2,' ')) AS NOMBRE,
                                         t.Tipo                                                 AS TIPO,
                                         e.FOTO
                                     FROM
@@ -34,8 +36,9 @@ namespace webFingerprintGasCaqueta.Model
                                         e.Eliminado = 0
                                     UNION ALL
                                     SELECT
+                                        v.visi_identificacion                                                AS CODIGO,
                                         v.visi_identificacion                                                AS IDENTIFICACION,
-                                        CONCAT(v.visi_nombre, ' ', v.visi_apellido1, ' ', v.visi_apellido2) AS NOMBRE,
+                                        CONCAT(v.visi_nombre, ' ', v.visi_apellido1, ' ',IF(v.visi_apellido2 IS NOT NULL,v.visi_apellido2,' ')) AS NOMBRE,
                                         'No Aplica'                                                          AS TIPO,
                                         v.visi_foto
                                     FROM

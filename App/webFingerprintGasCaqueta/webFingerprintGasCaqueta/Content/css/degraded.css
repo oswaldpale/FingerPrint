@@ -40,19 +40,21 @@ font-weight: bold;
 font-style: italic;
 text-transform: uppercase;
 letter-spacing: 2pt;
-word-spacing: 6pt;
+word-spacing: 1pt;
 text-align: center;
 line-height: 2.8;
 }
 .Font-Clock {
-color: #FF0000;
-font-size: 20px;
+font-family: georgia, serif;
+color: #090D8F;
+font-size: 50px;
 font-weight: bold;
-text-transform: uppercase;
-letter-spacing: 2pt;
-word-spacing: 6pt;
 text-align: center;
-line-height: 2.8;
+letter-spacing: 6pt;
+word-spacing: -6pt;
+line-height: 0;
+
+
 }
 .UserInf {
 font-family: 'times new roman', times, serif;

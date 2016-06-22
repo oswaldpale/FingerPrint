@@ -112,24 +112,6 @@ namespace webFingerprintGasCaqueta.View.Private.Container {
         protected global::Ext.Net.MenuItem MFESTIVO;
         
         /// <summary>
-        /// Control MBIOMETRIA.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.MenuPanel MBIOMETRIA;
-        
-        /// <summary>
-        /// Control MHUELLA.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.MenuItem MHUELLA;
-        
-        /// <summary>
         /// Control MINCIPERMISO.
         /// </summary>
         /// <remarks>

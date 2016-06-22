@@ -1,0 +1,14 @@
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\bin\Release\WindowsFormsApplication1.exe.config
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.BuscarPersona.resources
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.gestionarPersona.resources
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.PruebaLector.resources
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.VerificarUsuarioCarro.resources
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.FormCamara.resources
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.GuardarHuella.resources
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.CapturarHuella.resources
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.RegistrarPersona.resources
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Release\Parqueadero.csproj.GenerateResource.Cache
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Release\Parqueadero.csprojResolveAssemblyReference.cache
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Release\Interop.DPFPShrXLib.dll
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Release\Parqueadero.csproj.ResolveComReference.cache

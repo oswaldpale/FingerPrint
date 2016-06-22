@@ -90,3 +90,9 @@ C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\Test\WindowsForm
 C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\Parqueadero.csproj.GenerateResource.Cache
 C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\Parqueadero.csprojResolveAssemblyReference.cache
 C:\Users\hfvl\Desktop\Proyecto Lector BiometricoUsb\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.PruebaLector.resources
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\Parqueadero.csprojResolveAssemblyReference.cache
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\Interop.DPFPShrXLib.dll
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\Parqueadero.csproj.ResolveComReference.cache

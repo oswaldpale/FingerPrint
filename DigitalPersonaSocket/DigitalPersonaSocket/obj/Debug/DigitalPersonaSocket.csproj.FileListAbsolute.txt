@@ -24,3 +24,31 @@ C:\Users\Usuario TI\documents\visual studio 2015\Projects\DigitalPersonaSocket\D
 C:\Users\Usuario TI\documents\visual studio 2015\Projects\DigitalPersonaSocket\DigitalPersonaSocket\obj\Debug\DigitalPersonaSocket.exe
 C:\Users\Usuario TI\documents\visual studio 2015\Projects\DigitalPersonaSocket\DigitalPersonaSocket\obj\Debug\DigitalPersonaSocket.pdb
 C:\Users\Usuario TI\documents\visual studio 2015\Projects\DigitalPersonaSocket\DigitalPersonaSocket\bin\Debug\MySql.Data.dll
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\bin\Debug\DigitalPersonaSocket.exe.config
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\obj\Debug\DigitalPersonaSocket.exe
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\obj\Debug\DigitalPersonaSocket.pdb
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\bin\Debug\DigitalPersonaSocket.exe
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\bin\Debug\DigitalPersonaSocket.pdb
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\bin\Debug\DPFPCtlXWrapperNET.dll
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\bin\Debug\DPFPDevNET.dll
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\bin\Debug\DPFPEngNET.dll
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\bin\Debug\DPFPGuiNET.dll
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\bin\Debug\DPFPShrNET.dll
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\bin\Debug\DPFPVerNET.dll
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\bin\Debug\log4net.dll
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\bin\Debug\MySql.Data.dll
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\bin\Debug\SuperSocket.Common.dll
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\bin\Debug\SuperSocket.SocketBase.dll
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\bin\Debug\SuperSocket.SocketEngine.dll
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\bin\Debug\SuperWebSocket.dll
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\bin\Debug\log4net.xml
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\bin\Debug\SuperSocket.Common.pdb
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\bin\Debug\SuperSocket.SocketBase.pdb
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\bin\Debug\SuperSocket.SocketEngine.pdb
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\bin\Debug\SuperWebSocket.pdb
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\bin\Debug\SuperWebSocket.xml
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\obj\Debug\DigitalPersonaSocket.csprojResolveAssemblyReference.cache
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\obj\Debug\DigitalPersonaSocket.BiometricPersonal.resources
+C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\obj\Debug\DigitalPersonaSocket.csproj.GenerateResource.Cache

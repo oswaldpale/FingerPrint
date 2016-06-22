@@ -5,9 +5,8 @@ using System.Collections.ObjectModel;
 using System.Dynamic;
 using System.Linq;
 using System.Text;
-using System.Web;
 using System.Web.Script.Serialization;
-namespace DigitalPersonaSocket
+namespace Digital
 {
     public sealed class DynamicJsonConverter : JavaScriptConverter
     {

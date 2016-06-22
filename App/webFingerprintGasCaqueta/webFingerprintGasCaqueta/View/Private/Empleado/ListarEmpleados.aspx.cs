@@ -38,7 +38,7 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado
                 CloseAction = CloseAction.Destroy,
                 Loader = new ComponentLoader
                 {
-                    Url = "../Parametrizacion/LectorBiometrico/Captura.aspx?identificacion=" + identificacion + "&tipo=" + TipoHuella,
+                    Url = "../Parametrizacion/LectorBiometrico/Incribir.aspx?identificacion=" + identificacion + "&tipo=" + TipoHuella,
                     Mode = LoadMode.Frame,
                     LoadMask =
                 {

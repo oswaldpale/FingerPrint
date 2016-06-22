@@ -114,14 +114,20 @@
     <Content Include="Content\css\Style.css" />
     <Content Include="Content\images\enrollmentFootprint.ico" />
     <Content Include="Content\images\footprint.ico" />
-    <Content Include="Content\images\SinFoto.jpg" />
     <Content Include="Content\images\SinHuella.png" />
+    <Content Include="Content\images\upload.gif" />
+    <Content Include="Content\images\upload1.png" />
+    <Content Include="Content\images\user.png" />
+    <Content Include="Content\images\webcamlogo.png" />
     <Content Include="Content\js\BiometricDevice.js" />
     <Content Include="Content\js\Concurrent.Thread.js" />
+    <Content Include="Content\js\jquery.min.js" />
     <Content Include="Content\js\scriptcam.js" />
     <Content Include="Content\js\scriptcam.swf" />
     <Content Include="Content\js\swfobject.js" />
     <Content Include="Global.asax" />
+    <Content Include="Install\publish.htm" />
+    <Content Include="Install\setup.exe" />
     <Content Include="Report\Container\Reporteador.aspx" />
     <Content Include="Report\Template\rptListadoControlAccesoEmpleado.htm" />
     <Content Include="Report\View\ControlAccesoEmpleado.aspx" />
@@ -133,11 +139,10 @@
     <Content Include="View\Private\Parametrizacion\CamaraWeb\CapturarFoto.aspx" />
     <Content Include="View\Private\Parametrizacion\Festivos.aspx" />
     <Content Include="View\Private\Parametrizacion\Horario.aspx" />
-    <Content Include="View\Private\Parametrizacion\LectorBiometrico\Captura.aspx" />
-    <Content Include="Imagen.aspx" />
-    <Content Include="View\Private\Parametrizacion\LectorBiometrico\Circulacion.aspx" />
+    <Content Include="View\Private\Parametrizacion\LectorBiometrico\Incribir.aspx" />
     <Content Include="View\Private\Parametrizacion\PeriodoSemanal.aspx" />
     <Content Include="View\Private\Visitante\Visitante.aspx" />
+    <Content Include="View\Public\Circulacion.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -241,26 +246,12 @@
     <Compile Include="View\Private\Parametrizacion\Horario.aspx.designer.cs">
       <DependentUpon>Horario.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\Private\Parametrizacion\LectorBiometrico\Captura.aspx.cs">
-      <DependentUpon>Captura.aspx</DependentUpon>
+    <Compile Include="View\Private\Parametrizacion\LectorBiometrico\Incribir.aspx.cs">
+      <DependentUpon>Incribir.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\Private\Parametrizacion\LectorBiometrico\Captura.aspx.designer.cs">
-      <DependentUpon>Captura.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Imagen.aspx.cs">
-      <DependentUpon>Imagen.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Imagen.aspx.designer.cs">
-      <DependentUpon>Imagen.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="View\Private\Parametrizacion\LectorBiometrico\Circulacion.aspx.cs">
-      <DependentUpon>Circulacion.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="View\Private\Parametrizacion\LectorBiometrico\Circulacion.aspx.designer.cs">
-      <DependentUpon>Circulacion.aspx</DependentUpon>
+    <Compile Include="View\Private\Parametrizacion\LectorBiometrico\Incribir.aspx.designer.cs">
+      <DependentUpon>Incribir.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\Parametrizacion\PeriodoSemanal.aspx.cs">
       <DependentUpon>PeriodoSemanal.aspx</DependentUpon>
@@ -276,10 +267,17 @@
     <Compile Include="View\Private\Visitante\Visitante.aspx.designer.cs">
       <DependentUpon>Visitante.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Public\Circulacion.aspx.cs">
+      <DependentUpon>Circulacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Public\Circulacion.aspx.designer.cs">
+      <DependentUpon>Circulacion.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Report\Repository\" />
-    <Folder Include="View\Public\" />
+    <Folder Include="View\Reportes\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -288,7 +286,21 @@
     <Content Include="App_Readme\Ext.NET\Sample.Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Install\Application Files\iubi_1_0_0_4\iubi.application" />
+    <Content Include="Install\Application Files\iubi_1_0_0_4\iubi.exe.config.deploy" />
+    <Content Include="Install\Application Files\iubi_1_0_0_4\iubi.exe.deploy" />
+    <Content Include="Install\Application Files\iubi_1_0_0_4\iubi.exe.manifest" />
+    <Content Include="Install\Application Files\iubi_1_0_0_4\log4net.dll.deploy" />
+    <Content Include="Install\Application Files\iubi_1_0_0_4\MySql.Data.dll.deploy" />
+    <Content Include="Install\Application Files\iubi_1_0_0_4\Newtonsoft.Json.dll.deploy" />
+    <Content Include="Install\Application Files\iubi_1_0_0_4\SuperSocket.Common.dll.deploy" />
+    <Content Include="Install\Application Files\iubi_1_0_0_4\SuperSocket.SocketBase.dll.deploy" />
+    <Content Include="Install\Application Files\iubi_1_0_0_4\SuperSocket.SocketEngine.dll.deploy" />
+    <Content Include="Install\Application Files\iubi_1_0_0_4\SuperWebSocket.dll.deploy" />
+    <Content Include="Install\iubi.application" />
+    <Content Include="Content\images\Thumbs.db" />
     <None Include="Properties\PublishProfiles\control_acceso.pubxml" />
+    <None Include="Properties\PublishProfiles\Finger.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -95,7 +95,8 @@ namespace Acceso.Presentacion.AccesoSistema
         public void OnComplete(object Capture, string ReaderSerialNumber, DPFP.Sample Sample)
         {
              //lblInstrucciones.Text ="Scan the same fingerprint again.";
-            objAcceso.leeRutas(this, Sample);
+            //objAcceso.leeRutas(this, Sample);
+            MessageBox.Show("entro");
             //Process(Sample);
         }
 

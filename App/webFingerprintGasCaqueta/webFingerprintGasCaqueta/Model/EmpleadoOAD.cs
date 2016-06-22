@@ -14,7 +14,7 @@ namespace webFingerprintGasCaqueta.Model
             string sql = @"SELECT
                             e.Cod_empleado                                         AS MCODIGO,
                             e.Identificacion                                       AS MIDENTIFICACION,
-                            CONCAT(e.Nombres, ' ', e.Apellido1 , ' ', e.Apellido2) AS MNOMBRE ,
+                            CONCAT(e.Nombres, ' ', e.Apellido1 , ' ', IF(e.Apellido2 IS NOT NULL,e.Apellido2,' ')) AS MNOMBRE ,
                             UPPER(t.Tipo)                                          AS MTIPO,
                             IF (
                             (

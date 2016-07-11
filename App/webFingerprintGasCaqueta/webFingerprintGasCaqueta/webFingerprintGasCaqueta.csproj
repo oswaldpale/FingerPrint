@@ -129,7 +129,7 @@
     <Content Include="Install\publish.htm" />
     <Content Include="Install\setup.exe" />
     <Content Include="Report\Container\Reporteador.aspx" />
-    <Content Include="Report\Template\rptListadoControlAccesoEmpleado.htm" />
+    <Content Include="Template\rptListadoControlAccesoEmpleado.htm" />
     <Content Include="Report\View\ControlAccesoEmpleado.aspx" />
     <Content Include="View\Private\Container\Content_Parametrizacion.aspx" />
     <Content Include="View\Private\Empleado\HorarioEmpleado.aspx" />

@@ -15,21 +15,25 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
         protected void Page_Load(object sender, EventArgs e)
         {
             this.consultarFestivos();
+            
         }
-        [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Consultando..", Target = MaskTarget.Page)]
-        public void consultarFestivos() {
-            SFESTIVOS.DataSource = Controllers.consultarFestivos();
-            SFESTIVOS.DataBind();
+        [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Consultando..")]
+        public void consultarFestivos()
+        {
+            GPFESTIVOS.GetStore().DataSource = Controllers.consultarFestivos();
+            GPFESTIVOS.GetStore().DataBind();
         }
         [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Guardando..", Target = MaskTarget.Page)]
-        public void registrarFestivo() {
-            string fecha = Convert.ToDateTime(TFECHA.Text).ToString("yyyy-MM-dd"); 
+        public void registrarFestivo()
+        {
+            string fecha = Convert.ToDateTime(TFECHA.Text).ToString("yyyy-MM-dd");
             string nombreFestivo = TNOMBRE.Text.Trim();
-            if (Controllers.registrarFestivo(fecha, nombreFestivo)){
+            if (Controllers.registrarFestivo(fecha, nombreFestivo))
+            {
                 X.Msg.Notify("Notificación", "Registrado Exitosamente!.").Show();
                 WREGISTRO.Hide();
-                this.consultarFestivos();
                 FREGISTRO.Reset();
+                consultarFestivos();
             }
             else
             {
@@ -37,7 +41,8 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
             }
         }
         [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Guardando..", Target = MaskTarget.Page)]
-        public bool eliminarFestivo(string id) {
+        public bool eliminarFestivo(string id)
+        {
             return Controllers.eliminarFestivo(id);
         }
 

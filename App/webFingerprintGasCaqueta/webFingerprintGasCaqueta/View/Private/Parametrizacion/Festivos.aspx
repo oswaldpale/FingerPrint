@@ -115,7 +115,7 @@
                     <Items>
                         <ext:Panel runat="server"  Region="East">
                         <Items>
-                            <ext:DateField ID="TFECHA" FieldLabel="Fecha:" LabelWidth="60" runat="server" Flex="1" IsRemoteValidation="true"  AllowBlank="false" F>
+                            <ext:DateField ID="TFECHA" FieldLabel="Fecha:" LabelWidth="60" runat="server" Flex="1" IsRemoteValidation="true"  AllowBlank="false">
                                  <RemoteValidation OnValidation = "consultarFechaExistente" />
                             </ext:DateField>
                             <ext:TextField ID="TNOMBRE" FieldLabel="Nombre:" LabelWidth="60" runat="server" Flex="1"  AllowBlank="false" />

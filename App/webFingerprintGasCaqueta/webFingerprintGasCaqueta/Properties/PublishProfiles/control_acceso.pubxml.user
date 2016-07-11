@@ -43,10 +43,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/27/2016 10:16:45</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>06/09/2016 16:14:52</publishTime>
+      <publishTime>06/24/2016 16:16:31</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>06/09/2016 16:14:52</publishTime>
+      <publishTime>06/24/2016 16:16:31</publishTime>
     </File>
     <File Include="bin/Ext.Net.dll">
       <publishTime>04/27/2016 10:16:43</publishTime>
@@ -55,10 +55,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/27/2016 10:16:45</publishTime>
     </File>
     <File Include="bin/Ext.Net.Utilities.xml">
-      <publishTime>02/04/2016 17:17:31</publishTime>
+      <publishTime>04/02/2016 17:17:31</publishTime>
     </File>
     <File Include="bin/Ext.Net.xml">
-      <publishTime>02/04/2016 17:17:26</publishTime>
+      <publishTime>04/02/2016 17:17:26</publishTime>
     </File>
     <File Include="bin/itextsharp.dll">
       <publishTime>04/27/2016 10:16:48</publishTime>
@@ -76,28 +76,28 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/27/2016 10:16:45</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.xml">
-      <publishTime>02/04/2016 17:17:31</publishTime>
+      <publishTime>04/02/2016 17:17:31</publishTime>
     </File>
     <File Include="bin/Transformer.NET.dll">
       <publishTime>04/27/2016 10:16:45</publishTime>
     </File>
     <File Include="bin/Transformer.NET.xml">
-      <publishTime>02/04/2016 17:17:31</publishTime>
+      <publishTime>04/02/2016 17:17:31</publishTime>
     </File>
     <File Include="bin/WebActivatorEx.dll">
       <publishTime>04/27/2016 10:16:45</publishTime>
     </File>
     <File Include="bin/webFingerprintGasCaqueta.dll">
-      <publishTime>06/09/2016 16:12:59</publishTime>
+      <publishTime>06/24/2016 19:28:04</publishTime>
     </File>
     <File Include="bin/webFingerprintGasCaqueta.dll.config">
-      <publishTime>02/23/2016 09:59:31</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/webFingerprintGasCaqueta.pdb">
-      <publishTime>03/01/2016 14:58:07</publishTime>
+      <publishTime>01/03/2016 14:58:07</publishTime>
     </File>
     <File Include="Content/css/degraded.css">
-      <publishTime>05/18/2016 01:25:33</publishTime>
+      <publishTime>06/09/2016 16:20:09</publishTime>
     </File>
     <File Include="Content/css/ReportStyle.css">
       <publishTime>04/27/2016 10:16:45</publishTime>
@@ -112,7 +112,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/27/2016 10:16:45</publishTime>
     </File>
     <File Include="Content/images/SinFoto.jpg">
-      <publishTime>02/04/2016 17:17:31</publishTime>
+      <publishTime>04/02/2016 17:17:31</publishTime>
     </File>
     <File Include="Content/images/SinHuella.png">
       <publishTime>04/27/2016 10:16:45</publishTime>
@@ -151,10 +151,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/27/2016 10:16:45</publishTime>
     </File>
     <File Include="Ext.NET.Default.aspx">
-      <publishTime>02/04/2016 17:17:31</publishTime>
+      <publishTime>04/02/2016 17:17:31</publishTime>
     </File>
     <File Include="Imagen.aspx">
-      <publishTime>02/04/2016 17:17:31</publishTime>
+      <publishTime>04/02/2016 17:17:31</publishTime>
     </File>
     <File Include="Install/Application Files/iubi_1_0_0_4/iubi.application">
       <publishTime>05/25/2016 13:10:26</publishTime>
@@ -202,115 +202,115 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/27/2016 10:16:55</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>06/09/2016 16:14:46</publishTime>
+      <publishTime>06/24/2016 16:16:21</publishTime>
     </File>
     <File Include="Properties/PublishProfiles/control_acceso.pubxml">
-      <publishTime>02/04/2016 17:17:31</publishTime>
+      <publishTime>04/02/2016 17:17:31</publishTime>
     </File>
     <File Include="Properties/PublishProfiles/control_acceso.pubxml.user">
-      <publishTime>02/04/2016 17:17:31</publishTime>
+      <publishTime>04/02/2016 17:17:31</publishTime>
     </File>
     <File Include="Report/Container/Reporteador.aspx">
       <publishTime>04/27/2016 10:16:45</publishTime>
     </File>
     <File Include="Report/Repository/Informe_AsistenciasPorEmpleado__101736.pdf">
-      <publishTime>02/29/2016 10:17:36</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Repository/Informe_AsistenciasPorEmpleado__101758.pdf">
-      <publishTime>02/29/2016 10:17:58</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Repository/Informe_Asistencias__10156.pdf">
-      <publishTime>02/29/2016 10:15:06</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Repository/Informe_Asistencias__10947.pdf">
-      <publishTime>02/29/2016 10:09:47</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Repository/Informe_Asistencias__145054.pdf">
-      <publishTime>02/24/2016 14:50:54</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Repository/Informe_Asistencias__145338.pdf">
-      <publishTime>02/24/2016 14:53:39</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Repository/Informe_Asistencias__145621.pdf">
-      <publishTime>02/24/2016 14:56:21</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Repository/Informe_Asistencias__145720.pdf">
-      <publishTime>02/24/2016 14:57:20</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Repository/Informe_Asistencias__145846.pdf">
-      <publishTime>02/24/2016 14:58:46</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Repository/Informe_Asistencias__145924.pdf">
-      <publishTime>02/24/2016 14:59:24</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Repository/Informe_Asistencias__15049.pdf">
-      <publishTime>02/24/2016 15:00:49</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Repository/Informe_Asistencias__15134.pdf">
-      <publishTime>02/24/2016 15:01:34</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Repository/Informe_Asistencias__15254.pdf">
-      <publishTime>02/24/2016 15:02:54</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Repository/Informe_Asistencias__15349.pdf">
-      <publishTime>02/24/2016 15:34:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Repository/Informe_Asistencias__153624.pdf">
-      <publishTime>02/24/2016 15:36:24</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Repository/Informe_Asistencias__15367.pdf">
-      <publishTime>02/24/2016 15:36:07</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Repository/Informe_Asistencias__153718.pdf">
-      <publishTime>02/24/2016 15:37:18</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Repository/Informe_Asistencias__153743.pdf">
-      <publishTime>02/24/2016 15:37:43</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Repository/Informe_Asistencias__153928.pdf">
-      <publishTime>02/24/2016 15:39:28</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Repository/Informe_Asistencias__153941.pdf">
-      <publishTime>02/24/2016 15:39:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Repository/Informe_Asistencias__153944.pdf">
-      <publishTime>02/24/2016 15:39:44</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Repository/Informe_Asistencias__15437.pdf">
-      <publishTime>02/24/2016 15:04:37</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Repository/Informe_Asistencias__15537.pdf">
-      <publishTime>02/24/2016 15:05:37</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Repository/Informe_Asistencias__155539.pdf">
-      <publishTime>02/24/2016 15:55:41</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Repository/Informe_Asistencias__15638.pdf">
-      <publishTime>02/24/2016 15:06:38</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Repository/Informe_Asistencias__165621.pdf">
-      <publishTime>02/25/2016 16:56:40</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Repository/Informe_Asistencias__16574.pdf">
-      <publishTime>02/25/2016 16:57:04</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Repository/Informe_Asistencias__17044.pdf">
-      <publishTime>02/25/2016 17:00:44</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Repository/Informe_Asistencias__17104.pdf">
-      <publishTime>02/25/2016 17:10:07</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Repository/Informe_Asistencias__171338.pdf">
-      <publishTime>02/25/2016 17:13:38</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Repository/Informe_Asistencias__171636.pdf">
-      <publishTime>02/25/2016 17:16:37</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Repository/Informe_Asistencias__17518.pdf">
-      <publishTime>02/25/2016 17:05:22</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Repository/Informe_Asistencias__17727.pdf">
-      <publishTime>02/25/2016 17:07:27</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Template/rptListadoControlAccesoEmpleado.htm">
       <publishTime>04/27/2016 10:16:46</publishTime>
@@ -319,7 +319,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/27/2016 10:16:46</publishTime>
     </File>
     <File Include="View/Private/Container/Content_Parametrizacion.aspx">
-      <publishTime>04/27/2016 10:16:46</publishTime>
+      <publishTime>06/18/2016 11:43:53</publishTime>
     </File>
     <File Include="View/Private/Empleado/HorarioEmpleado.aspx">
       <publishTime>04/27/2016 10:16:47</publishTime>
@@ -336,6 +336,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="View/Private/Parametrizacion/CamaraWeb/CapturarFoto.aspx">
       <publishTime>04/27/2016 10:16:47</publishTime>
     </File>
+    <File Include="View/Private/Parametrizacion/CamaraWeb/scriptcam.swf">
+      <publishTime>04/27/2016 10:16:47</publishTime>
+    </File>
     <File Include="View/Private/Parametrizacion/Festivos.aspx">
       <publishTime>05/27/2016 08:59:36</publishTime>
     </File>
@@ -343,10 +346,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/27/2016 10:16:47</publishTime>
     </File>
     <File Include="View/Private/Parametrizacion/LectorBiometrico/Captura.aspx">
-      <publishTime>02/04/2016 17:17:31</publishTime>
+      <publishTime>04/02/2016 17:17:31</publishTime>
     </File>
     <File Include="View/Private/Parametrizacion/LectorBiometrico/Circulacion.aspx">
-      <publishTime>02/17/2016 18:03:50</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="View/Private/Parametrizacion/LectorBiometrico/Imagen.aspx">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -361,22 +364,22 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/27/2016 10:16:47</publishTime>
     </File>
     <File Include="View/Public/Circulacion.aspx">
-      <publishTime>06/04/2016 10:30:15</publishTime>
+      <publishTime>06/24/2016 16:13:11</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>06/09/2016 16:13:09</publishTime>
+      <publishTime>06/24/2016 16:16:20</publishTime>
     </File>
     <File Include="Web.Debug.config">
-      <publishTime>02/04/2016 17:17:31</publishTime>
+      <publishTime>04/02/2016 17:17:31</publishTime>
     </File>
     <File Include="Web.Release.config">
-      <publishTime>02/04/2016 17:17:31</publishTime>
+      <publishTime>04/02/2016 17:17:31</publishTime>
     </File>
     <File Include="webFingerprintGasCaqueta.csproj">
-      <publishTime>02/29/2016 15:43:26</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="webFingerprintGasCaqueta.csproj.user">
-      <publishTime>02/29/2016 15:43:26</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
   </ItemGroup>
 </Project>

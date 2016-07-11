@@ -26,3 +26,6 @@ C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalP
 C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\obj\Debug\DigitalPersonaSocket.pdb
 C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\obj\Debug\Digital.Bio.resources
 C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\obj\Debug\Digital.csprojResolveAssemblyReference.cache
+C:\Users\oswaldpale\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\bin\Debug\DigitalPersonaSocket.exe.config
+C:\Users\oswaldpale\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\obj\Debug\DigitalPersonaSocket.exe
+C:\Users\oswaldpale\Documents\Proyecto\FingerPrint\DigitalPersonaSocket\DigitalPersonaSocket\obj\Debug\DigitalPersonaSocket.pdb

@@ -33,7 +33,7 @@
                     data.records = [];
                     for (var i = 0; i < records.length; i++) {
                         rec = records[i];
-                        parametro.registrarPeriodo(idsemana, rec.get("ID"), rec.get("HORARIO"));
+                        parametro.registrarPeriodo(App.HIDPERIODO.getValue(), idsemana, rec.get("ID"), rec.get("HORARIO"));
                     }
                 }
                 return true;
@@ -85,7 +85,7 @@
         <ext:Hidden runat="server" ID="HIDPERIODO" />
         <ext:Viewport ID="VPPRESENTACION" runat="server" Layout="CenterLayout" >
             <Items>
-                <ext:Panel ID="PPRINCIPAL" runat="server" Width="1000" Height="680" Layout="BorderLayout" UI="Primary" Frame="true" Border="true">
+                <ext:Panel ID="PPRINCIPAL" runat="server" Width="1000" Height="600" Layout="BorderLayout" UI="Primary" Frame="true" Border="true">
                     <Items>
                         <ext:FormPanel ID="FCABEZERA" runat="server" Region="North" Height="50" Width="400">
                             <Items>
@@ -139,10 +139,10 @@
                                 </ext:GridPanel>
                             </Items>
                         </ext:Panel>
-                        <ext:Panel ID="PDETALLE" runat="server" Width="850" Height="500" Region="Center" Layout="BorderLayout" Collapsed="true" Collapsible="true">
+                        <ext:Panel ID="PDETALLE" runat="server" Width="840" Height="500" Region="Center" Layout="BorderLayout" Collapsed="true" Collapsible="true">
                             <Items>
                                 <ext:GridPanel
-                                    ID="GPERIODO" runat="server" MultiSelect="true" Width="550" Height="350" Region="Center" MarginSpec="5 0 5 0">
+                                    ID="GPERIODO" runat="server" MultiSelect="true" Width="560" Height="350" Region="Center" MarginSpec="5 0 5 0">
                                     <Store>
                                         <ext:Store ID="SHORARIO" runat="server">
                                             <Model>

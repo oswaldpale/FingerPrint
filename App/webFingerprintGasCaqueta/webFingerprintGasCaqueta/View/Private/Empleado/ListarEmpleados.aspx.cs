@@ -25,6 +25,8 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado
         public bool ConsultarEstadoHuella(string identificacion, string tipoHuella) {
             return Controllers.consultarEstadoHuella(identificacion, tipoHuella);
         }
+
+        #region Ventanas
         [DirectMethod(Namespace = "parametro")]
         public void AbrirVentanaIncripcionHuella(string identificacion,string TipoHuella) {
 
@@ -51,6 +53,36 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado
             win.Render(this.Form);
           
         }
+
+        [DirectMethod(Namespace = "parametro")]
+        public void AbrirVentanahorarioEmpleado(string codigo,string identificacion, string funcionario,string cargo)
+        {
+
+            Window win = new Window
+            {
+                ID = "WHORARIOLABORAL",
+                Title = "HORARIO LABORAL: " +"(" + identificacion + ")" + funcionario.ToUpper()  + " - " + cargo,
+                Height = 635,
+                Width = 700,
+                Modal = true,
+                CloseAction = CloseAction.Destroy,
+                Loader = new ComponentLoader
+                {
+                    Url = "../Empleado/HorarioEmpleado.aspx?idempleado="+ codigo,
+                    Mode = LoadMode.Frame,
+                    LoadMask =
+                {
+                    ShowMask = true
+
+                }
+                }
+            };
+            //win.Listeners.Close.Handler = "parametro.CargarEmpleados();";
+            win.Render(this.Form);
+
+        }
+        #endregion
+
         [DirectMethod(Namespace = "parametro")]
         public bool EliminarHuellaEmpleado(string identificacion, string dedo)
         {

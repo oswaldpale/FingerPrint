@@ -39,11 +39,7 @@
 
             tabPanel.setActiveTab(tab);
         }
-        function ConfirmResult(btn) {
-            if (btn == 'yes') {
-                addTab(App.TDETALLE,App.MBIOMETRIA,App.MHUELLA,'../Empleado/ListarEmpleados.aspx');
-            }
-        }
+       
     </script>
 
 </head>
@@ -95,36 +91,7 @@
                                     </Items>
                                 </Menu>
                             </ext:MenuPanel>
-                            <ext:MenuPanel ID="MBIOMETRIA"
-                                runat="server"
-                                Title="BIOMETRIA"
-                                SaveSelection="false"
-                                IconCls="shortcut-icon-footprintregister icon-footprintregister">
-                                <Menu runat="server">
-                                    <Items>
-                                        <ext:MenuItem ID="MHUELLA" runat="server" Text="Huella Dactilar" IconCls="shortcut-icon-footprint icon-footprint">
-                                            <Listeners>
-                                                <Click Handler="
-                                                     var nav = navigator.appName;
-                                                     alert(nav);
-                                                     if(nav == 'Microsoft Internet Explorer'){
-                                                        addTab(#{TDETALLE}, #{MBIOMETRIA},#{MHUELLA},'../Empleado/ListarEmpleados.aspx');      
-                                                     }else{
-                                                        Ext.Msg.show({
-                                                            title: 'El registro dactilar solo funciona con Internet Explorer!',
-                                                            msg: '¿Desea Abrir la pestaña con este navegador?',
-                                                            buttons: Ext.Msg.YESNO,
-                                                            fn: ConfirmResult,
-                                                            animEl: 'elId',
-                                                            icon: Ext.MessageBox.INFO
-                                                        });
-                                                     }
-                                                    " />
-                                            </Listeners>
-                                        </ext:MenuItem>
-                                    </Items>
-                                </Menu>
-                            </ext:MenuPanel>
+                         
                             <ext:MenuPanel ID="MINCIPERMISO"
                                 runat="server"
                                 Title="INCIDENCIA Y PERMISOS"

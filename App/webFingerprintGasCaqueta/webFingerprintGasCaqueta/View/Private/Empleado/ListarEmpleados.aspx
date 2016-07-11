@@ -9,9 +9,15 @@
     <title>LISTA DE EMPLEADOS</title>
     <script type="text/javascript">
         var Jidentificacion, Jdedo;
+
         function AbrirVentanaIncripcionHuella(record) {
             parametro.AbrirVentanaIncripcionHuella(record.get("MCODIGO"), Jdedo);
         }
+
+        function AbrirVentanahorarioEmpleado(record) {
+            parametro.AbrirVentanaIncripcionHuella(record.get("MCODIGO"), Jdedo);
+        }
+
         var prepareCommand = function (grid, toolbar, rowIndex, record) {
            
             var firstButton = toolbar.items.get(1); //button 1
@@ -60,6 +66,18 @@
                 }
             }
         };
+
+        var HorarioCommand = function (grid, command, record, row) {
+            
+            if (command == 'COMHORARIO') {
+                console.log(record.data.MIDENTIFICACION);
+                var iden = record.data.MIDENTIFICACION;
+                var nomb = record.data.MNOMBRE;
+                var tipo = record.data.MTIPO;
+                var idemp = record.data.MCODIGO;
+                parametro.AbrirVentanahorarioEmpleado(idemp,iden,nomb,tipo);
+            }
+        }
 
         function ConfirmResult(btn) {
             if (btn == 'yes') {
@@ -151,6 +169,17 @@
                                                 <PrepareToolbar Fn="prepareCommand" />
                                                 <Listeners>
                                                       <Command Fn="ClickCommand" />     
+                                                </Listeners>
+                                            </ext:CommandColumn>
+                                            <ext:CommandColumn runat="server" ID="CHORARIO" Width="40">
+                                                <Commands>
+                                                    <ext:CommandSeparator/>
+                                                    <ext:GridCommand CommandName="COMHORARIO" Icon="CalendarEdit" >
+                                                        <ToolTip Text="Horario Empleado" />
+                                                    </ext:GridCommand>
+                                                </Commands>
+                                                <Listeners>
+                                                    <Command Fn="HorarioCommand" />
                                                 </Listeners>
                                             </ext:CommandColumn>
                                         </Columns>

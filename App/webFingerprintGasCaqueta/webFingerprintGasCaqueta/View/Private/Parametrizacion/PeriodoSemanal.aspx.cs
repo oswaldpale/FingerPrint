@@ -107,7 +107,7 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
             return false ;
         }
         [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Guardando..", Target = MaskTarget.Page)]
-        public void registrarPeriodo(string idDiasemana, string idHorario, string horario)
+        public void registrarPeriodo(string idperiodo,string idDiasemana, string idHorario, string horario)
         {
             List<DiaSemana> Semana = (List<DiaSemana>)Session["Semana"];
             int exist = 0;
@@ -116,11 +116,8 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
                 exist = dia.HORARIO.Where(item => item.IDHORA == idHorario).Count();
                 if (exist == 0)
                 {
-                    HorarioPorDia h = new HorarioPorDia();
-                    h.IDHORA = idHorario;
-                    h.HORARIO = horario;
-                    dia.HORARIO.Add(h);
-                    if (Controllers.registrarHorarioPeriodo(HIDPERIODO.Text.Trim(), idDiasemana, idHorario) == true)
+                    
+                    if (Controllers.registrarHorarioPeriodo(idperiodo, idDiasemana, idHorario) == true)
                     {
                         Node node = new Node()
                         {
@@ -128,9 +125,20 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
                             Text = horario,
                             Leaf = true
                         };
+
+                        HorarioPorDia h = new HorarioPorDia();
+                        h.IDHORA = idHorario;
+                        h.HORARIO = horario;
+                        h.ID= Convert.ToString(Controllers.consultarIDsemanaHorario());
+
                         var record = this.TSEMANAHORARIO.GetNodeById("N" + idDiasemana);
                         record.AppendChild(node);
                         X.Msg.Notify("Notificación", "registrado Exitosamente").Show();
+                        dia.HORARIO.Add(h);
+                    }
+                    else
+                    {
+                        X.Msg.Notify("Notificación", "Ha ocurrido un error!.").Show();
                     }
                 }
                 else
@@ -153,11 +161,13 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
 		            idEliminado = item.ID;
                     dia.HORARIO.Remove(item);
 	            }
+             
             }
+
             Session.Remove("semana");
             Session["semana"] = Semana;
             return Controllers.eliminarHorarioSemana(idEliminado);
-         }
+        }
 
         [DirectMethod(Namespace = "parametro")]
         public void AbrirVentanaHorario()

@@ -14,93 +14,91 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado
     public partial class Horario : System.Web.UI.Page
     {
         private ControllersCOD _Controllers = new ControllersCOD();
+        string PEGE_ID="-1";
+        string PEGE_COD = "";
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!X.IsAjaxRequest)
+
+            consultarPeriodo();
+
+            if (Request.QueryString["idempleado"] != null)
             {
-                this.consultarEmpleadosHorarios();
-                this.consultarPeriodo();
-                this.consultarHorariosPorPeriodo("1");
+                PEGE_ID = Request.QueryString["idempleado"].ToString();
+                consultarHorarioEmpleado(PEGE_ID);
+              
             }
-          
         }
 
-        public void consultarEmpleadosHorarios()
-        {
-            SEMPLEADOS.DataSource = _Controllers.consultarEmpleadosHorarios();
-            SEMPLEADOS.DataBind();
-        }
+        [DirectMethod(Namespace = "parametro")]
         public void consultarPeriodo()
         {
             SHORARIO.DataSource = _Controllers.consultarPeriodo();
             SHORARIO.DataBind();
         }
-        [DirectMethod(Namespace = "parametro")]
-        public void consultarHorariosPorPeriodo(string periodo)
-        {
-            String[,] semana = new String[7, 7];
 
+        public void consultarHorarioEmpleado(string idempleado) {
 
-            DataTable tablaHorario = _Controllers.consultarHorariosPorPeriodo(periodo);
-            for (int i = 1; i < 7; i++)
-            {
-                DataRow[] result = tablaHorario.Select("DIAID = '" + i + "'");
-                int j = 0;
-                foreach (DataRow item in result)
+            DataTable data = _Controllers.consultarHorarioEmpleado(PEGE_ID);
+
+            if (data.Rows.Count > 0) {
+               
+                string idhorariosemana = data.Rows[0]["IDHORARIOSEMANA"].ToString();
+                string festivo = data.Rows[0]["FESTIVO"].ToString();
+                string tespera = data.Rows[0]["TIEMPOTARDE"].ToString();
+                string tipo = data.Rows[0]["TIPO"].ToString();
+                string finicio = data.Rows[0]["FINICIO"].ToString();
+                string ffin = data.Rows[0]["FFIN"].ToString();
+                string horalab = data.Rows[0]["FFIN"].ToString();
+                string desc_per = data.Rows[0]["PERIODO"].ToString();
+                PEGE_COD = data.Rows[0]["CODIGO"].ToString();
+                consultarHorariosPorPeriodo(idhorariosemana);
+
+                BMODIFICAR.Show();
+                BGUARDAR.Hidden = true;
+
+                if (tipo == "FIJO")
                 {
-
-                    string dia = item["DIAID"].ToString();
-                    switch (dia)
-                    {
-                        case "1":
-                            semana[j, 1] = item["HORARIO"].ToString();
-                            break;
-                        case "2":
-                            semana[j, 2] = item["HORARIO"].ToString();
-                            break;
-                        case "3":
-                            semana[j, 3] = item["HORARIO"].ToString();
-                            break;
-                        case "4":
-                            semana[j, 4] = item["HORARIO"].ToString();
-                            break;
-                        case "5":
-                            semana[j, 5] = item["HORARIO"].ToString();
-                            break;
-                        case "6":
-                            semana[j, 6] = item["HORARIO"].ToString();
-                            break;
-                        default:
-                            semana[j, 7] = item["HORARIO"].ToString();
-                            break;
-                    }
-                    j = j + 1;
+                    NRETRASO.Text = tespera;
+                    CFESTIVO.Checked = festivo == "-1" ? false: true;
                 }
+                else {
+                    X.AddScript("App.BTIPOHORARIO.setActiveItem('MPERIODO');");
+                    PSEMANA.Title = "HORARIO ACTUAL: " + desc_per;
+                    CFECHAS.Show();
+                    DFECHAINI.Text = finicio;
+                    DFECHAFIN.Text = ffin;
+                }
+                X.AddScript("App.FOPCION.expand();");
+                
             }
         }
-       [DirectMethod(Namespace = "parametro")]
-        public void RegistrarHorarioEmpleado(Newtonsoft.Json.Linq.JArray identificacion,string periodo,string tipohorario,string festivo,string retardo)
+        [DirectMethod(Namespace = "parametro", ShowMask =true)]
+        public void consultarHorariosPorPeriodo(string periodo)
         {
+            DataTable tablaHorario = _Controllers.consultarHorariosPorPeriodo(periodo);
+            SLABORAL.DataSource = tablaHorario;
+            SLABORAL.DataBind();
+        }
+       [DirectMethod(Namespace = "parametro")]
+        public void RegistrarHorarioEmpleado(string periodo,string tipohorario,string festivo,string retardo)
+        {
+            var r = DFECHAINI.Text;
+            //string fecha = Convert.ToDateTime().ToString("yyyy-MM-dd");
             string _festivo = (festivo=="true") ? "1" : "-1";
-            List<string> codigoEmpleado = new List<string>();
-            for (int i = 0; i < identificacion.Count; i++)
-            {
-               codigoEmpleado.Add(identificacion[i].ToString());
-            }
             string estado = "1";
             bool result;
             string _tipohorario = (tipohorario == "MPERIODO") ? "PERIODO" : "FIJO";
             if (_tipohorario == "PERIODO")
             {
-                
-                string fechainicio = Convert.ToDateTime(DFECHAINI.Value).ToString("yyyy-MM-dd");
-                string fechafin = Convert.ToDateTime(DFECHAFIN.Value).ToString("yyyy-MM-dd");
-                result = _Controllers.registrarHorarioPeriodoEmpleado(estado, codigoEmpleado, periodo, _festivo, retardo, _tipohorario, fechafin, fechafin);
-
+                string d = DFECHAINI.Value.ToString();
+                string fechainicio = Convert.ToDateTime(DFECHAINI.Text).ToString("yyyy-MM-dd");
+                string fechafin = Convert.ToDateTime(DFECHAFIN.Text).ToString("yyyy-MM-dd");
+                result = _Controllers.registrarHorarioPeriodoEmpleado(estado, PEGE_ID, periodo, _festivo, retardo, _tipohorario, fechafin, fechafin);
+              
             }
             else
             {
-                result = _Controllers.registrarHorarioFijoEmpleado(estado, codigoEmpleado, periodo, _festivo, retardo, _tipohorario);
+                result = _Controllers.registrarHorarioFijoEmpleado(estado, PEGE_ID, periodo, _festivo, retardo, _tipohorario);
             }
             if (result == true)
             {

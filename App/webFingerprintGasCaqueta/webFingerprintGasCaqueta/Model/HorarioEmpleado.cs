@@ -10,21 +10,38 @@ namespace webFingerprintGasCaqueta.Model
     public class HorarioEmpleado
     {
         private Conexion connection = new Conexion();
-        public DataTable consultarHorarioporDia(string idempleado, string fechaserver, string diaserver)
+        public DataTable consultarHorariEmpleado(string idempleado)
         {
-            
-            string sql = "";
+
+            string sql = @"SELECT
+                                he.hoem_id AS CODIGO,
+                                he.hoem_estado AS ESTADO,
+                                he.peri_id AS IDHORARIOSEMANA,
+                                p.peri_descripcion AS PERIODO,
+                                he.hoem_vincularfestivos AS FESTIVO,
+                                he.hoem_tiempotarde AS TIEMPOTARDE,
+                                he.hoem_tipohorario AS TIPO,
+                                DATE_FORMAT(he.hoem_fechainicio,'%d-%m-%Y')  AS FINICIO,
+                                DATE_FORMAT(he.hoem_fechafin,'%d-%m-%Y')  AS FFIN
+                            FROM
+                                horarioempleado he
+                            INNER JOIN 
+                                periodo p
+                            ON
+                                he.peri_id = p.peri_id
+                            WHERE
+                                empl_idempleado = '" + idempleado + "'";
             return connection.getDataMariaDB(sql).Tables[0];
         }
-        public bool registrarHorarioPeriodoEmpleado(string estado,List<string> idempleado,string periodo,string festivo,string tiemporetardo,string tipohorario,string fechainicio,string fechafin)
+        public bool registrarHorarioPeriodoEmpleado(string primarykey,string estado, string idempleado, string periodo, string festivo, string tiemporetardo, string tipohorario, string fechainicio, string fechafin)
         {
-            List<string> sql = new List<string>();
-            foreach (var item in idempleado)
-            {
-                string sentencias = @"INSERT
+
+
+            string sentencias = @"INSERT
                                         INTO
                                             horarioempleado
                                             (
+                                                hoem_id,
                                                 hoem_estado,
                                                 empl_idempleado,
                                                 peri_id,
@@ -36,8 +53,9 @@ namespace webFingerprintGasCaqueta.Model
                                             )
                                             VALUES
                                             (
+                                                " + primarykey + @",
                                                 " + estado + @",
-                                                '" + item.ToString() + @"',
+                                                '" + idempleado + @"',
                                                 '" + periodo + @"',
                                                 '" + festivo + @"',
                                                 '" + tiemporetardo + @"' ,
@@ -45,19 +63,16 @@ namespace webFingerprintGasCaqueta.Model
                                                 '" + fechainicio + @"',
                                                 '" + fechafin + @"'
                                             )";
-                sql.Add(sentencias);
-            }
-            return connection.sendSetDataTransaction(sql);
+
+            return connection.sendSetDataMariaDB(sentencias);
         }
-        public bool registrarHorarioFijoEmpleado(string estado, List<string> idempleado, string periodo, string festivo, string tiemporetardo, string tipohorario)
+        public bool registrarHorarioFijoEmpleado(string primarykey,string estado, string idempleado, string periodo, string festivo, string tiemporetardo, string tipohorario)
         {
-            List<string> sql = new List<string>();
-            foreach (var item in idempleado)
-            {
-                string sentencias = @"INSERT
+            string sentencia = @"INSERT
                                         INTO
                                             horarioempleado
                                             (
+                                                hoem_id,
                                                 hoem_estado,
                                                 empl_idempleado,
                                                 peri_id,
@@ -67,16 +82,16 @@ namespace webFingerprintGasCaqueta.Model
                                             )
                                             VALUES
                                             (
+                                                " + primarykey + @",
                                                 " + estado + @",
-                                                '" + item.ToString() + @"',
+                                                '" + idempleado + @"',
                                                 '" + periodo + @"',
                                                 '" + festivo + @"',
                                                 '" + tiemporetardo + @"' ,
                                                 '" + tipohorario + @"'
                                             )";
-                sql.Add(sentencias);
-            }
-            return connection.sendSetDataTransaction(sql);
+
+            return connection.sendSetDataMariaDB(sentencia);
         }
     }
 }

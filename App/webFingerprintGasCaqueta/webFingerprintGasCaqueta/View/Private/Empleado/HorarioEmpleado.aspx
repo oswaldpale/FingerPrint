@@ -29,17 +29,10 @@
             }
         };
         var registrarHorarioEmpleado = function () {
-            var r = App.GEMPLEADOS.getSelectionModel();
-            var s = r.selected.items;
-            var count;
-            var Idempleado = [];
-            var length = s.length;
-            for (count = 0; count < length; count++) {
-                Idempleado.push(s[count].id);
-            }
+           
             var opcionHorario = App.BTIPOHORARIO.activeItem;
             if (App.FPRIMARIO.isValid()) {
-                parametro.RegistrarHorarioEmpleado(Idempleado, App.HPERIODO.getValue(), opcionHorario.id, App.CFESTIVO.checked, App.NRETRASO.getValue());
+                parametro.RegistrarHorarioEmpleado(App.HPERIODO.getValue(), opcionHorario.id, App.CFESTIVO.checked, App.NRETRASO.getValue());
             } else {
                 Ext.Msg.show({
                     title: 'Notificación',
@@ -60,7 +53,7 @@
         </LayoutConfig>
         <Items>
             <ext:Hidden runat="server" ID="HPERIODO" />
-            <ext:FormPanel ID="FPRIMARIO" runat="server" Width="1200"  Height="700"   UI="Primary" Border="true" Padding="5" Layout="BorderLayout">
+            <ext:FormPanel ID="FPRIMARIO" runat="server" Width="700"  Height="600"   UI="Primary" Border="true" Padding="5" Layout="BorderLayout">
                 <Items>
                     <ext:Panel ID="PHORARIO"  runat="server" Icon="CalendarSelectWeek" Region="West" Collapsible="true"  MinWidth="300"  Split="true" Width="300"  Title="HORARIO SEMANAL" Collapsed="false" BodyPadding="5" >
                         <Items>
@@ -86,10 +79,9 @@
                                        <Listeners>
                                            <Select Handler=" 
                                                App.PHORARIO.collapse();
-                                               App.PHORARIOSEMANA.expand();
-                                               App.PEMPLEADO.expand(); 
+                                               App.FOPCION.expand();
                                                App.HPERIODO.setValue(record.data.IDPERIODO);
-                                               App.PEMPLEADO.setTitle('LISTA DE EMPLEADOS' + '(' +record.data.HORARIO +')');
+                                               App.PSEMANA.setTitle('HORARIO ACTUAL: ' + record.data.HORARIO);
                                                parametro.consultarHorariosPorPeriodo(record.data.IDPERIODO);
                                                "
                                            />
@@ -111,104 +103,35 @@
                             </ext:Button>
                         </Buttons>
                     </ext:Panel>
-                    <ext:Panel runat="server" Region="Center" Enabled="true" Layout="BorderLayout" UI="Primary">
+                    <ext:Panel runat="server" Region="Center"  UI="Primary" ID="PSEMANA" Title="HORARIO ACTUAL: No asignado">
                         <Items>
-                            <ext:Panel runat="server" ID="PEMPLEADO" Title="LISTADO EMPLEADOS" Region="Center" Icon="User" Frame="true" Width="200"   Collapsible="true" Collapsed="true">
-                                <Items>
-                                    <ext:GridPanel ID="GEMPLEADOS" runat="server">
-                                        <TopBar>
-                                        <ext:Toolbar runat="server">
-                                            <Items>
-                                                <ext:TextField ID="TFEMPLEADO" runat="server" EmptyText="Identificación o  nombre para buscar" Width="400" EnableKeyEvents="true" Icon="Magnifier">
-                                                    <Listeners>
-                                                        <KeyPress Handler="findUser(App.GEMPLEADOS.store, App.TFEMPLEADO.getValue(), Ext.EventObject);" Buffer="200" />
-                                                    </Listeners>
-                                                    <ToolTips>
-                                                        <ext:ToolTip runat="server" Title="Presionar enter para buscar" />
-                                                    </ToolTips>
-                                                </ext:TextField>
-                                            </Items>
-                                        </ext:Toolbar>
-                                    </TopBar>
-                                        <Store>
-                                            <ext:Store runat="server" ID="SEMPLEADOS" PageSize="11" >
-                                                <Model>
-                                                    <ext:Model runat="server" IDProperty="CODIGO">
-                                                        <Fields>
-                                                            <ext:ModelField Name="CODIGO" />
-                                                            <ext:ModelField Name="IDENTIFICACION" />
-                                                            <ext:ModelField Name="NOMBRE" />
-                                                            <ext:ModelField Name="TIPO" />
-                                                            <ext:ModelField Name="EXISTHORARIO" />
-                                                        </Fields>
-                                                    </ext:Model>
-                                                </Model>
-                                            </ext:Store>
-                                        </Store>
-                                       <ColumnModel runat="server">
+                           <ext:GridPanel ID="GHORARIO"  runat="server" >
+                                <Store>
+                                    <ext:Store runat="server" ID="SLABORAL"  >
+                                        <Fields>
+                                            <ext:ModelField Name="ID" SortDir="DESC" Type="Int" />
+                                            <ext:ModelField Name="DIAID"/>
+                                            <ext:ModelField Name="HORARIO"/>
+                                        </Fields>
+                                    </ext:Store>
+                                </Store>
+                                <ColumnModel runat="server">
                                         <Columns>
-                                            <ext:Column runat="server" ID="CIDENTIFICACION" Text="IDENTIFICACIÓN" DataIndex="IDENTIFICACION" Width="130" />
-                                            <ext:Column runat="server" ID="cNOMBRE" Text="EMPLEADO" DataIndex="NOMBRE" Flex="4" />
-                                            <ext:Column runat="server" ID="CTIPO" Text="CARGO" DataIndex="TIPO" Width="200"  />
-                                            <ext:Column runat="server" ID="CEXISTHORARIO" Text="HORARIO" DataIndex="EXISTHORARIO" Width="80"  />
+                                            <ext:Column runat="server" ID="Column1" Text="SEMANA" DataIndex="DIAID" Width="130" />
+                                            <ext:Column runat="server" ID="Column2" Text="HORARIO" DataIndex="HORARIO" Flex="1"  />
                                         </Columns>
                                     </ColumnModel>
-                                    <BottomBar>
-                                        <ext:PagingToolbar runat="server" AutoRender="true" StoreID="SEMPLEADOS"/>
-                                    </BottomBar>
-                                        <SelectionModel>
-                                            <ext:CheckboxSelectionModel ID="CheckboxSelectionModel1" runat="server" Mode="Multi" />
-                                        </SelectionModel>
-                                        <Listeners>
-                                            <BeforeSelect Handler="App.FOPCION.expand(); App.PHORARIOSEMANA.collapse();" />
-                                        </Listeners>
-                                    </ext:GridPanel>
-                                </Items>
-                            </ext:Panel>
-                            <ext:Panel ID="PHORARIOSEMANA" runat="server" Title="DETALLE HORARIO SEMANA" Height="180" Region="South" Frame="true" Collapsed="true" Collapsible="true" >
-                                <Items>
-                                    <ext:GridPanel runat="server" ID="GHORARIOSEMANA" >
-                                         <Store>
-                                            <ext:Store runat="server" ID="Store1">
-                                                <Model>
-                                                    <ext:Model runat="server">
-                                                        <Fields>
-                                                            <ext:ModelField Name="LUNES" />
-                                                            <ext:ModelField Name="MARTES" />
-                                                            <ext:ModelField Name="MIERCOLES" />
-                                                            <ext:ModelField Name="JUEVES" />
-                                                            <ext:ModelField Name="VIERNES" />
-                                                            <ext:ModelField Name="SABADO" />
-                                                            <ext:ModelField Name="DOMINGO" />
-                                                        </Fields>
-                                                    </ext:Model>
-                                                </Model>
-                                            </ext:Store>
-                                        </Store>
-                                       <ColumnModel runat="server">
-                                        <Columns>
-                                            <ext:Column runat="server" ID="CDIASEMANA" Text="LUNES" DataIndex="LUNES" Flex="1" />
-                                            <ext:Column runat="server" ID="CHORARIO" Text="MARTES" DataIndex="MARTES" Flex="1" />
-                                            <ext:Column runat="server" ID="Column3" Text="MIERCOLES" DataIndex="MIERCOLES" Flex="1"  />
-                                            <ext:Column runat="server" ID="Column4" Text="JUEVES" DataIndex="JUEVES" Flex="1"  />
-                                            <ext:Column runat="server" ID="Column1" Text="VIERNES" DataIndex="VIERNES" Flex="1"  />
-                                            <ext:Column runat="server" ID="Column2" Text="SABADO" DataIndex="SABADO" Flex="1"  />
-                                            <ext:Column runat="server" ID="Column5" Text="DOMINGO" DataIndex="DOMINGO" Flex="1"  />
-                                        </Columns>
-                                    </ColumnModel>
-                                    </ext:GridPanel>
-                                </Items>
-                            </ext:Panel>
+                              
+                            </ext:GridPanel>
                         </Items>
-                    </ext:Panel>
+                  </ext:Panel>       
                        
-                    <ext:FormPanel ID="FOPCION" runat="server" Region="South" Collapsible="true" Collapsed="true" Split="true" Height="80" Title="PREFERENCIA HORARIO" Floatable="false">
+                    <ext:FormPanel ID="FOPCION" runat="server" Region="South" Collapsible="true" Collapsed="true" Split="true" Height="150" Title="PREFERENCIA HORARIO" Floatable="false">
                         <Items>
-                            <ext:Panel runat="server" Layout="HBoxLayout">
+                            <ext:Panel runat="server"  >
                                <Items>
-                                  <ext:Container runat="server" Padding="7" Width="150" >
+                                  <ext:Container runat="server" Padding="7" Width="150" Layout="HBoxLayout" >
                                       <Items>
-                                        
                                           <ext:CycleButton  ID="BTIPOHORARIO" runat="server" Padding="5" ShowText="true" Width="130"  >
                                               <Menu>
                                                   <ext:Menu ID="MTIPO" runat="server">
@@ -229,15 +152,15 @@
                                           </ext:CycleButton>
                                       </Items>
                                   </ext:Container>
-                                  <ext:Container runat="server" ID="CFECHAS" Layout="HBoxLayout" Width="580" Padding="5" Hidden="true" >
+                                  <ext:Container runat="server" ID="CFECHAS" Layout="HBoxLayout" Width="600"  Hidden="true" >
                                       <Items>
                                           <ext:DateField runat="server" ID="DFECHAINI" Padding="5" FieldLabel="FECHA INICIO" LabelWidth="100"   Vtype="daterange" EndDateField="DFECHAFIN" />
                                           <ext:DateField runat="server" ID="DFECHAFIN" Padding="5" FieldLabel="FECHA FIN" LabelWidth="90"   Vtype="daterange"   StartDateField="DFECHAINI" />
                                       </Items>
                                   </ext:Container> 
-                                   <ext:Container runat="server"  Width="370" Padding="5" Layout="HBoxLayout" >
+                                   <ext:Container runat="server"  Width="350"  Layout="HBoxLayout" >
                                        <Items>
-                                         <ext:NumberField runat="server" ID="NRETRASO" FieldLabel="RETARDO(MIN)" Padding="5" Width="180" LabelWidth="100" MinValue="0" AllowBlank="false" />
+                                         <ext:NumberField runat="server" ID="NRETRASO" FieldLabel="RETARDO(MIN)" Padding="5" Width="170" LabelWidth="100" MinValue="0" AllowBlank="false" />
                                          <ext:Checkbox runat="server"  ID="CFESTIVO"  FieldLabel="INCLUIR FESTIVOS" Padding="5" Width="150" LabelWidth="130" />
                                        </Items>
                                    </ext:Container>
@@ -255,6 +178,11 @@
                     <ext:Button ID="BGUARDAR" runat="server" Text="GUARDAR" FormBind="true">
                        <Listeners>
                            <Click Fn="registrarHorarioEmpleado" />
+                       </Listeners>
+                    </ext:Button>
+                    <ext:Button ID="BMODIFICAR" runat="server" Text="ACTUALIZAR" FormBind="true" Hidden="true">
+                       <Listeners>
+                          <%-- <Click Fn="modificarHorarioEmpleado" />--%>
                        </Listeners>
                     </ext:Button>
                 </Buttons>

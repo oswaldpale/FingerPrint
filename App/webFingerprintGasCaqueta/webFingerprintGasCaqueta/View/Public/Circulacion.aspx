@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Circulacion.aspx.cs" Inherits="webFingerprintGasCaqueta.View.Public.Circulacion" %>
+﻿
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Circulacion.aspx.cs" Inherits="webFingerprintGasCaqueta.View.Public.Circulacion" %>
 
 <!DOCTYPE html>
 
@@ -103,13 +104,13 @@
 
                 case 'connect':
                     parametro.ChangeReaderInf('Conectado Lector');
-                    App.TBIOMETRICOESTADO.clear();
+                    //App.TBIOMETRICOESTADO.clear();
                     App.TBIOMETRICOESTADO.appendLine('Conectado Dispositivo');
                     break;
 
                 case 'disconnect':
                     parametro.ChangeReaderInf('Desconectado Lector');
-                    App.LESTADO.clear();
+                    //App.LESTADO.clear();
                     App.LESTADO.appendLine('Desconectado Dispositivo');
                     break;
               
@@ -166,7 +167,7 @@
 <body>
     <form id="form1" runat="server">
         
-        <ext:ResourceManager ID="ResourceManager2" Theme="Neptune" runat="server"  />
+        <ext:ResourceManager ID="ResourceManager2" Theme="Neptune" runat="server" AjaxTimeout="98000000"  />
         <ext:Viewport runat="server">
             <LayoutConfig>
                 <ext:VBoxLayoutConfig Align="Center" Pack="Center" />

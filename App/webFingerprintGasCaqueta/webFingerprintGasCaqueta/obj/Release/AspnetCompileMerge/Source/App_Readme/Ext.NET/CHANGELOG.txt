@@ -1,69 +1,8 @@
 ﻿**************************************************************************
-*                   Version 3.2.1 CHANGELOG                              *
-**************************************************************************
-
-Release Date     : 2015-08-24
-Current Version  : 3.2.1
-Previous Release : 3.2.0
-
-FIX	
-	[r6486]	[#836] Fixes the issues present on examples explorer.
-	[r6489]	Fixes a small typo on ResourceManager's SourceFormatting description.
-	[r6494]	[#839] Click on ImageCommand must focus a cell, but it didn't.
-	[r6495]	GridPanel/RowExpander/Remote_Mode example formatting and cleaning up.
-	[r6496]	[#833] Calendar examples: added a workaround for the drag&drop issues.
-	[r6497]	[#843] "Reference resolver cannot be null" exception with Json.NET 7.0.1.
-	[r6501]	[#842] TextField's RightButtons and LeftButtons could break a layout.
-	[r6502]	[#842] Reverted the fix that is made in the previous revision. It caused something else broken.
-	[r6504]	[#848] Remmoved a trailing comma in extnet/src/form/Picker.js.
-	[r6505]	[#850] Fixes build configurations on vs 2012, 2013 and 2015 solutions.
-	[r6507]	[#847] If store with AutoLoad="false" receives a "reload()" call, it broke layout.
-	[r6508]	[#851] GridPanel with locking and summary war broken.
-	[r6510]	Revised the DataView/Advanced/Grouping examples fixing a few issues.
-	[r6511]	[#853] Store's AutoLoad="false" was ignored if RemoteFilter="true".
-	[r6512]	[#857] Tooltips were not shown on mouseover on Touch devices (but with mouse).
-	[r6513]	Fixed a spelling error in the comment.
-	[r6514]	[#861] Unlicensed popup pulling non-https fonts.
-	[r6517]	[#859] ClientIDMode="AutoID" could break dynamic rendering.
-	[r6520]	[#860] A few Draw examples failed with 404 Not Found error.
-	[r6521]	[#865] Fixed the SignalR example that was broken after NuGet packages update.
-	[r6522]	[#866] ComponentLoader didn't respect "showMask: false" setting.
-	[r6523]	[#867] CheckColumn didn't stop editing on click.
-	[r6524]	[#868] CheckColumn: a cell focus frame was cut off.
-	[r6527]	[#869] MenuPanel saving selection didn't work.
-	[r6528]	[#870] DropDownField threw a JavaScript error on Tab key press.
-	[r6530]	[#871] GridPanel's HideHeaders didn't work on the fly.
-	[r6531]	[#872] PagingStore didn't clear a loading flag on load.
-	[r6532]	[#873] TextField with RightButtons and LeftButtons could raise a JavaScript error in some scenario.
-	[r6533]	[#871] Missed a header's top border if the header is initially hidden and then shown.
-	[r6535]	[#668] DateField with Type="Month" as GridPanel Column's Editor collapses on click inside a picker in Chrome. Corrected the initial fix.
-	[r6536]	[#874] Button's AutoLoadingState hung if return false in its DirectEvent's Before handler.
-	[r6537]	[#876] PieSeries Titles were not applied to Legend.
-	[r6538]	[#877] ComponentView fields could lose focus on click.
-	[r6539]	[#878] DragTracker's drag region element was not visible.
-
-NEW	
-	[r6488]	[#836] Finishes implementation of RowExpander's CacheSingleExpandRows option.
-	[r6509]	.NET Framework v4.5.2 config bindings for Ext.Net + Examples + MVC.
-	[r6526]	[#854] Added .NET v4.6 build configurations.
-
-UPDATE	
-	[r6487]	[#836] Partially implements RowExpander's CacheSingleExpandRows option.
-	[r6498]	[#844] Updated to Json.NET 7.0.1 (was 6.0.8).
-	[r6499]	[#843] Corrected the initial fix according to Json.NET 7.0.1 upgrade.
-	[r6506]	Applies VS changes to unnecessary source files' settings.
-	[r6518]	[#863] Update Examples Explorer menu links to point to Ext JS 5.1.1 documentation
-	[r6519]	[#864] Update all NuGet packages for Ext.NET, Examples Explorer and MVC Examples Explorer
-	[r6525]	[#831] Initial commit of ARIA theme went with not required items in AssemblyInfo.cs. Cleaned up.
-	[r6529]	Ignored VS 2015 .vs folder on SVN commit.
-	[r6542]	Removed NET451 build options. Please use NET452.
-
-
-**************************************************************************
 *                   Version 3.2.0 CHANGELOG                              *
 **************************************************************************
 
-Release Date     : 2015-07-15
+Release Date     : 2015-05-15
 Current Version  : 3.2.0
 Previous Release : 3.1.0
 

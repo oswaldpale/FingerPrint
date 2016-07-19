@@ -19,22 +19,22 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/27/2016 10:16:45</publishTime>
     </File>
     <File Include="App_Readme/Ext.NET/BREAKING_CHANGES.txt">
-      <publishTime>04/27/2016 10:16:45</publishTime>
+      <publishTime>07/11/2016 04:25:55</publishTime>
     </File>
     <File Include="App_Readme/Ext.NET/CHANGELOG.txt">
-      <publishTime>04/27/2016 10:16:45</publishTime>
+      <publishTime>07/11/2016 04:25:55</publishTime>
     </File>
     <File Include="App_Readme/Ext.NET/Ext.NET.Default.aspx">
-      <publishTime>04/27/2016 10:16:45</publishTime>
+      <publishTime>07/11/2016 04:25:55</publishTime>
     </File>
     <File Include="App_Readme/Ext.NET/LICENSE.txt">
-      <publishTime>04/27/2016 10:16:45</publishTime>
+      <publishTime>07/11/2016 04:25:55</publishTime>
     </File>
     <File Include="App_Readme/Ext.NET/README.txt">
-      <publishTime>04/27/2016 10:16:45</publishTime>
+      <publishTime>07/11/2016 04:25:55</publishTime>
     </File>
     <File Include="App_Readme/Ext.NET/Sample.Web.config">
-      <publishTime>04/27/2016 10:16:45</publishTime>
+      <publishTime>07/11/2016 04:25:55</publishTime>
     </File>
     <File Include="App_Readme/Transformer.NET/LICENSE.txt">
       <publishTime>04/27/2016 10:16:45</publishTime>
@@ -43,22 +43,22 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/27/2016 10:16:45</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>06/24/2016 16:16:31</publishTime>
+      <publishTime>07/19/2016 15:05:25</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>06/24/2016 16:16:31</publishTime>
+      <publishTime>07/19/2016 15:05:25</publishTime>
     </File>
     <File Include="bin/Ext.Net.dll">
-      <publishTime>04/27/2016 10:16:43</publishTime>
+      <publishTime>07/15/2015 14:16:08</publishTime>
     </File>
     <File Include="bin/Ext.Net.Utilities.dll">
       <publishTime>04/27/2016 10:16:45</publishTime>
     </File>
     <File Include="bin/Ext.Net.Utilities.xml">
-      <publishTime>04/02/2016 17:17:31</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="bin/Ext.Net.xml">
-      <publishTime>04/02/2016 17:17:26</publishTime>
+      <publishTime>02/04/2016 17:17:26</publishTime>
     </File>
     <File Include="bin/itextsharp.dll">
       <publishTime>04/27/2016 10:16:48</publishTime>
@@ -73,37 +73,37 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/27/2016 10:16:48</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>04/27/2016 10:16:45</publishTime>
+      <publishTime>01/09/2016 13:50:06</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.xml">
-      <publishTime>04/02/2016 17:17:31</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="bin/Transformer.NET.dll">
       <publishTime>04/27/2016 10:16:45</publishTime>
     </File>
     <File Include="bin/Transformer.NET.xml">
-      <publishTime>04/02/2016 17:17:31</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="bin/WebActivatorEx.dll">
       <publishTime>04/27/2016 10:16:45</publishTime>
     </File>
     <File Include="bin/webFingerprintGasCaqueta.dll">
-      <publishTime>06/24/2016 19:28:04</publishTime>
+      <publishTime>07/19/2016 15:02:44</publishTime>
     </File>
     <File Include="bin/webFingerprintGasCaqueta.dll.config">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/webFingerprintGasCaqueta.pdb">
-      <publishTime>01/03/2016 14:58:07</publishTime>
+      <publishTime>03/01/2016 14:58:07</publishTime>
     </File>
     <File Include="Content/css/degraded.css">
-      <publishTime>06/09/2016 16:20:09</publishTime>
+      <publishTime>07/18/2016 16:31:13</publishTime>
     </File>
     <File Include="Content/css/ReportStyle.css">
       <publishTime>04/27/2016 10:16:45</publishTime>
     </File>
     <File Include="Content/css/Style.css">
-      <publishTime>04/27/2016 10:16:45</publishTime>
+      <publishTime>07/10/2016 21:00:45</publishTime>
     </File>
     <File Include="Content/images/enrollmentFootprint.ico">
       <publishTime>04/27/2016 10:16:45</publishTime>
@@ -111,14 +111,17 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="Content/images/footprint.ico">
       <publishTime>04/27/2016 10:16:45</publishTime>
     </File>
+    <File Include="Content/images/planner.png">
+      <publishTime>07/10/2016 20:59:16</publishTime>
+    </File>
     <File Include="Content/images/SinFoto.jpg">
-      <publishTime>04/02/2016 17:17:31</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="Content/images/SinHuella.png">
       <publishTime>04/27/2016 10:16:45</publishTime>
     </File>
     <File Include="Content/images/Thumbs.db">
-      <publishTime>04/27/2016 10:16:45</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/images/upload.gif">
       <publishTime>04/27/2016 10:16:45</publishTime>
@@ -151,10 +154,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/27/2016 10:16:45</publishTime>
     </File>
     <File Include="Ext.NET.Default.aspx">
-      <publishTime>04/02/2016 17:17:31</publishTime>
+      <publishTime>07/11/2016 04:25:55</publishTime>
     </File>
     <File Include="Imagen.aspx">
-      <publishTime>04/02/2016 17:17:31</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="Install/Application Files/iubi_1_0_0_4/iubi.application">
       <publishTime>05/25/2016 13:10:26</publishTime>
@@ -199,16 +202,16 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/25/2016 13:10:26</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>04/27/2016 10:16:55</publishTime>
+      <publishTime>07/11/2016 04:25:56</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>06/24/2016 16:16:21</publishTime>
+      <publishTime>07/19/2016 15:05:18</publishTime>
     </File>
     <File Include="Properties/PublishProfiles/control_acceso.pubxml">
-      <publishTime>04/02/2016 17:17:31</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="Properties/PublishProfiles/control_acceso.pubxml.user">
-      <publishTime>04/02/2016 17:17:31</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="Report/Container/Reporteador.aspx">
       <publishTime>04/27/2016 10:16:45</publishTime>
@@ -313,40 +316,43 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/Template/rptListadoControlAccesoEmpleado.htm">
-      <publishTime>04/27/2016 10:16:46</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Report/View/ControlAccesoEmpleado.aspx">
+      <publishTime>04/27/2016 10:16:46</publishTime>
+    </File>
+    <File Include="Template/rptListadoControlAccesoEmpleado.htm">
       <publishTime>04/27/2016 10:16:46</publishTime>
     </File>
     <File Include="View/Private/Container/Content_Parametrizacion.aspx">
       <publishTime>06/18/2016 11:43:53</publishTime>
     </File>
     <File Include="View/Private/Empleado/HorarioEmpleado.aspx">
-      <publishTime>04/27/2016 10:16:47</publishTime>
+      <publishTime>07/16/2016 04:03:18</publishTime>
     </File>
     <File Include="View/Private/Empleado/Incidencia.aspx">
       <publishTime>04/27/2016 10:16:47</publishTime>
     </File>
     <File Include="View/Private/Empleado/ListarEmpleados.aspx">
-      <publishTime>04/27/2016 10:16:47</publishTime>
+      <publishTime>07/10/2016 21:43:14</publishTime>
     </File>
     <File Include="View/Private/Empleado/PermisoLaboral.aspx">
-      <publishTime>04/27/2016 10:16:47</publishTime>
+      <publishTime>07/19/2016 08:48:24</publishTime>
     </File>
     <File Include="View/Private/Parametrizacion/CamaraWeb/CapturarFoto.aspx">
       <publishTime>04/27/2016 10:16:47</publishTime>
     </File>
     <File Include="View/Private/Parametrizacion/CamaraWeb/scriptcam.swf">
-      <publishTime>04/27/2016 10:16:47</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="View/Private/Parametrizacion/Festivos.aspx">
-      <publishTime>05/27/2016 08:59:36</publishTime>
+      <publishTime>07/11/2016 03:51:57</publishTime>
     </File>
     <File Include="View/Private/Parametrizacion/Horario.aspx">
       <publishTime>04/27/2016 10:16:47</publishTime>
     </File>
     <File Include="View/Private/Parametrizacion/LectorBiometrico/Captura.aspx">
-      <publishTime>04/02/2016 17:17:31</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="View/Private/Parametrizacion/LectorBiometrico/Circulacion.aspx">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -355,25 +361,25 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="View/Private/Parametrizacion/LectorBiometrico/Incribir.aspx">
-      <publishTime>06/04/2016 10:30:08</publishTime>
+      <publishTime>07/19/2016 15:05:10</publishTime>
     </File>
     <File Include="View/Private/Parametrizacion/PeriodoSemanal.aspx">
-      <publishTime>04/27/2016 10:16:47</publishTime>
+      <publishTime>07/11/2016 01:34:13</publishTime>
     </File>
     <File Include="View/Private/Visitante/Visitante.aspx">
       <publishTime>04/27/2016 10:16:47</publishTime>
     </File>
     <File Include="View/Public/Circulacion.aspx">
-      <publishTime>06/24/2016 16:13:11</publishTime>
+      <publishTime>07/19/2016 15:04:36</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>06/24/2016 16:16:20</publishTime>
+      <publishTime>07/19/2016 15:05:18</publishTime>
     </File>
     <File Include="Web.Debug.config">
-      <publishTime>04/02/2016 17:17:31</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="Web.Release.config">
-      <publishTime>04/02/2016 17:17:31</publishTime>
+      <publishTime>02/04/2016 17:17:31</publishTime>
     </File>
     <File Include="webFingerprintGasCaqueta.csproj">
       <publishTime>01/01/0001 00:00:00</publishTime>

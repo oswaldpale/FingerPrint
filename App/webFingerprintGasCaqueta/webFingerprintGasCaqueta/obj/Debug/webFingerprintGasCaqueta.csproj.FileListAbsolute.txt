@@ -89,6 +89,6 @@ C:\Users\oswaldpale\Documents\Proyecto\FingerPrint\App\webFingerprintGasCaqueta\
 C:\Users\oswaldpale\Documents\Proyecto\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\Ext.Net.Utilities.xml
 C:\Users\oswaldpale\Documents\Proyecto\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\Newtonsoft.Json.xml
 C:\Users\oswaldpale\Documents\Proyecto\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\Transformer.NET.xml
-C:\Users\oswaldpale\Documents\Proyecto\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\obj\Debug\webFingerprintGasCaqueta.csprojResolveAssemblyReference.cache
 C:\Users\oswaldpale\Documents\Proyecto\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\obj\Debug\webFingerprintGasCaqueta.dll
 C:\Users\oswaldpale\Documents\Proyecto\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\obj\Debug\webFingerprintGasCaqueta.pdb
+C:\Users\oswaldpale\Documents\Proyecto\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\obj\Debug\webFingerprintGasCaqueta.csprojResolveAssemblyReference.cache

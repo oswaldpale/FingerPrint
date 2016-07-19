@@ -68,7 +68,7 @@
         
     }
 
-    function loadDevice() {
+    function loadDevice() {   //local,products
         emit('connectserver', { type: String('products') });
         emit('register', { user: String(App.HIDENTIFICACION.getValue()), finger: String(App.HDEDO.getValue()) });
     }

@@ -93,5 +93,45 @@ namespace webFingerprintGasCaqueta.Model
 
             return connection.sendSetDataMariaDB(sentencia);
         }
+
+        public bool modificarHorarioPeriodoEmpleado(string primarykey, string estado, string idempleado, string periodo, string festivo, string tiemporetardo, string tipohorario, string fechainicio, string fechafin)
+        {
+
+
+            string sentencias = @"UPDATE
+                                            horarioempleado
+                                            SET
+                                         
+                                                peri_id= '" + periodo + @"',
+                                                hoem_estado = " + estado + @",
+                                                empl_idempleado  = '" + idempleado + @"',
+                                                hoem_vincularfestivos  = '" + festivo + @"',
+                                                hoem_tiempotarde = '" + tiemporetardo + @"' ,
+                                                hoem_tipohorario = '" + tipohorario + @"',
+                                                hoem_fechainicio = '" + fechainicio + @"' ,
+                                                hoem_fechafin = '" + fechafin + @"'
+                                             WHERE 
+                                                hoem_id = " + primarykey + @"
+                                            ";
+
+            return connection.sendSetDataMariaDB(sentencias);
+        }
+        public bool modificarHorarioFijoEmpleado(string primarykey, string estado, string idempleado, string periodo, string festivo, string tiemporetardo, string tipohorario)
+        {
+            string sentencia = @"UPDATE
+                                            horarioempleado
+                                            SET
+                                                peri_id= '" + periodo + @"',
+                                                hoem_estado = " + estado + @",
+                                                empl_idempleado  = '" + idempleado + @"',
+                                                hoem_vincularfestivos  = '" + festivo + @"',
+                                                hoem_tiempotarde = '" + tiemporetardo + @"' ,
+                                                hoem_tipohorario = '" + tipohorario + @"'
+                                             WHERE 
+                                                hoem_id = " + primarykey + @"
+                                            ";
+
+            return connection.sendSetDataMariaDB(sentencia);
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿Product          : Ext.NET
-Release Date     : 2015-08-24
-Current Version  : 3.2.1
+Release Date     : 2015-05-15
+Current Version  : 3.2.0
 
 
 --------------------------------------------------------------------------
@@ -22,7 +22,7 @@ I. SYSTEM REQUIREMENTS
 
 1. Visual Studio 2010*, 2012, 2013 or 2015, or
 2. Visual Studio Express 2010*, 2012, 2013 or 2015
-3. .NET Framework 4.0, 4.5, 4.5.2 and 4.6
+3. .NET Framework 4.0, 4.5 and 4.5.1
 
 * Visual Studio 2012 (or higher) required for Examples Explorer projects
 
@@ -68,19 +68,19 @@ IV. SAMPLE WEB.CONFIG
       <extnet theme="Crisp" licenseKey="** Ext.NET LICENSE KEY HERE **" initScriptMode="Linked" />
   
       <system.web>
-        <!-- This httpHandlers config only required if using IIS6 (or lower) -->
+		<!-- This httpHandlers config only required if using IIS6 (or lower) -->
         <!--
-        <httpHandlers>
+		<httpHandlers>
           <add path="*/ext.axd" verb="*" type="Ext.Net.ResourceHandler" validate="false" />
         </httpHandlers>
-        -->
+		-->
 
-        <!-- This httpModules config only required if using IIS6 (or lower) -->
+		<!-- This httpModules config only required if using IIS6 (or lower) -->
         <!--
-        <httpModules>
+		<httpModules>
           <add name="DirectRequestModule" type="Ext.Net.DirectRequestModule, Ext.Net" />
         </httpModules>
-        -->
+		-->
 
         <pages>
           <controls>
@@ -88,7 +88,7 @@ IV. SAMPLE WEB.CONFIG
           </controls>
           <namespaces>
             <add namespace="Ext.Net"/>
-            <!--<add namespace="Ext.Net.MVC"/>-->
+			<!--<add namespace="Ext.Net.MVC"/>-->
           </namespaces>          
         </pages>
       </system.web>
@@ -104,56 +104,56 @@ IV. SAMPLE WEB.CONFIG
           <add name="DirectRequestHandler" verb="*" path="*/ext.axd" preCondition="integratedMode" type="Ext.Net.ResourceHandler" />
         </handlers>
       </system.webServer>
+  
+	  <runtime>
+		<assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+		  <dependentAssembly>
+			<assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" />
+			<bindingRedirect oldVersion="0.0.0.0-6.0.0.0" newVersion="6.0.0.0" />
+		  </dependentAssembly>
+		  <dependentAssembly>
+			<assemblyIdentity name="Ext.Net.Utilities" publicKeyToken="2c34ac34702a3c23" />
+			<bindingRedirect oldVersion="0.0.0.0-2.5.0" newVersion="2.5.0" />
+		  </dependentAssembly>
+		  <dependentAssembly>
+			<assemblyIdentity name="Transformer.NET" publicKeyToken="e274d618e7c603a7" />
+			<bindingRedirect oldVersion="0.0.0.0-2.1.1" newVersion="2.1.1" />
+		  </dependentAssembly>
 
-      <runtime>
-        <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
-          <dependentAssembly>
-            <assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" />
-            <bindingRedirect oldVersion="0.0.0.0-7.0.0.0" newVersion="7.0.0.0" />
-          </dependentAssembly>
-          <dependentAssembly>
-            <assemblyIdentity name="Ext.Net.Utilities" publicKeyToken="2c34ac34702a3c23" />
-            <bindingRedirect oldVersion="0.0.0.0-2.5.0" newVersion="2.5.0" />
-          </dependentAssembly>
-          <dependentAssembly>
-            <assemblyIdentity name="Transformer.NET" publicKeyToken="e274d618e7c603a7" />
-            <bindingRedirect oldVersion="0.0.0.0-2.1.1" newVersion="2.1.1" />
-          </dependentAssembly>
+		  <!--MVC 4-->
+		  <!--
+		  <dependentAssembly>
+			<assemblyIdentity name="System.Web.Helpers" publicKeyToken="31bf3856ad364e35" />
+			<bindingRedirect oldVersion="1.0.0.0-2.0.0.0" newVersion="2.0.0.0" />
+		  </dependentAssembly>
+		  <dependentAssembly>
+			<assemblyIdentity name="System.Web.WebPages" publicKeyToken="31bf3856ad364e35" />
+			<bindingRedirect oldVersion="1.0.0.0-2.0.0.0" newVersion="2.0.0.0" />
+		  </dependentAssembly>
+		  <dependentAssembly>
+			<assemblyIdentity name="System.Web.Mvc" publicKeyToken="31bf3856ad364e35" />
+			<bindingRedirect oldVersion="0.0.0.0-5.0.0.1" newVersion="4.0.0.1" />
+		  </dependentAssembly>
+		  -->
 
-          <!--MVC 4-->
-          <!--
-          <dependentAssembly>
-            <assemblyIdentity name="System.Web.Helpers" publicKeyToken="31bf3856ad364e35" />
-            <bindingRedirect oldVersion="1.0.0.0-2.0.0.0" newVersion="2.0.0.0" />
-          </dependentAssembly>
-          <dependentAssembly>
-            <assemblyIdentity name="System.Web.WebPages" publicKeyToken="31bf3856ad364e35" />
-            <bindingRedirect oldVersion="1.0.0.0-2.0.0.0" newVersion="2.0.0.0" />
-          </dependentAssembly>
-          <dependentAssembly>
-            <assemblyIdentity name="System.Web.Mvc" publicKeyToken="31bf3856ad364e35" />
-            <bindingRedirect oldVersion="0.0.0.0-4.0.40804" newVersion="4.0.40804" />
-          </dependentAssembly>
-          -->
-
-          <!--MVC 5-->
-          <!--
-          <dependentAssembly>
-            <assemblyIdentity name="System.Web.Helpers" publicKeyToken="31bf3856ad364e35"/>
-            <bindingRedirect oldVersion="1.0.0.0-3.0.0.0" newVersion="3.0.0.0"/>
-          </dependentAssembly>
-          <dependentAssembly>
-            <assemblyIdentity name="System.Web.WebPages" publicKeyToken="31bf3856ad364e35"/>
-            <bindingRedirect oldVersion="1.0.0.0-3.0.0.0" newVersion="3.0.0.0"/>
-          </dependentAssembly>
-          <dependentAssembly>
-            <assemblyIdentity name="System.Web.Mvc" publicKeyToken="31bf3856ad364e35"/>
-            <bindingRedirect oldVersion="1.0.0.0-5.2.3.0" newVersion="5.2.3.0"/>
-          </dependentAssembly>
-          -->
-        </assemblyBinding>
-      </runtime>  
-    </configuration>
+		  <!--MVC 5-->
+		  <!--
+		  <dependentAssembly>
+			<assemblyIdentity name="System.Web.Helpers" publicKeyToken="31bf3856ad364e35"/>
+			<bindingRedirect oldVersion="1.0.0.0-3.0.0.0" newVersion="3.0.0.0"/>
+		  </dependentAssembly>
+		  <dependentAssembly>
+			<assemblyIdentity name="System.Web.WebPages" publicKeyToken="31bf3856ad364e35"/>
+			<bindingRedirect oldVersion="1.0.0.0-3.0.0.0" newVersion="3.0.0.0"/>
+		  </dependentAssembly>
+		  <dependentAssembly>
+			<assemblyIdentity name="System.Web.Mvc" publicKeyToken="31bf3856ad364e35"/>
+			<bindingRedirect oldVersion="1.0.0.0-5.2.2.0" newVersion="5.2.2.0"/>
+		  </dependentAssembly>
+		  -->
+		</assemblyBinding>
+	  </runtime>
+      </configuration>
 
 
 --------------------------------------------------------------------------
@@ -299,11 +299,11 @@ VI. MVC Installation Tips
 If manually installing Ext.NET MVC into your project, the following IgnoreRoute
 config is required.
 
-    public static void RegisterRoutes(RouteCollection routes)
-    {
-        // Ignore all ext.axd embedded resource paths
-        routes.IgnoreRoute("{extnet-root}/{extnet-file}/ext.axd");
-    }
+	public static void RegisterRoutes(RouteCollection routes)
+	{
+		// Ignore all ext.axd embedded resource paths
+		routes.IgnoreRoute("{extnet-root}/{extnet-file}/ext.axd");
+	}
 
 This IgnoreRoute is automatically inserted if using the NuGet package installer. 
 

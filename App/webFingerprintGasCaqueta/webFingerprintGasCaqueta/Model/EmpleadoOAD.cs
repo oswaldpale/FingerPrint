@@ -37,7 +37,16 @@ namespace webFingerprintGasCaqueta.Model
                                     h.huell_identificacion = e.Cod_empleado
                                 AND h.huell_dedo='Secundario'
                             )
-                            !=0,'true','false') AS EXISTHUESECOND
+                            !=0,'true','false') AS EXISTHUESECOND,
+                            IF(
+									 (	SELECT 
+									 		COUNT(he.hoem_id)
+									   FROM 
+									   	horarioempleado he
+									   WHERE 
+									   	he.empl_idempleado = e.Cod_empleado
+									 )
+									 !=0, 'true','false') AS EXISTLABORAL
                         FROM
                             control_acceso.empleado e
                         INNER JOIN sigc972008.tipoempleado t

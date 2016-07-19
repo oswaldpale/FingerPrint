@@ -53,6 +53,8 @@ namespace webFingerprintGasCaqueta.Model
 
         public bool registrarHorarioPeriodo(string idperiodo, string idsemana, string idhorario,string primaryKey)
         {
+            
+
             string sql = @"INSERT
                             INTO
                                 horariosemanal
@@ -69,8 +71,20 @@ namespace webFingerprintGasCaqueta.Model
                                     + idhorario+","
                                     + primaryKey +
                                 ")";
+
             return connection.sendSetDataMariaDB(sql);
         }
+
+        public bool actualizartotalperiodo(string idperiodo) {
+            string sql = @"UPDATE
+                                    periodo p
+                                SET
+                                    p.peri_totalhoras = calcularhorasperiodo(p.peri_id)
+                                WHERE
+                                    p.peri_id = " + idperiodo;
+            return connection.sendSetDataMariaDB(sql);
+        }
+
         public DataTable consultarHorariosPorPeriodo(string periodo) {
             string sql = @"SELECT
                                     hs.hose_diasemanaid                                                            AS ID,
@@ -91,5 +105,10 @@ namespace webFingerprintGasCaqueta.Model
             return connection.getDataMariaDB(sql).Tables[0];
         }
 
+        public string recuperarIDperiodo()
+        {
+            string sql = "SELECT MAX(peri_id) AS CODIGO FROM periodo;";
+            return connection.getDataMariaDB(sql).Tables[0].Rows[0]["CODIGO"].ToString();
+        }
     }
 }

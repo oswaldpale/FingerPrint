@@ -45,8 +45,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ext.Net, Version=3.2.1.19950, Culture=neutral, PublicKeyToken=2e12ce3d0176cd87, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ext.NET.3.2.1\lib\net40\Ext.Net.dll</HintPath>
+    <Reference Include="Ext.Net, Version=3.2.0.21543, Culture=neutral, PublicKeyToken=2e12ce3d0176cd87, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ext.NET.3.2.0\lib\net40\Ext.Net.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Ext.Net.Utilities, Version=2.5.0.0, Culture=neutral, PublicKeyToken=2c34ac34702a3c23, processorArchitecture=MSIL">
@@ -71,7 +71,7 @@
       <HintPath>bin\MySql.Data.Entity.EF6.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -125,6 +125,7 @@
     <Content Include="Content\js\scriptcam.js" />
     <Content Include="Content\js\scriptcam.swf" />
     <Content Include="Content\js\swfobject.js" />
+    <Content Include="Ext.NET.Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Install\publish.htm" />
     <Content Include="Install\setup.exe" />
@@ -283,9 +284,6 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Readme\Ext.NET\Sample.Web.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Install\Application Files\iubi_1_0_0_4\iubi.application" />
     <Content Include="Install\Application Files\iubi_1_0_0_4\iubi.exe.config.deploy" />
     <Content Include="Install\Application Files\iubi_1_0_0_4\iubi.exe.deploy" />
@@ -298,7 +296,7 @@
     <Content Include="Install\Application Files\iubi_1_0_0_4\SuperSocket.SocketEngine.dll.deploy" />
     <Content Include="Install\Application Files\iubi_1_0_0_4\SuperWebSocket.dll.deploy" />
     <Content Include="Install\iubi.application" />
-    <Content Include="Content\images\Thumbs.db" />
+    <Content Include="App_Readme\Ext.NET\Sample.Web.config" />
     <None Include="Properties\PublishProfiles\control_acceso.pubxml" />
     <None Include="Properties\PublishProfiles\Finger.pubxml" />
   </ItemGroup>

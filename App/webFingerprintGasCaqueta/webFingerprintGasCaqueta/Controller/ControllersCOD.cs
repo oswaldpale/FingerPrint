@@ -30,6 +30,8 @@ namespace webFingerprintGasCaqueta.Controller
 
        
 
+
+
         /// <summary>
         /// Eliminar la huella de un visitante
         /// </summary>
@@ -97,6 +99,15 @@ namespace webFingerprintGasCaqueta.Controller
         {
             return horarioempleado.registrarHorarioFijoEmpleado(general.nextPrimaryKey("horarioempleado", "hoem_id"), estado, idempleado, periodo, festivo, tiemporetardo, tipohorario);
         }
+
+        public bool modificarHorarioPeriodoEmpleado(string primaryKey,string estado, string idempleado, string periodo, string festivo, string tiemporetardo, string tipohorario, string fechainicio, string fechafin)
+        {
+            return horarioempleado.modificarHorarioPeriodoEmpleado(primaryKey, estado, idempleado, periodo, festivo, tiemporetardo, tipohorario, fechainicio, fechafin);
+        }
+        public bool modificarHorarioFijoEmpleado(string primaryKey,string estado, string idempleado, string periodo, string festivo, string tiemporetardo, string tipohorario)
+        {
+            return horarioempleado.modificarHorarioFijoEmpleado(primaryKey, estado, idempleado, periodo, festivo, tiemporetardo, tipohorario);
+        }
         public DataTable consultarHorarioEmpleado(string idempleado) {
             return horarioempleado.consultarHorariEmpleado(idempleado);
         }
@@ -113,9 +124,9 @@ namespace webFingerprintGasCaqueta.Controller
         public DataTable consultarHorariosPorPeriodo(string periodo) {
             return _periodo.consultarHorariosPorPeriodo(periodo);
         }
-        public string ConsultarPeriodoDisponible()
+        public string recuperarIDperiodo()
         {
-            return  general.nextPrimaryKey("periodo","peri_id");
+            return _periodo.recuperarIDperiodo();
         }
         public DataTable ConsultarEstadoPeriodo(string idperiodo) {
             return _periodo.ConsultarEstadoPeriodo(idperiodo);
@@ -127,6 +138,12 @@ namespace webFingerprintGasCaqueta.Controller
         public bool registrarPeriodo(string totalHoras,string descripcion) {
             return _periodo.registrarPeriodo(general.nextPrimaryKey("periodo", "peri_id").ToString(), totalHoras, descripcion);
         }
+
+        public bool actualizartotalperiodo(string idperiodo) {
+            return _periodo.actualizartotalperiodo(idperiodo);
+        }
+      
+
         #endregion
         #region GESTIONAR HORARIO SEMANA
         public DataTable consultarHorarioporDia(string idperiodo, string diasemana)
@@ -142,10 +159,6 @@ namespace webFingerprintGasCaqueta.Controller
 
         public bool registrarHorarioPeriodo(string idperiodo, string idsemana, string idhorario)
         {
-            if (this.ConsultarEstadoPeriodo(idperiodo).Rows.Count == 0)
-            {
-                _periodo.registrarPeriodo(idperiodo, "0", "");
-            }
             return _periodo.registrarHorarioPeriodo(idperiodo, idsemana, idhorario, general.nextPrimaryKey("horariosemanal", "hose_id"));
 
         }
@@ -205,6 +218,11 @@ namespace webFingerprintGasCaqueta.Controller
         public bool registrarPermisoDia(string idempleado, string tipotiempo, string tipopermiso, string fechasolicitud, string estado, string fechapermiso, string horainicio, string horafin)
         {
             return permiso.registrarPermisoHora(general.nextPrimaryKey("permisos", "perm_id").ToString(), idempleado,"PER" + general.nextKeyControl("PER").ToString(), tipotiempo, tipopermiso, fechasolicitud, estado, fechapermiso, horainicio, horafin);
+        }
+
+        public DataTable consultarTipoPermiso()
+        {
+            return permiso.consultarTipoPermiso();
         }
         #endregion
 

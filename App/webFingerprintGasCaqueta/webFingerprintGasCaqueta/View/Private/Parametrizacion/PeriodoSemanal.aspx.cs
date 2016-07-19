@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -13,16 +14,14 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
     public partial class PeriodoSemanal : System.Web.UI.Page
     {
         private ControllersCOD Controllers = new ControllersCOD();
-
+      
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            HIDPERIODO.Text = "-1";
             this.consultarHorarioPeriodo();
             this.consultarPeriodo();
             //NodeRaiz(HIDPERIODO.Text);
         }
-        
+        [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Consultando..", Target = MaskTarget.Page)]
         private void consultarPeriodo()
         {
             SPERIODO.DataSource = Controllers.consultarPeriodo();
@@ -101,7 +100,7 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
         [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Creando..", Target = MaskTarget.Page)]
         public bool crearPeriodo(string descripcion) {
             if (Controllers.registrarPeriodo("0", descripcion) == true) {
-                HIDPERIODO.Text = Controllers.ConsultarPeriodoDisponible();
+                HIDPERIODO.Text = Controllers.recuperarIDperiodo();
                 return true;
             }
             return false ;
@@ -125,7 +124,6 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
                             Text = horario,
                             Leaf = true
                         };
-
                         HorarioPorDia h = new HorarioPorDia();
                         h.IDHORA = idHorario;
                         h.HORARIO = horario;
@@ -133,8 +131,10 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
 
                         var record = this.TSEMANAHORARIO.GetNodeById("N" + idDiasemana);
                         record.AppendChild(node);
-                        X.Msg.Notify("Notificación", "registrado Exitosamente").Show();
+                     
                         dia.HORARIO.Add(h);
+                       
+                        X.Msg.Notify("Notificación", "registrado Exitosamente").Show();
                     }
                     else
                     {
@@ -146,6 +146,10 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
                     X.Msg.Notify("Notificación", "Este Horario ya esta asignado para este día").Show();
                 }
             }
+            actualizarperiodo(idperiodo);
+            Thread.Sleep(500);
+            consultarPeriodo();
+            GPERIODO.GetStore().CommitChanges();
             Session.Remove("semana");
             Session["semana"] = Semana;
         }
@@ -153,20 +157,35 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
         public bool eliminarHorarioSemana(string idDiasemana, string idsemanahorario)
         { 
              string idEliminado= "-1";
-             List<DiaSemana> Semana =  (List < DiaSemana >) Session["Semana"];  
-             foreach (DiaSemana dia in Semana.Where(row => row.IDSEMANA == idDiasemana).ToList())
-             {
-                 foreach (HorarioPorDia item in dia.HORARIO.Where(item => item.ID == idsemanahorario).ToList())
-                 {
-		            idEliminado = item.ID;
-                    dia.HORARIO.Remove(item);
-	            }
-             
-            }
+             List<DiaSemana> Semana =  (List < DiaSemana >) Session["Semana"];
 
-            Session.Remove("semana");
-            Session["semana"] = Semana;
-            return Controllers.eliminarHorarioSemana(idEliminado);
+         
+                foreach (DiaSemana dia in Semana.Where(row => row.IDSEMANA == idDiasemana).ToList())
+                {
+                    foreach (HorarioPorDia item in dia.HORARIO.Where(item => item.ID == idsemanahorario).ToList())
+                    {
+                        idEliminado = item.ID;
+                        if (Controllers.eliminarHorarioSemana(idEliminado) == true)
+                        {
+                           dia.HORARIO.Remove(item);
+                        }
+                }
+
+                string idperiodo = HIDPERIODO.RawValue.ToString();
+               
+                actualizarperiodo(idperiodo);
+                consultarPeriodo();
+                Session.Remove("semana");
+                Session["semana"] = Semana;
+                return true;
+            }
+            return false;
+            
+        }
+
+        [DirectMethod(Namespace = "parametro")]
+        public void actualizarperiodo(string idperiodo) {
+            Controllers.actualizartotalperiodo(idperiodo);
         }
 
         [DirectMethod(Namespace = "parametro")]

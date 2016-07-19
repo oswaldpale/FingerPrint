@@ -47,11 +47,11 @@ line-height: 2.8;
 .Font-Clock {
 font-family: georgia, serif;
 color: #090D8F;
-font-size: 50px;
+font-size: 40px;
 font-weight: bold;
 text-align: center;
-letter-spacing: 6pt;
-word-spacing: -6pt;
+letter-spacing: 2pt;
+word-spacing: -4pt;
 line-height: 0;
 
 

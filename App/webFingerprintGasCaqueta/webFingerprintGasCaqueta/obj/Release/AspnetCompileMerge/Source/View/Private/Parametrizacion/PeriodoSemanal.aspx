@@ -33,7 +33,7 @@
                     data.records = [];
                     for (var i = 0; i < records.length; i++) {
                         rec = records[i];
-                        parametro.registrarPeriodo(idsemana, rec.get("ID"), rec.get("HORARIO"));
+                        parametro.registrarPeriodo(App.HIDPERIODO.getValue(), idsemana, rec.get("ID"), rec.get("HORARIO"));
                     }
                 }
                 return true;
@@ -48,16 +48,18 @@
                 success: function (result) {
                     if (result == true) {
                         App.TSEMANAHORARIO.store.remove(data);
+                     
                         Ext.net.Notification.show({
                             html: 'Eliminado Exitosamente.!', title: 'Notificación'
                         });
+                       
                     }
                 }, failure: function (errorMsg) {
                     Ext.net.Notification.show({
                         html: 'Ha ocurrido un error.!', title: 'Notificación'
                     });
                 }
-
+              
             });
         }
 
@@ -82,10 +84,10 @@
 <body>
     <form id="form1" runat="server">
         <ext:ResourceManager ID="ResourceManager1" runat="server" />
-        <ext:Hidden runat="server" ID="HIDPERIODO" />
+        <ext:Hidden runat="server" ID="HIDPERIODO"  Text="-1"/>
         <ext:Viewport ID="VPPRESENTACION" runat="server" Layout="CenterLayout" >
             <Items>
-                <ext:Panel ID="PPRINCIPAL" runat="server" Width="1000" Height="680" Layout="BorderLayout" UI="Primary" Frame="true" Border="true">
+                <ext:Panel ID="PPRINCIPAL" runat="server" Width="1000" Height="600" Layout="BorderLayout" UI="Primary" Frame="true" Border="true">
                     <Items>
                         <ext:FormPanel ID="FCABEZERA" runat="server" Region="North" Height="50" Width="400">
                             <Items>
@@ -118,7 +120,7 @@
                                         <Columns>
                                             <ext:RowNumbererColumn runat="server" />
                                             <ext:Column runat="server" ID="CMHORARIO" Text="DESCRIPCIÓN" DataIndex="HORARIO" Flex="3" />
-                                            <ext:Column runat="server" ID="CMURACION" Text="DURACION" DataIndex="DURACIÓN" Width="100" />
+                                            <ext:Column runat="server" ID="CMURACION" Text="TIEMPO(H)" DataIndex="DURACION" Width="100" />
                                         </Columns>
                                     </ColumnModel>
                                     <SelectionModel>
@@ -126,6 +128,7 @@
                                             <Listeners>
                                                 <Select Handler=" 
                                                App.PMODIFICAR.collapse();
+                                               App.HIDPERIODO.setValue(record.data.IDPERIODO);
                                                App.PDETALLE.expand();
                                                App.TNOMBRE.setValue(record.data.HORARIO);
                                                App.BCREAR.hide();
@@ -139,10 +142,10 @@
                                 </ext:GridPanel>
                             </Items>
                         </ext:Panel>
-                        <ext:Panel ID="PDETALLE" runat="server" Width="850" Height="500" Region="Center" Layout="BorderLayout" Collapsed="true" Collapsible="true">
+                        <ext:Panel ID="PDETALLE" runat="server" Width="840" Height="500" Region="Center" Layout="BorderLayout" Collapsed="true" Collapsible="true">
                             <Items>
                                 <ext:GridPanel
-                                    ID="GPERIODO" runat="server" MultiSelect="true" Width="550" Height="350" Region="Center" MarginSpec="5 0 5 0">
+                                    ID="GPERIODO" runat="server" MultiSelect="true" Width="560" Height="350" Region="Center" MarginSpec="5 0 5 0">
                                     <Store>
                                         <ext:Store ID="SHORARIO" runat="server">
                                             <Model>

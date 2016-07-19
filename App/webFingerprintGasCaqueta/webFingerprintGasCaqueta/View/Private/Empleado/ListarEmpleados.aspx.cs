@@ -58,7 +58,7 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado
         public void AbrirVentanahorarioEmpleado(string codigo,string identificacion, string funcionario,string cargo)
         {
 
-            Window win = new Window
+            Window win1 = new Window
             {
                 ID = "WHORARIOLABORAL",
                 Title = "HORARIO LABORAL: " +"(" + identificacion + ")" + funcionario.ToUpper()  + " - " + cargo,
@@ -77,8 +77,8 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado
                 }
                 }
             };
-            //win.Listeners.Close.Handler = "parametro.CargarEmpleados();";
-            win.Render(this.Form);
+            win1.Listeners.Close.Handler = "parametro.CargarEmpleados();";
+            win1.Render(this.Form);
 
         }
         #endregion
@@ -86,7 +86,6 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado
         [DirectMethod(Namespace = "parametro")]
         public bool EliminarHuellaEmpleado(string identificacion, string dedo)
         {
-            this.CargarEmpleados();
             return Controllers.eliminarHuellaEmpleado(identificacion, dedo);
 
         }

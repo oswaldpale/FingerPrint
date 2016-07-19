@@ -40,6 +40,15 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado {
         protected global::Ext.Net.Viewport VPPRESENTACION;
         
         /// <summary>
+        /// Control HCODEMPLEADO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Hidden HCODEMPLEADO;
+        
+        /// <summary>
         /// Control PPRESENTACION.
         /// </summary>
         /// <remarks>
@@ -209,6 +218,24 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.TextField TFECHASOLICITUD;
+        
+        /// <summary>
+        /// Control CDILIGENCIA.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox CDILIGENCIA;
+        
+        /// <summary>
+        /// Control STIPO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Store STIPO;
         
         /// <summary>
         /// Control DEMPLEADO.
@@ -389,6 +416,24 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.DateField DFECHAFIN;
+        
+        /// <summary>
+        /// Control FOBSERVACION.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.FieldSet FOBSERVACION;
+        
+        /// <summary>
+        /// Control TOBSERVACION.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextArea TOBSERVACION;
         
         /// <summary>
         /// Control BCANCELAR.

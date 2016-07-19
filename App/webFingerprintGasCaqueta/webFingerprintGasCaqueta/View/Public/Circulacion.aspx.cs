@@ -55,18 +55,29 @@ namespace webFingerprintGasCaqueta.View.Public
             string clockServer = DateTime.Now.ToString("hh:mm:ss tt");
             DateTime DateValue = DateTime.Now;
             int dSemanaServer = (int)DateValue.DayOfWeek;
-            if (Controllers.consultarHorarioEmpleadoDia(clockServer, identificacion, dSemanaServer) == true) //valida el horario asignado en bd del empleado con la hora que se toma del servidor. 
-            {
+            //if (Controllers.consultarHorarioEmpleadoDia(clockServer, identificacion, dSemanaServer) == true) //valida el horario asignado en bd del empleado con la hora que se toma del servidor. 
+            //{
                
-                return Controllers.registrarEntrada(identificacion);
+            //    return Controllers.registrarEntrada(identificacion);
+            //}
+           
+            if (Controllers.registrarEntrada(identificacion)) {
+                PFOTOS.Collapsed = true;
+                LMENSAJE.Text = "ENTRADA:" + clockServer;
+                return true;
             }
-            PFOTOS.Collapsed = true;
-            return Controllers.registrarEntrada(identificacion);
+            return false;
         }
         [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Guardando..", Target = MaskTarget.Page)]
         public bool registrarSalida(string idTupla, string identificacion)
         {
-            return Controllers.registrarSalida(idTupla, identificacion);
+            string clockServer = DateTime.Now.ToString("hh:mm:ss tt");
+            
+            if(Controllers.registrarSalida(idTupla, identificacion)) {
+                LMENSAJE.Text = "SALIDA:" + clockServer;
+                return true;
+            }
+            return false;
         }
         #endregion
 
@@ -116,8 +127,15 @@ namespace webFingerprintGasCaqueta.View.Public
         }
 
         public void MostrarImagen(string filename) {
-            Bitmap Foto = new Bitmap(filename);
-            IMPERFIL.ImageUrl = "data:image/jpg;base64," + BitMapToString(Foto) + "";
+            try
+            {
+                Bitmap Foto = new Bitmap(filename);
+                IMPERFIL.ImageUrl = "data:image/jpg;base64," + BitMapToString(Foto) + "";
+            }
+            catch {
+                IMPERFIL.ImageUrl = "../../Content/images/user.png";
+            }
+            
         }
 
         public string BitMapToString(Bitmap bitmap)

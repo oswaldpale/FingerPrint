@@ -31,6 +31,7 @@
         <div>
             <ext:Viewport ID="VPPRESENTACION" runat="server" Layout="border">
                 <Items>
+                    <ext:Hidden runat="server" ID="HCODEMPLEADO" />
                     <ext:Panel ID="PPRESENTACION" runat="server" Layout="Fit" Region="Center" Padding="5" Frame="true" Border="true">
                         <Items>
                             <ext:GridPanel ID="GPERMISO" runat="server" AutoDataBind="true" Frame="true" Border="true" Height="200">
@@ -122,8 +123,22 @@
                                 <Items>
                                     <ext:FieldSet runat="server" Padding="10">
                                         <Items>
-                                            <ext:TextField ID="TFECHASOLICITUD" FieldLabel="FECHA SOLICITUD" LabelWidth="120" Width="270" ReadOnly="true" runat="server" Flex="1" AllowBlank="false" />
-                                            <ext:DropDownField ID="DEMPLEADO" FieldLabel="EMPLEADO <font color ='red'>*</font> " MarginSpec="10 0 0 0" runat="server" LabelWidth="120" Width="550" Flex="1" AllowBlank="false" Editable="false">
+                                            <ext:Container runat="server" Layout="HBoxLayout">
+                                                <Items>
+                                                   <ext:TextField ID="TFECHASOLICITUD" FieldLabel="FECHA SOLICITUD" LabelWidth="115" Width="265" ReadOnly="true" runat="server" MarginSpec="5 0 5 5 " AllowBlank="false" />
+                                                    <ext:ComboBox ID="CDILIGENCIA" FieldLabel="TIPO SOLICITUD" LabelWidth="100" Width="280" runat="server" ValueField="CODIGO" DisplayField="TIPO" AllowBlank="false" MarginSpec="5 0 5 5 " >
+                                                        <Store>
+                                                            <ext:Store runat="server" ID="STIPO">  
+                                                                <Fields>
+                                                                     <ext:ModelField Name="CODIGO" />
+                                                                     <ext:ModelField Name="TIPO" />
+                                                                </Fields>
+                                                            </ext:Store>
+                                                        </Store>
+                                                    </ext:ComboBox>
+                                               </Items>
+                                            </ext:Container>
+                                            <ext:DropDownField ID="DEMPLEADO" FieldLabel="EMPLEADO <font color ='red'>*</font> " MarginSpec="5 0 5 5 " runat="server" LabelWidth="115" Width="550" Flex="1" AllowBlank="false" Editable="false"  >
                                                 <Listeners>
                                                     <Expand Handler="this.picker.setWidth(650);" />
                                                 </Listeners>
@@ -182,7 +197,7 @@
                                                             <ext:RowSelectionModel  runat="server" Mode="Single" />
                                                         </SelectionModel>
                                                         <Listeners>
-                                                            <RowDblClick Handler="App.DEMPLEADO.setValue('(' + record.get('MIDENTIFICACION')+') ' + record.get('MNOMBRE') );App.SEMPLEADO.clearFilter();App.TFEMPLEADO.clear();" />
+                                                            <RowDblClick Handler="App.HCODEMPLEADO.setValue(record.get('MCODIGO')); App.DEMPLEADO.setValue('(' + record.get('MIDENTIFICACION')+') ' + record.get('MNOMBRE') );App.SEMPLEADO.clearFilter();App.TFEMPLEADO.clear();" />
                                                         </Listeners>
                                                     </ext:GridPanel>
                                                 </Component>
@@ -226,7 +241,7 @@
 
                                     <ext:FieldSet runat="server" ID="FHORA" Layout="HBoxLayout" Height="60" Padding="10">
                                         <Items>
-                                            <ext:TimeField ID="THINICIO" runat="server" FieldLabel="HORA INICIO <font color ='red'>*</font> " MinTime="6:00" MaxTime="18:00" LabelWidth="120" Width="270" MarginSpec="5 0 5 5 " Increment="30" Format="hh:mm tt">
+                                            <ext:TimeField ID="THINICIO" runat="server" FieldLabel="HORA INICIO <font color ='red'>*</font> " MinTime="6:00" MaxTime="18:00" LabelWidth="115" Width="265" MarginSpec="5 0 5 5" Increment="30" Format="hh:mm tt">
                                                <Listeners>
                                                    <Select Handler="App.THFIN.clear();App.THFIN.setMinValue(App.THINICIO.getValue());App.THFIN.renderData;" />
                                                </Listeners>
@@ -237,7 +252,12 @@
                                     <ext:FieldSet runat="server" ID="FDIA" Layout="HBoxLayout" Hidden="true" Height="60" Padding="10">
                                         <Items>
                                             <ext:DateField runat="server" ID="DFECHAINI" FieldLabel="FECHA INICIO <font color ='red'>*</font> " LabelWidth="100" Width="250" Vtype="daterange" EndDateField="DFECHAFIN" />
-                                            <ext:DateField runat="server" ID="DFECHAFIN" FieldLabel="FECHA FIN <font color ='red'>*</font> " LabelWidth="80" Width="270" Vtype="daterange" StartDateField="DFECHAINI" />
+                                            <ext:DateField runat="server" ID="DFECHAFIN" FieldLabel="FECHA FIN <font color ='red'>*</font> " LabelWidth="80" Width="390"  MarginSpec="5 0 5 5" Vtype="daterange" StartDateField="DFECHAINI" />
+                                        </Items>
+                                    </ext:FieldSet>
+                                     <ext:FieldSet runat="server" ID="FOBSERVACION"  Title="Observación"  Height="140" Padding="10">
+                                        <Items>
+                                            <ext:TextArea runat="server" ID="TOBSERVACION" Height="95" Width="555" />
                                         </Items>
                                     </ext:FieldSet>
                                 </Items>
@@ -253,9 +273,9 @@
                                 </Listeners>
                             </ext:Button>
                             <ext:Button runat="server" ID="BGUARDAR" Icon="Add" Text="Guardar" FormBind="true">
-                                <%-- <Listeners>
-                                    <Click Handler="if(#{FREGISTRO}.getForm().isValid()) {App.direct.registrarHorario(App.THINICIO.getValue(),App.THFIN.getValue());}else{ return false;}  " />
-                                </Listeners>--%>
+                                 <Listeners>
+                                    <Click Handler="if(#{FREGISTRO}.getForm().isValid()) {App.direct.registrarPermiso(App.BTIPOHORARIO.activeItem,App.DFECHAINI.getValue(),App.DFECHAFIN.getValue());}else{ return false;}  " />
+                                </Listeners>
                             </ext:Button>
                         </Buttons>
                     </ext:FormPanel>

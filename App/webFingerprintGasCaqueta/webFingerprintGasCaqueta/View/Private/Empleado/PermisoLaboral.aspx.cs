@@ -19,6 +19,7 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado
             DFECHAHORA.MinDate = DateTime.Now;
             TFECHASOLICITUD.Text = Convert.ToDateTime(DateTime.Now).ToString("yyyy-MM-dd");
             this.CargarEmpleados();
+            this.cargarTipoPermiso();
         }
         [DirectMethod(Namespace = "parametro")]
         public void CargarEmpleados()
@@ -26,10 +27,33 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado
             SEMPLEADO.DataSource = Controllers.consultarEmpleados();
             SEMPLEADO.DataBind();
         }
-        [DirectMethod(Namespace = "parametro")]
-        public void registrarPermiso()
+        [DirectMethod(ShowMask = true, Msg = "Guardando..")]
+        public void registrarPermiso(string tipo,string horainicio,string horafin)
         {
-            
+            string tiphora = (tipo == "MHORA") ? "HORA" : "DIA";
+            string fechasol = Convert.ToDateTime(TFECHASOLICITUD.Text).ToString("yyyy-MM-dd"); 
+            string fechaini = Convert.ToDateTime(DFECHAINI.Text).ToString("yyyy-MM-dd");
+            string fechafin = Convert.ToDateTime(DFECHAFIN.Text).ToString("yyyy-MM-dd");
+            string codemp = HCODEMPLEADO.Text;
+            string tipoperm = CTIPO.ActiveItem.ToString();
+            string horaInicio = Convert.ToDateTime(horainicio.ToString().Replace("\"", "")).ToString("HH:mm");
+            string horaFin = Convert.ToDateTime(horafin.ToString().Replace("\"", "")).ToString("HH:mm");
+            string obs = TOBSERVACION.Text;
+            string fechahora = Convert.ToDateTime(DFECHAHORA.Text).ToString("yyyy-MM-dd"); 
+
+            if (tiphora == "HORA")
+            {
+                Controllers.registrarPermisoHora(codemp,tiphora,tipoperm,fechasol,"activo",fechahora,horainicio,horafin);
+            }
+            //else
+            //{
+            //    return Controllers.registrarPermisoDia(codemp,tipotiempo,tipoperm,fechasol,"activo",fecha);
+            //}
+
+        }
+        public void cargarTipoPermiso() {
+            STIPO.DataSource = Controllers.consultarTipoPermiso();
+            STIPO.DataBind();
         }
 
     }

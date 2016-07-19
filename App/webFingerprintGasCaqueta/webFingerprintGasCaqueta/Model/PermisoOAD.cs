@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using webFingerprintGasCaqueta.Model.Boot_Park.Conections;
@@ -76,5 +77,18 @@ namespace webFingerprintGasCaqueta.Model
             return connection.sendSetDataMariaDB(sql);
         }
 
+        #region Tipo Permiso
+        public DataTable consultarTipoPermiso()
+        {
+            string sql = @"SELECT
+                                tipe_id AS CODIGO,
+                                tipe_descripcion AS TIPO
+                            FROM
+                                tipo_permiso
+                            WHERE
+                                tipe_estado = 1";
+            return connection.getDataMariaDB(sql).Tables[0];
+        }
+        #endregion
     }
 }

@@ -1,21 +1,4 @@
 ﻿**************************************************************************
-*                      3.2.1 BREAKING CHANGES                            *
-**************************************************************************
-
-Release Date     : 2015-08-24
-Current Version  : 3.2.1
-Previous Release : 3.2.0
-
-If you find any new breaking changes, please report in the Ext.NET Community
-forums: http://forums.ext.net.
-
-The [EXTJS] or [EXTNET] tag indicates origin framework of the Breaking Change.
-
-1. [EXTNET] ComboBox's, ReminderCombo's, CalendarCombo's ForceSelection type
-   has been changed to bool? from bool. Please see the GitHub issue #783 why.
-   
-   
-   **************************************************************************
 *                      3.2.0 BREAKING CHANGES                            *
 **************************************************************************
 

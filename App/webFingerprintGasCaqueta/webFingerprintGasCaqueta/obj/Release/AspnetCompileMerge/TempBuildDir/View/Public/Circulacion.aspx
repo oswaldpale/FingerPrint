@@ -59,24 +59,22 @@
 
                                     parametro.registrarEntrada(App.TIDUSER.getValue(), {
                                         success: function (result) {
-                                            App.PFOTOS.collapse();
-                                            Ext.net.Notification.show({
-                                                html: 'Bienvenido a Gas Caqueta!', title: 'Notificación'
-                                            });
-                                            
-                                            ClearData();
+                                            App.PFOTOS.collapse()
+                                            setTimeout(function () { ClearData() }, 3000)
+                                           
                                         }
                                     });
                                 } else {           // registra una salida -->xq ya existe una entrada..
 
                                     parametro.registrarSalida(App.TIDTUPLA.getValue(), App.TIDUSER.getValue(), {
                                         success: function (result) {
-                                            App.PFOTOS.collapse();
+                                            App.PFOTOS.collapse()
+                                            setTimeout(function () { ClearData()}, 3000)
                                             Ext.net.Notification.show({
                                                 html: 'Buen Descanso Adios!', title: 'Notificación'
                                             });
                                             
-                                            ClearData();
+                                            
                                         }
                                     });
                                 }
@@ -104,14 +102,10 @@
 
                 case 'connect':
                     parametro.ChangeReaderInf('Conectado Lector');
-                    //App.TBIOMETRICOESTADO.clear();
-                    App.TBIOMETRICOESTADO.appendLine('Conectado Dispositivo');
                     break;
 
                 case 'disconnect':
                     parametro.ChangeReaderInf('Desconectado Lector');
-                    //App.LESTADO.clear();
-                    App.LESTADO.appendLine('Desconectado Dispositivo');
                     break;
               
             }
@@ -122,28 +116,28 @@
             while (new Date().getTime() < start + delay);
         }
 
-        function loadDevice() { //connect serverBD: local,product,test
+        function loadDevice() { //connect serverBD: local,products,test
             emit('connectserver', { type: String('products') });
             emit('checkin');
-            Concurrent.Thread.create(proceso);
+          
 
-        }
-
-        function proceso() {
-            while (true) {
-                parametro.RefreshTime();
-                Concurrent.Thread.sleep(100);
-            }
         }
 
         var findUser = function (texto, e) {
             if (e.getKey() == 13) {
                 parametro.buscarUsuario(texto, {
                     success: function (result) {
-                        App.PFOTOS.expand();
-                        emit('validate', { user: String(App.TIDUSER.getValue()) }); 
-                        App.LMENSAJE.setText('Por Favor Ingrese Su Huella');            // Mensaje de Ingrese la Huella...
-                        App.IMDACTILAR.setImageUrl('../../Content/images/SinHuella.png');
+                        if (result) {
+                            App.PFOTOS.expand();
+                            emit('validate', { user: String(App.TIDUSER.getValue()) }); 
+                            App.LMENSAJE.setText('Ingrese Su Huella');            // Mensaje de Ingrese la Huella...
+                            App.IMDACTILAR.setImageUrl('../../Content/images/SinHuella.png');
+                        } else {
+                            ClearData();
+                            Ext.net.Notification.show({
+                                html: 'Usuario no registrado', title: 'Notificación'
+                            });
+                        }
                     }, failure: function (errorMsg) {
                         Ext.net.Notification.show({
                             html: 'Ha ocurrido un error!', title: 'Notificación'
@@ -156,6 +150,7 @@
         function ClearData() {
             App.PPRINCIPAL.reset();
             App.TIDUSER.reset();
+            App.LMENSAJE.setText('');
             App.TIDTUPLA.reset();
             App.DDIDENTIFICACION.focus();
             App.IMDACTILAR.setImageUrl('../../Content/images/SinHuella.png');
@@ -167,7 +162,7 @@
 <body>
     <form id="form1" runat="server">
         
-        <ext:ResourceManager ID="ResourceManager2" Theme="Neptune" runat="server"  />
+        <ext:ResourceManager ID="ResourceManager2" Theme="Neptune" runat="server" AjaxTimeout="98000000"  />
         <ext:Viewport runat="server">
             <LayoutConfig>
                 <ext:VBoxLayoutConfig Align="Center" Pack="Center" />
@@ -223,9 +218,9 @@
                                                     <Items>
                                                         <ext:Container runat="server" Layout="CenterLayout"   >
                                                             <Items>
-                                                                  <ext:Panel ID="PMENSAJE" runat="server" Width="600" Title="MENSAJE" Border="true"  Height="220" Layout="CenterLayout"  Collapsible="true" >
+                                                                  <ext:Panel ID="PMENSAJE" runat="server" Width="620" Title="MENSAJE" Border="true"  Height="220" Layout="CenterLayout"  Collapsible="true" >
                                                                       <Items>
-                                                                          <ext:Label runat="server" ID="LMENSAJE" Cls="Font-Clock" />
+                                                                          <ext:Label runat="server" ID="LMENSAJE" Cls="Font-Clock" Width="610" />
                                                                       </Items>
                                                                   </ext:Panel>
                                                             </Items>

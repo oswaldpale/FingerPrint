@@ -17,3 +17,14 @@
 .icon-footprintregister {
     background-image: url(../images/footprint.ico) !important;
 }
+
+/*Icono defs Calendario CalendarEdit*/
+
+.shortcut-icon-CalendarEdit {
+     width: 20px;
+    height: 20px;
+}
+
+.icon-CalendarEdit {
+    background-image: url(../images/planner.png) !important;
+}

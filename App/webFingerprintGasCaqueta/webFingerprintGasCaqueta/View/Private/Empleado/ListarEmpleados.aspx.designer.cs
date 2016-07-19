@@ -22,13 +22,13 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control ResourceManager2.
+        /// Control ResourceManager1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.ResourceManager ResourceManager2;
+        protected global::Ext.Net.ResourceManager ResourceManager1;
         
         /// <summary>
         /// Control GEMPLEADO.
@@ -92,14 +92,5 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.CommandColumn CTOOLBOX;
-        
-        /// <summary>
-        /// Control CHORARIO.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.CommandColumn CHORARIO;
     }
 }

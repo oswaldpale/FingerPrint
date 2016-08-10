@@ -48,7 +48,7 @@
 </head>
 <body>
     <ext:ResourceManager ID="ResourceManager1" runat="server" />
-    <ext:FormPanel runat="server" UI="Primary" Width="690" Frame="true" >
+    <ext:FormPanel runat="server"  Width="690" Frame="true" UI="Info"  >
         <Items>
             <ext:Panel runat="server" Height="320"  Layout="BorderLayout"  BodyPadding="5">
                 <Items>

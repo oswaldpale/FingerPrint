@@ -16,7 +16,6 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
         {
                 consultarHorarios();
             
-            
         }
         [DirectMethod(ShowMask = true, Msg = "Guardando..", Target = MaskTarget.Page)]
         public void registrarHorario(string horainicio,string horafin) {

@@ -9,6 +9,7 @@
     <title>LISTA DE EMPLEADOS</title>
     <script type="text/javascript">
         var Jidentificacion, Jdedo;
+        var iden, nomb, tipo, idemp;
 
         function AbrirVentanaIncripcionHuella(record) {
             parametro.AbrirVentanaIncripcionHuella(record.get("MIDENTIFICACION"), Jdedo);
@@ -74,11 +75,26 @@
                 }
             }
             if (command == 'COMHORARIO') {
-                var iden = record.data.MIDENTIFICACION;
-                var nomb = record.data.MNOMBRE;
-                var tipo = record.data.MTIPO;
-                var idemp = record.data.MCODIGO;
-                parametro.AbrirVentanahorarioEmpleado(idemp, iden, nomb, tipo);
+
+                iden = record.data.MIDENTIFICACION;
+                nomb = record.data.MNOMBRE;
+                tipo = record.data.MTIPO;
+                idemp = record.data.MCODIGO;
+
+                if (record.get("EXISTLABORAL") == 'true') {
+                    Ext.Msg.show({
+                        title: 'Notificación',
+                        msg: '¿Desea cambiar el horario de trabajo para este funcionario?',
+                        buttons: Ext.Msg.YESNO,
+                        fn: ConfirmCambioHorario,
+                        animEl: 'elId',
+                        icon: Ext.MessageBox.INFO
+                    });
+                } else {
+                    parametro.AbrirVentanahorarioEmpleado(idemp, iden, nomb, tipo);
+                }
+                
+             
             }
 
         };
@@ -94,6 +110,22 @@
                         });
                     }
                 });
+            }
+        }
+        function ConfirmCambioHorario(btn) {
+            if (btn == 'yes') {
+                parametro.InactivarHorarioEmpleado(idemp, {
+                    success: function (result) {
+                        console.log(idemp + iden + nomb + tipo);
+                        parametro.AbrirVentanahorarioEmpleado(idemp, iden, nomb, tipo);
+                    }, failure: function (errorMsg) {
+                        Ext.net.Notification.show({
+                            html: 'Ha ocurrido un error.!', title: 'Notificación'
+                        });
+                    }
+                });
+            } else {
+                parametro.AbrirVentanahorarioEmpleado(idemp, iden, nomb, tipo);
             }
         }
         var findUser = function (Store, texto, e) {

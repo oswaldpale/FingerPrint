@@ -21,6 +21,7 @@ namespace webFingerprintGasCaqueta.Controller
         private HorarioSemanaOAD horariosemana = new HorarioSemanaOAD();
         private HorarioEmpleado horarioempleado = new HorarioEmpleado();
         private PermisoOAD permiso = new  PermisoOAD();
+        private AreaTrabajoOAD area = new AreaTrabajoOAD();
 
         #region GESTION DE HUELLA
         public DataTable consultarHuellaPorUsuario(string filtroUsuario)
@@ -28,9 +29,7 @@ namespace webFingerprintGasCaqueta.Controller
             return huella.consultarHuellaPorUsuario(filtroUsuario);
         }
 
-       
-
-
+        
 
         /// <summary>
         /// Eliminar la huella de un visitante
@@ -46,7 +45,7 @@ namespace webFingerprintGasCaqueta.Controller
             return huella.consultarEstadoHuella(identificacion, dedo);
         }
 
-      
+        
 
         public bool registrarHuella(string Dactilar, string empleado,string dedo) {
             return huella.registrarHuella(general.nextPrimaryKey("huella", "huell_id"), Dactilar, empleado,dedo);
@@ -86,6 +85,8 @@ namespace webFingerprintGasCaqueta.Controller
         {
             return circulacion.registrarSalida(idTupla, identificacion);
         }
+
+      
         #endregion
         #region GESTIONAR HORARIO EMPLEADO
         public  bool consultarHorarioEmpleadoDia(string idempleado,string fechaserver, int diaserver){
@@ -95,6 +96,9 @@ namespace webFingerprintGasCaqueta.Controller
         {
             return horarioempleado.registrarHorarioPeriodoEmpleado(general.nextPrimaryKey("horarioempleado", "hoem_id"),estado, idempleado, periodo, festivo, tiemporetardo, tipohorario, fechainicio, fechafin);
         }
+
+    
+
         public bool registrarHorarioFijoEmpleado(string estado, string idempleado, string periodo, string festivo, string tiemporetardo, string tipohorario)
         {
             return horarioempleado.registrarHorarioFijoEmpleado(general.nextPrimaryKey("horarioempleado", "hoem_id"), estado, idempleado, periodo, festivo, tiemporetardo, tipohorario);
@@ -104,12 +108,20 @@ namespace webFingerprintGasCaqueta.Controller
         {
             return horarioempleado.modificarHorarioPeriodoEmpleado(primaryKey, estado, idempleado, periodo, festivo, tiemporetardo, tipohorario, fechainicio, fechafin);
         }
+
+        
+
         public bool modificarHorarioFijoEmpleado(string primaryKey,string estado, string idempleado, string periodo, string festivo, string tiemporetardo, string tipohorario)
         {
             return horarioempleado.modificarHorarioFijoEmpleado(primaryKey, estado, idempleado, periodo, festivo, tiemporetardo, tipohorario);
         }
         public DataTable consultarHorarioEmpleado(string idempleado) {
             return horarioempleado.consultarHorariEmpleado(idempleado);
+        }
+
+        public bool inacticarHorarioEmpleado(string codigoEmpleado)
+        {
+            return horarioempleado.inacticarHorarioEmpleado(codigoEmpleado);
         }
         #endregion
         #region GESTIONAR EMPLEADOS
@@ -142,7 +154,14 @@ namespace webFingerprintGasCaqueta.Controller
         public bool actualizartotalperiodo(string idperiodo) {
             return _periodo.actualizartotalperiodo(idperiodo);
         }
-      
+
+        public bool modificarPeriodo(string idperiodo,string descripcion)
+        {
+            return _periodo.modificarPeriodo(idperiodo,descripcion);
+        }
+        public bool eliminarPeriodo(string idperiodo) {
+            return _periodo.eliminarPeriodo(idperiodo);
+        }
 
         #endregion
         #region GESTIONAR HORARIO SEMANA
@@ -212,18 +231,47 @@ namespace webFingerprintGasCaqueta.Controller
         }
         #endregion
         #region GESTIONAR PERMISOS
-        public bool registrarPermisoHora(string idempleado ,string tipotiempo,string tipopermiso,string fechasolicitud,string estado,string fechapermiso,string horainicio,string horafin) {
-            return permiso.registrarPermisoHora(general.nextPrimaryKey("permisos", "perm_id").ToString(), idempleado,"PER" + general.nextKeyControl("PER").ToString(), tipotiempo, tipopermiso, fechasolicitud, estado, fechapermiso, horainicio, horafin);
+        public bool registrarPermisoHora(string idempleado ,string tipotiempo,string tipopermiso,string fechasolicitud,string estado,string fechapermiso,string horainicio,string horafin,string observacion) {
+            return permiso.registrarPermisoHora(general.nextPrimaryKey("permisos", "perm_id").ToString(), idempleado,tipotiempo, tipopermiso, fechasolicitud, estado, fechapermiso, horainicio, horafin,observacion);
         }
-        public bool registrarPermisoDia(string idempleado, string tipotiempo, string tipopermiso, string fechasolicitud, string estado, string fechapermiso, string horainicio, string horafin)
+        public bool registrarPermisoDia(string idempleado, string tipotiempo, string tipopermiso, string fechasolicitud, string estado, string fechainicio, string fechafin,string observacion)
         {
-            return permiso.registrarPermisoHora(general.nextPrimaryKey("permisos", "perm_id").ToString(), idempleado,"PER" + general.nextKeyControl("PER").ToString(), tipotiempo, tipopermiso, fechasolicitud, estado, fechapermiso, horainicio, horafin);
+            return permiso.registrarPermisoDia(general.nextPrimaryKey("permisos", "perm_id").ToString(), idempleado, tipotiempo, tipopermiso, fechasolicitud, estado, fechainicio, fechafin,observacion);
         }
 
         public DataTable consultarTipoPermiso()
         {
             return permiso.consultarTipoPermiso();
         }
+
+        public DataTable consultarPermisosActivo()
+        {
+            return permiso.consultarPermisosActivos();
+        }
+        public bool eliminarPermiso(string codigo)
+        {
+            return permiso.eliminarPermiso(codigo);
+        }
+        #endregion
+        #region GESTIONAR AREA
+        public DataTable consultarArea()
+        {
+            return area.consultarArea();
+        }
+        public bool registrarArea(string codigo, string dependencia,string ext)
+        {
+            return area.registrarArea(codigo,dependencia,ext);
+        }
+        public bool eliminarArea(string codigo)
+        {
+            return area.eliminarArea(codigo);
+        }
+
+        public bool modificarArea(string codigo, string dependencia, string ext)
+        {
+            return area.modificarArea(codigo, dependencia, ext);
+        }
+
         #endregion
 
     }

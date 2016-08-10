@@ -25,6 +25,10 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado
         public bool ConsultarEstadoHuella(string identificacion, string tipoHuella) {
             return Controllers.consultarEstadoHuella(identificacion, tipoHuella);
         }
+        [DirectMethod(Namespace = "parametro")]
+        public bool InactivarHorarioEmpleado(string codigoEmpleado) {
+            return Controllers.inacticarHorarioEmpleado(codigoEmpleado);
+        }
 
         #region Ventanas
         [DirectMethod(Namespace = "parametro")]

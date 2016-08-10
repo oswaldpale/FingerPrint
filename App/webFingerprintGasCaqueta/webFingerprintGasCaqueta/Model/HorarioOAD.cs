@@ -20,7 +20,8 @@ namespace webFingerprintGasCaqueta.Model
                                     hora_nombre,
                                     hora_inicio,
                                     hora_fin,
-                                    hora_tiempotarde
+                                    hora_tiempotarde,
+                                    hora_tiempo
                                 )
                                 VALUES
                                 (
@@ -28,7 +29,8 @@ namespace webFingerprintGasCaqueta.Model
                                     '" + nombre + @"',
                                     '" + horaInicio + @"',
                                     '" + horaFin + @"',
-                                    "  + tiempoTarde + @"
+                                    "  + tiempoTarde + @",
+                                    timediff('" + horaFin + "', '" + horaInicio + @"')
                                 )";
 
 

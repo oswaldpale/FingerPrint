@@ -58,13 +58,13 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion {
         protected global::Ext.Net.Viewport VPPRESENTACION;
         
         /// <summary>
-        /// Control PPRINCIPAL.
+        /// Control FPRINCIPAL.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Panel PPRINCIPAL;
+        protected global::Ext.Net.FormPanel FPRINCIPAL;
         
         /// <summary>
         /// Control FCABEZERA.
@@ -101,6 +101,15 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Button BMODIFICAR;
+        
+        /// <summary>
+        /// Control BELIMINAR.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Button BELIMINAR;
         
         /// <summary>
         /// Control PMODIFICAR.

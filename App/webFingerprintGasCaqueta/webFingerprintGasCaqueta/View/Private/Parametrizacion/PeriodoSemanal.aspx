@@ -52,7 +52,7 @@
                         Ext.net.Notification.show({
                             html: 'Eliminado Exitosamente.!', title: 'Notificación'
                         });
-                       
+                        parametro.consultarPeriodo();
                     }
                 }, failure: function (errorMsg) {
                     Ext.net.Notification.show({
@@ -79,6 +79,55 @@
                 }
             });
         }
+        
+        var modificarPeriodo = function () {
+            parametro.modificarPeriodo({
+                success:function(result){
+                    if(result==true){
+                        parametro.consultarPeriodo();
+                        Ext.net.Notification.show({
+                            html: 'Datos actualizados.', title: 'Notificación'
+                        });
+                    }
+                },failure:function(errorMsg){
+                    Ext.net.Notification.show({
+                        html: 'Ha ocurrido un error.!', title: 'Notificación'
+                    });
+                }
+            });
+        }
+
+        var eliminarPeriodo = function () {
+
+            Ext.Msg.show({
+                title: 'Advertencia',
+                msg: '¿Solo se puede eliminar si no existe empleados asociados ha este registro?',
+                buttons: Ext.Msg.YESNO,
+                fn: ConfirmDelete,
+                animEl: 'elId',
+                icon: Ext.MessageBox.WARNING
+            });
+        }
+
+        function ConfirmDelete(btn) {
+            if (btn == 'yes') {
+                parametro.eliminarPeriodo({
+                    success: function (result) {
+                        if (result == true) {
+                       
+                            Ext.net.Notification.show({
+                                html: 'Eliminación realizada.', title: 'Notificación'
+                            });
+                        }
+                    }, failure: function (errorMsg) {
+                        Ext.net.Notification.show({
+                            html: 'Ha ocurrido un error.!', title: 'Notificación'
+                        });
+                    }
+                });
+            }
+        }
+
     </script>
 </head>
 <body>
@@ -87,19 +136,28 @@
         <ext:Hidden runat="server" ID="HIDPERIODO"  Text="-1"/>
         <ext:Viewport ID="VPPRESENTACION" runat="server" Layout="CenterLayout" >
             <Items>
-                <ext:Panel ID="PPRINCIPAL" runat="server" Width="1000" Height="600" Layout="BorderLayout" UI="Primary" Frame="true" Border="true">
+                <ext:FormPanel ID="FPRINCIPAL" runat="server" Width="1000" Height="600" Layout="BorderLayout" UI="Primary" Frame="true" Border="true">
                     <Items>
                         <ext:FormPanel ID="FCABEZERA" runat="server" Region="North" Height="50" Width="400">
                             <Items>
                                 <ext:Container runat="server" Layout="HBoxLayout">
                                     <Items>
-                                        <ext:TextField ID="TNOMBRE" runat="server" FieldLabel="DESCRIPCIÓN: " AllowBlank="false" MarginSpec="5 10 10 10" Width="350" />
+                                        <ext:TextField ID="TNOMBRE" runat="server" FieldLabel="DESCRIPCIÓN" AllowBlank="false" MarginSpec="12 10 10 10" Width="500" />
                                         <ext:Button ID="BCREAR" runat="server" Text="CREAR" MarginSpec="10 10 10 10" Padding="5" Width="100" FormBind="true">
                                             <Listeners>
                                                 <Click Fn="crearPeriodo" />
                                             </Listeners>
                                         </ext:Button>
-                                        <ext:Button ID="BMODIFICAR" runat="server" Text="MODIFICAR" Padding="5" Width="100" Hidden="true" FormBind="true" MarginSpec="10 10 10 10" />
+                                        <ext:Button ID="BMODIFICAR" runat="server" Text="MODIFICAR" Padding="5" Width="100" Hidden="true" FormBind="true" MarginSpec="10 10 10 10" >
+                                            <Listeners>
+                                                <Click Fn="modificarPeriodo" />
+                                            </Listeners>
+                                        </ext:Button>
+                                         <ext:Button ID="BELIMINAR" runat="server" Text="ELIMINAR" Padding="5" Width="100" Hidden="true" FormBind="true" MarginSpec="10 10 10 10" >
+                                            <Listeners>
+                                                <Click Fn="eliminarPeriodo" />
+                                            </Listeners>
+                                        </ext:Button>
                                     </Items>
                                 </ext:Container>
                             </Items>
@@ -133,6 +191,7 @@
                                                App.TNOMBRE.setValue(record.data.HORARIO);
                                                App.BCREAR.hide();
                                                App.BMODIFICAR.show();
+                                               App.BELIMINAR.show();
                                                App.PDETALLE.setTitle('DETALLE: ' + record.data.HORARIO);
                                                parametro.NodeRaiz(record.data.IDPERIODO);
                                                " />
@@ -240,7 +299,7 @@
                             </Items>
                         </ext:Panel>
                     </Items>
-                </ext:Panel>
+                </ext:FormPanel>
             </Items>
         </ext:Viewport>
     </form>

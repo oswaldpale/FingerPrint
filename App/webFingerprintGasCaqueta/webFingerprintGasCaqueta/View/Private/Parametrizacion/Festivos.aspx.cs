@@ -14,33 +14,24 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
         private ControllersCOD Controllers = new ControllersCOD();
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.consultarFestivos();
-            
+                this.consultarFestivos();
+          
         }
-        [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Consultando..")]
+        [DirectMethod(ShowMask = true, Msg = "Cargando..", Target = MaskTarget.Page)]
         public void consultarFestivos()
         {
-            GPFESTIVOS.GetStore().DataSource = Controllers.consultarFestivos();
-            GPFESTIVOS.GetStore().DataBind();
+            SFESTIVOS.DataSource = Controllers.consultarFestivos();
+            SFESTIVOS.DataBind();
         }
-        [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Guardando..", Target = MaskTarget.Page)]
-        public void registrarFestivo()
+        [DirectMethod(ShowMask = true, Msg = "Guardando..", Target = MaskTarget.Page)]
+        public bool registrarFestivo()
         {
             string fecha = Convert.ToDateTime(TFECHA.Text).ToString("yyyy-MM-dd");
             string nombreFestivo = TNOMBRE.Text.Trim();
-            if (Controllers.registrarFestivo(fecha, nombreFestivo))
-            {
-                X.Msg.Notify("Notificación", "Registrado Exitosamente!.").Show();
-                WREGISTRO.Hide();
-                FREGISTRO.Reset();
-                consultarFestivos();
-            }
-            else
-            {
-                X.Msg.Notify("Notificación", "Ha ocurrido un error!..").Show();
-            }
+            return Controllers.registrarFestivo(fecha, nombreFestivo);
+            
         }
-        [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Guardando..", Target = MaskTarget.Page)]
+        [DirectMethod(ShowMask = true, Msg = "Guardando..", Target = MaskTarget.Page)]
         public bool eliminarFestivo(string id)
         {
             return Controllers.eliminarFestivo(id);

@@ -44,7 +44,9 @@ namespace webFingerprintGasCaqueta.Model
 									   FROM 
 									   	horarioempleado he
 									   WHERE 
-									   	he.empl_idempleado = e.Cod_empleado
+									   	   he.empl_idempleado = e.Cod_empleado
+                                        AND
+                                           he.hoem_estado = 1
 									 )
 									 !=0, 'true','false') AS EXISTLABORAL
                         FROM

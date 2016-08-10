@@ -13,7 +13,7 @@
     </style>
     <script type="text/javascript">
         var addTab = function (tabPanel, menuPanel, menuItem, url) {
-            debugger;
+         
             var menuText = menuItem.text;
             var tab = tabPanel.getComponent("id" + menuItem);
 
@@ -50,27 +50,20 @@
     <div>
         <ext:Viewport ID="Viewport1" runat="server" Layout="border" UI="Default">
             <Items>
-                <ext:MenuPanel ID="MenuPanel1" runat="server" Collapsible="true" Region="West" Split="true" Title="Informes" Width="200">
+                <ext:MenuPanel ID="MPRINCIPAL" runat="server" Collapsible="true" Region="West" Split="true" Title="Informes" Width="230">
                     <Menu ID="Menu2" runat="server">
                         <Items>                           
-                            <ext:MenuItem ID="MenuItem1" runat="server" Text="Entrada/Salida Empleados" Icon="UserGo">
+                            <ext:MenuItem ID="MENTSALI" runat="server" Text="Entrada/Salida Empleados" Icon="UserGo">
                                 <Listeners>
-                                    <Click Handler="addTab(#{TabPanel1}, #{MenuPanel1},#{MenuItem1},'../View/ControlAccesoEmpleado.aspx');" />
+                                    <Click Handler="addTab(#{TabPanel1}, #{MPRINCIPAL},#{MENTSALI},'../View/ControlAccesoEmpleado.aspx');" />
                                 </Listeners>
                             </ext:MenuItem>
                             <ext:MenuSeparator />
-                  <%--          <ext:MenuItem ID="MenuItem4" runat="server" Text="Salida" Icon="Report">
+                             <ext:MenuItem ID="MENTPERS" runat="server" Text="Usuario al interior de la empresa" Icon="UserGo">
                                 <Listeners>
-                                    <Click Handler="addTab(#{TabPanel1}, #{MenuPanel1}, 'InformeSuministro.aspx');" />
+                                    <Click Handler="addTab(#{TabPanel1}, #{MPRINCIPAL},#{MENTPERS},'../View/ChecadosIngresos.aspx');" />
                                 </Listeners>
-                            </ext:MenuItem>                          
-                            <ext:MenuSeparator />
-                            <ext:MenuItem ID="MenuItem3" runat="server" Text="Articulos" Icon="Report">
-                                <Listeners>
-                                    <Click Handler="addTab(#{TabPanel1}, #{MenuPanel1}, 'InformeArticulos.aspx');" />
-                                </Listeners>
-                            </ext:MenuItem>
-                            <ext:MenuSeparator />--%>
+                            </ext:MenuItem>   
                         </Items>
                     </Menu>
                 </ext:MenuPanel>

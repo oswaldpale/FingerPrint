@@ -22,7 +22,7 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
             //NodeRaiz(HIDPERIODO.Text);
         }
         [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Consultando..", Target = MaskTarget.Page)]
-        private void consultarPeriodo()
+        public void consultarPeriodo()
         {
             SPERIODO.DataSource = Controllers.consultarPeriodo();
             SPERIODO.DataBind();
@@ -105,6 +105,27 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion
             }
             return false ;
         }
+        [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Actualizando..", Target = MaskTarget.Page)]
+        public bool modificarPeriodo() {
+
+            string descripcion = TNOMBRE.Text.Trim();
+            string idperiodo = HIDPERIODO.Text;
+
+            return Controllers.modificarPeriodo(idperiodo, descripcion);
+        }
+        [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Eliminando..", Target = MaskTarget.Page)]
+        public void eliminarPeriodo() {
+            string idperiodo = HIDPERIODO.Text;
+            if (Controllers.eliminarPeriodo(idperiodo))
+            {
+                X.Msg.Notify("Notificación", "Eliminación realizada.").Show();
+                Response.Redirect(Request.RawUrl);
+            }
+            else {
+                X.Msg.Notify("Notificación", "Existen registros asociados a este Horario.").Show();
+            }
+        }
+
         [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Guardando..", Target = MaskTarget.Page)]
         public void registrarPeriodo(string idperiodo,string idDiasemana, string idHorario, string horario)
         {

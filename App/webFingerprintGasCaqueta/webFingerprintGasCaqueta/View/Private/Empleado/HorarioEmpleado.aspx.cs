@@ -14,12 +14,13 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado
     public partial class Horario : System.Web.UI.Page
     {
         private ControllersCOD _Controllers = new ControllersCOD();
-        string PEGE_ID = "-1";
+        public static string PEGE_ID = "-1";
         public static string PEGE_COD = "";
         protected void Page_Load(object sender, EventArgs e)
         {
 
             consultarPeriodo();
+
             if (!X.IsAjaxRequest) {
                 if (Request.QueryString["idempleado"] != null)
                 {

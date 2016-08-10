@@ -40,14 +40,14 @@
                 }
                 var re = new RegExp(".*" + text + ".*", "i");
                 store.filterBy(function (node) {
-                    var RESUMEN = node.data.IDENTIFICACION + node.data.EMPLEADO;
+                    var RESUMEN = node.data.IDENTIFICACION + node.data.EMPLEADO + node.data.CARGO;
                     var a = re.test(RESUMEN);
                     return a;
                 });
             }
         };
         var TotalHoras = function (records) {
-
+            
 
             var i = 0,
                 length = records.length,
@@ -55,20 +55,25 @@
                 record;
             var h;
             var hours = 0, minutes = 0, seconds = 0;
+           
             for (;i < length; ++i) {
                 record = records[i];
-                h = record.get('DURACION').split(":");
-                seconds = parseInt(h[2].toString()) + seconds;
-                if (seconds >= 60) {
-                    seconds = seconds - 60;
-                    minutes = minutes + 1;
+                if (record.get('DURACION') != null) {
+                    
+                    h = record.get('DURACION').split(":");
+                    seconds = parseInt(h[2].toString()) + seconds;
+                    if (seconds >= 60) {
+                        seconds = seconds - 60;
+                        minutes = minutes + 1;
+                    }
+                    minutes = minutes + parseInt(h[1].toString());
+                    if (minutes >= 60) {
+                        minutes = minutes - 60;
+                        hours = hours + 1;
+                    }
+                    hours = hours + parseInt(h[0].toString());
                 }
-                minutes = minutes + parseInt(h[1].toString());
-                if (minutes >= 60) {
-                    minutes = minutes - 60;
-                    hours = hours + 1;
-                }
-                hours = hours + parseInt(h[0].toString());
+              
             }
             if (seconds < 9) {
                 seconds = '0' + seconds;
@@ -105,10 +110,10 @@
                 <ext:VBoxLayoutConfig Align="Center" Pack="Center" />
             </LayoutConfig>
             <Items>
-                <ext:FormPanel ID="FPRINCIPAL" runat="server" Width="1200" Height="600" Border="true"   TitleAlign="Center" BodyPadding="8" AutoScroll="true" UI="Default">
+                <ext:FormPanel ID="FPRINCIPAL" runat="server" Width="1200" Height="700" Border="true"   TitleAlign="Center" BodyPadding="8" AutoScroll="true" UI="Default">
                     <FieldDefaults LabelAlign="Right" LabelWidth="115" MsgTarget="Side" />
                     <Items>
-                        <ext:FieldSet runat="server" DefaultWidth="1250" Title="Filtros"  Height="70">
+                        <ext:FieldSet runat="server" DefaultWidth="1150" Title="Filtros"  Height="70">
                             <Items>
                                 <ext:Container runat="server" Layout="HBoxLayout">
                                     <Items>
@@ -119,11 +124,11 @@
                                 <ext:Container ID="Container1" runat="server" Layout="HBoxLayout">
                                     <Items>
                                         <ext:DateField runat="server" ID="DFECHAINICIO" Width="200" MarginSpec="0 0 0 0" />
-                                        <ext:DateField runat="server" ID="DFECHAFIN" Width="200" MarginSpec="0 10 0 10"  />
+                                        <ext:DateField runat="server" ID="DFECHAFIN" Width="200" MarginSpec="0 10 0 10"  MaxDate="<%# DateTime.Today %>" AutoDataBind="true"  />
                                         <ext:Button runat="server" ID="BFILTRO" Width="100" Text="Buscar" Icon="Zoom" Margins="0 0 0 10">
                                             <Listeners>
                                                 <Click Handler="if(App.FPRINCIPAL.isValid()){
-                                                                    parametro.FiltroAsistencia();
+                                                                    App.direct.FiltroAsistencia();
                                                                 }else{true}
                                                                 " />
                                             </Listeners>
@@ -133,15 +138,15 @@
                             </Items>
                         </ext:FieldSet>
 
-                        <ext:FieldSet  runat="server" DefaultWidth="1180"  Height="450" Title="LISTADO DE ASISTENCIAS" >
+                        <ext:FieldSet  runat="server" DefaultWidth="1130"  Height="520" Title="LISTADO DE ASISTENCIAS" >
                             <Items>
                                 <ext:Container runat="server" >
                                     <Items>
-                                        <ext:GridPanel ID="GCONTROL" runat="server"  Height="400" Border="true" Width="1160" Frame="true"  >
+                                        <ext:GridPanel ID="GCONTROL" runat="server"  Height="500" Border="true" Width="1100" Frame="true"  >
                                             <TopBar>
                                                 <ext:Toolbar runat="server">
                                                     <Items>
-                                                        <ext:TextField ID="TFILTRO" runat="server" EmptyText="Buscar por identificación o Empleado" Width="400" EnableKeyEvents="true" Icon="Magnifier">
+                                                        <ext:TextField ID="TFILTRO" runat="server" EmptyText="Buscar por identificación,empleado o cargo" Width="400" EnableKeyEvents="true" Icon="Magnifier">
                                                             <Listeners>
                                                                 <KeyPress Handler="findEmployer(App.GCONTROL.store, App.TFILTRO.getValue(), Ext.EventObject);" />
                                                             </Listeners>
@@ -164,6 +169,7 @@
                                                                 <ext:ModelField Name="CODIGO" />
                                                                 <ext:ModelField Name="IDENTIFICACION" Type="String" />
                                                                 <ext:ModelField Name="EMPLEADO" />
+                                                                <ext:ModelField Name="CARGO" />
                                                                 <ext:ModelField Name="FECHA" />
                                                                 <ext:ModelField Name="HORAINICIO" />
                                                                 <ext:ModelField Name="HORAFIN" />
@@ -179,7 +185,10 @@
                                                      <ext:Column ID="CIDENTIFICACION" runat="server" DataIndex="IDENTIFICACION" Text="IDENTIFICACIÓN" Align="Left" Width="150"  SummaryType="Count" >
                                                            <SummaryRenderer Handler="return ((value === 0 || value > 1) ? '(' + value +' FILAS)' : '(1 FILAS)');" />
                                                      </ext:Column>
-                                                     <ext:Column ID="CEMPLEADO" runat="server" DataIndex="EMPLEADO" Text="EMPLEADO" Align="Left" Width="400" >
+                                                     <ext:Column ID="CEMPLEADO" runat="server" DataIndex="EMPLEADO" Text="EMPLEADO" Align="Left" Width="350" >
+                                                           <SummaryRenderer Handler="return '&nbsp;';" />
+                                                     </ext:Column>
+                                                    <ext:Column ID="Column1" runat="server" DataIndex="CARGO" Text="CARGO" Align="Left" Width="250" >
                                                            <SummaryRenderer Handler="return '&nbsp;';" />
                                                      </ext:Column>
                                                      <ext:Column ID="CFECHA" runat="server" DataIndex="FECHA" Text="FECHA" Align="Left" Width="130" >
@@ -191,13 +200,21 @@
                                                      <ext:Column ID="CHORAFIN" runat="server" DataIndex="HORAFIN" Text="HORA SALIDA" Align="Left" Width="140">
                                                            <SummaryRenderer Handler="return '&nbsp;';" />
                                                       </ext:Column>
-                                                     <ext:Column ID="CDURACION" runat="server" DataIndex="DURACION" Text="DURACIÓN" Align="Left" Width="140" CustomSummaryType="TotalHoras">
+                                                     <ext:Column ID="CDURACION" runat="server" DataIndex="DURACION" Text="DURACIÓN" Align="Left" Flex="1" CustomSummaryType="TotalHoras">
                                                         <SummaryRenderer Handler="return value + '';" />
                                                      </ext:Column>
                                                 </Columns>
                                             </ColumnModel>
                                             <Features>
                                                 <ext:Summary ID="Summary" runat="server" />
+                                            </Features>
+                                            <Features>
+                                                <ext:Grouping
+                                                    ID="Group1"
+                                                    runat="server"
+                                                    GroupHeaderTplString="Tipo : {name} ({rows.length} Item{[values.rows.length > 1 ? 's' : '']})"
+                                                    HideGroupedHeader="true"
+                                                    EnableGroupingMenu="false" />
                                             </Features>
                                             <BottomBar>
                                                 <ext:PagingToolbar runat="server" HideRefresh="true">
@@ -225,7 +242,6 @@
                                                 </ext:PagingToolbar>
                                             </BottomBar>
                                             <LeftBar />
-                                           
                                         </ext:GridPanel>
                                     </Items>
                                 </ext:Container>
@@ -237,6 +253,5 @@
         </ext:Viewport>
     </form>
 </body>
-
 </html>
 

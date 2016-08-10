@@ -130,33 +130,33 @@
     <Content Include="Install\publish.htm" />
     <Content Include="Install\setup.exe" />
     <Content Include="Report\Container\Reporteador.aspx" />
-    <Content Include="Template\rptListadoControlAccesoEmpleado.htm" />
+    <Content Include="Report\Template\rptListadoControlAccesoEmpleado.htm" />
+    <Content Include="Report\View\ChecadosIngresos.aspx" />
     <Content Include="Report\View\ControlAccesoEmpleado.aspx" />
     <Content Include="View\Private\Container\Content_Parametrizacion.aspx" />
+    <Content Include="View\Private\Empleado\Funcionario.aspx" />
     <Content Include="View\Private\Empleado\HorarioEmpleado.aspx" />
-    <Content Include="View\Private\Empleado\Incidencia.aspx" />
+    <Content Include="View\Private\Empleado\CerrarIncidencia.aspx" />
     <Content Include="View\Private\Empleado\ListarEmpleados.aspx" />
     <Content Include="View\Private\Empleado\PermisoLaboral.aspx" />
+    <Content Include="View\Private\Parametrizacion\AreaTrabajo.aspx" />
     <Content Include="View\Private\Parametrizacion\CamaraWeb\CapturarFoto.aspx" />
     <Content Include="View\Private\Parametrizacion\Festivos.aspx" />
     <Content Include="View\Private\Parametrizacion\Horario.aspx" />
     <Content Include="View\Private\Parametrizacion\LectorBiometrico\Incribir.aspx" />
     <Content Include="View\Private\Parametrizacion\PeriodoSemanal.aspx" />
+    <Content Include="View\Public\IncidenciaPrevia.aspx" />
     <Content Include="View\Private\Visitante\Visitante.aspx" />
     <Content Include="View\Public\Circulacion.aspx" />
+    <Content Include="View\Public\AreaTrabajoVisitante.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\ControllerReportCOD.cs" />
     <Compile Include="Controller\ControllersCOD.cs" />
+    <Compile Include="Model\AreaTrabajoOAD.cs" />
     <Compile Include="Model\CirculacionOAD.cs" />
     <Compile Include="Model\EmpleadoOAD.cs" />
     <Compile Include="Model\FestivosOAD.cs" />
@@ -164,7 +164,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Connections\Conexion.cs" />
+    <Compile Include="bin\Conexion.cs" />
     <Compile Include="Model\HorarioEmpleado.cs" />
     <Compile Include="Model\HorarioOAD.cs" />
     <Compile Include="Model\HorarioSemanaOAD.cs" />
@@ -184,6 +184,13 @@
     <Compile Include="Report\Container\Reporteador.aspx.designer.cs">
       <DependentUpon>Reporteador.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Report\View\ChecadosIngresos.aspx.cs">
+      <DependentUpon>ChecadosIngresos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\View\ChecadosIngresos.aspx.designer.cs">
+      <DependentUpon>ChecadosIngresos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Report\View\ControlAccesoEmpleado.aspx.cs">
       <DependentUpon>ControlAccesoEmpleado.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -198,6 +205,13 @@
     <Compile Include="View\Private\Container\Content_Parametrizacion.aspx.designer.cs">
       <DependentUpon>Content_Parametrizacion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Private\Empleado\Funcionario.aspx.cs">
+      <DependentUpon>Funcionario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\Empleado\Funcionario.aspx.designer.cs">
+      <DependentUpon>Funcionario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Private\Empleado\HorarioEmpleado.aspx.cs">
       <DependentUpon>HorarioEmpleado.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -205,12 +219,12 @@
     <Compile Include="View\Private\Empleado\HorarioEmpleado.aspx.designer.cs">
       <DependentUpon>HorarioEmpleado.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\Private\Empleado\Incidencia.aspx.cs">
-      <DependentUpon>Incidencia.aspx</DependentUpon>
+    <Compile Include="View\Private\Empleado\CerrarIncidencia.aspx.cs">
+      <DependentUpon>CerrarIncidencia.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\Private\Empleado\Incidencia.aspx.designer.cs">
-      <DependentUpon>Incidencia.aspx</DependentUpon>
+    <Compile Include="View\Private\Empleado\CerrarIncidencia.aspx.designer.cs">
+      <DependentUpon>CerrarIncidencia.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\Empleado\ListarEmpleados.aspx.cs">
       <DependentUpon>ListarEmpleados.aspx</DependentUpon>
@@ -225,6 +239,13 @@
     </Compile>
     <Compile Include="View\Private\Empleado\PermisoLaboral.aspx.designer.cs">
       <DependentUpon>PermisoLaboral.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Private\Parametrizacion\AreaTrabajo.aspx.cs">
+      <DependentUpon>AreaTrabajo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Private\Parametrizacion\AreaTrabajo.aspx.designer.cs">
+      <DependentUpon>AreaTrabajo.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Private\Parametrizacion\CamaraWeb\CapturarFoto.aspx.cs">
       <DependentUpon>CapturarFoto.aspx</DependentUpon>
@@ -261,6 +282,13 @@
     <Compile Include="View\Private\Parametrizacion\PeriodoSemanal.aspx.designer.cs">
       <DependentUpon>PeriodoSemanal.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Public\IncidenciaPrevia.aspx.cs">
+      <DependentUpon>IncidenciaPrevia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Public\IncidenciaPrevia.aspx.designer.cs">
+      <DependentUpon>IncidenciaPrevia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Private\Visitante\Visitante.aspx.cs">
       <DependentUpon>Visitante.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -275,13 +303,23 @@
     <Compile Include="View\Public\Circulacion.aspx.designer.cs">
       <DependentUpon>Circulacion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Public\AreaTrabajoVisitante.aspx.cs">
+      <DependentUpon>AreaTrabajoVisitante.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Public\AreaTrabajoVisitante.aspx.designer.cs">
+      <DependentUpon>AreaTrabajoVisitante.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Connections\" />
     <Folder Include="Report\Repository\" />
     <Folder Include="View\Reportes\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Install\Application Files\iubi_1_0_0_4\iubi.application" />
@@ -303,6 +341,15 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugProyect|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

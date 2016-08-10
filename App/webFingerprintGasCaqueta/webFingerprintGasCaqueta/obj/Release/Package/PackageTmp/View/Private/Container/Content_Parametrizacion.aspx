@@ -45,7 +45,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <ext:ResourceManager ID="ResourceManager1" runat="server" Theme="Crisp">
+        <ext:ResourceManager ID="ResourceManager1" runat="server">
         </ext:ResourceManager>
         <div>
             <ext:Viewport ID="Viewport1" runat="server" Layout="border" UI="Default">
@@ -67,12 +67,6 @@
                                             </Listeners>
                                         </ext:MenuItem>
                                         <ext:MenuSeparator />
-                                        <ext:MenuItem ID="MEMPLEADOHORARIO" runat="server" Text="Horario Empleado" Icon="UserTick">
-                                            <Listeners>
-                                                <Click Handler="addTab(#{TDETALLE}, #{MHORARIOS},#{MEMPLEADOHORARIO},'../Empleado/HorarioEmpleado.aspx');" />
-                                            </Listeners>
-                                        </ext:MenuItem>
-                                        <ext:MenuSeparator />
                                     </Items>
                                 </Menu>
                             </ext:MenuPanel>
@@ -91,22 +85,16 @@
                                     </Items>
                                 </Menu>
                             </ext:MenuPanel>
-                         
-                            <ext:MenuPanel ID="MINCIPERMISO"
+                             <ext:MenuPanel ID="MAREA"
                                 runat="server"
-                                Title="INCIDENCIA Y PERMISOS"
+                                Title="DEPENDENCIA"
                                 SaveSelection="false"
-                                Icon="UserAlert">
+                                Icon="HouseConnect">
                                 <Menu runat="server">
                                     <Items>
-                                        <ext:MenuItem ID="MINCIDENCIA" runat="server" Text="Incidencia" Icon="UserAlert">
+                                        <ext:MenuItem ID="MDEPENDENCIA" runat="server" Text="DEPENDENCIA EMPRESA" Icon="WorldOrbit">
                                             <Listeners>
-                                                <Click Handler="addTab(#{TDETALLE}, #{MINCIPERMISO},#{MINCIDENCIA},'../Empleado/ListarEmpleados.aspx');" />
-                                            </Listeners>
-                                        </ext:MenuItem>
-                                        <ext:MenuItem ID="MPERMISO" runat="server" Text="Permisos" Icon="UserTick">
-                                            <Listeners>
-                                                <Click Handler="addTab(#{TDETALLE}, #{MINCIPERMISO},#{MPERMISO},'../Empleado/PermisoLaboral.aspx');" />
+                                                <Click Handler="addTab(#{TDETALLE}, #{MAREA},#{MDEPENDENCIA},'../Parametrizacion/AreaTrabajo.aspx');" />
                                             </Listeners>
                                         </ext:MenuItem>
                                     </Items>

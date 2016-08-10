@@ -31,7 +31,7 @@ namespace webFingerprintGasCaqueta.View.Public
             this.LMENSAJE.Text = clock.Replace(". m.", "m");
         }
        
-        #region CONTROL DE LA ENTRADA Y SALIDA
+        #region CONTROL DE LA ENTRADA Y SALIDA DE LOS FUNCIONARIOS
         [DirectMethod(Namespace = "parametro")]
         public bool consultarTipoIngreso(string identificacion)
         {
@@ -49,6 +49,9 @@ namespace webFingerprintGasCaqueta.View.Public
                 return RegUserDoor;
             }
         }
+
+        
+
         [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Guardando..", Target = MaskTarget.Page)]
         public bool registrarEntrada(string identificacion)
         {

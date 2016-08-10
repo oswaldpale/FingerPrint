@@ -111,8 +111,18 @@ border: 0px solid #000000;
      border: 3px solid #555;
 }
 .border-clock {
-border-radius: 200px 0px 0px 200px;
--moz-border-radius: 200px 0px 0px 200px;
--webkit-border-radius: 200px 0px 0px 200px;
-border: 0px hidden #FF0000;
+    border-radius: 200px 0px 0px 200px;
+    -moz-border-radius: 200px 0px 0px 200px;
+    -webkit-border-radius: 200px 0px 0px 200px;
+    border: 0px hidden #FF0000;
+}
+
+.incidenciaPrevia-text {
+    font-family: Tahoma, Geneva, sans-serif;
+    color: #D90909;
+    font-size: 12px;
+    font-weight: bold;
+    font-style: italic;
+    text-transform: uppercase;
+
 }

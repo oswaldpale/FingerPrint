@@ -40,22 +40,31 @@ namespace webFingerprintGasCaqueta.Report {
         protected global::Ext.Net.Viewport Viewport1;
         
         /// <summary>
-        /// Control MenuPanel1.
+        /// Control MPRINCIPAL.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.MenuPanel MenuPanel1;
+        protected global::Ext.Net.MenuPanel MPRINCIPAL;
         
         /// <summary>
-        /// Control MenuItem1.
+        /// Control MENTSALI.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.MenuItem MenuItem1;
+        protected global::Ext.Net.MenuItem MENTSALI;
+        
+        /// <summary>
+        /// Control MENTPERS.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.MenuItem MENTPERS;
         
         /// <summary>
         /// Control TabPanel1.

@@ -30,7 +30,10 @@ namespace webFingerprintGasCaqueta.Model
                             ON
                                 he.peri_id = p.peri_id
                             WHERE
-                                empl_idempleado = '" + idempleado + "'";
+                                empl_idempleado = '" + idempleado + @"'
+                            AND
+                                hoem_estado = '1' 
+                                ";
             return connection.getDataMariaDB(sql).Tables[0];
         }
         public bool registrarHorarioPeriodoEmpleado(string primarykey,string estado, string idempleado, string periodo, string festivo, string tiemporetardo, string tipohorario, string fechainicio, string fechafin)
@@ -49,7 +52,8 @@ namespace webFingerprintGasCaqueta.Model
                                                 hoem_tiempotarde,
                                                 hoem_tipohorario,
                                                 hoem_fechainicio,
-                                                hoem_fechafin
+                                                hoem_fechafin,
+                                                hoem_fechacreacion
                                             )
                                             VALUES
                                             (
@@ -61,7 +65,8 @@ namespace webFingerprintGasCaqueta.Model
                                                 '" + tiemporetardo + @"' ,
                                                 '" + tipohorario + @"',
                                                 '" + fechainicio + @"',
-                                                '" + fechafin + @"'
+                                                '" + fechafin + @"',
+                                                now() 
                                             )";
 
             return connection.sendSetDataMariaDB(sentencias);
@@ -78,7 +83,8 @@ namespace webFingerprintGasCaqueta.Model
                                                 peri_id,
                                                 hoem_vincularfestivos,
                                                 hoem_tiempotarde,
-                                                hoem_tipohorario
+                                                hoem_tipohorario,
+                                                hoem_fechacreacion
                                             )
                                             VALUES
                                             (
@@ -88,7 +94,8 @@ namespace webFingerprintGasCaqueta.Model
                                                 '" + periodo + @"',
                                                 '" + festivo + @"',
                                                 '" + tiemporetardo + @"' ,
-                                                '" + tipohorario + @"'
+                                                '" + tipohorario + @"',
+                                                now()
                                             )";
 
             return connection.sendSetDataMariaDB(sentencia);
@@ -116,6 +123,22 @@ namespace webFingerprintGasCaqueta.Model
 
             return connection.sendSetDataMariaDB(sentencias);
         }
+
+        public bool inacticarHorarioEmpleado(string codigoEmpleado)
+        {
+            string sql = @"UPDATE
+                                horarioempleado
+                            SET
+                                hoem_estado = 0,
+                                hoem_fechainactivo = now()
+                            WHERE
+                                empl_idempleado = '" + codigoEmpleado + @"'
+                            AND
+                            hoem_estado = '1'";
+
+            return connection.sendSetDataMariaDB(sql);
+        }
+
         public bool modificarHorarioFijoEmpleado(string primarykey, string estado, string idempleado, string periodo, string festivo, string tiemporetardo, string tipohorario)
         {
             string sentencia = @"UPDATE

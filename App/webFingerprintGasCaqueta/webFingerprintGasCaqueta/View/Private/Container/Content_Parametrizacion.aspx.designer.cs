@@ -85,15 +85,6 @@ namespace webFingerprintGasCaqueta.View.Private.Container {
         protected global::Ext.Net.MenuItem MHORARIO;
         
         /// <summary>
-        /// Control MEMPLEADOHORARIO.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.MenuItem MEMPLEADOHORARIO;
-        
-        /// <summary>
         /// Control MCALENDARIO.
         /// </summary>
         /// <remarks>
@@ -112,31 +103,22 @@ namespace webFingerprintGasCaqueta.View.Private.Container {
         protected global::Ext.Net.MenuItem MFESTIVO;
         
         /// <summary>
-        /// Control MINCIPERMISO.
+        /// Control MAREA.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.MenuPanel MINCIPERMISO;
+        protected global::Ext.Net.MenuPanel MAREA;
         
         /// <summary>
-        /// Control MINCIDENCIA.
+        /// Control MDEPENDENCIA.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.MenuItem MINCIDENCIA;
-        
-        /// <summary>
-        /// Control MPERMISO.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.MenuItem MPERMISO;
+        protected global::Ext.Net.MenuItem MDEPENDENCIA;
         
         /// <summary>
         /// Control TDETALLE.

@@ -110,5 +110,37 @@ namespace webFingerprintGasCaqueta.Model
             string sql = "SELECT MAX(peri_id) AS CODIGO FROM periodo;";
             return connection.getDataMariaDB(sql).Tables[0].Rows[0]["CODIGO"].ToString();
         }
+
+        public bool modificarPeriodo(string idperiodo, string descripcion)
+        {
+            string sql = @"UPDATE
+                                periodo
+                            SET
+                                peri_descripcion = '" + descripcion + @"'
+                            WHERE
+                                peri_id = '" + idperiodo + "'";
+            return connection.sendSetDataMariaDB(sql);
+        }
+        public bool eliminarPeriodo(string idperiodo) {
+            List<string> sentencia = new List<string>();
+
+            string sql = @"DELETE
+                        FROM
+                            horariosemanal
+                        WHERE
+                        peri_id = '" + idperiodo + "'";
+
+            sentencia.Add(sql);
+
+            sql = @"DELETE
+                         FROM
+                             periodo
+                         WHERE
+                             peri_id = '" + idperiodo + "'";
+
+            sentencia.Add(sql);
+            
+            return connection.sendSetDataTransaction(sentencia);
+        }
     }
 }

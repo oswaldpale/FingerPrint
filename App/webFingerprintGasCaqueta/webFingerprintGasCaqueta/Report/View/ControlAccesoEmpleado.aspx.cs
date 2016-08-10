@@ -17,18 +17,18 @@ namespace webFingerprintGasCaqueta.Report.View
         protected void Page_Load(object sender, EventArgs e)
         {
             Global.path2 = Request.Url.AbsoluteUri.Substring(0, Request.Url.AbsoluteUri.LastIndexOf("/"));
-            DFECHAINICIO.MaxDate = DateTime.Now;
-            DFECHAFIN.MaxDate = DateTime.Now;
 
         }
-        [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Consultando..", Target = MaskTarget.Page)]
+        [DirectMethod(ShowMask = true, Msg = "Consultando..")]
         public void FiltroAsistencia()
         {
             string sFechaInicio = Convert.ToDateTime(DFECHAINICIO.Text).ToString("yyyy-MM-dd");
             string sFechaFin = Convert.ToDateTime(DFECHAFIN.Text).ToString("yyyy-MM-dd");
             DataTable _DataAsistencia = _Controllers.ListarreporteControlAsitenciasEmpleados(sFechaInicio, sFechaFin);
+
             Session.Remove("DataAsistencia");
             Session["DataAsistencia"] = _DataAsistencia;
+
             SCONTROL.DataSource = _DataAsistencia;
             SCONTROL.DataBind();
         }
@@ -37,7 +37,7 @@ namespace webFingerprintGasCaqueta.Report.View
         public void reporteAsistencia() {
             string sFechaInicio = Convert.ToDateTime(DFECHAINICIO.Text).ToString("yyyy-MM-dd");
             string sFechaFin = Convert.ToDateTime(DFECHAFIN.Text).ToString("yyyy-MM-dd");
-            DataTable _DataAsistencia = (DataTable) Session["DataAsistencia"];
+            DataTable _DataAsistencia = (DataTable)Session["DataAsistencia"];
             _Controllers.ReporteAsistenciaEmpleado(sFechaInicio,sFechaFin, _DataAsistencia);
         }
         [DirectMethod(Namespace = "parametro", ShowMask = true, Msg = "Generando reporte..", Target = MaskTarget.Page)]

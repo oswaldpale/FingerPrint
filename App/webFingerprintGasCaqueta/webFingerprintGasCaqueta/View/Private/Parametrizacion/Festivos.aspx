@@ -20,9 +20,10 @@
                 Ext.Msg.confirm('Confirmación', 'Estas seguro de eliminar el Festivos?',
                 function (btn) {
                     if (btn === 'yes') {
-                        if (parametro.eliminarFestivo(record.data.IDENTIFICACION)) {
+                        if (App.direct.eliminarFestivo(record.data.IDENTIFICACION)) {
+                            App.direct.consultarFestivos();
                             Ext.Msg.notify("Notificación", "Eliminado exitosamente.");
-                            parametro.consultarHorarios();
+                           
                         } else {
                             Ext.Msg.Notify("Notificación","Ha ocurrido un error!..");
                         }
@@ -30,11 +31,29 @@
                 });
             }
         }
+
+        var findFestivo = function (Store, texto, e) {
+            if (e.getKey() == 13) {
+                var store = Store,
+                    text = texto;
+                store.clearFilter();
+                if (Ext.isEmpty(text, false)) {
+                    return;
+                }
+                var re = new RegExp(".*" + text + ".*", "i");
+                store.filterBy(function (node) {
+                    var RESUMEN = node.data.NOMBREFESTIVO + node.data.FECHA;
+                    var a = re.test(RESUMEN);
+                    return a;
+                });
+            }
+        };
     </script>
 </head>
 <body>
+     <form runat="server">
       <ext:ResourceManager ID="ResourceManager1" runat="server" />
-      <form runat="server">
+     
         <div>
             <ext:Viewport ID="VPPRESENTACION" runat="server" Layout="border">
                 <Items>
@@ -46,7 +65,7 @@
                                         <Items>
                                             <ext:TextField ID="TFDIAS" runat="server" EmptyText="Fecha o Nombre para filtrar" Width="400" EnableKeyEvents="true" Icon="Magnifier">
                                                 <Listeners>
-                                                    <KeyPress Handler="findUser(App.GPFESTIVO.store, App.TFDIAS.getValue(), Ext.EventObject);"/>
+                                                    <KeyPress Handler="findFestivo(App.GPFESTIVOS.store, App.TFDIAS.getValue(), Ext.EventObject);"/>
                                                 </Listeners>
                                             </ext:TextField>
                                         </Items>
@@ -138,7 +157,16 @@
                             </ext:Button>
                             <ext:Button runat="server" ID="BGUARDAR" Icon="Add" Text="Guardar" FormBind="true">
                                 <Listeners>
-                                    <Click Handler="if(#{FREGISTRO}.getForm().isValid()) {parametro.registrarFestivo();}else{ return false;}  " />
+                                    <Click Handler="if(#{FREGISTRO}.getForm().isValid()) {
+                                                       if(App.direct.registrarFestivo()){
+                                                            App.direct.consultarFestivos();
+                                                            App.WREGISTRO.hide();
+                                                            App.FREGISTRO.reset();
+                                                            Ext.Msg.notify('Notificación', 'Registrado Exitosamente.');
+                                                       }else{
+                                                          Ext.Msg.notify('Notificación', 'Ha ocurrido un error.');
+                                                       }
+                                                    }else{ return false;}  " />
                                 </Listeners>
                             </ext:Button>
 

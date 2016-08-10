@@ -6,7 +6,7 @@
 <head runat="server">
     <title></title>
     <script type="text/javascript">
-        
+
         var ClickCommand = function (grid, command, record, row) {
             if (command == 'del') {
                 Ext.Msg.confirm('Confirmación', 'Estas seguro de eliminar el Horario?',
@@ -16,29 +16,47 @@
                             Ext.Msg.notify("Notificación", "Eliminado exitosamente.");
                             parametro.consultarHorarios();
                         } else {
-                            Ext.Msg.Notify("Notificación","Ha ocurrido un error!..");
+                            Ext.Msg.Notify("Notificación", "Ha ocurrido un error!..");
                         }
                     }
                 });
             }
         }
+
+        var findHorario = function (Store, texto, e) {
+            if (e.getKey() == 13) {
+                var store = Store,
+                    text = texto;
+                store.clearFilter();
+                if (Ext.isEmpty(text, false)) {
+                    return;
+                }
+                var re = new RegExp(".*" + text + ".*", "i");
+                store.filterBy(function (node) {
+                    var RESUMEN = node.data.NOMBREHORARARIO;
+                    var a = re.test(RESUMEN);
+                    return a;
+                });
+            }
+        };
+
     </script>
 </head>
 <body>
-      <ext:ResourceManager ID="ResourceManager1" runat="server" Locale="es-CO" />
-      <form id="Form1" runat="server">
+    <ext:ResourceManager ID="ResourceManager1" runat="server" Locale="en-US" />
+    <form id="Form1" runat="server">
         <div>
             <ext:Viewport ID="VPPRESENTACION" runat="server" Layout="border">
                 <Items>
                     <ext:Panel ID="PPRESENTACION" runat="server" Layout="Fit" Region="Center" Padding="5" Frame="true" Border="true">
                         <Items>
-                            <ext:GridPanel ID="GPHORARIO" runat="server" AutoDataBind="true" Frame="true" Border="true" >
+                            <ext:GridPanel ID="GPHORARIO" runat="server" AutoDataBind="true" Frame="true" Border="true">
                                 <TopBar>
                                     <ext:Toolbar ID="Toolbar1" runat="server">
                                         <Items>
-                                            <ext:TextField ID="TFHORARIO" runat="server" EmptyText="Nombre para buscar" Width="400" EnableKeyEvents="true" Icon="Magnifier">
+                                            <ext:TextField ID="TFHORARIO" runat="server" EmptyText="Filtrar por nombre de la franja" Width="400" EnableKeyEvents="true" Icon="Magnifier">
                                                 <Listeners>
-                                                    <KeyPress Handler="findUser(App.GPHORARIO.store, App.TFHORARIO.getValue(), Ext.EventObject);"/>
+                                                    <KeyPress Handler="findHorario(App.GPHORARIO.store, App.TFHORARIO.getValue(), Ext.EventObject);" />
                                                 </Listeners>
                                             </ext:TextField>
                                         </Items>
@@ -57,7 +75,7 @@
                                                 </Fields>
                                             </ext:Model>
                                         </Model>
-                                                                                        
+
                                     </ext:Store>
                                 </Store>
                                 <ColumnModel>
@@ -73,16 +91,16 @@
                                                 <ext:TextField ID="TextField2" runat="server" />
                                             </Editor>
                                         </ext:Column>
-                                         <ext:Column ID="Column3" ColumnID="CHORA_FIN" runat="server" DataIndex="HORA_FIN" Header="HORA FIN" Flex="1">
+                                        <ext:Column ID="Column3" ColumnID="CHORA_FIN" runat="server" DataIndex="HORA_FIN" Header="HORA FIN" Flex="1">
                                             <Editor>
                                                 <ext:TextField ID="TextField3" runat="server" />
                                             </Editor>
-                                        </ext:Column>  
-                                         <ext:Column ID="Column4" ColumnID="CTIEMPO_TARDE" runat="server" DataIndex="TIEMPO_TARDE" Header="TIEMPO TARDE(min)" Width="180">
+                                        </ext:Column>
+                                        <ext:Column ID="Column4" ColumnID="CTIEMPO_TARDE" runat="server" DataIndex="TIEMPO_TARDE" Header="TIEMPO TARDE(min)" Width="180">
                                             <Editor>
                                                 <ext:TextField ID="TextField4" runat="server" />
                                             </Editor>
-                                         </ext:Column>
+                                        </ext:Column>
                                         <ext:CommandColumn runat="server" Width="30">
                                             <Commands>
                                                 <ext:GridCommand Icon="Delete" CommandName="del">
@@ -92,7 +110,7 @@
                                             <Listeners>
                                                 <Command Fn="ClickCommand" />
                                             </Listeners>
-                                        </ext:CommandColumn>                                   
+                                        </ext:CommandColumn>
                                     </Columns>
                                 </ColumnModel>
 
@@ -113,19 +131,23 @@
                     </ext:Panel>
                 </Items>
             </ext:Viewport>
-
-            <ext:Window ID="WREGISTRO" runat="server" Draggable="false" Resizable="true"  Width="300" Icon="Calendar" Title="Nueva Horario" Hidden="true" Modal="true">
+            
+            <ext:Window ID="WREGISTRO" runat="server" Draggable="false" Resizable="true" Width="300" Icon="Calendar" Title="Nueva Horario" Hidden="true" Modal="true">
                 <Items>
                     <ext:FormPanel runat="server" ID="FREGISTRO" Padding="5" Layout="ColumnLayout">
-                    <Items>
-                        <ext:Panel ID="Panel1" runat="server"  DefaultWidth="280">
                         <Items>
-                            <ext:TextField ID="TNOMBRE" FieldLabel="Nombre:"  runat="server" Flex="1"  AllowBlank="false" />
-                            <ext:TimeField   ID="THINICIO"  runat="server" FieldLabel="Hora Inicio:"  Increment="30"  Format="hh:mm tt"   />
-                            <ext:TimeField   ID="THFIN"  runat="server" FieldLabel="Hora Fin:"  Increment="30"  Format="hh:mm tt"   />
-                            <ext:TextField ID="TTIEMPOTARDE" FieldLabel="Tiempo Tarde(min):"  MaskRe="[0-9]" runat="server" Flex="1"  AllowBlank="false" />
-                        </Items>
-                        </ext:Panel>
+                            <ext:Panel ID="Panel1" runat="server" DefaultWidth="280">
+                                <Items>
+                                    <ext:TextField ID="TNOMBRE" FieldLabel="Nombre:" runat="server" Flex="1" AllowBlank="false" />
+                                    <ext:TimeField ID="THINICIO" runat="server" FieldLabel="Hora Inicio:" Increment="30"  Format="hh:mm tt" MinTime="04:00" >
+                                         <Listeners>
+                                            <Select Handler="App.THFIN.setMinValue(App.THINICIO.getValue());App.THFIN.renderData;" />
+                                        </Listeners>
+                                    </ext:TimeField>
+                                    <ext:TimeField ID="THFIN" runat="server" FieldLabel="Hora Fin:" Increment="30" Format="hh:mm tt" />
+                                    <ext:TextField ID="TTIEMPOTARDE" FieldLabel="Tiempo Tarde(min):" MaskRe="[0-9]" runat="server" Flex="1" AllowBlank="false" />
+                                </Items>
+                            </ext:Panel>
                         </Items>
                         <Listeners>
                             <ValidityChange Handler="#{BGUARDAR}.setDisabled(!valid);" />
@@ -136,7 +158,7 @@
                     <ext:Toolbar ID="Toolbar3" runat="server">
                         <Items>
                             <ext:ToolbarFill />
-                               <ext:Button ID="BCANCELAR" runat="server"  Text="Cancelar" >
+                            <ext:Button ID="BCANCELAR" runat="server" Text="Cancelar">
                                 <Listeners>
                                     <Click Handler="App.FREGISTRO.reset();App.WREGISTRO.hide();" />
                                 </Listeners>

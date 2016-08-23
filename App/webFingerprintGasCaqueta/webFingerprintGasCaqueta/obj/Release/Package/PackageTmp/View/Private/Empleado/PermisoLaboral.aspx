@@ -27,20 +27,20 @@
         };
 
         var findPermiso = function (Store, texto, e) {
-            if (e.getKey() == 13) {
-                var store = Store,
-                    text = texto;
-                store.clearFilter();
-                if (Ext.isEmpty(text, false)) {
-                    return;
-                }
-                var re = new RegExp(".*" + text + ".*", "i");
-                store.filterBy(function (node) {
-                    var RESUMEN = node.data.NOMBRE + node.data.PERMISO + node.data.CODEMPLEADO + node.data.TIPO;
-                    var a = re.test(RESUMEN);
-                    return a;
-                });
+
+            var store = Store,
+                text = texto;
+            store.clearFilter();
+            if (Ext.isEmpty(text, false)) {
+                return;
             }
+            var re = new RegExp(".*" + text + ".*", "i");
+            store.filterBy(function (node) {
+                var RESUMEN = node.data.NOMBRE + node.data.PERMISO + node.data.CODEMPLEADO + node.data.TIPO;
+                var a = re.test(RESUMEN);
+                return a;
+            });
+
         };
 
         var registrarPermiso = function () {
@@ -139,7 +139,7 @@
                                         <ext:Column ID="Column10" ColumnID="CFECHAHORA" runat="server" DataIndex="FECHAHORA" Header="FECHA HORA" Width="110" />
                                         <ext:Column ID="Column7" ColumnID="CHORAINICIO" runat="server" DataIndex="HORAINICIO" Header="HORA INICIO" Width="110" />
                                         <ext:Column ID="Column8" ColumnID="CHORAFIN" runat="server" DataIndex="HORAFIN" Header="HORA FIN" Width="110" />
-                                        <ext:Column ID="Column6" ColumnID="COBSERVACION" runat="server" DataIndex="DESCRIPCION" Header="OBSERVACIÓN" Flex="1" />
+                                        <ext:Column ID="Column6" ColumnID="COBSERVACION" runat="server" DataIndex="DESCRIPCION" Header="OBSERVACIÓN" Width="300" />
 
                                         <ext:CommandColumn ID="CommandColumn1" runat="server" Width="60">
                                             <Commands>

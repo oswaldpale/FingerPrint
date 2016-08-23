@@ -15,7 +15,27 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            cargarDependencia();
+            cargarCargosFuncionario();
+            cargarMunicipio();
+            cargarCentroCosto();
+        }
+
+        public void cargarDependencia() {
+            SDEPENDENCIA.DataSource = _controller.consultarArea();
+            SDEPENDENCIA.DataBind();
+        }
+        public void cargarCargosFuncionario() {
+            SCARGO.DataSource = _controller.consultarTipoEmpleado();
+            SCARGO.DataBind();
+        }
+        public void  cargarCentroCosto() {
+            SCENTROCOSTO.DataSource = _controller.consultarCargo();
+            SCENTROCOSTO.DataBind();
+        }
+        public void cargarMunicipio() {
+            SMUNICIPIO.DataSource = _controller.consultarMunicipio();
+            SMUNICIPIO.DataBind();
         }
 
         [DirectMethod]

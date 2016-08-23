@@ -84,7 +84,7 @@ namespace WindowsFormsApplication1
             pPersona.vinculacion = Convert.ToInt32(cBoxVinculacion.SelectedValue);   
             pPersona.Huella1 = capturahuella.Obtenerhuella1();
             pPersona.Huella2 = capturahuella.Obtenerhuella2();
-          //  pPersona.Foto = cam.ObtenerFoto();
+            pPersona.Foto = cam.ObtenerFoto();
             int resultado = PersonaDAL.AgregarPersona(pPersona);
             if (resultado > 0)
             {

@@ -4,6 +4,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <style type="text/css">
+        /**/
+        #unlicensed {
+            display: none !important;
+        }
+    </style>
     <title></title>
     <style type="text/css">
 

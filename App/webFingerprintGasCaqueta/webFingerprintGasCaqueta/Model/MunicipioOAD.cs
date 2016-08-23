@@ -7,16 +7,16 @@ using System.Web;
 
 namespace webFingerprintGasCaqueta.Model
 {
-    public class SemanaOAD
+    public class MunicipioOAD
     {
         private Conexion connection = new Conexion();
-        public DataTable consultarSemana()
-        {
+       
+        public DataTable consultarMunicipio() {
             string sql = @"SELECT
-                            sema_id AS ID,
-                            sema_dia AS DIA
+                            Cod_Muni AS CODIGO,
+                            Municipio AS DESTINO
                         FROM
-                            semana";
+                            sigc972008.municipio";
             return connection.getDataMariaDB(sql).Tables[0];
         }
     }

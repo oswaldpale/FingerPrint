@@ -5,7 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+         <style type="text/css">
+      /**/
+      #unlicensed{
+	        display: none !important;
+      }
+	 </style>
+    <title> REPORTE CONTROL EMPLEADOS</title>
     <style>
         .x-grid-body .x-grid-cell-CIDENTIFICACION {
             background-color : #f1f2f4;
@@ -142,7 +148,7 @@
                             <Items>
                                 <ext:Container runat="server" >
                                     <Items>
-                                        <ext:GridPanel ID="GCONTROL" runat="server"  Height="500" Border="true" Width="1100" Frame="true"  >
+                                        <ext:GridPanel ID="GCONTROL" runat="server"  Height="500" Border="true" Width="1130" Frame="true"  >
                                             <TopBar>
                                                 <ext:Toolbar runat="server">
                                                     <Items>
@@ -182,25 +188,25 @@
                                             <ColumnModel>
                                                 <Columns>
                                                      <ext:RowNumbererColumn runat="server" />
-                                                     <ext:Column ID="CIDENTIFICACION" runat="server" DataIndex="IDENTIFICACION" Text="IDENTIFICACIÓN" Align="Left" Width="150"  SummaryType="Count" >
+                                                     <ext:Column ID="CIDENTIFICACION" runat="server" DataIndex="IDENTIFICACION" Text="IDENTIFICACIÓN" Align="Left" Width="130"  SummaryType="Count" >
                                                            <SummaryRenderer Handler="return ((value === 0 || value > 1) ? '(' + value +' FILAS)' : '(1 FILAS)');" />
                                                      </ext:Column>
-                                                     <ext:Column ID="CEMPLEADO" runat="server" DataIndex="EMPLEADO" Text="EMPLEADO" Align="Left" Width="350" >
+                                                     <ext:Column ID="CEMPLEADO" runat="server" DataIndex="EMPLEADO" Text="EMPLEADO" Align="Left" Width="300" >
                                                            <SummaryRenderer Handler="return '&nbsp;';" />
                                                      </ext:Column>
-                                                    <ext:Column ID="Column1" runat="server" DataIndex="CARGO" Text="CARGO" Align="Left" Width="250" >
+                                                    <ext:Column ID="Column1" runat="server" DataIndex="CARGO" Text="CARGO" Align="Left" Width="200" >
                                                            <SummaryRenderer Handler="return '&nbsp;';" />
                                                      </ext:Column>
-                                                     <ext:Column ID="CFECHA" runat="server" DataIndex="FECHA" Text="FECHA" Align="Left" Width="130" >
+                                                     <ext:Column ID="CFECHA" runat="server" DataIndex="FECHA" Text="FECHA" Align="Left" Width="110" >
                                                           <SummaryRenderer Handler="return '&nbsp;';" />
                                                     </ext:Column>
-                                                     <ext:Column ID="CHORAINICIO" runat="server" DataIndex="HORAINICIO" Text="HORA INGRESO" Align="Left" Width="140">
+                                                     <ext:Column ID="CHORAINICIO" runat="server" DataIndex="HORAINICIO" Text="HORA INGRESO" Align="Left" Width="130">
                                                            <SummaryRenderer Handler="return '&nbsp;';" />
                                                      </ext:Column>
-                                                     <ext:Column ID="CHORAFIN" runat="server" DataIndex="HORAFIN" Text="HORA SALIDA" Align="Left" Width="140">
+                                                     <ext:Column ID="CHORAFIN" runat="server" DataIndex="HORAFIN" Text="HORA SALIDA" Align="Left" Width="120">
                                                            <SummaryRenderer Handler="return '&nbsp;';" />
                                                       </ext:Column>
-                                                     <ext:Column ID="CDURACION" runat="server" DataIndex="DURACION" Text="DURACIÓN" Align="Left" Flex="1" CustomSummaryType="TotalHoras">
+                                                     <ext:Column ID="CDURACION" runat="server" DataIndex="DURACION" Text="DURACIÓN" Align="Left" Width="110" CustomSummaryType="TotalHoras">
                                                         <SummaryRenderer Handler="return value + '';" />
                                                      </ext:Column>
                                                 </Columns>

@@ -22,6 +22,14 @@ namespace webFingerprintGasCaqueta.Controller
         private HorarioEmpleado horarioempleado = new HorarioEmpleado();
         private PermisoOAD permiso = new  PermisoOAD();
         private AreaTrabajoOAD area = new AreaTrabajoOAD();
+        private TipoEmpleadoOAD tipoempleado= new TipoEmpleadoOAD();
+
+        
+
+        private MunicipioOAD municipio = new MunicipioOAD();
+        private CargoOAD cargo = new CargoOAD();
+
+        
 
         #region GESTION DE HUELLA
         public DataTable consultarHuellaPorUsuario(string filtroUsuario)
@@ -30,6 +38,8 @@ namespace webFingerprintGasCaqueta.Controller
         }
 
         
+
+
 
         /// <summary>
         /// Eliminar la huella de un visitante
@@ -41,6 +51,9 @@ namespace webFingerprintGasCaqueta.Controller
         {
             return huella.eliminarHuellaVisitante(identificacion,dedo);
         }
+
+       
+
         public bool consultarEstadoHuella(string identificacion, string dedo) {
             return huella.consultarEstadoHuella(identificacion, dedo);
         }
@@ -63,6 +76,7 @@ namespace webFingerprintGasCaqueta.Controller
         {
             return huella.eliminarHuellaEmpleado(identificacion, dedo);
         }
+
         #endregion
         #region GESTIONAR CIRCULACIÓN
         public DataTable consultarInformacionUsuario(string identificacion)
@@ -131,6 +145,23 @@ namespace webFingerprintGasCaqueta.Controller
         public DataTable consultarEmpleadosHorarios() {
             return empleado.consultarEmpleadosHorarios();
         }
+        public string consultarRutaFotoFuncionario(string identificacion)
+        {
+           DataTable dt = empleado.consultarRutaFotoEmpleado(identificacion);
+            if (dt.Rows.Count > 0) {
+                return dt.Rows[0]["FOTO"].ToString();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public bool ActualizarFotoFuncionario(string identificacion, string cadenaFoto) {
+            return empleado.ActualizarFotoFuncionario(identificacion,cadenaFoto); 
+        }
+
+
         #endregion
         #region GESTIONAR PERIODO HORARIO
         public DataTable consultarHorariosPorPeriodo(string periodo) {
@@ -183,8 +214,8 @@ namespace webFingerprintGasCaqueta.Controller
         }
         #endregion
         #region GESTIONAR VISITANTE
-        public bool registrarVisitante(string identificacion, string nombre, string apellido1, string apellido2, string observacion, string foto) {
-            return visitante.registrarVisitante(identificacion,nombre,apellido1,apellido2,observacion,foto);
+        public bool registrarVisitante(string identificacion, string nombre, string apellido1, string apellido2, string telefono,string direccion, string foto) {
+            return visitante.registrarVisitante(identificacion,nombre,apellido1,apellido2, telefono, direccion,foto);
         }
         public DataTable consultarVisitantes() {
             return visitante.consultarVisitantes();
@@ -192,6 +223,31 @@ namespace webFingerprintGasCaqueta.Controller
         public bool consultarSiExisteVisitante(string identficacion) {
             return visitante.consultarSiExisteVisitante(identficacion);
         }
+
+        public bool modificarVisitante(string tidentificacion, string tnombre, string tapellido1, string tapellido2, string ttelefono, string tdireccion, string tfoto)
+        {
+            return visitante.modificarvisitante(tidentificacion,tnombre,tapellido1,tapellido2,ttelefono,tdireccion,tfoto);
+        }
+
+        public bool guardarFotoVisitante(string identficacion,string base64Foto)
+        {
+            return visitante.guardarFotoVisitante(identficacion,base64Foto);
+        }
+
+        public string consultarRutaFotoVisitante(string identificacion)
+        {
+            DataTable dt =  visitante.consultarRutaFotoVisitante(identificacion);
+            if (dt.Rows.Count > 0)
+            {
+                return dt.Rows[0]["FOTO"].ToString();
+            }
+            else
+            {
+                return null;
+            }
+            
+        }
+
         #endregion
         #region GESTIONAR FESTIVOS
         public DataTable consultarFestivos() {
@@ -274,5 +330,21 @@ namespace webFingerprintGasCaqueta.Controller
 
         #endregion
 
+        #region GESTIONAR CARGO FUNCIONARIO
+        public DataTable consultarTipoEmpleado() {
+            return tipoempleado.consultarTipoEmpleado();
+        }
+        #endregion
+
+        #region GESTIONAR MUNICIPIO
+        public DataTable consultarMunicipio() {
+            return municipio.consultarMunicipio();
+        }
+        #endregion
+        #region GESTIONAR CARGO
+        public DataTable consultarCargo() {
+            return cargo.consultarCargo();
+        }
+        #endregion
     }
 }

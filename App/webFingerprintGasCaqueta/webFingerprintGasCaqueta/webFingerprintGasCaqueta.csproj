@@ -125,7 +125,6 @@
     <Content Include="Content\js\scriptcam.js" />
     <Content Include="Content\js\scriptcam.swf" />
     <Content Include="Content\js\swfobject.js" />
-    <Content Include="Ext.NET.Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Install\publish.htm" />
     <Content Include="Install\setup.exe" />
@@ -157,6 +156,8 @@
     <Compile Include="Controller\ControllerReportCOD.cs" />
     <Compile Include="Controller\ControllersCOD.cs" />
     <Compile Include="Model\AreaTrabajoOAD.cs" />
+    <Compile Include="Model\CargoOAD.cs" />
+    <Compile Include="Model\TipoEmpleadoOAD.cs" />
     <Compile Include="Model\CirculacionOAD.cs" />
     <Compile Include="Model\EmpleadoOAD.cs" />
     <Compile Include="Model\FestivosOAD.cs" />
@@ -164,11 +165,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="bin\Conexion.cs" />
+    <Compile Include="Connections\Conexion.cs" />
     <Compile Include="Model\HorarioEmpleado.cs" />
     <Compile Include="Model\HorarioOAD.cs" />
     <Compile Include="Model\HorarioSemanaOAD.cs" />
     <Compile Include="Model\HuellaOAD.cs" />
+    <Compile Include="Model\MunicipioOAD.cs" />
     <Compile Include="Model\PeriodoOAD.cs" />
     <Compile Include="Model\PermisoOAD.cs" />
     <Compile Include="Model\ReporteOAD.cs" />
@@ -312,7 +314,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Connections\" />
+    <Folder Include="bin\" />
     <Folder Include="Report\Repository\" />
     <Folder Include="View\Reportes\" />
   </ItemGroup>

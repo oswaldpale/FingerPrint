@@ -58,15 +58,6 @@ namespace webFingerprintGasCaqueta.View.Private.Visitante {
         protected global::Ext.Net.TextField TIDENTIFICACION;
         
         /// <summary>
-        /// Control TNOMBRE.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.TextField TNOMBRE;
-        
-        /// <summary>
         /// Control TAPELLIDO1.
         /// </summary>
         /// <remarks>
@@ -74,6 +65,24 @@ namespace webFingerprintGasCaqueta.View.Private.Visitante {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.TextField TAPELLIDO1;
+        
+        /// <summary>
+        /// Control TDIRECCIÓN.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField TDIRECCIÓN;
+        
+        /// <summary>
+        /// Control TNOMBRE.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.TextField TNOMBRE;
         
         /// <summary>
         /// Control TAPELLIDO2.
@@ -85,13 +94,40 @@ namespace webFingerprintGasCaqueta.View.Private.Visitante {
         protected global::Ext.Net.TextField TAPELLIDO2;
         
         /// <summary>
-        /// Control TOBSERVACIÓN.
+        /// Control TTELEFONO.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.TextArea TOBSERVACIÓN;
+        protected global::Ext.Net.TextField TTELEFONO;
+        
+        /// <summary>
+        /// Control BNUEVO.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Button BNUEVO;
+        
+        /// <summary>
+        /// Control BACTUALIZAR.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Button BACTUALIZAR;
+        
+        /// <summary>
+        /// Control BGUARDAR.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Button BGUARDAR;
         
         /// <summary>
         /// Control IMPERFIL.
@@ -110,33 +146,6 @@ namespace webFingerprintGasCaqueta.View.Private.Visitante {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Ext.Net.Button BFOTO;
-        
-        /// <summary>
-        /// Control BNUEVO.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Button BNUEVO;
-        
-        /// <summary>
-        /// Control Button1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Button Button1;
-        
-        /// <summary>
-        /// Control Button2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Button Button2;
         
         /// <summary>
         /// Control PPRESENTACION.
@@ -184,30 +193,12 @@ namespace webFingerprintGasCaqueta.View.Private.Visitante {
         protected global::Ext.Net.Column CIDENTIFICACION;
         
         /// <summary>
-        /// Control WREGISTRO.
+        /// Control RSELECT.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Ext.Net.Window WREGISTRO;
-        
-        /// <summary>
-        /// Control BCANCELAR.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Button BCANCELAR;
-        
-        /// <summary>
-        /// Control BGUARDAR.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Ext.Net.Button BGUARDAR;
+        protected global::Ext.Net.RowSelectionModel RSELECT;
     }
 }

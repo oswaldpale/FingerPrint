@@ -5,6 +5,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+         <style type="text/css">
+      /**/
+      #unlicensed{
+	        display: none !important;
+      }
+	 </style>
     <title>PERMISO LABORAL </title>
     <script type="text/javascript">
 
@@ -27,20 +33,20 @@
         };
 
         var findPermiso = function (Store, texto, e) {
-            if (e.getKey() == 13) {
-                var store = Store,
-                    text = texto;
-                store.clearFilter();
-                if (Ext.isEmpty(text, false)) {
-                    return;
-                }
-                var re = new RegExp(".*" + text + ".*", "i");
-                store.filterBy(function (node) {
-                    var RESUMEN = node.data.NOMBRE + node.data.PERMISO + node.data.CODEMPLEADO + node.data.TIPO;
-                    var a = re.test(RESUMEN);
-                    return a;
-                });
+
+            var store = Store,
+                text = texto;
+            store.clearFilter();
+            if (Ext.isEmpty(text, false)) {
+                return;
             }
+            var re = new RegExp(".*" + text + ".*", "i");
+            store.filterBy(function (node) {
+                var RESUMEN = node.data.NOMBRE + node.data.PERMISO + node.data.CODEMPLEADO + node.data.TIPO;
+                var a = re.test(RESUMEN);
+                return a;
+            });
+
         };
 
         var registrarPermiso = function () {

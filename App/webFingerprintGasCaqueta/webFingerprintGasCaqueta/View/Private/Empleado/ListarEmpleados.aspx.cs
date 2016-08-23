@@ -38,8 +38,8 @@ namespace webFingerprintGasCaqueta.View.Private.Empleado
             {
                 ID = "WCAPTURAHUELLA",
                 Title = "REGISTRO DE HUELLA: " + TipoHuella.ToUpper(),
-                Height = 370,
-                Width = 300,
+                Height = 386,
+                Width = 290,
                 Modal = true,
                 CloseAction = CloseAction.Destroy,
                 Loader = new ComponentLoader

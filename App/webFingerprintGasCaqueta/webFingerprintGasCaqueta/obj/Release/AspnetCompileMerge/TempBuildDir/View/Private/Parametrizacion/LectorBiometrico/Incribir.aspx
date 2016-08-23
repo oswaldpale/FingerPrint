@@ -81,7 +81,7 @@
 </head>
 <body>
     <form id="form1" runat="server" >
-        <ext:ResourceManager ID="ResourceManager2" Theme="Gray" runat="server" />
+        <ext:ResourceManager ID="ResourceManager2" Theme="Crisp" runat="server" />
         <ext:Hidden ID="HDEDO" runat="server" />
         <ext:Hidden ID="HIDENTIFICACION" runat="server" />
         <ext:Viewport runat="server" >
@@ -90,12 +90,12 @@
             </LayoutConfig>
             <Items>
 
-                <ext:FormPanel ID="FCAPTURA" runat="server" BodyPadding="8" AutoScroll="true"  Weight="280">
+                <ext:FormPanel ID="FCAPTURA" runat="server" BodyPadding="2" AutoScroll="true"  Weight="280" UI="Info" Frame="true">
                     <FieldDefaults LabelAlign="Right" LabelWidth="115" MsgTarget="Side" />
                     <Items>
-                        <ext:Panel runat="server" Border="true" Width="280" >
+                        <ext:Panel runat="server"  Width="280" >
                             <Items>
-                                <ext:Panel runat="server" Border="false" Layout="CenterLayout" Height="200" BodyPadding="20">
+                                <ext:Panel runat="server" Border="false" Layout="CenterLayout" Height="200" BodyPadding="20" Frame="true">
                                     <Content>
                                         <ext:Image ID="IMDACTILAR" runat="server" ImageUrl="../../../../Content/images/SinHuella.png"  Width="200px" Height="170px">
                                         </ext:Image>
@@ -104,9 +104,9 @@
                                 </ext:Panel>
                             </Items>
                         </ext:Panel>
-                        <ext:Panel runat="server" Border="false" Height="70" Layout="FormLayout" Width="280"  >
+                        <ext:Panel runat="server" Border="false" Height="80" Layout="FormLayout" Width="281" BorderSpec="1 0 0 0" UI="Info"  >
                             <Items>
-                                <ext:TextArea runat="server"  ID="TBIOMETRICOESTADO" Border="false" Height="10"  EmptyText="Estado del Lector.." ReadOnly="true" />
+                                <ext:TextArea runat="server"  ID="TBIOMETRICOESTADO"  Height="10" Width="270"  EmptyText="Estado del Lector.." ReadOnly="true" />
                             </Items>
                         </ext:Panel>
                     </Items>

@@ -4,11 +4,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title>FUNCIONARIO</title>
-
-    <link href="../Estilos/extjs-extension.css" rel="stylesheet" />
-    <script src="http://gascaqueta.net/sigcweb/scripts/extjs-extension.js">
-    </script>
-
     <style type="text/css">
         /**/
         #unlicensed {
@@ -39,13 +34,83 @@
             return r.data.municipio;
         };
 
+        var findDependencia = function (Store, texto, e) {
+
+            var store = Store,
+                    text = texto;
+            store.clearFilter();
+            if (Ext.isEmpty(text, false)) {
+                return;
+            }
+            var re = new RegExp(".*" + text + ".*", "i");
+            store.filterBy(function (node) {
+                var RESUMEN = node.data.CODIGO + node.data.AREA + node.data.EXT;
+                var a = re.test(RESUMEN);
+                return a;
+            });
+
+        };
+
+        var findCentrocosto = function (Store, texto, e) {
+
+            var store = Store,
+                    text = texto;
+            store.clearFilter();
+            if (Ext.isEmpty(text, false)) {
+                return;
+            }
+            var re = new RegExp(".*" + text + ".*", "i");
+            store.filterBy(function (node) {
+                var RESUMEN = node.data.CODIGO + node.data.CENTROCOSTO;
+                var a = re.test(RESUMEN);
+                return a;
+            });
+
+        };
+
+        var findMunicipio = function (Store, texto, e) {
+
+            var store = Store,
+                    text = texto;
+            store.clearFilter();
+            if (Ext.isEmpty(text, false)) {
+                return;
+            }
+            var re = new RegExp(".*" + text + ".*", "i");
+            store.filterBy(function (node) {
+                var RESUMEN = node.data.CODIGO + node.data.DESTINO;
+                var a = re.test(RESUMEN);
+                return a;
+            });
+
+        };
+
+        var findCargo = function (Store, texto, e) {
+
+            var store = Store,
+                    text = texto;
+            store.clearFilter();
+            if (Ext.isEmpty(text, false)) {
+                return;
+            }
+            var re = new RegExp(".*" + text + ".*", "i");
+            store.filterBy(function (node) {
+                var RESUMEN = node.data.CODIGO + node.data.CARGO;
+                var a = re.test(RESUMEN);
+                return a;
+            });
+
+        };
+
     </script>
 </head>
 <body>
     <form id="form1" runat="server">
         <ext:ResourceManager ID="ResourceManager1" runat="server" Theme="Crisp" />
-        <ext:Hidden ID="idcosto" runat="server" />
-        <ext:Hidden ID="idempleado" runat="server" Name="idempleado" />
+        <ext:Hidden ID="HCARGO" runat="server" />
+        <ext:Hidden ID="HCODDEP" runat="server" />
+        <ext:Hidden ID="HMUNICIPIO" runat="server" />
+        <ext:Hidden ID="HCENTROCOSTO" runat="server" />
 
 
         <ext:Viewport ID="Viewport1" runat="server">
@@ -53,7 +118,7 @@
                 <ext:VBoxLayoutConfig Align="Center" Pack="Center" />
             </LayoutConfig>
             <Items>
-                <ext:FormPanel ID="FPRINCIPAL" runat="server" Width="1000" Height="650" TitleAlign="Center" BodyPadding="10" Icon="User" Title="Funcionario" UI="Info" Border="true">
+                <ext:FormPanel ID="FPRINCIPAL" runat="server" Width="1020" Height="650" TitleAlign="Center" BodyPadding="10" Icon="User" Title="Funcionario" UI="Info" Border="true">
                     <FieldDefaults LabelAlign="Top" LabelWidth="100" />
                     <Defaults>
                         <ext:Parameter Name="margin" Value="0 0 10 0" Mode="Value" />
@@ -63,7 +128,7 @@
                             <Items>
                                 <ext:Panel runat="server" Layout="HBoxLayout">
                                     <Items>
-                                        <ext:Panel runat="server" Region="Center" Padding="10" ButtonAlign="Center" Width="780" >
+                                        <ext:Panel runat="server" Region="Center" Padding="10" ButtonAlign="Center" Width="800">
                                             <Items>
                                                 <ext:Container runat="server" Layout="HBoxLayout">
                                                     <Items>
@@ -105,55 +170,265 @@
                                                         <ext:TextField ID="TCELULAR" runat="server" Width="90" Disabled="false" MaskRe="/[0-9]/" MarginSpec="0 3 0 0" FieldLabel="Celular" />
                                                         <ext:TextField ID="TTELEFONO" runat="server" Width="90" Disabled="false" MaskRe="/[0-9]/" MarginSpec="0 3 0 0" FieldLabel="Telefono" />
                                                         <ext:TextField ID="TDIRECCION" runat="server" Flex="2" MarginSpec="0 3 0 0" AllowBlank="true" FieldLabel="Dirección" />
-                                                        <ext:TextField ID="CEPS" runat="server" Flex="2" MarginSpec="0 3 0 0" AllowBlank="true" FieldLabel="EPS" />
-                                                        <ext:TextField ID="CARP" runat="server" Flex="2" MarginSpec="0 3 0 0" AllowBlank="true" FieldLabel="ARP" />
+                                                        <ext:DropDownField runat="server" ID="DDMUNICIPIO" FieldLabel="MUNICIPIO" MarginSpec="0 3 0 0" >
+                                                            <Listeners>
+                                                                <Expand Handler="this.picker.setWidth(350);" />
+                                                            </Listeners>
+                                                            <Listeners>
+                                                                <IconClick Handler="this.picker.setWidth(350);" />
+                                                            </Listeners>
+                                                            <Component>
+                                                                <ext:GridPanel ID="GDMUNICIPIO" runat="server" ForceFit="true" Padding="4" Height="350" Frame="true" UI="Info">
+                                                                    <TopBar>
+                                                                        <ext:Toolbar runat="server">
+                                                                            <Items>
+                                                                                <ext:TextField ID="TFMUNICIPIO" runat="server" EmptyText="codigo o municipio para filtrar" Width="380" EnableKeyEvents="true" Icon="Magnifier" ClearCls="true">
+                                                                                    <Listeners>
+                                                                                        <KeyPress Handler="findMunicipio(App.GDMUNICIPIO.store, App.TFMUNICIPIO.getValue(), Ext.EventObject);" Buffer="200" />
+                                                                                    </Listeners>
+                                                                                    <Plugins>
+                                                                                        <ext:ClearButton runat="server">
+                                                                                            <Listeners>
+                                                                                                <Clear Handler="var store = App.GDMUNICIPIO.store; store.clearFilter();" />
+                                                                                            </Listeners>
+                                                                                        </ext:ClearButton>
+                                                                                    </Plugins>
+                                                                                    <ToolTips>
+                                                                                        <ext:ToolTip runat="server" Title="Presionar enter para buscar" Width="200" />
+                                                                                    </ToolTips>
+                                                                                </ext:TextField>
+                                                                            </Items>
+                                                                        </ext:Toolbar>
+                                                                    </TopBar>
+                                                                    <Store>
+                                                                        <ext:Store ID="SMUNICIPIO" runat="server" PageSize="10">
+                                                                            <Model>
+                                                                                <ext:Model runat="server">
+                                                                                    <Fields>
+                                                                                        <ext:ModelField Name="CODIGO" />
+                                                                                        <ext:ModelField Name="DESTINO" />
+                                                                                    </Fields>
+                                                                                </ext:Model>
+                                                                            </Model>
+                                                                        </ext:Store>
+                                                                    </Store>
+                                                                    <ColumnModel>
+                                                                        <Columns>
+                                                                            <ext:Column runat="server" DataIndex="CODIGO" Header="DESTINO" Width="100" />
+                                                                            <ext:Column runat="server" DataIndex="DESTINO" Header="DESTINO" Width="250" />
+                                                                        </Columns>
+                                                                    </ColumnModel>
+                                                                    <SelectionModel>
+                                                                        <ext:RowSelectionModel runat="server" Mode="Single" />
+                                                                    </SelectionModel>
+                                                                    <Listeners>
+                                                                        <RowDblClick Handler="App.HMUNICIPIO.setValue(record.get('CODIGO')); App.DDMUNICIPIO.setValue(record.get('DESTINO'));App.SMUNICIPIO.clearFilter();App.TFMUNICIPIO.clear();" />
+                                                                    </Listeners>
+                                                                </ext:GridPanel>
+                                                            </Component>
+                                                        </ext:DropDownField>
+                                                        <ext:TextField ID="CEPS" runat="server" Flex="1" MarginSpec="0 3 0 0" AllowBlank="true" ReadOnly="true" FieldLabel="EPS" />
+                                                        <ext:TextField ID="CARP" runat="server" Flex="1" MarginSpec="0 3 0 0" AllowBlank="true" ReadOnly="true" FieldLabel="ARP" />
                                                     </Items>
                                                 </ext:FieldContainer>
                                                 <ext:FieldContainer runat="server" Layout="HBoxLayout">
                                                     <Items>
                                                         <ext:TextField ID="TextField1" runat="server" Width="90" Disabled="false" MaskRe="/[0-9]/" MarginSpec="0 3 0 0" FieldLabel="Celular" />
-                                                        <ext:TextField ID="TextField2" runat="server" Width="90" Disabled="false" MaskRe="/[0-9]/" MarginSpec="0 3 0 0" FieldLabel="Telefono" />
-                                                        <ext:TextField ID="TextField3" runat="server" Flex="2" MarginSpec="0 3 0 0" AllowBlank="true" FieldLabel="Dirección" />
-                                                        <ext:ComboBox runat="server" ID="CTIPO" FieldLabel="Cargo" ForceSelection="true" MarginSpec="0 3 0 0" DisplayField="tipo" ValueField="idcargo" Width="200" AllowBlank="false">
-                                                            <Store>
-                                                                <ext:Store runat="server" ID="STIPO">
-                                                                    <Model>
-                                                                        <ext:Model ID="Model2" runat="server" IDProperty="IDCARGO">
-                                                                            <Fields>
-                                                                                <ext:ModelField Name="IDCARGO" />
-                                                                                <ext:ModelField Name="CODIGO" />
-                                                                                <ext:ModelField Name="TIPO" />
-                                                                            </Fields>
-                                                                        </ext:Model>
-                                                                    </Model>
-                                                                </ext:Store>
-                                                            </Store>
-                                                            <ListConfig Width="350" Height="300" ItemSelector=".x-boundlist-item">
-                                                                       <Tpl ID="Tpl3" runat="server">
-                                                                         <Html>
-                                                                           <tpl for=".">
-						                                                       <tpl if="[xindex] == 1">
-							                                                      <table class="cbStates-list">
-						                                                               </tpl>
-						                                                                <tr class="x-boundlist-item">      
-                                                                                         <td><b><font size=1>{CODIGO}</font></b></td>                                             
-							                                                                <td><font size=1>{TIPO}</font></td>
-                                                         
-						                                                                </tr>
-						                                                                <tpl if="[xcount-xindex]==0">
-							                                                      </table>
-						                                                    </tpl>
-					                                                    </tpl>
-                                                                    </Html>
-                                                                </Tpl>
-                                                            </ListConfig>
-                                                        </ext:ComboBox>
+                                                     
+                                                        <ext:DropDownField runat="server" ID="DDEPENDENCIA" FieldLabel="Dependencia" MarginSpec="0 3 0 0" >
+                                                            <Listeners>
+                                                                <Expand Handler="this.picker.setWidth(500);" />
+                                                            </Listeners>
+                                                            <Listeners>
+                                                                <IconClick Handler="this.picker.setWidth(500);" />
+                                                            </Listeners>
+                                                            <Component>
+                                                                <ext:GridPanel ID="GDEPENDENCIA" runat="server" ForceFit="true" Padding="4" Frame="true" UI="Info">
+                                                                    <TopBar>
+                                                                        <ext:Toolbar runat="server">
+                                                                            <Items>
+                                                                                <ext:TextField ID="TFDEPENDENCIA" runat="server" EmptyText="codigo,dependencia o  extensión para filtrar" Width="380" EnableKeyEvents="true" Icon="Magnifier" ClearCls="true">
+                                                                                    <Listeners>
+                                                                                        <KeyPress Handler="findDependencia(App.GDEPENDENCIA.store, App.TFDEPENDENCIA.getValue(), Ext.EventObject);" Buffer="200" />
+                                                                                    </Listeners>
+                                                                                    <Plugins>
+                                                                                        <ext:ClearButton runat="server">
+                                                                                            <Listeners>
+                                                                                                <Clear Handler="var store = App.GDEPENDENCIA.store; store.clearFilter();" />
+                                                                                            </Listeners>
+                                                                                        </ext:ClearButton>
+                                                                                    </Plugins>
+                                                                                    <ToolTips>
+                                                                                        <ext:ToolTip runat="server" Title="Presionar enter para buscar" Width="200" />
+                                                                                    </ToolTips>
+                                                                                </ext:TextField>
+                                                                            </Items>
+                                                                        </ext:Toolbar>
+                                                                    </TopBar>
+                                                                    <Store>
+                                                                        <ext:Store ID="SDEPENDENCIA" runat="server" PageSize="10">
+                                                                            <Model>
+                                                                                <ext:Model runat="server">
+                                                                                    <Fields>
+                                                                                        <ext:ModelField Name="CODIGO" />
+                                                                                        <ext:ModelField Name="AREA" />
+                                                                                        <ext:ModelField Name="EXT" />
+                                                                                    </Fields>
+                                                                                </ext:Model>
+                                                                            </Model>
+                                                                        </ext:Store>
+                                                                    </Store>
+                                                                    <ColumnModel>
+                                                                        <Columns>
+                                                                            <ext:Column ID="CCODIGO" runat="server" DataIndex="CODIGO" Header="CODIGO" Width="80" />
+                                                                            <ext:Column ID="CDEPENDENCIA" runat="server" DataIndex="AREA" Header="DEPENDENCIA" Width="300" />
+                                                                            <ext:Column ID="CEXT" runat="server" DataIndex="EXT" Header="EXTENSIÓN" Width="100" />
+                                                                        </Columns>
+                                                                    </ColumnModel>
+                                                                    <BottomBar>
+                                                                        <ext:PagingToolbar runat="server" AutoRender="true" StoreID="SDEPENDENCIA">
+                                                                        </ext:PagingToolbar>
+                                                                    </BottomBar>
+                                                                    <SelectionModel>
+                                                                        <ext:RowSelectionModel runat="server" Mode="Single" />
+                                                                    </SelectionModel>
+                                                                    <Listeners>
+                                                                        <RowDblClick Handler="App.HCODDEP.setValue(record.get('CODIGO')); App.DDEPENDENCIA.setValue(record.get('AREA'));App.SDEPENDENCIA.clearFilter();App.TFDEPENDENCIA.clear();" />
+                                                                    </Listeners>
+                                                                </ext:GridPanel>
+                                                            </Component>
+                                                        </ext:DropDownField>
+
+                                                        <ext:DropDownField runat="server" ID="DCARGO" FieldLabel="TIPO EMPLEADO" MarginSpec="0 3 0 0" >
+                                                            <Listeners>
+                                                                <Expand Handler="this.picker.setWidth(500);" />
+                                                            </Listeners>
+                                                            <Listeners>
+                                                                <IconClick Handler="this.picker.setWidth(500);" />
+                                                            </Listeners>
+                                                            <Component>
+                                                                <ext:GridPanel ID="GDCARGO" runat="server" ForceFit="true" Padding="4" Frame="true" UI="Info">
+                                                                    <TopBar>
+                                                                        <ext:Toolbar runat="server">
+                                                                            <Items>
+                                                                                <ext:TextField ID="TFCARGO" runat="server" EmptyText="codigo o cargo para filtrar" Width="300" EnableKeyEvents="true" Icon="Magnifier" ClearCls="true">
+                                                                                    <Listeners>
+                                                                                        <KeyPress Handler="findCargo(App.GDCARGO.store, App.TFCARGO.getValue(), Ext.EventObject);" Buffer="200" />
+                                                                                    </Listeners>
+                                                                                    <Plugins>
+                                                                                        <ext:ClearButton runat="server">
+                                                                                            <Listeners>
+                                                                                                <Clear Handler="var store = App.GDCARGO.store; store.clearFilter();" />
+                                                                                            </Listeners>
+                                                                                        </ext:ClearButton>
+                                                                                    </Plugins>
+                                                                                    <ToolTips>
+                                                                                        <ext:ToolTip runat="server" Title="Presionar enter para buscar" Width="200" />
+                                                                                    </ToolTips>
+                                                                                </ext:TextField>
+                                                                            </Items>
+                                                                        </ext:Toolbar>
+                                                                    </TopBar>
+                                                                    <Store>
+                                                                        <ext:Store runat="server" ID="SCARGO" PageSize="10" >
+                                                                            <Model>
+                                                                                <ext:Model runat="server" IDProperty="IDCARGO">
+                                                                                    <Fields>
+                                                                                        <ext:ModelField Name="CODIGO" />
+                                                                                        <ext:ModelField Name="CARGO" />
+                                                                                    </Fields>
+                                                                                </ext:Model>
+                                                                            </Model>
+                                                                        </ext:Store>
+                                                                    </Store>
+                                                                    <ColumnModel>
+                                                                        <Columns>
+                                                                            <ext:Column runat="server" DataIndex="CODIGO" Header="CODIGO" Flex="1" />
+                                                                            <ext:Column runat="server" DataIndex="CARGO" Header="CARGO" Flex="4" />
+                                                                        </Columns>
+                                                                    </ColumnModel>
+                                                                    <BottomBar>
+                                                                        <ext:PagingToolbar runat="server" AutoRender="true" StoreID="SCARGO">
+                                                                        </ext:PagingToolbar>
+                                                                    </BottomBar>
+                                                                    <SelectionModel>
+                                                                        <ext:RowSelectionModel runat="server" Mode="Single" />
+                                                                    </SelectionModel>
+                                                                    <Listeners>
+                                                                        <RowDblClick Handler="App.HCARGO.setValue(record.get('CODIGO')); App.DCARGO.setValue(record.get('CARGO') );App.SCARGO.clearFilter();App.TFCARGO.clear();" />
+                                                                    </Listeners>
+                                                                </ext:GridPanel>
+                                                            </Component>
+                                                        </ext:DropDownField>
+
+                                                         <ext:DropDownField runat="server" ID="DDCENTROCOSTO" FieldLabel="CENTRO COSTO" MarginSpec="0 3 0 0" >
+                                                            <Listeners>
+                                                                <Expand Handler="this.picker.setWidth(520);" />
+                                                            </Listeners>
+                                                            <Listeners>
+                                                                <IconClick Handler="this.picker.setWidth(520);" />
+                                                            </Listeners>
+                                                            <Component>
+                                                                <ext:GridPanel ID="GDCENTROCOSTO" runat="server" ForceFit="true" Padding="4" Frame="true" UI="Info">
+                                                                    <TopBar>
+                                                                        <ext:Toolbar runat="server">
+                                                                            <Items>
+                                                                                <ext:TextField ID="TFCENTROCOSTO" runat="server" EmptyText="codigo o cargo para filtrar" Width="300" EnableKeyEvents="true" Icon="Magnifier" ClearCls="true">
+                                                                                    <Listeners>
+                                                                                        <KeyPress Handler="findCentrocosto(App.GDCENTROCOSTO.store, App.TFCENTROCOSTO.getValue(), Ext.EventObject);" Buffer="200" />
+                                                                                    </Listeners>
+                                                                                    <Plugins>
+                                                                                        <ext:ClearButton runat="server">
+                                                                                            <Listeners>
+                                                                                                <Clear Handler="var store = App.GDCENTROCOSTO.store; store.clearFilter();" />
+                                                                                            </Listeners>
+                                                                                        </ext:ClearButton>
+                                                                                    </Plugins>
+                                                                                    <ToolTips>
+                                                                                        <ext:ToolTip runat="server" Title="Presionar enter para buscar" Width="200" />
+                                                                                    </ToolTips>
+                                                                                </ext:TextField>
+                                                                            </Items>
+                                                                        </ext:Toolbar>
+                                                                    </TopBar>
+                                                                    <Store>
+                                                                        <ext:Store runat="server" ID="SCENTROCOSTO" PageSize="10" >
+                                                                            <Model>
+                                                                                <ext:Model runat="server" IDProperty="CODIGO">
+                                                                                    <Fields>
+                                                                                        <ext:ModelField Name="CODIGO" />
+                                                                                        <ext:ModelField Name="CENTROCOSTO" />
+                                                                                    </Fields>
+                                                                                </ext:Model>
+                                                                            </Model>
+                                                                        </ext:Store>
+                                                                    </Store>
+                                                                    <ColumnModel>
+                                                                        <Columns>
+                                                                            <ext:Column runat="server" DataIndex="CODIGO" Header="CODIGO" Flex="1" />
+                                                                            <ext:Column runat="server" DataIndex="CENTROCOSTO" Header="CARGO" Flex="4" />
+                                                                        </Columns>
+                                                                    </ColumnModel>
+                                                                    <BottomBar>
+                                                                        <ext:PagingToolbar runat="server" AutoRender="true" StoreID="SCENTROCOSTO">
+                                                                        </ext:PagingToolbar>
+                                                                    </BottomBar>
+                                                                    <SelectionModel>
+                                                                        <ext:RowSelectionModel runat="server" Mode="Single" />
+                                                                    </SelectionModel>
+                                                                    <Listeners>
+                                                                        <RowDblClick Handler="App.HCENTROCOSTO.setValue(record.get('CODIGO')); App.DDCENTROCOSTO.setValue(record.get('CENTROCOSTO') );App.SCENTROCOSTO.clearFilter();App.TFCENTROCOSTO.clear();" />
+                                                                    </Listeners>
+                                                                </ext:GridPanel>
+                                                            </Component>
+                                                        </ext:DropDownField>
+                                                
                                                     </Items>
                                                 </ext:FieldContainer>
                                             </Items>
                                             <Buttons>
-                                                <ext:Button runat="server" ID="BNUEVO" Text="NUEVO" Icon="UserAdd" Scale="Small" UI="Default"  />
-                                                
+                                                <ext:Button runat="server" ID="BNUEVO" Text="NUEVO" Icon="UserAdd" Scale="Small" UI="Default" />
+
                                                 <ext:Button runat="server" ID="Button1" Text="ACTUALIZAR" Icon="Reload" Scale="Small" Disabled="true" UI="Success"
                                                     Hidden="false">
                                                     <Listeners>
@@ -225,7 +500,7 @@
                                 </ext:Panel>
                             </Items>
                         </ext:FieldSet>
-                        <ext:Container  runat="server">
+                        <ext:Container runat="server">
                             <Items>
                                 <ext:Panel ID="PLISTAEMPLEADO" runat="server" Flex="1">
                                     <Items>
@@ -235,21 +510,24 @@
                                                     <Model>
                                                         <ext:Model ID="Model5" runat="server" IDProperty="codigo">
                                                             <Fields>
-                                                                <ext:ModelField Name="idempleado" />
-                                                                <ext:ModelField Name="cedula" />
-                                                                <ext:ModelField Name="nombre" />
-                                                                <ext:ModelField Name="telefono" />
-                                                                <ext:ModelField Name="direccion" />
-                                                                <ext:ModelField Name="ccosto" />
-                                                                <ext:ModelField Name="ceconomico" />
-                                                                <ext:ModelField Name="celular" />
-                                                                <ext:ModelField Name="idcosto" />
-                                                                <ext:ModelField Name="ideconomico" />
-                                                                <ext:ModelField Name="nombre1" />
-                                                                <ext:ModelField Name="apellido1" />
-                                                                <ext:ModelField Name="apellido2" />
-                                                                <ext:ModelField Name="idtipo" />
-                                                                <ext:ModelField Name="eliminado" Type="Boolean">
+                                                                <ext:ModelField Name="IDEMPLEADO" />
+                                                                <ext:ModelField Name="CEDULA" />
+                                                                <ext:ModelField Name="USUARIO" />
+                                                                <ext:ModelField Name="NOMBRE" />
+                                                                <ext:ModelField Name="APELLIDO1" />
+                                                                <ext:ModelField Name="APELLIDO2" />
+                                                                <ext:ModelField Name="TELEFONO" />
+                                                                <ext:ModelField Name="CODTIPO" />
+                                                                <ext:ModelField Name="TIPO" />
+                                                                <ext:ModelField Name="DIRECCION" />
+                                                                <ext:ModelField Name="CELULAR" />
+                                                                <ext:ModelField Name="TELEFONO" />
+                                                                <ext:ModelField Name="CODAREA" />
+                                                                <ext:ModelField Name="AREA" />
+                                                                <ext:ModelField Name="FOTO" />
+                                                                <ext:ModelField Name="IDCENTROCOSTO" />
+                                                                <ext:ModelField Name="CENTROCOSTO" />
+                                                                <ext:ModelField Name="ELIMINADO" Type="Boolean">
                                                                     <Convert Handler="return value === 'A';" />
                                                                 </ext:ModelField>
                                                             </Fields>
@@ -259,50 +537,13 @@
                                             </Store>
                                             <ColumnModel runat="server">
                                                 <Columns>
-                                                    <ext:Column ID="Column1" runat="server" DataIndex="cedula" Text="Codigo"
-                                                        Width="90">
-                                                      
-                                                        <Items>
-                                                            <ext:TextField ID="PriceFilter" runat="server">
-                                                                <Listeners>
-                                                                    <Change Handler="this.up('grid').applyFilter();" />
-                                                                </Listeners>
-                                                                <Plugins>
-                                                                    <ext:ClearButton runat="server" />
-                                                                </Plugins>
-                                                            </ext:TextField>
-                                                        </Items>
+                                                    <ext:Column runat="server" DataIndex="IDENTIFICACION" Text="CEDULA" Width="100" />
+                                                    <ext:Column runat="server" DataIndex="USUARIO" Text="NOMBRE" Flex="3" />
+                                                    <ext:Column runat="server" DataIndex="TELEFONO" Text="TELEFONO"  Width="100" />
+                                                    <ext:Column runat="server" DataIndex="DIRECCION" Text="DIRECCIÓN" Flex="2" />
+                                                    <ext:Column runat="server" DataIndex="CENTROCOSTO" Text="CENTRO COSTO" Flex="2" />
+                                                    <ext:Column runat="server" DataIndex="TIPO" Text="CARGO" Flex="2" />
 
-                                                    </ext:Column>
-                                                    <ext:Column ID="Column2" runat="server" DataIndex="nombre" Text="Nombre"
-                                                        Flex="3">
-                                                       
-                                                    </ext:Column>
-                                                    <ext:Column ID="Column3" runat="server" DataIndex="telefono" Text="Telefono"
-                                                        Width="80">
-                                                    </ext:Column>
-
-                                                    <ext:Column ID="Column5" runat="server" DataIndex="direccion" Text="Dirección"
-                                                        Flex="2">
-                                                    </ext:Column>
-                                                    <ext:Column ID="Column6" runat="server" DataIndex="ccosto" Text="Centro Costo"
-                                                        Flex="2">
-                                                    </ext:Column>
-                                                    <ext:Column ID="Column7" runat="server" DataIndex="ceconomico" Text="Centro Economico"
-                                                        Flex="2">
-                                                    </ext:Column>
-                                                    <ext:Column ID="Column4" runat="server" DataIndex="ceconomico" Text="Centro Economico"
-                                                        Flex="2">
-                                                    </ext:Column>
-                                                    <ext:CheckColumn runat="server" Text="Estado" Width="60" DataIndex="eliminado" />
-                                                    <%--<ext:CommandColumn ID="CommandColumn8" runat="server" DataIndex="eliminado"  Align="Center" Width="27" >
-                                                        <Commands>
-                                                            <ext:GridCommand CommandName="btnDesactivar"  ToolTip-Text="Desactivar" />
-                                                        </Commands>
-                                                        <Listeners>
-                                                            <Command Handler="App.direct.DesactivarEmpleado(record.data.idempleado)" />
-                                                        </Listeners>
-                                                    </ext:CommandColumn>--%>
                                                 </Columns>
                                             </ColumnModel>
                                             <SelectionModel>

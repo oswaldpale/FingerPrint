@@ -58,6 +58,15 @@ namespace webFingerprintGasCaqueta.View.Private.Parametrizacion {
         protected global::Ext.Net.Button BFOTO;
         
         /// <summary>
+        /// Control BCAMBIAR.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Ext.Net.Button BCAMBIAR;
+        
+        /// <summary>
         /// Control BGUARDAR.
         /// </summary>
         /// <remarks>

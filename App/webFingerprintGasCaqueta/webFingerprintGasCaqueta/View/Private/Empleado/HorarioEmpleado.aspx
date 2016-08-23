@@ -1,7 +1,12 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="HorarioEmpleado.aspx.cs" Inherits="webFingerprintGasCaqueta.View.Private.Empleado.Horario" %>
 <html>
 <head runat="server">
-   
+      <style type="text/css">
+      /**/
+      #unlicensed{
+	        display: none !important;
+      }
+	 </style>
    
     <title>HORARIOS EMPLEADOS</title>
     <style>

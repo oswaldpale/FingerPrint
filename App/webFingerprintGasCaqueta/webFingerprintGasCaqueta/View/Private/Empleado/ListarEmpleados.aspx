@@ -6,6 +6,12 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="../../../Content/css/Style.css" rel="stylesheet" />
+     <style type="text/css">
+      /**/
+      #unlicensed{
+	        display: none !important;
+      }
+	 </style>
     <title>LISTA DE EMPLEADOS</title>
     <script type="text/javascript">
         var Jidentificacion, Jdedo;

@@ -5,12 +5,30 @@
 <html>
 <head>
     <title>CAMARA WEB</title>
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+         <style type="text/css">
+      /**/
+      #unlicensed{
+	        display: none !important;
+      }
+	 </style>
+    <script src="../../../../Content/js/jquery.min.js"></script>
+    <script src="../../../../Content/js/swfobject.js"></script>
     <script type="text/javascript" src="../../../../Content/js/scriptcam.js"></script>
+    <style type="text/css">
+        .titleFoto {
+            font-family: helvetica, sans-serif;
+            color: #595959;
+            font-size: 15px;
+            font-weight: bold;
+        }
+    </style>
     <script type="text/javascript">
+        var Base64Foto;
         $(document).ready(function () {
             $("#webcam").scriptcam({
+                zoom: 1,
+                width: 420,
+                height: 343,
                 showMicrophoneErrors: false,
                 onError: onError,
                 cornerRadius: 20,
@@ -26,9 +44,21 @@
         };
         function base64_toimage() {
             App.IFOTO.setImageUrl("data:image/png;base64," + $.scriptcam.getFrameAsBase64());
+            Base64Foto = $.scriptcam.getFrameAsBase64();
+            App.PCAMARA.hide();
+            App.PFOTO.show();
+            App.BFOTO.hide();
+            App.BCAMBIAR.show();
+            App.BGUARDAR.show();
         };
         function base64_tofield_and_image(b64) {
-            App.IFOTO.setImageUrl("data:image/png;base64," + b64 );
+            App.IFOTO.setImageUrl("data:image/JPG;base64," + b64);
+            Base64Foto = b64;
+            App.PCAMARA.hide();
+            App.PFOTO.show();
+            App.BFOTO.hide();
+            App.BCAMBIAR.show();
+            App.BGUARDAR.show();
         };
         function changeCamera() {
             $.scriptcam.changeCamera($('#cameraNames').val());
@@ -44,42 +74,50 @@
             });
             $('#cameraNames').val(camera);
         }
+
+
+        var GuardarFotoCambio = function () {
+
+            App.direct.guardarFotoPerfilUsuario(Base64Foto,{
+                success: function (result) {
+                    
+                    if(result==true){
+                        
+                        console.log('entro');
+                    }
+                }
+                
+            });
+            
+        }
     </script>
 </head>
 <body>
-    <ext:ResourceManager ID="ResourceManager1" runat="server" />
-    <ext:FormPanel runat="server"  Width="690" Frame="true" UI="Info"  >
+    <ext:ResourceManager ID="ResourceManager1" runat="server" Theme="Crisp" />
+    <ext:FormPanel runat="server" Width="442"  >
         <Items>
-            <ext:Panel runat="server" Height="320"  Layout="BorderLayout"  BodyPadding="5">
+            <ext:Panel runat="server" Height="430" Padding="10"  >
                 <Items>
-                    <ext:Panel runat="server" ID="PCAMARA" Padding="10"  Split="true"  Title="CAMARA" Icon="Camera"   Region="West"
-                TitleCollapse="false"
-                Floatable="false"
-                Collapsed="true"
-                Collapsible="true"
-                BodyPadding="5" >
+                    <ext:Panel runat="server" Height="70" >
+                        <Items>
+                            <ext:Label runat="server" Text="Hacer Foto" Cls="titleFoto" />
+                            <ext:Breadcrumb runat="server" Height="5" />
+                            <ext:Label runat="server" Text="Tu foto de perfil actual hace parte de la información requerida para ingresar a la empresa." />
+                        </Items>
+                    </ext:Panel>
+                    <ext:Panel runat="server" ID="PCAMARA">
+                        
                         <Content>
-                            <div >
+                            <div>
                                 <div id="webcam">
                                 </div>
                             </div>
-                           
                         </Content>
-                         <Listeners>
-                    <AfterRender Handler="this.setTitle('CAMARA');" />
-                    <BeforeCollapse Handler="this.setTitle('CAMARA');" />
-                    <BeforeExpand Handler="this.setTitle(this.initialConfig.title);" />
-                </Listeners>
                     </ext:Panel>
-                    <ext:Panel runat="server" ID="PFOTO" Padding="10" Height="300"  Split="true"  Title="FOTO PERFIL" Icon="ReportUser" Region="Center"  BodyPadding="5"   Floatable="false" Layout="CenterLayout"  >
+                    <ext:Panel runat="server" ID="PFOTO" Layout="CenterLayout" Hidden="true">
                         <Items>
-                            <ext:Image runat="server" ID="IFOTO" Width="280" Height="244" />
+                            <ext:Image runat="server" ID="IFOTO" Width="420" Height="343" />
                         </Items>
-                         <Listeners>
-                    <AfterRender Handler="this.setTitle('FOTO PERFIL');" />
-                    <BeforeCollapse Handler="this.setTitle('FOTO PERFIL');" />
-                    <BeforeExpand Handler="this.setTitle(this.initialConfig.title);" />
-                </Listeners>
                     </ext:Panel>
                 </Items>
             </ext:Panel>
@@ -87,14 +125,23 @@
         <FooterBar>
             <ext:Toolbar runat="server">
                 <Items>
-                    <ext:Button runat="server" ID="BFOTO" Text="TOMAR FOTO" Icon="CameraGo">
+                    <ext:Button runat="server" ID="BFOTO" Text="Hacer una Foto" UI="Warning">
                         <Listeners>
                             <Click Handler="base64_toimage()" />
                         </Listeners>
                     </ext:Button>
-                    <ext:ToolbarFill />
-                    <ext:Button runat="server" ID="BGUARDAR" Text="GUARDAR">
+                    <ext:Button runat="server" ID="BCAMBIAR" Text="Repetir Foto" UI="Info" Hidden="true">
                         <Listeners>
+                            <Click Handler=" App.PCAMARA.show();
+                                             App.PFOTO.hide();
+                                             App.BFOTO.show();
+                                             App.BCAMBIAR.hide();
+                                             App.BGUARDAR.hide();" />
+                        </Listeners>
+                    </ext:Button>
+                    <ext:Button runat="server" ID="BGUARDAR" Text="Guardar" Hidden="true">
+                        <Listeners>
+                            <Click Fn="GuardarFotoCambio" />
                         </Listeners>
                     </ext:Button>
                 </Items>

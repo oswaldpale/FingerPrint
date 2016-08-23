@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
-using webFingerprintGasCaqueta.Model.Boot_Park.Conections;
 
 namespace webFingerprintGasCaqueta.Model
 {
@@ -91,6 +87,26 @@ namespace webFingerprintGasCaqueta.Model
             return connection.getDataMariaDB(sql).Tables[0];
         }
 
-       
+        public DataTable consultarRutaFotoEmpleado(string identificacion)
+        {
+            string sql = @"SELECT
+                                e.FOTO
+                            FROM
+                                sigc972008.empleado e
+                            WHERE
+                                e.Cod_empleado = '" + identificacion + "'"; 
+            return connection.getDataMariaDB(sql).Tables[0];
+        }
+
+        public  bool ActualizarFotoFuncionario(string identificacion, string cadenaFoto)
+        {
+            string sql = @"UPDATE
+                                sigc972008.empleado e
+                            SET
+                                e.FOTO = '" + cadenaFoto + @"'
+                            WHERE
+                                e.Cod_empleado = '" + identificacion + "' ";
+            return connection.sendSetDataMariaDB(sql);
+        }
     }
 }

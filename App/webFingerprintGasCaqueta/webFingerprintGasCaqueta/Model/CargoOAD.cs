@@ -4,19 +4,19 @@ using System.Data;
 using System.Linq;
 using System.Web;
 
-
 namespace webFingerprintGasCaqueta.Model
 {
-    public class SemanaOAD
+    public class CargoOAD
     {
         private Conexion connection = new Conexion();
-        public DataTable consultarSemana()
+        public DataTable consultarCargo()
         {
             string sql = @"SELECT
-                            sema_id AS ID,
-                            sema_dia AS DIA
-                        FROM
-                            semana";
+                                codigo AS CODIGO,
+                                cargo AS CENTROCOSTO
+                            FROM
+                                sigc972008.tb_cargo";
+
             return connection.getDataMariaDB(sql).Tables[0];
         }
     }

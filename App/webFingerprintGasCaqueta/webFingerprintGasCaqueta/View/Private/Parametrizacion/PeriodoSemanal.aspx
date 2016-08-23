@@ -6,6 +6,12 @@
 <head id="Head1" runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>PeriodoSemanal</title>
+      <style type="text/css">
+      /**/
+      #unlicensed{
+	        display: none !important;
+      }
+	 </style>
     <script type="text/javascript">
         var beforenodedrop = function (node, data, overModel, dropPosition, dropFn) {
             if (Ext.isArray(data.records)) {

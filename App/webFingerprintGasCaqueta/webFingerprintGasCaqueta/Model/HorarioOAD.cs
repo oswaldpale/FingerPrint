@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using webFingerprintGasCaqueta.Model.Boot_Park.Conections;
+
 using System.Data;
 
 namespace webFingerprintGasCaqueta.Model

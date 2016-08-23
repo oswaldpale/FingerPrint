@@ -4,20 +4,24 @@ using System.Data;
 using System.Linq;
 using System.Web;
 
-
 namespace webFingerprintGasCaqueta.Model
 {
-    public class SemanaOAD
+    public class TipoEmpleadoOAD
     {
         private Conexion connection = new Conexion();
-        public DataTable consultarSemana()
-        {
+
+        public DataTable consultarTipoEmpleado() {
+
             string sql = @"SELECT
-                            sema_id AS ID,
-                            sema_dia AS DIA
-                        FROM
-                            semana";
+                                cod_tipo AS CODIGO,
+                                UPPER(Tipo)     AS CARGO
+                            FROM
+                                sigc972008.tipoempleado";
+
             return connection.getDataMariaDB(sql).Tables[0];
+
         }
+
+
     }
 }

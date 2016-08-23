@@ -96,3 +96,19 @@ C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1
 C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
 C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\Interop.DPFPShrXLib.dll
 C:\Users\Usuario TI\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\Parqueadero.csproj.ResolveComReference.cache
+C:\Users\oswaldpale\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+C:\Users\oswaldpale\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\Interop.DPFPShrXLib.dll
+C:\Users\oswaldpale\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\Parqueadero.csproj.ResolveComReference.cache
+C:\Users\oswaldpale\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+C:\Users\oswaldpale\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+C:\Users\oswaldpale\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\Parqueadero.csprojResolveAssemblyReference.cache
+C:\Users\oswaldpale\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.BuscarPersona.resources
+C:\Users\oswaldpale\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.gestionarPersona.resources
+C:\Users\oswaldpale\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.PruebaLector.resources
+C:\Users\oswaldpale\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.VerificarUsuarioCarro.resources
+C:\Users\oswaldpale\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.FormCamara.resources
+C:\Users\oswaldpale\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.GuardarHuella.resources
+C:\Users\oswaldpale\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\oswaldpale\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.CapturarHuella.resources
+C:\Users\oswaldpale\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.RegistrarPersona.resources
+C:\Users\oswaldpale\Documents\Proyecto\FingerPrint\Test\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\Parqueadero.csproj.GenerateResource.Cache

@@ -31,6 +31,30 @@ namespace webFingerprintGasCaqueta.Model
                               " AND h.hose_diasemanaid = " + diasemana;
             return connection.getDataMariaDB(sql).Tables[0];
         }
+
+        public DataTable consultarHorarioDiaTrabajo(string periodo, int diasemana)
+        {
+            string sql = @"SELECT
+                                TIME_FORMAT(ho.hora_inicio, '%r') AS HORAINICIO,
+                                TIME_FORMAT(ho.hora_fin, '%r') AS HORAFIN,
+                                hora_tiempotarde AS TIEMPOTARDE
+                            FROM
+                                control_acceso.horariosemanal h
+                            INNER JOIN control_acceso.semana s
+                            ON
+                                s.sema_id = h.hose_diasemanaid
+                            INNER JOIN control_acceso.horario ho
+                            ON
+                                ho.hora_id = h.hose_horaid
+                            INNER JOIN periodo p
+                            ON p.peri_id = h.peri_id
+                            WHERE p.peri_id = '" + periodo + "'" +
+                              " AND h.hose_diasemanaid = " + diasemana;
+            return connection.getDataMariaDB(sql).Tables[0];
+        }
+
+
+
         public bool eliminarHorarioSemana(string id){
             string sql = @"DELETE
                             FROM

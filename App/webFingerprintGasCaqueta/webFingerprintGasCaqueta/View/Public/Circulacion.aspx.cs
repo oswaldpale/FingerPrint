@@ -21,7 +21,7 @@ namespace webFingerprintGasCaqueta.View.Public
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            cargarCombobox();
         }
 
         [DirectMethod(Namespace = "parametro")]
@@ -106,7 +106,8 @@ namespace webFingerprintGasCaqueta.View.Public
                 {
                     case "VISITANTE":
                         if (foto != ""){
-                            fileName = Path.GetFullPath("D:\\SIGC\\Bdatos\\Fotos\\" + foto); MostrarImagen(fileName);}
+                            //fileName = Path.GetFullPath("D:\\SIGC\\Bdatos\\Fotos\\" + foto); MostrarImagen(fileName);
+                        }
                         else
                             IMPERFIL.ImageUrl = "../../Content/images/user.png";
                         break;
@@ -123,6 +124,10 @@ namespace webFingerprintGasCaqueta.View.Public
                 if (_inforUsuario["TIPO"].ToString() == "Empleado")
                 {
                     tipoUsuario = true;
+                }
+                else {
+                    tipoUsuario = true;
+                    X.AddScript("App.WVISITANTE.show();");   //invoco el formulario  de lugar al que se dirige el visitante;
                 }
 
             }
@@ -167,10 +172,72 @@ namespace webFingerprintGasCaqueta.View.Public
                 LESTADO.Icon = Ext.Net.Icon.Connect;
                 LESTADO.Cls = "ReaderStateConnect";
             }
-            
-
 
         }
 
+        [DirectMethod(Namespace = "parametro")]
+        public string validarHorario(string usuario,string tipoingreso) {
+
+            string clockServer = DateTime.Now.ToString("hh:mm:ss tt");
+
+
+            DateTime dateValue = DateTime.Now;
+            int ndia =  (int)dateValue.DayOfWeek;
+
+            DataTable dt = Controllers.consultarHorarioEmpleado(usuario);
+          
+            if (dt.Rows.Count > 0) {
+                string codigoperiodo = dt.Rows[0]["CODIGO"].ToString();
+                string tiempoTarde = dt.Rows[0]["TIEMPOTARDE"].ToString();
+                string estadoFestivo = dt.Rows[0]["FESTIVO"].ToString();
+                DataTable dtDiaEvaluar = Controllers.consultarHorarioDiaTrabajo(codigoperiodo, ndia);
+                if (dtDiaEvaluar.Rows.Count > 0) {
+
+                    DataTable dtCirculacionActual = Controllers.consultarUltimoIngreso(usuario);     //Compruebo el ultimo ingreso para asi tomar desicion del ingreso nuevo
+                    
+                    switch (tipoingreso) {
+                        case  "ENTRADA":
+
+                            DateTime fechaRegistro = (DateTime)dtCirculacionActual.Rows[0]["FECHA"];
+
+                            if (dtCirculacionActual.Rows.Count > 0)
+                            {
+                                foreach (DataRow item in dtDiaEvaluar.Rows)
+                                {
+
+                                }
+                               
+                            }
+                            break;
+                        case "SALIDA" :
+
+                            break;
+                    }
+                        
+                }
+                
+            }
+            return "";            
+        }
+
+
+        #region  INDICENCIA  SUBFORMULARIO INCIDENCIA
+
+
+
+        #endregion
+
+        #region DEPEDENCIA  SUBFOMULARIO VISITANTE
+
+        [DirectMethod(ShowMask = true, Msg = "Cargando..", Target = MaskTarget.Page)]
+        public void cargarCombobox()
+        {
+            SDEPENDENCIA.DataSource = Controllers.consultarArea();
+            SDEPENDENCIA.DataBind();
+        }
+
+        #endregion
+
     }
+   
 }

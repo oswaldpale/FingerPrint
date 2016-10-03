@@ -23,9 +23,6 @@ namespace webFingerprintGasCaqueta.Controller
         private PermisoOAD permiso = new  PermisoOAD();
         private AreaTrabajoOAD area = new AreaTrabajoOAD();
         private TipoEmpleadoOAD tipoempleado= new TipoEmpleadoOAD();
-
-        
-
         private MunicipioOAD municipio = new MunicipioOAD();
         private CargoOAD cargo = new CargoOAD();
 
@@ -99,8 +96,11 @@ namespace webFingerprintGasCaqueta.Controller
         {
             return circulacion.registrarSalida(idTupla, identificacion);
         }
+        public DataTable consultarUltimoIngreso(string usuario)
+        {
+            return circulacion.consultarUltimoIngreso(usuario);
+        }
 
-      
         #endregion
         #region GESTIONAR HORARIO EMPLEADO
         public  bool consultarHorarioEmpleadoDia(string idempleado,string fechaserver, int diaserver){
@@ -111,7 +111,9 @@ namespace webFingerprintGasCaqueta.Controller
             return horarioempleado.registrarHorarioPeriodoEmpleado(general.nextPrimaryKey("horarioempleado", "hoem_id"),estado, idempleado, periodo, festivo, tiemporetardo, tipohorario, fechainicio, fechafin);
         }
 
-    
+        public DataTable consultarHorarioDiaTrabajo(string periodo,int dia) {
+            return horariosemana.consultarHorarioDiaTrabajo(periodo,dia);
+        }
 
         public bool registrarHorarioFijoEmpleado(string estado, string idempleado, string periodo, string festivo, string tiemporetardo, string tipohorario)
         {
@@ -190,6 +192,9 @@ namespace webFingerprintGasCaqueta.Controller
         {
             return _periodo.modificarPeriodo(idperiodo,descripcion);
         }
+
+        
+
         public bool eliminarPeriodo(string idperiodo) {
             return _periodo.eliminarPeriodo(idperiodo);
         }

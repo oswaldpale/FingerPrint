@@ -14,3 +14,19 @@ C:\Users\oswaldpale\Documents\Proyecto\FingerPrint\App\webFingerprintGasCaqueta\
 C:\Users\oswaldpale\Documents\Proyecto\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\obj\Release\webFingerprintGasCaqueta.csprojResolveAssemblyReference.cache
 C:\Users\oswaldpale\Documents\Proyecto\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\obj\Release\webFingerprintGasCaqueta.dll
 C:\Users\oswaldpale\Documents\Proyecto\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\obj\Release\webFingerprintGasCaqueta.pdb
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\webFingerprintGasCaqueta.dll.config
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\webFingerprintGasCaqueta.dll
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\webFingerprintGasCaqueta.pdb
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\Ext.Net.dll
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\Ext.Net.Utilities.dll
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\Newtonsoft.Json.dll
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\Transformer.NET.dll
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\WebActivatorEx.dll
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\Ext.Net.xml
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\Ext.Net.Utilities.xml
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\Newtonsoft.Json.xml
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\bin\Transformer.NET.xml
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\obj\Release\webFingerprintGasCaqueta.csprojResolveAssemblyReference.cache
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\obj\Release\webFingerprintGasCaqueta.dll
+C:\Users\oswaldpale\Documents\Visual Studio 2015\Projects\FingerPrint\App\webFingerprintGasCaqueta\webFingerprintGasCaqueta\obj\Release\webFingerprintGasCaqueta.pdb

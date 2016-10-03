@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 
 namespace webFingerprintGasCaqueta.Model
 {
@@ -24,7 +25,7 @@ namespace webFingerprintGasCaqueta.Model
                                         e.FOTO
                                     FROM
                                         control_acceso.empleado e
-                                    INNER JOIN sigc972008.tipoempleado t
+                                    LEFT JOIN sigc972008.tipoempleado t
                                     ON
                                         e.cod_tipo = t.cod_tipo
                                     WHERE
@@ -72,6 +73,19 @@ namespace webFingerprintGasCaqueta.Model
                             WHERE
                                 circu_id = '" + id + @"'";
             return connection.sendSetDataMariaDB(sql);
+        }
+
+        public DataTable consultarUltimoIngreso(string usuario)
+        {
+            string sql = @"SELECT 
+                                circu_fecha       AS FECHA,
+                                circu_horaentrada AS HORAENTRADA,
+                                circu_horasalida  AS HORASALIDA     
+                            FROM circulacion
+                            WHERE  
+                            circu_id = (select max(circu_id) 
+                            FROM circulacion WHERE circu_idusuario='" + usuario + "') ";
+            return connection.getDataMariaDB(sql).Tables[0];
         }
 
         public DataTable ListarUsuarios() {
